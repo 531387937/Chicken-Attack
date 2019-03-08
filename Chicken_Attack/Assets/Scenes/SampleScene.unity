@@ -756,6 +756,8 @@ MonoBehaviour:
   Black_Block: {fileID: 8985019198831334376, guid: 747741ba829e60d48b4c8a7245dab584,
     type: 3}
   BlockArea: {fileID: 1423950699}
+  timer: 0
+  MaxBlock: 20
 --- !u!4 &1423950701
 Transform:
   m_ObjectHideFlags: 0

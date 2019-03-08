@@ -8,11 +8,14 @@ public class Black_White : MonoBehaviour
     public GameObject Black_Block;
     private ArrayList blocks;
     public GameObject BlockArea;
-    private float timer;
+   public float timer;
     private bool GameStart=false;
+    public int MaxBlock;
+    private int leftBlock;
     // Start is called before the first frame update
     void Start()
     {
+        
         StartGame();
     }
 
@@ -23,17 +26,32 @@ public class Black_White : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
+        if(leftBlock==0)
+        {
+            GameStart = false;
+            print(timer);
+            leftBlock--;
+        }
     }
     public void StartGame()
     {
+        leftBlock = MaxBlock;
+        timer = 0;
+        GameStart = true;
         blocks = new ArrayList();
         for(int i = 0;i<=3;++i)
         {
+            
             AddBlock(i);
         }
     }
     void AddBlock(int rowIndex)
     {
+        if(MaxBlock==0)
+        {
+            return;
+        }
+        MaxBlock--;
         int WhiteBlockNum = Random.Range(0, 2);
         for(int i = 0;i<2;i++)
         {
@@ -58,6 +76,7 @@ public class Black_White : MonoBehaviour
         {
             if(block.CanTouch)
             {
+                leftBlock--;
                 for(int i = 0;i<blocks.Count;i++)
                 {
                     Block b = (Block)blocks[i];
@@ -71,6 +90,10 @@ public class Black_White : MonoBehaviour
                     }
                 }
                 AddBlock(3);
+            }
+            else
+            {
+                timer += 3f;
             }
         }
     }
