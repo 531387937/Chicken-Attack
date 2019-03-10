@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine; 
+using UnityEngine;
+using UnityEditor;
 [System.Serializable]
 public class ChickenAttack:ScriptableObject
     {
@@ -11,21 +12,27 @@ public class ChickenAttack:ScriptableObject
     }
 public class ChickenSave : MonoBehaviour
 {
-    public ChickenAttack ccc;
     public string Chicken_Name;
     public double Chicken_strengh;
     public double Chicken_Endurance;
     public double Chicken_Speed;
-   
+    public ChickenAttack ccc;
+    private void Awake()
+    {
+        ccc.Name = "No";
+    }
     private void Start()
     {
+        
         Chicken_Name = ccc.Name;
+        Chicken_Endurance = ccc.Endurance;
+        Chicken_Speed = ccc.Speed;
+        Chicken_strengh = ccc.strengh;
         SaveGame();
     }
     public void SaveGame()
     {
         string dirpath = Application.persistentDataPath + @"/SaveTest";
-        print(dirpath);
         IOHelper.CreateDirectory(dirpath);
         string filename = dirpath + @"/GameData.sav";
         print(filename);

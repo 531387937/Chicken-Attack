@@ -23,7 +23,7 @@ public class TestEditor
         AssetDatabase.Refresh();
         //我们还可以创建资源包
         Object o = AssetDatabase.LoadAssetAtPath("Assets/TestAsset.asset", typeof(ChickenAttack));
-        BuildPipeline.BuildAssetBundles("AssetBundle", BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows);
+        BuildPipeline.BuildAssetBundles("Prefebs", BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows);
         AssetDatabase.Refresh();
         //到此我们已经创建了名为“TestAsset”的资源文件了,需要用到的时候有三种方法：
         //1.编辑器环境下使用的话可以用Test o = AssetDatabase.LoadAssetAtPath(path , typeof(Test));将此资源文件“反序列化"为一个类对象,从而可以进行后续操作

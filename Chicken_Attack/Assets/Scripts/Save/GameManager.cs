@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using LitJson;
+//using LitJson;
 using Newtonsoft.Json;
 using System;
 
@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        SaveByJson();
     }
 
     // Update is called once per frame
@@ -38,38 +37,38 @@ public class GameManager : MonoBehaviour
         deserializedObject = JsonConvert.DeserializeObject(pString, pType);
         return deserializedObject;
     }
-    public void SaveByJson()
-    {
-        ChickenSave CS = new ChickenSave();
-        //CS.ga = saveObj;
-        //CS.strengh = 10;
-        //CS.Speed = 12;
-        //CS.Name = "faster";
-        //CS.Endurance = 1;
-        //chickenSave.Add(CS.Name, CS);
-        //Save save = new Save();
-        //save.money = money;
-        //save.score = score;
-        string jsonStr = JsonMapper.ToJson(chickenSave);
-        //string jsonStr = JsonMapper.ToJson(save);
-        using (StreamWriter sw = new StreamWriter(@"C:\Users\棋子\Desktop\SaveTest.txt"))
-        { sw.Write(jsonStr); }
-    }
-    public void LoadByJson()
-    {
-        //chickenSave.Clear();
-        //if (File.Exists(@"C:\Users\棋子\Desktop\SaveTest.txt"))
-        //{
-        //    FileStream fs = new FileStream(@"C:\Users\棋子\Desktop\SaveTest.txt", FileMode.Open);
-        //    StreamReader sr = new StreamReader(fs);
+    //public void SaveByJson()
+    //{
+    //    ChickenSave CS = new ChickenSave();
+    //    //CS.ga = saveObj;
+    //    //CS.strengh = 10;
+    //    //CS.Speed = 12;
+    //    //CS.Name = "faster";
+    //    //CS.Endurance = 1;
+    //    //chickenSave.Add(CS.Name, CS);
+    //    //Save save = new Save();
+    //    //save.money = money;
+    //    //save.score = score;
+    //    string jsonStr = JsonMapper.ToJson(chickenSave);
+    //    //string jsonStr = JsonMapper.ToJson(save);
+    //    using (StreamWriter sw = new StreamWriter(@"C:\Users\棋子\Desktop\SaveTest.txt"))
+    //    { sw.Write(jsonStr); }
+    //}
+    //public void LoadByJson()
+    //{
+    //    //chickenSave.Clear();
+    //    //if (File.Exists(@"C:\Users\棋子\Desktop\SaveTest.txt"))
+    //    //{
+    //    //    FileStream fs = new FileStream(@"C:\Users\棋子\Desktop\SaveTest.txt", FileMode.Open);
+    //    //    StreamReader sr = new StreamReader(fs);
             
-        //        JsonData values = JsonMapper.ToObject(sr.ReadToEnd());
-        //        foreach(var key in values.Keys)
-        //    {
+    //    //        JsonData values = JsonMapper.ToObject(sr.ReadToEnd());
+    //    //        foreach(var key in values.Keys)
+    //    //    {
 
-        //    }
+    //    //    }
                 
             
-        //}
-    }
+    //    //}
+    //}
 }
