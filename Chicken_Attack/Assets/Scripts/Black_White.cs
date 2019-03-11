@@ -1,27 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Black_White : MonoBehaviour
 {
     public GameObject White_Block;
     public GameObject Black_Block;
     private ArrayList blocks;
     public GameObject BlockArea;
+    public GameObject[] Dispear_UI;
    public float timer;
     private bool GameStart=false;
     public int MaxBlock;
     private int leftBlock;
+    public GameObject ShowTime;
+    private int a;
+    public BattleSystem BS;
     // Start is called before the first frame update
     void Start()
     {
-        
-        StartGame();
+        leftBlock = MaxBlock;
+        a = MaxBlock;
     }
 
     // Update is called once per frame
     void Update()
     {
+        ShowTime.GetComponent<Text>().text = timer.ToString("f2");
         if(GameStart)
         {
             timer += Time.deltaTime;
@@ -31,10 +36,20 @@ public class Black_White : MonoBehaviour
             GameStart = false;
             print(timer);
             leftBlock--;
+            BS.SendMessage("RoundEnd", timer);
+            foreach (GameObject Dispear in Dispear_UI)
+            {
+                Dispear.SetActive(true);
+            }
         }
     }
     public void StartGame()
     {
+        foreach(GameObject Dispear in Dispear_UI)
+        {
+            Dispear.SetActive(false);
+        }
+        MaxBlock = a;
         leftBlock = MaxBlock;
         timer = 0;
         GameStart = true;
@@ -47,6 +62,7 @@ public class Black_White : MonoBehaviour
     }
     void AddBlock(int rowIndex)
     {
+        int a = MaxBlock;
         if(MaxBlock==0)
         {
             return;
@@ -95,6 +111,10 @@ public class Black_White : MonoBehaviour
             {
                 timer += 3f;
             }
+        }
+        else
+        {
+            timer += 3f;
         }
     }
 }
