@@ -52,7 +52,7 @@ public static class IOHelper
         //将对象序列化为字符串
         string toSave = SerializeObject(pObject);
         //对字符串进行加密,32位加密密钥
-        toSave = RijndaelEncrypt(toSave, Key);
+        //toSave = RijndaelEncrypt(toSave, Key);
         StreamWriter streamWriter = File.CreateText(fileName);
         streamWriter.Write(toSave);
         streamWriter.Close();
@@ -63,7 +63,7 @@ public static class IOHelper
         StreamReader streamReader = File.OpenText(fileName);
         string data = streamReader.ReadToEnd();
         //对数据进行解密，32位解密密钥
-        data = RijndaelDecrypt(data, Key);
+        //data = RijndaelDecrypt(data, Key);
         streamReader.Close();
         return DeserializeObject(data, pType);
     }
