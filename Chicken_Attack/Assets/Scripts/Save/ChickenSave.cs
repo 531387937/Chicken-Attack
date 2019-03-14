@@ -37,6 +37,6 @@ public class ChickenSave : MonoBehaviour
         string filename = dirpath + @"/GameData.sav";
         print(filename);
         ChickenAttack t = new ChickenAttack();
-        IOHelper.SetData(filename, ccc);
+        //IOHelper.SetData(filename, ccc);
     }
 }

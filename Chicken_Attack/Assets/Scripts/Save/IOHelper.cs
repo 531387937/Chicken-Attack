@@ -47,23 +47,23 @@ public static class IOHelper
         Directory.CreateDirectory(fileName);
     }
 
-    public static void SetData(string fileName, object pObject)
+    public static void SetData(string fileName, object pObject,string Key)
     {
         //将对象序列化为字符串
         string toSave = SerializeObject(pObject);
         //对字符串进行加密,32位加密密钥
-        //toSave = RijndaelEncrypt(toSave, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        toSave = RijndaelEncrypt(toSave, Key);
         StreamWriter streamWriter = File.CreateText(fileName);
         streamWriter.Write(toSave);
         streamWriter.Close();
     }
 
-    public static object GetData(string fileName, Type pType)
+    public static object GetData(string fileName, Type pType, string Key)
     {
         StreamReader streamReader = File.OpenText(fileName);
         string data = streamReader.ReadToEnd();
         //对数据进行解密，32位解密密钥
-        //data = RijndaelDecrypt(data, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        data = RijndaelDecrypt(data, Key);
         streamReader.Close();
         return DeserializeObject(data, pType);
     }
