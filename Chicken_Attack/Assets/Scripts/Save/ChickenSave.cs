@@ -23,7 +23,6 @@ public class ChickenSave : MonoBehaviour
     }
     private void Start()
     {
-        
         Chicken_Name = ccc.Name;
         Chicken_Endurance = ccc.Endurance;
         Chicken_Speed = ccc.Speed;
