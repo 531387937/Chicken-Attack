@@ -24,19 +24,16 @@ public class Chicken//新建鸡的时候记得生成实例
     public double Attak { get; set; }
 //鸡的速度，影响先后手
     public double Speed { get; set; }
-    public bool Alive;
     public Vector3 pos;
+    //是否为公鸡
+    public bool isCock;
+    public bool Alive;
+    //决定鸡的性别
+    [Range(0, 4)]
+    public int Gender;
     public Chicken()
     {
-        Type = chickenType.Rookie;
-        Name = "菜鸡";
-        HP = Random.Range(12,18);
-        Level = 1;
-        Exp = 0;
-        Attak = Random.Range(14,20);
-        Speed = 10;
         Alive = false;
-        pos = new Vector3(Random.Range(-8.0f, 8.0f), Random.Range(-4.0f, 4.0f), 0);
     }
 }
 //玩家的属性
@@ -62,13 +59,13 @@ public class ChickenList
     public static List<Chicken> chickenList = new List<Chicken>();
 }
 
-public class GameSave : MonoBehaviour
+public class GameSave : Singleton<GameSave>
 {
     public GameObject BaseChicken;
-    public static PlayerData PD = new PlayerData();
     public static Chicken[] AllChicken;
     private string Mac;//设备MAC
-    private bool CanSave = true;//是否可以保存
+    //private bool CanSave = true;//是否可以保存
+    public static PlayerData PD;
     //string path = Application.persistentDataPath + @"/GameData.json";
     string path = "Assets/Resources/GameData.json";
     string PlayerPath = "Assets/Resources/GamePlayerData.json";
@@ -116,7 +113,6 @@ public class GameSave : MonoBehaviour
         //{
         //    CanSave = false;
         //}
-        PD.Gold++;
     }
 
     public void AddChicken(Chicken chicken,string Name)//新增鸡数据存储方法，新增一只鸡调用
@@ -130,7 +126,6 @@ public class GameSave : MonoBehaviour
         ChickenList.chickenList.Add(ch);//在静态鸡列表里增加本鸡
         PD.Chicken_Num=ChickenList.chickenList.Count;
         ChickenUpdate();
-        print("Done");
     }
 
     public void RemoveChicken(Chicken chicken)//剔除鸡数据存储方法，剔除一只鸡调用
@@ -144,27 +139,22 @@ public class GameSave : MonoBehaviour
     }
     public void LoadAllData()
     {
+        foreach (GameObject delete in GameObject.FindGameObjectsWithTag("Chicken"))
+        {
+            Destroy(delete);
+        }
         PD = IOHelper.GetData(PlayerPath, typeof(PlayerData), Mac) as PlayerData;
         ChickenList.chickenList = IOHelper.GetData(path, typeof(List<Chicken>), Mac) as List<Chicken>;
         AllChicken = new Chicken[ChickenList.chickenList.Count];
         for(int i = 0;i< ChickenList.chickenList.Count;i++)
         {
             AllChicken[i] = ChickenList.chickenList[i];
-            print(AllChicken[i].Name);
         }
-        foreach(GameObject delete in GameObject.FindGameObjectsWithTag("Chicken"))
-        {
-            Destroy(delete);
-        }
+        
         Chicken_Before = 0;
         ChickenUpdate();
     }
-    //IEnumerator SaveData()
-    //{
-    //    IOHelper.SetData(path, ChickenList.chickenList, Mac);
-    //    yield return new WaitForSeconds(6f);//每十分钟自动同步一次
-    //    CanSave = true;
-    //}
+
     private void SavePlayerData()
     {
         IOHelper.SetData(PlayerPath, PD, Mac);
