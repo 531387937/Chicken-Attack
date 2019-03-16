@@ -24,6 +24,8 @@ public class Chicken//新建鸡的时候记得生成实例
     public double Attak { get; set; }
 //鸡的速度，影响先后手
     public double Speed { get; set; }
+    public bool Alive;
+    public Vector3 pos;
     public Chicken()
     {
         Type = chickenType.Rookie;
@@ -33,6 +35,8 @@ public class Chicken//新建鸡的时候记得生成实例
         Exp = 0;
         Attak = Random.Range(14,20);
         Speed = 10;
+        Alive = false;
+        pos = new Vector3(Random.Range(-8.0f, 8.0f), Random.Range(-4.0f, 4.0f), 0);
     }
 }
 //玩家的属性
@@ -60,6 +64,7 @@ public class ChickenList
 
 public class GameSave : MonoBehaviour
 {
+    public GameObject BaseChicken;
     public static PlayerData PD = new PlayerData();
     public static Chicken[] AllChicken;
     private string Mac;//设备MAC
@@ -67,6 +72,7 @@ public class GameSave : MonoBehaviour
     //string path = Application.persistentDataPath + @"/GameData.json";
     string path = "Assets/Resources/GameData.json";
     string PlayerPath = "Assets/Resources/GamePlayerData.json";
+    int Chicken_Before = 0;
     void Awake()
     {
         LoadAllData();
@@ -122,7 +128,8 @@ public class GameSave : MonoBehaviour
     {
         Chicken ch = new Chicken();
         ChickenList.chickenList.Add(ch);//在静态鸡列表里增加本鸡
-        PD.Chicken_Num++;
+        PD.Chicken_Num=ChickenList.chickenList.Count;
+        ChickenUpdate();
         print("Done");
     }
 
@@ -145,6 +152,12 @@ public class GameSave : MonoBehaviour
             AllChicken[i] = ChickenList.chickenList[i];
             print(AllChicken[i].Name);
         }
+        foreach(GameObject delete in GameObject.FindGameObjectsWithTag("Chicken"))
+        {
+            Destroy(delete);
+        }
+        Chicken_Before = 0;
+        ChickenUpdate();
     }
     //IEnumerator SaveData()
     //{
@@ -156,5 +169,18 @@ public class GameSave : MonoBehaviour
     {
         IOHelper.SetData(PlayerPath, PD, Mac);
         IOHelper.SetData(path, ChickenList.chickenList, Mac);
+    }
+    public void Remove(int i)
+    {
+        ChickenList.chickenList.Remove(ChickenList.chickenList[i]);
+    }
+    public void ChickenUpdate()//更新状态
+    {
+        for (int i = Chicken_Before; i < ChickenList.chickenList.Count; i++)
+        {
+            GameObject chicken = Instantiate(BaseChicken);
+            chicken.GetComponent<ChiCken_State>().ThisChicken = ChickenList.chickenList[i];
+        }
+        Chicken_Before = ChickenList.chickenList.Count;
     }
 }
