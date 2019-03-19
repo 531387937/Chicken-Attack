@@ -8,34 +8,6 @@ using UnityEditor;
 using System.Net.NetworkInformation;
 using System.Reflection;
 //鸡的属性
-public class Chicken//新建鸡的时候记得生成实例
-{
-   public enum chickenType {None,Rookie,KFC }
-    public chickenType Type = chickenType.None;
-    //鸡的名字
-    public string Name { get; set; }
-//鸡的耐力
-    public double HP { get; set; }
-//鸡的等级
-    public int Level { get; set; }
-//鸡的经验值
-    public double Exp { get; set; }
-//鸡的攻击力
-    public double Attak { get; set; }
-//鸡的速度，影响先后手
-    public double Speed { get; set; }
-    public Vector3 pos;
-    //是否为公鸡
-    public bool isCock;
-    public bool Alive;
-    //决定鸡的性别
-    [Range(0, 4)]
-    public int Gender;
-    public Chicken()
-    {
-        Alive = false;
-    }
-}
 //玩家的属性
 public class PlayerData
 {
@@ -137,7 +109,7 @@ public class GameSave : Singleton<GameSave>
     public void SaveAllData()
     {
         SavePlayerData();
-
+ 
     }
     public void LoadAllData()
     {
