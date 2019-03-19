@@ -28,20 +28,14 @@ public class ChiCken_State : MonoBehaviour
             ThisChicken.Alive = true;
         }
         gameObject.transform.position = ThisChicken.pos;
-        if (ThisChicken.isCock)
-        {
-            print("是公的");
-        }
-        else
-            print("是母的");
     }
     private void OnMouseDown()
     {
-        ChickenList.chickenList.Remove(ThisChicken);
-        if(!ChickenList.chickenList.Contains(ThisChicken))
-        {
-            Destroy(gameObject);
-        }
+        //ChickenList.chickenList.Remove(ThisChicken);
+        //if(!ChickenList.chickenList.Contains(ThisChicken))
+        //{
+        //    Destroy(gameObject);
+        //}
     }
     // Update is called once per frame
     void Update()

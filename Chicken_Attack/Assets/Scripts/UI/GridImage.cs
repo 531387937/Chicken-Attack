@@ -23,7 +23,7 @@ public class GridImage : MonoBehaviour
     //    }
 
     //}
-    public void OnMouseEnter()
+    public void OnMouseDown()
     {
         if (OnEnter != null)
         {
