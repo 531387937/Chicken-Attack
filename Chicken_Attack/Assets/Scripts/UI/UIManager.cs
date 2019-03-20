@@ -6,10 +6,12 @@ public class UIManager : Singleton<UIManager>
 {
     public ToolTip toolTip;
     private bool isShow = false;
+    private bool isDrag = false;
     private void OnEnable()
     {
         GridImage.OnEnter += GridImage_OnEnter;
         GridImage.OnExit += GridImage_OnExit;
+        GridImage.OnDrag += GridImage_OnDrag;
     }
     // Start is called before the first frame update
     void Start()
@@ -24,9 +26,9 @@ public class UIManager : Singleton<UIManager>
         {
             Vector2 position;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(GameObject.Find("Canvas").transform as RectTransform, Input.mousePosition, null, out position);
-
             toolTip.SetLocationPosition(position);
             toolTip.Show();
+            isShow = false;
         }
     }
     private void GridImage_OnEnter(Transform obj)
@@ -43,7 +45,11 @@ public class UIManager : Singleton<UIManager>
     }
     private string GetTooltipText(Chicken chicken)
     {
-        string te ="名字:"+chicken.Name+"\n"+"种族:"+chicken.Type+"\n"+"生命值:" + chicken.HP + "\n" + "攻击力:" + chicken.Attak + "\n" + "速度:" + chicken.Speed + "\n";
+        string te ="\n"+"种族:"+chicken.Type+"\n"+"生命值:" + chicken.HP + "\n" + "攻击力:" + chicken.Attak + "\n" + "速度:" + chicken.Speed + "\n"+"公鸡："+chicken.isCock+"\n";
         return te;
+    }
+    private void GridImage_OnDrag(Transform obj)
+    {
+        isDrag = true;
     }
 }

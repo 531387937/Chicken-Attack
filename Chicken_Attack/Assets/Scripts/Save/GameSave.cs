@@ -37,7 +37,7 @@ public class GameSave : Singleton<GameSave>
     public static Chicken[] AllChicken;
     private string Mac;//设备MAC
     //private bool CanSave = true;//是否可以保存
-    public static PlayerData PD;
+    public static PlayerData PD = new PlayerData();
     //string path = Application.persistentDataPath + @"/GameData.json";
     string path = "Assets/Resources/GameData.json";
     string PlayerPath = "Assets/Resources/GamePlayerData.json";
@@ -98,7 +98,7 @@ public class GameSave : Singleton<GameSave>
     {
         Chicken ch = new Chicken();
         ChickenList.chickenList.Add(ch);//在静态鸡列表里增加本鸡
-        PD.Chicken_Num=ChickenList.chickenList.Count;
+        //PD.Chicken_Num = ChickenList.chickenList.Count;
         ChickenUpdate();
     }
 
@@ -113,20 +113,24 @@ public class GameSave : Singleton<GameSave>
     }
     public void LoadAllData()
     {
-        foreach (GameObject delete in GameObject.FindGameObjectsWithTag("Chicken"))
+        if (IOHelper.IsFileExists(path))
+
         {
-            Destroy(delete);
+            foreach (GameObject delete in GameObject.FindGameObjectsWithTag("Chicken"))
+            {
+                Destroy(delete);
+            }
+            PD = IOHelper.GetData(PlayerPath, typeof(PlayerData), Mac) as PlayerData;
+            ChickenList.chickenList = IOHelper.GetData(path, typeof(List<Chicken>), Mac) as List<Chicken>;
+            AllChicken = new Chicken[ChickenList.chickenList.Count];
+            for (int i = 0; i < ChickenList.chickenList.Count; i++)
+            {
+                AllChicken[i] = ChickenList.chickenList[i];
+            }
+
+            Chicken_Before = 0;
+            ChickenUpdate();
         }
-        PD = IOHelper.GetData(PlayerPath, typeof(PlayerData), Mac) as PlayerData;
-        ChickenList.chickenList = IOHelper.GetData(path, typeof(List<Chicken>), Mac) as List<Chicken>;
-        AllChicken = new Chicken[ChickenList.chickenList.Count];
-        for(int i = 0;i< ChickenList.chickenList.Count;i++)
-        {
-            AllChicken[i] = ChickenList.chickenList[i];
-        }
-        
-        Chicken_Before = 0;
-        ChickenUpdate();
     }
 
     private void SavePlayerData()
