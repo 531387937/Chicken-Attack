@@ -115,23 +115,23 @@ public class Chicken
         switch (gift)
         {
             case gifts.N:
-                offset = Random.Range(0.85f, 0.9f);
+                offset = Random.Range(0.9f, 0.98f);
                 Type = chickenType.Mood;
                 break;
             case gifts.R:
-                offset = Random.Range(0.9f, 0.95f);
+                offset = Random.Range(0.98f, 1.05f);
                 Type = chickenType.Rookie;
                 break;
             case gifts.SR:
-                offset = Random.Range(0.95f, 1.05f);
+                offset = Random.Range(1.05f, 1.10f);
                 Type = chickenType.Weak;
                 break;
             case gifts.SSR:
-                offset = Random.Range(1.05f, 1.1f);
+                offset = Random.Range(1.10f, 1.15f);
                 Type = chickenType.KFC;
                 break;
             case gifts.UR:
-                offset = Random.Range(1.1f, 1.15f);
+                offset = Random.Range(1.15f, 1.2f);
                 Type = chickenType.KFC;
                 break;
         }
