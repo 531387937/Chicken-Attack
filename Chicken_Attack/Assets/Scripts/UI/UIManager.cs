@@ -9,14 +9,16 @@ public class UIManager : Singleton<UIManager>
     private bool isDrag = false;
     [SerializeField]
     private GridImage gridImage;
+    public GameObject fa;
     private bool Showing = false;
     private void OnEnable()
     {
         GridImage.OnEnter += GridImage_OnEnter;
         GridImage.OnExit += GridImage_OnExit;
         GridImage.OnDrag += GridImage_OnDrag;
+        GridImage.OnUp += GridImage_OnUp;
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         GridImage.OnEnter -= GridImage_OnEnter;
         GridImage.OnExit -= GridImage_OnExit;
@@ -34,7 +36,6 @@ public class UIManager : Singleton<UIManager>
         if(Showing)
         {
             gridImage.timer += Time.deltaTime;
-            print("AAAAAAAAAAAA");
         }
         if(isShow)
         {
@@ -68,6 +69,11 @@ public class UIManager : Singleton<UIManager>
         toolTip.Hide();
         gridImage._time = 0;
            gridImage.timer = 0;
+        //gridImage.gameObject.transform.SetParent(null);
+    }
+    private void GridImage_OnUp()
+    {
+        gridImage.gameObject.transform.SetParent(null);
     }
     private string GetTooltipText(Chicken chicken)
     {
@@ -79,6 +85,7 @@ public class UIManager : Singleton<UIManager>
         isDrag = true;
         Vector3 pos;
         pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        obj.position = new Vector3(pos.x, pos.y, 0);
+        fa.transform.position = new Vector3(pos.x, pos.y, 0);
+        obj.SetParent(fa.transform);
     }
 }

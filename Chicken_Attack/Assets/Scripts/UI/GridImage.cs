@@ -10,6 +10,7 @@ public class GridImage : MonoBehaviour
     public static Action<Transform> OnEnter;
 
     public static Action OnExit;
+    public static Action OnUp;
     public static Action<Transform> OnDrag;
     public int _time=0;
    public float timer;
@@ -34,7 +35,17 @@ public class GridImage : MonoBehaviour
             
         }
     }
-    private void OnMouseDrag()
+    public void OnMouseUp()
+    {
+        if (OnUp != null)
+
+        {
+
+            OnUp();
+
+        }
+    }
+    public void OnMouseDrag()
     {
         
         if (OnDrag!=null)
