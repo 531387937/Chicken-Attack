@@ -154,7 +154,7 @@ public class Chicken
         }
         else
             isCock = true;
-        pos = new Vector3(Random.Range(-7.0f, 8.0f), Random.Range(-4.0f, 5.0f), 0);
+        pos = new Vector3(Random.Range(-3.0f, 4.0f), Random.Range(-2.0f, 3.0f), 0);
     }
     private int HalfOffset(float fa,float ma,float Offset)
     {

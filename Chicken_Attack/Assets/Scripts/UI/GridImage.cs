@@ -14,7 +14,7 @@ public class GridImage : MonoBehaviour
     public static Action<Transform> OnDrag;
     public int _time=0;
    public float timer;
-
+    public bool IsDrag = false;
     //public void OnPointerEnter(PointerEventData eventData)
 
     //{
@@ -47,7 +47,7 @@ public class GridImage : MonoBehaviour
     }
     public void OnMouseDrag()
     {
-        
+        IsDrag = true;
         if (OnDrag!=null)
         {
             OnDrag(transform);

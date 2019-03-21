@@ -66,9 +66,13 @@ public class UIManager : Singleton<UIManager>
 
         Showing = false;
         isShow = false;
+       
         toolTip.Hide();
-        gridImage._time = 0;
-           gridImage.timer = 0;
+        if (gridImage != null)
+        {
+            gridImage._time = 0;
+            gridImage.timer = 0;
+        }
         //gridImage.gameObject.transform.SetParent(null);
     }
     private void GridImage_OnUp()

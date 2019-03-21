@@ -91,7 +91,7 @@ public class GameSave : Singleton<GameSave>
     {
         chicken.Name = Name;
         ChickenList.chickenList.Add(chicken);//在静态鸡列表里增加本鸡
-        PD.Chicken_Num = ChickenList.chickenList.Count;
+        //PD.Chicken_Num = ChickenList.chickenList.Count;
         ChickenUpdate();
     }
     public void AddNewChicken()//新增鸡数据存储方法，新增一只鸡调用
