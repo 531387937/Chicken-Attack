@@ -36,11 +36,11 @@ public class GridImage : MonoBehaviour
         }
     }
     public void OnMouseUp()
-    {
+    {IsDrag = false;
         if (OnUp != null)
 
         {
-
+            
             OnUp();
 
         }
