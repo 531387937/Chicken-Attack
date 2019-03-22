@@ -7,23 +7,6 @@ using System.Text;
 using UnityEditor;
 using System.Net.NetworkInformation;
 using System.Reflection;
-//鸡的属性
-//玩家的属性
-public class PlayerData
-{
-    //现在鸡的数量
-    public int Chicken_Num ;
-    //玩家的金钱数
-    public int Gold;
-    //玩家的威望
-    public int Prestige;
-    public PlayerData()
-    {
-        Chicken_Num = 1;
-        Gold = 100;
-        Prestige = 0;
-    }
-}
 
 public class ChickenList
 {
@@ -37,7 +20,7 @@ public class GameSave : Singleton<GameSave>
     public static Chicken[] AllChicken;
     private string Mac;//设备MAC
     //private bool CanSave = true;//是否可以保存
-    public static PlayerData PD = new PlayerData();
+    public PlayerData PD = new PlayerData();
     //string path = Application.persistentDataPath + @"/GameData.json";
     string path = "Assets/Resources/GameData.json";
     string PlayerPath = "Assets/Resources/GamePlayerData.json";
@@ -91,14 +74,14 @@ public class GameSave : Singleton<GameSave>
     {
         chicken.Name = Name;
         ChickenList.chickenList.Add(chicken);//在静态鸡列表里增加本鸡
-        //PD.Chicken_Num = ChickenList.chickenList.Count;
+        PD.Chicken_Num= ChickenList.chickenList.Count;
         ChickenUpdate();
     }
     public void AddNewChicken()//新增鸡数据存储方法，新增一只鸡调用
     {
         Chicken ch = new Chicken();
         ChickenList.chickenList.Add(ch);//在静态鸡列表里增加本鸡
-        //PD.Chicken_Num = ChickenList.chickenList.Count;
+        PD.Chicken_Num = ChickenList.chickenList.Count;
         ChickenUpdate();
     }
 
@@ -106,43 +89,41 @@ public class GameSave : Singleton<GameSave>
     {
         ChickenList.chickenList.Remove(chicken);//在静态鸡列表里剔除本鸡
     }
+    //存档
     public void SaveAllData()
     {
-        SavePlayerData();
- 
+        IOHelper.SetData(PlayerPath, PD, Mac);
+        IOHelper.SetData(path, ChickenList.chickenList, Mac);
     }
+    //读档
     public void LoadAllData()
     {
+        if(IOHelper.IsFileExists(PlayerPath))
+        {
+            PD = IOHelper.GetData(PlayerPath, typeof(PlayerData), Mac) as PlayerData;
+        }
         if (IOHelper.IsFileExists(path))
-
         {
             foreach (GameObject delete in GameObject.FindGameObjectsWithTag("Chicken"))
             {
                 Destroy(delete);
             }
-            PD = IOHelper.GetData(PlayerPath, typeof(PlayerData), Mac) as PlayerData;
             ChickenList.chickenList = IOHelper.GetData(path, typeof(List<Chicken>), Mac) as List<Chicken>;
             AllChicken = new Chicken[ChickenList.chickenList.Count];
             for (int i = 0; i < ChickenList.chickenList.Count; i++)
             {
                 AllChicken[i] = ChickenList.chickenList[i];
             }
-
             Chicken_Before = 0;
             ChickenUpdate();
         }
-    }
-
-    private void SavePlayerData()
-    {
-        IOHelper.SetData(PlayerPath, PD, Mac);
-        IOHelper.SetData(path, ChickenList.chickenList, Mac);
     }
     public void Remove(int i)
     {
         ChickenList.chickenList.Remove(ChickenList.chickenList[i]);
     }
-    public void ChickenUpdate()//更新状态
+    //更新鸡的状态
+    private void ChickenUpdate()
     {
         for (int i = Chicken_Before; i < ChickenList.chickenList.Count; i++)
         {

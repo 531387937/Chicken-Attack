@@ -9,6 +9,8 @@ public class Chicken
     public string Name { get; set; }
     //鸡的耐力
     public float HP { get; set; }
+    //鸡的生命
+    public int Life=8;
     //鸡的等级
     //public int Level { get; set; }
     //鸡的经验值
