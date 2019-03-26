@@ -59,7 +59,6 @@ void Awake ()
 */
 
 		public Camera mainCamera;
-		public Camera uiCamera;
 
 
 		void Awake()
@@ -81,8 +80,8 @@ void Awake ()
 				float tarWidth = Screen.height * designAspect;//求出实际要显示的宽度
 				float tarWidthRadio = tarWidth / Screen.width;//求出宽度百分比
 				float posW = (1 - tarWidthRadio) / 2;//宽的起点
-				//camera.rect = new Rect(posW, 0, tarWidthRadio, 1);
-			uiCamera.orthographicSize *= (designAspect / screenAspect);
+                                                     //camera.rect = new Rect(posW, 0, tarWidthRadio, 1);
+            mainCamera.orthographicSize *= (designAspect / screenAspect);
 
 			}
 			else if (designAspect > screenAspect)//屏幕分辨率过小，高度过高，纵向留黑边,宽度不变
@@ -90,13 +89,13 @@ void Awake ()
 				float tarHeight = Screen.width  / designAspect;
 				float tarHeightRadio = tarHeight / Screen.height;
 				float posH = (1 - tarHeightRadio) / 2;
-				//camera.rect = new Rect(0, posH, 1, tarHeightRadio);
-			uiCamera.orthographicSize *= (designAspect / screenAspect);
+            //camera.rect = new Rect(0, posH, 1, tarHeightRadio);
+            mainCamera.orthographicSize *= (designAspect / screenAspect);
 
 			}
 			else
 			{
-			uiCamera.rect = new Rect(0, 0, 1, 1);
+			mainCamera.rect = new Rect(0, 0, 1, 1);
 			}
 		//Maincamera.rect = camera.rect;
 		mainCamera.orthographicSize *= designAspect / screenAspect;

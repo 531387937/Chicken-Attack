@@ -77,7 +77,7 @@ public class Chicken_Breed : MonoBehaviour
     private void OnGUI()
     {
         if (mother != null && father != null)
-           if( GUI.Button(new Rect(80, 120, 80, 50), "下蛋"))
+           if( GUI.Button(new Rect(200, 220, 80, 50), "下蛋"))
             {
                 Chicken child = new Chicken();
                 child.BirthInitial(father, mother);

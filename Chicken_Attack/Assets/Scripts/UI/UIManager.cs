@@ -23,6 +23,7 @@ public class UIManager : Singleton<UIManager>
         GridImage.OnEnter -= GridImage_OnEnter;
         GridImage.OnExit -= GridImage_OnExit;
         GridImage.OnDrag -= GridImage_OnDrag;
+        GridImage.OnUp -= GridImage_OnUp;
     }
     // Start is called before the first frame update
     void Start()
