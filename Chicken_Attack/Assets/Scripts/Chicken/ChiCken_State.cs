@@ -7,8 +7,7 @@ public class ChiCken_State : MonoBehaviour
     public Sprite[] Sp;
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {      
         if (!ThisChicken.Alive)
         {
             ThisChicken.RandomInitial(Random.Range(0,2));
