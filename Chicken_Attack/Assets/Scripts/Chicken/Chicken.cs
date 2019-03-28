@@ -61,15 +61,15 @@ public class Chicken
         switch (gift)
         {
             case gifts.N:
-                offset = Random.Range(0.85f, 0.9f);
+                offset = Random.Range(0.9f, 0.95f);
                 Type = chickenType.Mood;
                 break;
             case gifts.R:
-                offset = Random.Range(0.9f, 0.95f);
+                offset = Random.Range(0.95f, 1f);
                 Type = chickenType.Rookie;
                 break;
             case gifts.SR:
-                offset = Random.Range(0.95f, 1.05f);
+                offset = Random.Range(1f, 1.05f);
                 Type = chickenType.Weak;
                 break;
             case gifts.SSR:
@@ -84,13 +84,13 @@ public class Chicken
         HP = HalfOffset(father.HP, mother.HP, offset);
         Attak = HalfOffset(father.Attak, mother.Attak, offset);
         Speed = HalfOffset(father.Speed, mother.Speed, offset);
-        if (Random.Range(0, 4) < 1)
+        if (Random.Range(0, 3) < 1)
         {
             isCock = false;
         }
         else
             isCock = true;
-        pos = new Vector3(Random.Range(-7.0f, 8.0f), Random.Range(-4.0f, 5.0f), 0);
+        pos = new Vector3(Random.Range(-6.0f, 7.0f), Random.Range(-4.0f, 5.0f), 0);
     }
     public virtual void RandomInitial(int ex)
     {

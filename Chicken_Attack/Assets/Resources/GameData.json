@@ -1,1 +1,1 @@
-[{"Type":1,"Life":8,"pos":{"x":1.0,"y":-2.0,"z":0.0},"isCock":true,"Alive":true,"Gender":0,"Name":null,"HP":11.0,"Attak":15.8412361,"Speed":12.4466858}]
+[{"Type":3,"Life":8,"pos":{"x":3.15699148,"y":-1.155276,"z":0.0},"isCock":true,"Alive":true,"Gender":0,"Name":null,"HP":11.0,"Attak":10.0,"Speed":11.0},{"Type":1,"Life":8,"pos":{"x":-1.0,"y":0.0,"z":0.0},"isCock":false,"Alive":true,"Gender":0,"Name":null,"HP":15.0,"Attak":17.0912533,"Speed":19.22766}]
