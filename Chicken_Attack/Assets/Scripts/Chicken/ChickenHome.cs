@@ -17,8 +17,8 @@ public class ChickenHome : Singleton<ChickenHome>
     }
     public void ChickenHomeUpdate()
     {
-        if(GameSave.Instance.PD.a<GameSave.Instance.PD.MaxChicken.Length)
-        GameSave.Instance.PD.a++;
+        if (GameSave.Instance.PD.a < GameSave.Instance.PD.MaxChicken.Length)
+            GameSave.Instance.PD.a++;
         GetComponent<SpriteRenderer>().sprite = SpRender[GameSave.Instance.PD.a];
         GameSave.Instance.PD.CurrentMaxChicken = GameSave.Instance.PD.MaxChicken[GameSave.Instance.PD.a];
     }

@@ -7,7 +7,7 @@ public class Gyro : MonoBehaviour
 {
     public Mode mode;
     public float Speed = 2f;
-    public float limitPosX;
+    public float limitPosX = 5;
     private float startPosX;
     private Vector3 currentPos;
 

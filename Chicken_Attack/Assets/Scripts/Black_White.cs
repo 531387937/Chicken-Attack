@@ -43,6 +43,7 @@ public class Black_White : MonoBehaviour
             }
         }
     }
+
     public void StartGame()
     {
         foreach(GameObject Dispear in Dispear_UI)
@@ -60,6 +61,7 @@ public class Black_White : MonoBehaviour
             AddBlock(i);
         }
     }
+
     void AddBlock(int rowIndex)
     {
         int a = MaxBlock;
@@ -86,6 +88,7 @@ public class Black_White : MonoBehaviour
             blocks.Add(b);
         }
     }
+
     public void SelectBlock(Block block)
     {
         if(block.num==0)

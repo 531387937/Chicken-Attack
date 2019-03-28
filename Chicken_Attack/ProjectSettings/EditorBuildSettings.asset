@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/XYTest.unity
+    guid: 2e28e6e8444ffdb4da2f6592b4159fdc
+  - enabled: 1
+    path: Assets/Scenes/XYbattle.unity
+    guid: b29fe86c9ce93cc40a2eae7dc3c1685a
   m_configObjects: {}

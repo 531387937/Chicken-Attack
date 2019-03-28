@@ -9,7 +9,7 @@ public class UIManager : Singleton<UIManager>
     private bool isDrag = false;
     [SerializeField]
     private GridImage gridImage;
-    public GameObject fa;
+    //public GameObject fa;
     private bool Showing = false;
     private void OnEnable()
     {
@@ -90,7 +90,9 @@ public class UIManager : Singleton<UIManager>
         isDrag = true;
         Vector3 pos;
         pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        fa.transform.position = new Vector3(pos.x, pos.y, 0);
-        obj.SetParent(fa.transform);
+        //这个fa看起来并不是必须的，可否去除xy19.3.28
+        obj.transform.position = new Vector3(pos.x, pos.y, 0);
+        //fa.transform.position = new Vector3(pos.x, pos.y, 0);
+        //obj.SetParent(fa.transform);
     }
 }
