@@ -260,6 +260,7 @@ public class BattleSystem : MonoBehaviour
 
     void Pwin(int i)//玩家获胜
     {
+        Player.Life--;
         if (i == 0)//正常获胜
         {
             //动画
@@ -281,11 +282,13 @@ public class BattleSystem : MonoBehaviour
             //动画
             //继续
             WIN = "敌人本轮获胜！！！！！！！！！！！！！";
+            Player.Life--;
         }
         else if (i == 1)//重伤对方获胜
         {
             //动画
             WIN = "敌人大获全胜，重伤玩家！！！！！！！！！！！！！";
+            Player.Life -= 2;
         }
         GameObject.Find("Battle").GetComponent<FeedToBattle>().AfterBattlechicken = Player;//暂时对本机无消耗
         Invoke("Return", 3f);

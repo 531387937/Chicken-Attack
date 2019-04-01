@@ -15,13 +15,14 @@ public class ChickenBreed_New : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(gongji.HP);
-        print(muji.HP);
+
     }
     private void OnMouseDown()
     {
         Chicken child = new Chicken();
         child.BirthInitial(gongji, muji);
+        gongji.Life--;
+        muji.Life--;
         GameSave.Instance.AddChicken(child, "New Born");
     }
 }

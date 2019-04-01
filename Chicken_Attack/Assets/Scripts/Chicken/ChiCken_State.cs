@@ -28,5 +28,11 @@ public class ChiCken_State : MonoBehaviour
     void Update()
     {
         ThisChicken.pos = gameObject.transform.position;
+        if(ThisChicken.Life<=0)
+        {            
+            GameSave.Instance.RemoveChicken(ThisChicken);
+            Destroy(this.gameObject);
+            GameSave.Instance.SaveAllData();
+        }
     }
 }

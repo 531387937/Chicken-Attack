@@ -88,13 +88,10 @@ public class DropDownUI : MonoBehaviour, IPointerDownHandler
     void Update()
     {
         back.GetComponent<Image>().sprite = sprite_list[dropDownItem.value];
-        if (IsCock)
+        chickenChange();
+        if(aaa[dropDownItem.value].Life<=0)
         {
-            CB_New.gongji = aaa[dropDownItem.value];
-        }
-        if (!IsCock)
-        {
-            CB_New.muji = aaa[dropDownItem.value];
+            UpdateChickenMessage();
         }
         if (choose)
         {
