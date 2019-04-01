@@ -34,7 +34,7 @@ public class UIManager : Singleton<UIManager>
     // Update is called once per frame
     void Update()
     {
-        if(Showing)
+        if(Showing&&gridImage!=null)
         {
             gridImage.timer += Time.deltaTime;
         }

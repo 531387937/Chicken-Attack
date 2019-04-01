@@ -14,7 +14,7 @@ public class FeedToBattle : MonoBehaviour
     private bool cancel = false;//取消对战
     public GameObject BattleUI;
     public bool Do = false;
-
+    public static string NextScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,10 +39,13 @@ public class FeedToBattle : MonoBehaviour
             {
                 if (AfterBattlechicken != null)
                 {
+                    this.GetComponent<SpriteRenderer>().enabled = true;
+                    this.GetComponent<Collider2D>().enabled = true;
                     AfterBattlechicken.pos = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0);//将鸡放归于场景中
-                    GameObject.Find("GameManager").GetComponent<GameSave>().ReturnChicken(AfterBattlechicken);
-                    GameObject.Find("GameManager").GetComponent<GameSave>().SaveAllData();//存档
+                    GameSave.Instance.ReturnChicken(AfterBattlechicken);
+                   GameSave.Instance.SaveAllData();//存档
                     Debug.Log("鸡鸡战斗归来！！！");
+                    Debug.Log("返回鸡：" + AfterBattlechicken.ToString());
                     AfterBattlechicken = null;
                 }
                 //按键监听
@@ -59,13 +62,14 @@ public class FeedToBattle : MonoBehaviour
         if (battle)
         {
             battle = false;
-            GameObject.Find("GameManager").GetComponent<GameSave>().RemoveChicken(ChoiceChicken.GetComponent<ChiCken_State>().ThisChicken);//剔除本鸡
+            GameSave.Instance.RemoveChicken(ChoiceChicken.GetComponent<ChiCken_State>().ThisChicken);//剔除本鸡
             Destroy(ChoiceChicken);
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             this.gameObject.GetComponent<Collider2D>().enabled = false;
             BattleUI.SetActive(true);
-            GameObject.Find("GameManager").GetComponent<GameSave>().SaveAllData();//存档
-            SceneManager.LoadScene("XYbattle");//跳转场景
+            GameSave.Instance.SaveAllData();//存档
+            NextScene = "XYbattle";
+            SceneManager.LoadScene("LoadScene");//跳转场景
         }
 
         if (cancel)
@@ -75,7 +79,7 @@ public class FeedToBattle : MonoBehaviour
             ChoiceChicken.transform.position = new Vector3(Random.Range(-2,2), Random.Range(-2, 2), 0);//将鸡放归于场景中
             ChoiceChicken.SetActive(true);//显示鸡
         }
-        Debug.Log("返回鸡：" + AfterBattlechicken.ToString());
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

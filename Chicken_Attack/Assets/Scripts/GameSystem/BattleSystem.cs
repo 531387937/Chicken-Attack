@@ -293,9 +293,9 @@ public class BattleSystem : MonoBehaviour
 
     void Return()
     {
-        GameObject.Find("Battle").GetComponent<SpriteRenderer>().enabled = true;
-        GameObject.Find("Battle").GetComponent<Collider2D>().enabled = true;
+       
         GameObject.Find("Battle").GetComponent<FeedToBattle>().Do = true;
-        SceneManager.LoadScene("XYTest");//跳转场景
+        FeedToBattle.NextScene = "XYTest";
+        SceneManager.LoadScene("LoadScene");//跳转场景
     }
 }

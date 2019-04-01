@@ -10,7 +10,7 @@ public class Chicken
     //鸡的耐力
     public float HP { get; set; }
     //鸡的生命
-    public int Life=8;
+    public int Life=70;
     //鸡的等级
     //public int Level { get; set; }
     //鸡的经验值
@@ -140,12 +140,12 @@ public class Chicken
        switch(ex)
         {
             case 0:
-                HP =Mathf.FloorToInt(Random.Range(10.0f,15.0f)*offset);
+                HP =Mathf.FloorToInt(Random.Range(60.0f,75.0f)*offset);
                 Attak = Mathf.FloorToInt(Random.Range(10.0f, 15.0f) * offset);
                 Speed = Mathf.FloorToInt(Random.Range(10.0f, 15.0f) * offset);
                 break;
             case 1:
-                HP =Mathf.FloorToInt(Random.Range(15f, 18f)* offset);
+                HP =Mathf.FloorToInt(Random.Range(65.0f, 80.0f) * offset);
                 Attak = Mathf.FloorToInt(Random.Range(15f, 18f) * offset);
                 Speed = Mathf.FloorToInt(Random.Range(15f, 18f) * offset);
                 break;

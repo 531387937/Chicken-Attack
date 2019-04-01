@@ -31,6 +31,7 @@ public class GameSave : Singleton<GameSave>
         //获取MAC
         NetworkInterface[] nis = NetworkInterface.GetAllNetworkInterfaces();
         Mac = nis[0].GetPhysicalAddress().ToString() + "0824";
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void Start()
