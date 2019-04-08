@@ -82,9 +82,9 @@ public class FeedToBattle : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Chicken")
+            if (collision.tag == "Chicken"&& !collision.gameObject.GetComponent<GridImage>().IsDrag&& collision.gameObject.GetComponent<ChiCken_State>().ThisChicken.isCock)
         {
             //提示是否要派此鸡出战
             BattleUI.SetActive(true);
