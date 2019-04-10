@@ -13,11 +13,7 @@ public class Loading :MonoBehaviour
         ScenceName = FeedToBattle.NextScene;
         StartCoroutine(LoadScenes());
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     IEnumerator LoadScenes()
     {
         async = SceneManager.LoadSceneAsync(ScenceName);
@@ -32,13 +28,18 @@ public class Loading :MonoBehaviour
 
             if (progressValue >= 0.9)
             {
-                if (Input.anyKeyDown)
-                {
-                    async.allowSceneActivation = true;
-                }
+                //if (Input.anyKeyDown)
+                //{
+                //async.allowSceneActivation = true;
+                //}
+                Invoke("Change", 1f);
             }
             yield return null;
         }
+    }
 
+    void Change()
+    {
+        async.allowSceneActivation = true;
     }
 }

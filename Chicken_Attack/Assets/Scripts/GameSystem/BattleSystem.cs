@@ -296,7 +296,6 @@ public class BattleSystem : MonoBehaviour
 
     void Return()
     {
-       
         GameObject.Find("Battle").GetComponent<FeedToBattle>().Do = true;
         FeedToBattle.NextScene = "XYTest";
         SceneManager.LoadScene("LoadScene");//跳转场景

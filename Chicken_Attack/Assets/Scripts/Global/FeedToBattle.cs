@@ -43,7 +43,7 @@ public class FeedToBattle : MonoBehaviour
                     this.GetComponent<Collider2D>().enabled = true;
                     AfterBattlechicken.pos = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0);//将鸡放归于场景中
                     GameSave.Instance.ReturnChicken(AfterBattlechicken);
-                   GameSave.Instance.SaveAllData();//存档
+                    GameSave.Instance.SaveAllData();//存档
                     Debug.Log("鸡鸡战斗归来！！！");
                     Debug.Log("返回鸡：" + AfterBattlechicken.ToString());
                     AfterBattlechicken = null;
@@ -84,7 +84,7 @@ public class FeedToBattle : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-            if (collision.tag == "Chicken"&& !collision.gameObject.GetComponent<GridImage>().IsDrag&& collision.gameObject.GetComponent<ChiCken_State>().ThisChicken.isCock)
+        if (collision.tag == "Chicken"&& !collision.gameObject.GetComponent<GridImage>().IsDrag && collision.gameObject.GetComponent<ChiCken_State>().ThisChicken.isCock)
         {
             //提示是否要派此鸡出战
             BattleUI.SetActive(true);
