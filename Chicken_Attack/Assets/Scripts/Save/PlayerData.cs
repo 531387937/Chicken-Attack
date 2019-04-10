@@ -23,7 +23,7 @@ public class PlayerData
     {
         Chicken_Num = 1;
         Gold = 100;
-        Prestige = 0;
+        Prestige = 10;
         Pt = 10;
         CurrentMaxChicken = MaxChicken[a];
     }

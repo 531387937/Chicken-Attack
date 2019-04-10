@@ -32,7 +32,7 @@ public class Chicken
     {
         Alive = false;
     }
-//鸡的天赋
+    //鸡的天赋
     [Range(0,100)]
     private float talent;
     //鸡的稀有度（根据天赋）
@@ -98,6 +98,7 @@ public class Chicken
             isCock = true;
         pos = new Vector3(Random.Range(-6.0f, 7.0f), Random.Range(-4.0f, 5.0f), 0);
     }
+
     //鸡的随机初始化（用于商店等）
     public virtual void RandomInitial(int ex)
     {        
@@ -147,7 +148,7 @@ public class Chicken
                 break;
         }
        switch(ex)
-        {
+       {
             case 0:
                 HP =Mathf.FloorToInt(Random.Range(60.0f,75.0f)*offset);
                 Attak = Mathf.FloorToInt(Random.Range(10.0f, 15.0f) * offset);
@@ -158,7 +159,7 @@ public class Chicken
                 Attak = Mathf.FloorToInt(Random.Range(15f, 18f) * offset);
                 Speed = Mathf.FloorToInt(Random.Range(15f, 18f) * offset);
                 break;
-        }
+       }
         if (Random.Range(0, 4) < 1)
         {
             isCock = false;
@@ -167,6 +168,7 @@ public class Chicken
             isCock = true;
         pos = new Vector3(Random.Range(-3.0f, 4.0f), Random.Range(-2.0f, 3.0f), 0);
     }
+
     private int HalfOffset(float fa,float ma,float Offset)
     {
         int value = Mathf.FloorToInt((fa + ma) * 0.5f * Offset);
