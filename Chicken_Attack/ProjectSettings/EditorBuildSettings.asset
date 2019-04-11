@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/XYTest.unity
+    path: Assets/OldChicken/Scenes/XYTest.unity
     guid: 2e28e6e8444ffdb4da2f6592b4159fdc
   - enabled: 1
-    path: Assets/Scenes/XYbattle.unity
+    path: Assets/OldChicken/Scenes/XYbattle.unity
     guid: b29fe86c9ce93cc40a2eae7dc3c1685a
   - enabled: 1
-    path: Assets/Scenes/LoadScene.unity
+    path: Assets/OldChicken/Scenes/LoadScene.unity
     guid: eca8c9f16388fbc45994f18d14594ffd
   m_configObjects: {}
