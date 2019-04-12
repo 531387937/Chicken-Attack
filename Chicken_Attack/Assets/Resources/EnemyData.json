@@ -1,0 +1,54 @@
+[
+  {
+    "Type": 0,
+    "Name": "zi",
+    "HP": 60.0,
+    "Attack": 10.0,
+    "Speed": 5.0,
+    "Spirit": 20.0,
+    "Strong": 10.0,
+    "isCock": false,
+    "Talent": 0,
+    "Skills": null,
+    "Grand": null
+  },
+  {
+    "Type": 0,
+    "Name": "eqadq",
+    "HP": 40.0,
+    "Attack": 15.0,
+    "Speed": 4.0,
+    "Spirit": 23.0,
+    "Strong": 5.0,
+    "isCock": false,
+    "Talent": 0,
+    "Skills": null,
+    "Grand": null
+  },
+  {
+    "Type": 0,
+    "Name": "wdwwww",
+    "HP": 70.0,
+    "Attack": 8.0,
+    "Speed": 6.0,
+    "Spirit": 15.0,
+    "Strong": 8.0,
+    "isCock": false,
+    "Talent": 0,
+    "Skills": null,
+    "Grand": null
+  },
+  {
+    "Type": 0,
+    "Name": "qqdasd",
+    "HP": 60.0,
+    "Attack": 10.0,
+    "Speed": 5.0,
+    "Spirit": 20.0,
+    "Strong": 10.0,
+    "isCock": false,
+    "Talent": 0,
+    "Skills": null,
+    "Grand": null
+  }
+]

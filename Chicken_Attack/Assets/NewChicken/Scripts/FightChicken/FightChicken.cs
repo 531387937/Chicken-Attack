@@ -8,15 +8,15 @@ public class FightChicken
     public chickentype Type;
     public string Name;
     //鸡的生命值
-    public double HP;
+    public float HP;
     //鸡的攻击力
-    public double Attack;
+    public float Attack;
     //鸡的速度
-    public double Speed;
+    public float Speed;
     //鸡的斗志
-    public double Spirit;
+    public float Spirit;
     //鸡的气势
-    public double Strong;
+    public float Strong;
     //鸡的公母
     public bool isCock;
     //鸡的天赋
@@ -36,7 +36,7 @@ public class FightChicken
                 NewChickenType = (chickentype)playerChicken.GetGrand()[i];
             else
             {
-                double a = Random.Range(0f, 1f);
+                float a = Random.Range(0f, 1f);
                 if (a >=(GrandNum- i) / ((GrandNum + 1)*2))
                 {
                     NewChickenType = (chickentype)playerChicken.GetGrand()[i];
@@ -51,27 +51,27 @@ public class FightChicken
         return Name;
     }
     //获得鸡的生命值
-    public double getHP()
+    public float getHP()
     {
         return HP;
     }
     //获得鸡的攻击力
-    public double GetAttack()
+    public float GetAttack()
     {
         return Attack;
     }
     //获得鸡的速度
-    public double GetSpeed()
+    public float GetSpeed()
     {
         return Speed;
     }
     //获得鸡的斗志
-    public double GetSpirit()
+    public float GetSpirit()
     {
         return Spirit;
     }
     //获得鸡的气势
-    public double GetStrong()
+    public float GetStrong()
     {
         return Strong;
     }
@@ -90,7 +90,7 @@ public class FightChicken
         return Grand;
     }
     //计算鸡的综合战斗力（待修改）
-    public double Getpower()
+    public float Getpower()
     {
         return HP / 30 * Attack / 5 * Speed / 30 * Spirit / 15 * Strong / 5;
     }

@@ -67,7 +67,15 @@ public static class IOHelper
         streamReader.Close();
         return DeserializeObject(data, pType);
     }
-
+    public static object GetData(string fileName, Type pType)
+    {
+        StreamReader streamReader = File.OpenText(fileName);
+        string data = streamReader.ReadToEnd();
+        //对数据进行解密，32位解密密钥
+        //data = RijndaelDecrypt(data, Key);
+        streamReader.Close();
+        return DeserializeObject(data, pType);
+    }
     /// <summary>
     /// Rijndael加密算法
     /// </summary>
