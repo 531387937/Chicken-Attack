@@ -1,16 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class test : MonoBehaviour
+using System.Xml;
+public class Player_Chicken : MonoBehaviour
 {
-    FightChicken FC;
+    public GameObject[] ga; 
     // Start is called before the first frame update
     void Start()
     {
-        FC = new FightChicken("Qizi");
-        FC.setCock();
-        print(FC.getName());
+        //按照鸡的种类生成鸡
+        Instantiate(ga[(int)GameSaveNew.playerChicken.Type],new Vector3(0,0,0),new Quaternion(0,0,0,1));
     }
 
     // Update is called once per frame

@@ -75,7 +75,6 @@ public class GameSave : Singleton<GameSave>
     {
         chicken.Name = Name;
         ChickenList.chickenList.Add(chicken);//在静态鸡列表里增加本鸡
-        PD.Chicken_Num= ChickenList.chickenList.Count;
         ChickenUpdate();
     }
 
@@ -83,14 +82,12 @@ public class GameSave : Singleton<GameSave>
     {
         Chicken ch = new Chicken();
         ChickenList.chickenList.Add(ch);//在静态鸡列表里增加本鸡
-        PD.Chicken_Num = ChickenList.chickenList.Count;
         ChickenUpdate();
     }
 
     public void ReturnChicken(Chicken ch)//鸡战斗结束返回一只鸡调用 xy19.3.28
     {
         ChickenList.chickenList.Add(ch);//在静态鸡列表里增加本鸡
-        PD.Chicken_Num = ChickenList.chickenList.Count;
         ChickenUpdate();
     }
 

@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class FightChicken 
 {
-   private enum chickentype {caiji,muji,feiji,rouji }
-    private chickentype Type;
-    private string Name;
+   public enum chickentype {caiji,muji,feiji,rouji }
+    public chickentype Type;
+    public string Name;
     //鸡的生命值
-    private float HP;
+    public double HP;
     //鸡的攻击力
-    private float Attack;
+    public double Attack;
     //鸡的速度
-    private float Speed;
+    public double Speed;
     //鸡的斗志
-    private float Spirit;
+    public double Spirit;
     //鸡的气势
-    private float Strong;
+    public double Strong;
     //鸡的公母
-    private bool isCock;
+    public bool isCock;
     //鸡的天赋
-    private int Talent;
+    public int Talent;
     //鸡的技能组
-    private List<int> Skills;
+    public List<int> Skills;
     //鸡的前辈种族
-    private List<int> Grand;
+    public List<int> Grand;
     //设置鸡的种族
     private chickentype setChickenType(FightChicken playerChicken,FightChicken shopChicken)
     {
@@ -36,7 +36,7 @@ public class FightChicken
                 NewChickenType = (chickentype)playerChicken.GetGrand()[i];
             else
             {
-                float a = Random.Range(0f, 1f);
+                double a = Random.Range(0f, 1f);
                 if (a >=(GrandNum- i) / ((GrandNum + 1)*2))
                 {
                     NewChickenType = (chickentype)playerChicken.GetGrand()[i];
@@ -51,27 +51,27 @@ public class FightChicken
         return Name;
     }
     //获得鸡的生命值
-    public float getHP()
+    public double getHP()
     {
         return HP;
     }
     //获得鸡的攻击力
-    public float GetAttack()
+    public double GetAttack()
     {
         return Attack;
     }
     //获得鸡的速度
-    public float GetSpeed()
+    public double GetSpeed()
     {
         return Speed;
     }
     //获得鸡的斗志
-    public float GetSpirit()
+    public double GetSpirit()
     {
         return Spirit;
     }
     //获得鸡的气势
-    public float GetStrong()
+    public double GetStrong()
     {
         return Strong;
     }
@@ -90,7 +90,7 @@ public class FightChicken
         return Grand;
     }
     //计算鸡的综合战斗力（待修改）
-    public float Getpower()
+    public double Getpower()
     {
         return HP / 30 * Attack / 5 * Speed / 30 * Spirit / 15 * Strong / 5;
     }
@@ -134,6 +134,10 @@ public class FightChicken
     }
     //用于商店生成的鸡,根据名声生成
     public FightChicken(int fame)
+    {
+
+    }
+    public FightChicken()
     {
 
     }

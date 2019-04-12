@@ -10,7 +10,7 @@ public class Loading :MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ScenceName = FeedToBattle.NextScene;
+        ScenceName = SceneChange.SceneName;
         StartCoroutine(LoadScenes());
     }
 

@@ -68,7 +68,7 @@ public class FeedToBattle : MonoBehaviour
             this.gameObject.GetComponent<Collider2D>().enabled = false;
             BattleUI.SetActive(true);
             GameSave.Instance.SaveAllData();//存档
-            NextScene = "XYbattle";
+            SceneChange.SceneName = "XYbattle";
             SceneManager.LoadScene("LoadScene");//跳转场景
         }
 
