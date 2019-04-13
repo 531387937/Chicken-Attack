@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/NewChicken/Scenes/QiZiNewChicken.unity
+    guid: 5b3e309db5f53b74e9f8427f31fbc3ba
+  - enabled: 1
     path: Assets/OldChicken/Scenes/XYTest.unity
     guid: 2e28e6e8444ffdb4da2f6592b4159fdc
   - enabled: 1
@@ -14,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/OldChicken/Scenes/LoadScene.unity
     guid: eca8c9f16388fbc45994f18d14594ffd
+  - enabled: 1
+    path: Assets/NewChicken/Scenes/BattleNew.unity
+    guid: 13f1e559ad59a034c9aaa6f1fe8be70a
   m_configObjects: {}

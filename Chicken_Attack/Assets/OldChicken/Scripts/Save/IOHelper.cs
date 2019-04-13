@@ -76,6 +76,10 @@ public static class IOHelper
         streamReader.Close();
         return DeserializeObject(data, pType);
     }
+    public static object GetData(string data, Type pType,int a)
+    {
+        return DeserializeObject(data, pType);
+    }
     /// <summary>
     /// Rijndael加密算法
     /// </summary>

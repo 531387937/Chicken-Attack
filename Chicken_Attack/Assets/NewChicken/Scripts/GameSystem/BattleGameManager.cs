@@ -18,7 +18,10 @@ public class BattleGameManager : MonoBehaviour
     void Start()
     {
         player_chicken = GameSaveNew.playerChicken;
-        FC = IOHelper.GetData(enemyPath, typeof(List<FightChicken>)) as List<FightChicken>;
+        //FC = IOHelper.GetData(enemyPath, typeof(List<FightChicken>)) as List<FightChicken>;
+        string aa = Resources.Load("EnemyData").ToString();
+        print(aa);
+        FC = IOHelper.GetData(aa, typeof(List<FightChicken>),1) as List<FightChicken>;
         enemy_chicken = FC[level-1];
         PlayerHP.maxValue = player_chicken.HP;
         PlayerHP.value = PlayerHP.maxValue;
