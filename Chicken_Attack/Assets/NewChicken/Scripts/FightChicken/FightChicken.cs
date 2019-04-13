@@ -100,7 +100,7 @@ public class FightChicken
         Name = name;
         HP = 60;
         Attack = 10;
-        Spirit = 20;
+        Spirit = 50;
         Speed = 5;
         Strong = 10;
         Type = 0;

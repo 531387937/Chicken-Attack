@@ -11,6 +11,8 @@ public class BattleGameManager : MonoBehaviour
     List<FightChicken> FC = new List<FightChicken>();
     public Slider PlayerHP;
     public Slider EnemyHP;
+    public Slider PlayerSpirit;
+    public Slider EnemySpirit;
     bool gameend = false;
     string enemyPath = "Assets/Resources/EnemyData.json";
     void Start()
@@ -22,6 +24,10 @@ public class BattleGameManager : MonoBehaviour
         PlayerHP.value = PlayerHP.maxValue;
         EnemyHP.maxValue = enemy_chicken.HP;
         EnemyHP.value = EnemyHP.maxValue;
+        PlayerSpirit.maxValue = player_chicken.Spirit;
+        PlayerSpirit.value = PlayerSpirit.maxValue;
+        EnemySpirit.maxValue = enemy_chicken.Spirit;
+        EnemySpirit.value = EnemySpirit.maxValue;
         if (player_chicken.Speed >= enemy_chicken.Speed)
         {
             PlayerAttack();
@@ -33,12 +39,12 @@ public class BattleGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerHP.value<=0&&!gameend)
+        if((PlayerHP.value<=0||PlayerSpirit.value<=0)&&!gameend)
         {
             gameend = true;
             print("Player Lose!");
         }
-        if (EnemyHP.value <= 0 && !gameend)
+        if ((EnemyHP.value <= 0||EnemySpirit.value<=0) && !gameend)
         {
             gameend = true;
             print("Player Win!");
@@ -49,6 +55,7 @@ public class BattleGameManager : MonoBehaviour
         if (!gameend)
         {
             EnemyHP.value -= player_chicken.Attack * Random.Range(0.95f, 1.05f);
+            EnemySpirit.value -= player_chicken.Strong * Random.Range(0.95f, 1.05f);
             Invoke("EnemyAttack", 2);
         }
     }
@@ -57,6 +64,7 @@ public class BattleGameManager : MonoBehaviour
         if (!gameend)
         {
             PlayerHP.value -= enemy_chicken.Attack * Random.Range(0.95f, 1.05f);
+            PlayerSpirit.value -= enemy_chicken.Strong * Random.Range(0.95f, 1.05f);
             Invoke("PlayerAttack", 2);
         }
     }
