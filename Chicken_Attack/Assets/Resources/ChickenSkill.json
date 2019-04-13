@@ -1,0 +1,14 @@
+[
+  {
+    "SkillName":"菜鸡互啄",
+	"SkillEffect":"概率对敌人造成两次普通攻击"
+  },
+  {
+   "SkillName":"呆若木鸡",
+	"SkillEffect":"斗志不会下降"
+  },
+  {
+  	   "SkillName":"乌鸦坐飞机",
+	"SkillEffect":"必定先手攻击"
+  }
+]

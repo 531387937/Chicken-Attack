@@ -8,29 +8,24 @@ public class BattleGameManager : MonoBehaviour
     public int level;
     FightChicken player_chicken;
     FightChicken enemy_chicken;
-    List<FightChicken> FC = new List<FightChicken>();
     public Slider PlayerHP;
     public Slider EnemyHP;
     public Slider PlayerSpirit;
     public Slider EnemySpirit;
     bool gameend = false;
-    string enemyPath = "Assets/Resources/EnemyData.json";
+    private string PlayerSkillName;
+    private string PlayerSkillEffect;
+    private string EnemySkillName;
+    private string EnemySkillEffect;
+    //string enemyPath = "Assets/Resources/EnemyData.json";
     void Start()
     {
         player_chicken = GameSaveNew.playerChicken;
-        //FC = IOHelper.GetData(enemyPath, typeof(List<FightChicken>)) as List<FightChicken>;
         string aa = Resources.Load("EnemyData").ToString();
-        print(aa);
-        FC = IOHelper.GetData(aa, typeof(List<FightChicken>),1) as List<FightChicken>;
+        List<FightChicken> FC = IOHelper.GetData(aa, typeof(List<FightChicken>),1) as List<FightChicken>;
         enemy_chicken = FC[level-1];
-        PlayerHP.maxValue = player_chicken.HP;
-        PlayerHP.value = PlayerHP.maxValue;
-        EnemyHP.maxValue = enemy_chicken.HP;
-        EnemyHP.value = EnemyHP.maxValue;
-        PlayerSpirit.maxValue = player_chicken.Spirit;
-        PlayerSpirit.value = PlayerSpirit.maxValue;
-        EnemySpirit.maxValue = enemy_chicken.Spirit;
-        EnemySpirit.value = EnemySpirit.maxValue;
+        SliderSet();
+        SkillRead();
         if (player_chicken.Speed >= enemy_chicken.Speed)
         {
             PlayerAttack();
@@ -53,6 +48,7 @@ public class BattleGameManager : MonoBehaviour
             print("Player Win!");
         }
     }
+    //玩家的回合
     void PlayerAttack()
     {
         if (!gameend)
@@ -62,6 +58,7 @@ public class BattleGameManager : MonoBehaviour
             Invoke("EnemyAttack", 2);
         }
     }
+    //敌人的回合
     void EnemyAttack()
     {
         if (!gameend)
@@ -70,5 +67,27 @@ public class BattleGameManager : MonoBehaviour
             PlayerSpirit.value -= enemy_chicken.Strong * Random.Range(0.95f, 1.05f);
             Invoke("PlayerAttack", 2);
         }
+    }
+     //设置生命值等血条
+    void SliderSet()
+    {
+PlayerHP.maxValue = player_chicken.HP;
+        PlayerHP.value = PlayerHP.maxValue;
+        EnemyHP.maxValue = enemy_chicken.HP;
+        EnemyHP.value = EnemyHP.maxValue;
+        PlayerSpirit.maxValue = player_chicken.Spirit;
+        PlayerSpirit.value = PlayerSpirit.maxValue;
+        EnemySpirit.maxValue = enemy_chicken.Spirit;
+        EnemySpirit.value = EnemySpirit.maxValue;
+    }
+    //种族读取技能
+    void SkillRead()
+    {
+        string aa = Resources.Load("ChickenSkill").ToString();
+        List<FightChickenSkill> skills = IOHelper.GetData(aa, typeof(List<FightChickenSkill>)) as List<FightChickenSkill>;
+        PlayerSkillName = skills[(int)player_chicken.Type].SkillName;
+        PlayerSkillEffect = skills[(int)player_chicken.Type].SkillEffect;
+        EnemySkillName = skills[(int)enemy_chicken.Type].SkillName;
+        EnemySkillEffect = skills[(int)enemy_chicken.Type].SkillEffect;
     }
 }

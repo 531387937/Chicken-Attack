@@ -19,6 +19,9 @@ public class GameSaveNew : Singleton<GameSaveNew>
     string PlayerPath = "Assets/Resources/GamePlayerData.json";
     void Awake()
     {
+        //导出时切换
+        //path = GetDataPath() + "/GameData.json";
+        //PlayerPath = GetDataPath() + "/GamePlayerData.json";
         LoadAllData();
         //获取MAC
         NetworkInterface[] nis = NetworkInterface.GetAllNetworkInterfaces();
@@ -84,5 +87,20 @@ public class GameSaveNew : Singleton<GameSaveNew>
     private void ChickenUpdate()
     {
         
+    }
+    private static string GetDataPath()                         //获取路径
+    {
+        if (Application.platform == RuntimePlatform.IPhonePlayer)//如果是iphone
+        {
+            string path = Application.persistentDataPath;//.Substring (0, Application.dataPath.Length - 5);
+                                                         //path = path.Substring(0, path.LastIndexOf('/'));  
+            return path;//+ "/Documents"; 
+        }
+        else if (Application.platform == RuntimePlatform.Android)//如果是android
+        {
+            return Application.persistentDataPath;
+        }
+        else
+            return Application.dataPath;
     }
 }
