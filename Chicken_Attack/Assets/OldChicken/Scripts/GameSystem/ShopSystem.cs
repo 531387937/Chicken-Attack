@@ -16,7 +16,7 @@ public class ShopSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PD = GameSave.Instance.PD;
+        PD = GameSaveNew.Instance.PD;
 
         if (PD.Prestige <= 6)
         {

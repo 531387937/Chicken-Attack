@@ -30,7 +30,7 @@ public class FightChicken
     //鸡的技能组
     public List<int> Skills;
     //鸡的前辈种族
-    public List<int> Grand;
+    public List<FightChicken> Grand;
     //遇到的敌机
     public FightChicken[] enemyChickens;
 
@@ -42,13 +42,13 @@ public class FightChicken
         for(int i =0;i<GrandNum;i++)
         {
             if (i == 0)
-                NewChickenType = (chickentype)playerChicken.GetGrand()[i];
+                NewChickenType = (chickentype)playerChicken.GetGrand()[i].Type;
             else
             {
                 float a = Random.Range(0f, 1f);
                 if (a >=(GrandNum- i) / ((GrandNum + 1)*2))
                 {
-                    NewChickenType = (chickentype)playerChicken.GetGrand()[i];
+                    NewChickenType = (chickentype)playerChicken.GetGrand()[i].Type;
                 }
             }
         }
@@ -94,7 +94,7 @@ public class FightChicken
     {
         return Talent;
     }
-    public List<int> GetGrand()
+    public List<FightChicken> GetGrand()
     {
         return Grand;
     }
