@@ -6,7 +6,10 @@ public class FightChicken
 {
     public enum chickentype
     {
-        caiji,muji,feiji,rouji
+        菜鸡 = 0,
+        母鸡 = 1,
+        飞机 = 2,
+        肉鸡 = 3
     }
     public chickentype Type;
     public string Name;
@@ -112,6 +115,7 @@ public class FightChicken
         Type = 0;
         Talent = 0;
     }
+
     //繁殖得到的鸡
     public FightChicken(string name,FightChicken playerChicken,FightChicken shopChicken)
     {
@@ -138,14 +142,23 @@ public class FightChicken
     {
         isCock = (Random.Range(0, 1) == 0 ? false : true);
     }
-    //用于商店生成的鸡,根据名声生成
-    public FightChicken(int fame)
-    {
 
-    }
     public FightChicken()
     {
 
+    }
+
+    //用于商店生成的鸡,根据名声生成
+    public void InitShopChicken(int fame)
+    {
+        Type = (chickentype)Random.Range(0, System.Enum.GetNames(Type.GetType()).Length);
+        Name = "新鲜出炉的" + Type.ToString();
+        HP = 60 * (1 + fame/100);
+        Attack = 10 * (1 + fame / 100);
+        Spirit = 50 * (1 + fame / 100);
+        Speed = 5 * (1 + fame / 100);
+        Strong = 10 * (1 + fame / 100);
+        Talent = 1 * (1 + fame / 100);
     }
 
     //鸡死亡简报信息（人数/最强战力）
@@ -156,11 +169,10 @@ public class FightChicken
             float EnemyMaxAttack = 0;
             for (int i = 0;i< enemyChickens.Length; i++)
             {
-                if(enemyChickens[i].Attack > EnemyMaxAttack)
+                if(enemyChickens[i].Getpower() > EnemyMaxAttack)
                 {
-                    EnemyMaxAttack = enemyChickens[i].Attack;
+                    EnemyMaxAttack = enemyChickens[i].Getpower();
                 }
-                
             }
             return new Vector2(enemyChickens.Length, EnemyMaxAttack);
         }

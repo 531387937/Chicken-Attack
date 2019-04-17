@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ShopChicken : MonoBehaviour
 {
-    public Chicken ThisChicken;
+    public FightChicken ThisChicken;
     public Text Name;
     public Text Cost;
     public RawImage Tex;
