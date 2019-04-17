@@ -10,6 +10,7 @@ public class PlayerData
     public int Prestige;
     //鸡毛的数量，随胜利增加
     public int Pt;
+
     public PlayerData()
     {
         Gold = 100;

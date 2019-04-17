@@ -11,10 +11,5 @@ public class Player_Chicken : MonoBehaviour
         //按照鸡的种类生成鸡
         Instantiate(ga[(int)GameSaveNew.playerChicken.Type],new Vector3(0,0,0),new Quaternion(0,0,0,1));
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

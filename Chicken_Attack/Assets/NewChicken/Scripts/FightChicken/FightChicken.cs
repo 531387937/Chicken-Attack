@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class FightChicken 
 {
-   public enum chickentype {caiji,muji,feiji,rouji }
+    public enum chickentype
+    {
+        caiji,muji,feiji,rouji
+    }
     public chickentype Type;
     public string Name;
     //鸡的生命值
@@ -25,6 +28,9 @@ public class FightChicken
     public List<int> Skills;
     //鸡的前辈种族
     public List<int> Grand;
+    //遇到的敌机
+    public FightChicken[] enemyChickens;
+
     //设置鸡的种族
     private chickentype setChickenType(FightChicken playerChicken,FightChicken shopChicken)
     {
@@ -140,5 +146,24 @@ public class FightChicken
     public FightChicken()
     {
 
+    }
+
+    //鸡死亡简报信息（人数/最强战力）
+    public Vector2 ThisChickenBrief()
+    {
+        if (enemyChickens.Length > 0)//曾经与他人对战
+        {
+            float EnemyMaxAttack = 0;
+            for (int i = 0;i< enemyChickens.Length; i++)
+            {
+                if(enemyChickens[i].Attack > EnemyMaxAttack)
+                {
+                    EnemyMaxAttack = enemyChickens[i].Attack;
+                }
+                
+            }
+            return new Vector2(enemyChickens.Length, EnemyMaxAttack);
+        }
+        return new Vector2(0, 0);
     }
 }
