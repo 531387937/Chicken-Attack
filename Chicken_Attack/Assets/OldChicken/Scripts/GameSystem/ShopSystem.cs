@@ -9,7 +9,7 @@ public class ShopSystem : MonoBehaviour
     public Text Pt;
     public Text Gold;
     public Text Prestige;
-    public Chicken[] ShopChicken;
+    public FightChicken[] ShopChicken;
     public GameObject[] ShopChickenUI;
     public Texture[] ChickenTex; 
 
@@ -17,19 +17,21 @@ public class ShopSystem : MonoBehaviour
     void Start()
     {
         PD = GameSave.Instance.PD;
+
         if (PD.Prestige <= 6)
         {
-            ShopChicken = new Chicken[PD.Prestige];
+            ShopChicken = new FightChicken[PD.Prestige];
         }
         else if(PD.Prestige > 6)
         {
-            ShopChicken = new Chicken[6];
+            ShopChicken = new FightChicken[6];
         }
 
         for(int i = 0;i< ShopChicken.Length; i++)
         {
-            ShopChicken[i] = new Chicken();
-            ShopChicken[i].RandomInitial(Random.Range(0,1));
+            ShopChicken[i] = new FightChicken();
+            //ShopChicken[i].RandomInitial(Random.Range(0,1));
+            ShopChicken[i].InitShopChicken(PD.Prestige);
             ShopChickenUI[i].GetComponent<ShopChicken>().ThisChicken = ShopChicken[i];
             ShopChickenUI[i].GetComponent<ShopChicken>().CostChicken = Random.Range(1,15);
             ShopChickenUI[i].GetComponent<ShopChicken>().Tex.texture = ChickenTex[(int)ShopChicken[i].Type];

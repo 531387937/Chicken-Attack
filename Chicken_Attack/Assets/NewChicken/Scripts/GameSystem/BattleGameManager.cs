@@ -71,7 +71,7 @@ public class BattleGameManager : MonoBehaviour
      //设置生命值等血条
     void SliderSet()
     {
-PlayerHP.maxValue = player_chicken.HP;
+        PlayerHP.maxValue = player_chicken.HP;
         PlayerHP.value = PlayerHP.maxValue;
         EnemyHP.maxValue = enemy_chicken.HP;
         EnemyHP.value = EnemyHP.maxValue;

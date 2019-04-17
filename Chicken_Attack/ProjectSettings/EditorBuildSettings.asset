@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/NewChicken/Scenes/BattleNew.unity
     guid: 13f1e559ad59a034c9aaa6f1fe8be70a
+  - enabled: 1
+    path: Assets/OldChicken/Scenes/XYShop.unity
+    guid: d366f291356fe4e4b98f8b8a87e60f90
   m_configObjects: {}
