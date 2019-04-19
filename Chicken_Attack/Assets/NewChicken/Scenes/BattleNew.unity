@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921bb9ef5d88c854cb5551494dbba29f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 2
+  level: 1
   PlayerHP: {fileID: 1343983191}
   EnemyHP: {fileID: 1255118084}
   PlayerSpirit: {fileID: 1118496698}

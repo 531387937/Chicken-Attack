@@ -10,6 +10,9 @@ public class PlayerData
     public int Prestige;
     //鸡毛的数量，随胜利增加
     public int Pt;
+    //现在拥有的鸡的数量
+    [Range(1,3)]
+    public int ChickenNum;
     //商店买到的鸡寄存
     public FightChicken ShopChicken;
 
@@ -18,6 +21,7 @@ public class PlayerData
         Gold = 100;
         Prestige = 10;
         Pt = 10;
+        ChickenNum = 1;
         ShopChicken = null;
     }
 }

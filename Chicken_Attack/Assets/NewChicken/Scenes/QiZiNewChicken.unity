@@ -1235,10 +1235,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ga:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 259071498490908846, guid: 18d84de37de5f74439ea544d2f167abe, type: 3}
+  - {fileID: 5093549103729697552, guid: d097190ab3cf8824c809d47e3d577eae, type: 3}
+  - {fileID: 8696025256944760111, guid: 215aa63bf1a29f9458537a3049abb399, type: 3}
+  - {fileID: 4686981241486846217, guid: 0452604a0057e804a92adf4e993f848f, type: 3}
 --- !u!4 &2126344734
 Transform:
   m_ObjectHideFlags: 0

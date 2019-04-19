@@ -26,6 +26,7 @@ public class FightChicken
     //鸡的公母
     public bool isCock;
     //鸡的天赋
+    [Range(5,8)]
     public int Talent;
     //鸡的技能组
     public List<int> Skills;
@@ -115,7 +116,21 @@ public class FightChicken
         Type = 0;
         Talent = 0;//天赋
     }
+    public FightChicken(string name,int hp,int attack,int spirit,int speed,int strong,int type,int talent)
+    {
+        Name = name;
+        HP = hp; //生命值
+        Attack = attack;//攻击力
+        Spirit = spirit; //斗志
+        Speed = speed; //速度
+        Strong = strong;//气势
+        Type =(chickentype)type;
+        Talent = talent;//天赋
+    }
+    public FightChicken()
+    {
 
+    }
     //繁殖得到的鸡
     public FightChicken(string name,FightChicken playerChicken,FightChicken shopChicken)
     {
@@ -143,10 +158,7 @@ public class FightChicken
         isCock = (Random.Range(0, 1) == 0 ? false : true);
     }
 
-    public FightChicken()
-    {
-
-    }
+   
 
     //用于商店生成的鸡,根据名声生成
     public void InitShopChicken(int fame)

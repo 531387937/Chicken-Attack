@@ -12,8 +12,9 @@ public class GameSaveNew : Singleton<GameSaveNew>
 {
     private string Mac;//设备MAC
     //private bool CanSave = true;//是否可以保存
-    public static FightChicken playerChicken = new FightChicken("棋子");
+    public List<FightChicken> playerChicken=new List<FightChicken>(3); /*= new FightChicken("棋子");*/
     public PlayerData PD = new PlayerData();
+    public FightChicken ChooseChicken=null;
     //string path = Application.persistentDataPath + @"/GameData.json";
     string path = "Assets/Resources/GameData.json";
     string PlayerPath = "Assets/Resources/GamePlayerData.json";
@@ -27,6 +28,9 @@ public class GameSaveNew : Singleton<GameSaveNew>
         NetworkInterface[] nis = NetworkInterface.GetAllNetworkInterfaces();
         Mac = nis[0].GetPhysicalAddress().ToString() + "0824";
         DontDestroyOnLoad(this.gameObject);
+        playerChicken.Add(new FightChicken("AAA", 100, 15, 70, 5, 10, 1, 6));
+        playerChicken.Add(new FightChicken("BBB", 100, 15, 70, 5, 10, 1, 6));
+        playerChicken.Add(new FightChicken("CCC", 100, 15, 70, 5, 10, 1, 6));
     }
 
     void Start()
@@ -37,7 +41,7 @@ public class GameSaveNew : Singleton<GameSaveNew>
         //chicken.Name = chicken.Type.ToString();
         //AddChicken(chicken);
         //---------------------
-
+        
         //if (!IOHelper.IsFileExists(path))
         //{
         //    //如没有则创建空记录文件
@@ -80,7 +84,7 @@ public class GameSaveNew : Singleton<GameSaveNew>
         }
         if (IOHelper.IsFileExists(path))
         {          
-            playerChicken = IOHelper.GetData(path, typeof(FightChicken), Mac) as FightChicken;           
+            playerChicken = IOHelper.GetData(path, typeof(List<FightChicken>), Mac) as List<FightChicken>;           
         }
     }
     //更新鸡的状态

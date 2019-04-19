@@ -20,12 +20,12 @@ public class BattleGameManager : MonoBehaviour
     //string enemyPath = "Assets/Resources/EnemyData.json";
     void Start()
     {
-        player_chicken = GameSaveNew.playerChicken;
+        player_chicken = GameSaveNew.Instance.ChooseChicken;
         string aa = Resources.Load("EnemyData").ToString();
         List<FightChicken> FC = IOHelper.GetData(aa, typeof(List<FightChicken>),1) as List<FightChicken>;
         enemy_chicken = FC[level-1];
         SliderSet();
-        SkillRead();
+        //SkillRead();
         if (player_chicken.Speed >= enemy_chicken.Speed)
         {
             PlayerAttack();
@@ -53,9 +53,13 @@ public class BattleGameManager : MonoBehaviour
     {
         if (!gameend)
         {
+            enemy_chicken.Speed += enemy_chicken.Speed;
             EnemyHP.value -= player_chicken.Attack * Random.Range(0.95f, 1.05f);
             EnemySpirit.value -= player_chicken.Strong * Random.Range(0.95f, 1.05f);
+            if(enemy_chicken.Speed>=player_chicken.Speed)
             Invoke("EnemyAttack", 2);
+            else
+            Invoke("PlayerAttack", 2);
         }
     }
     //敌人的回合
@@ -63,9 +67,13 @@ public class BattleGameManager : MonoBehaviour
     {
         if (!gameend)
         {
+            player_chicken.Speed += player_chicken.Speed;
             PlayerHP.value -= enemy_chicken.Attack * Random.Range(0.95f, 1.05f);
             PlayerSpirit.value -= enemy_chicken.Strong * Random.Range(0.95f, 1.05f);
+            if(player_chicken.Speed>=enemy_chicken.Speed)
             Invoke("PlayerAttack", 2);
+            else
+            Invoke("EnemyAttack", 2);
         }
     }
      //设置生命值等血条

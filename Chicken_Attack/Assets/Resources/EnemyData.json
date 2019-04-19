@@ -4,7 +4,7 @@
     "Name": "zi",
     "HP": 60.0,
     "Attack": 10.0,
-    "Speed": 5.0,
+    "Speed": 2.0,
     "Spirit": 40.0,
     "Strong": 10.0,
     "isCock": false,
