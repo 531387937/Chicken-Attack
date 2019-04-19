@@ -31,8 +31,8 @@ public class FightChicken
     public List<int> Skills;
     //鸡的前辈种族
     public List<FightChicken> Grand;
-    //遇到的敌机
-    public FightChicken[] enemyChickens;
+    //此生遇到的敌机
+    public List<FightChicken> enemyChickens;
 
     //设置鸡的种族
     private chickentype setChickenType(FightChicken playerChicken,FightChicken shopChicken)
@@ -152,7 +152,7 @@ public class FightChicken
     public void InitShopChicken(int fame)
     {
         Type = (chickentype)Random.Range(0, System.Enum.GetNames(Type.GetType()).Length);
-        Name = "新鲜出炉的" + Type.ToString();
+        Name = Type.ToString();
         HP = 60 * (1 + fame/100);
         Attack = 10 * (1 + fame / 100);
         Spirit = 50 * (1 + fame / 100);
@@ -164,17 +164,17 @@ public class FightChicken
     //鸡死亡简报信息（人数/最强战力）
     public Vector2 ThisChickenBrief()
     {
-        if (enemyChickens.Length > 0)//曾经与他人对战
+        if (enemyChickens.Count > 0)//曾经与他人对战
         {
             float EnemyMaxAttack = 0;
-            for (int i = 0;i< enemyChickens.Length; i++)
+            for (int i = 0;i< enemyChickens.Count; i++)
             {
                 if(enemyChickens[i].Getpower() > EnemyMaxAttack)
                 {
                     EnemyMaxAttack = enemyChickens[i].Getpower();
                 }
             }
-            return new Vector2(enemyChickens.Length, EnemyMaxAttack);
+            return new Vector2(enemyChickens.Count, EnemyMaxAttack);
         }
         return new Vector2(0, 0);
     }
