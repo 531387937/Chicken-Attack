@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Chicken
   - BattleUI
+  - ShopChicken
+  - ChickenUI
   layers:
   - Default
   - TransparentFX

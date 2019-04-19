@@ -5,18 +5,23 @@ using UnityEngine.UI;
 
 public class ShopSystem : MonoBehaviour
 {
-    private PlayerData PD;
+    public PlayerData PD;
     public Text Pt;
     public Text Gold;
     public Text Prestige;
     public FightChicken[] ShopChicken;
     public GameObject[] ShopChickenUI;
-    public Texture[] ChickenTex; 
+    public Texture[] ChickenTex;
+    public GameObject ChickenUI;
 
     // Start is called before the first frame update
     void Start()
     {
+        ChickenUI = GameObject.FindGameObjectWithTag("ChickenUI");
+        ChickenUI.SetActive(false);
+
         PD = GameSaveNew.Instance.PD;
+        PD.ShopChicken = null;
 
         if (PD.Prestige <= 6)
         {

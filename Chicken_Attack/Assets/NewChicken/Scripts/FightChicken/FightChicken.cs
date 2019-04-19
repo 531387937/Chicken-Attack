@@ -107,13 +107,13 @@ public class FightChicken
     public FightChicken(string name)
     {
         Name = name;
-        HP = 60;
-        Attack = 10;
-        Spirit = 50;
-        Speed = 5;
-        Strong = 10;
+        HP = 60; //生命值
+        Attack = 10;//攻击力
+        Spirit = 50; //斗志
+        Speed = 5; //速度
+        Strong = 10;//气势
         Type = 0;
-        Talent = 0;
+        Talent = 0;//天赋
     }
 
     //繁殖得到的鸡

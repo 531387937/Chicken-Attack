@@ -10,6 +10,12 @@ public class ShopChicken : MonoBehaviour
     public Text Cost;
     public RawImage Tex;
     public int CostChicken;
+    public ShopSystem ShopSystem;
+
+    private void Start()
+    {
+        ShopSystem = GameObject.Find("ShopChickenS").GetComponent<ShopSystem>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -24,5 +30,15 @@ public class ShopChicken : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+
+        if (Input.GetMouseButton(0))
+        {
+            if (GetComponent<BoxCollider2D>().OverlapPoint(Input.mousePosition))
+            {
+                ShopSystem.ChickenUI.active = true;
+                ShopSystem.ChickenUI.GetComponent<ShopChickenUI>().SetShopChickenUi(ThisChicken,CostChicken);
+            }
+        }
     }
+
 }
