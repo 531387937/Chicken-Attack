@@ -7,7 +7,7 @@ public class FightChicken
     public enum chickentype
     {
         菜鸡 = 0,
-        母鸡 = 1,
+        木鸡 = 1,
         飞机 = 2,
         肉鸡 = 3
     }

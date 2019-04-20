@@ -28,9 +28,9 @@ public class GameSaveNew : Singleton<GameSaveNew>
         NetworkInterface[] nis = NetworkInterface.GetAllNetworkInterfaces();
         Mac = nis[0].GetPhysicalAddress().ToString() + "0824";
         DontDestroyOnLoad(this.gameObject);
-        playerChicken.Add(new FightChicken("AAA", 100, 15, 70, 5, 10, 1, 6));
-        playerChicken.Add(new FightChicken("BBB", 100, 15, 70, 5, 10, 1, 6));
-        playerChicken.Add(new FightChicken("CCC", 100, 15, 70, 5, 10, 1, 6));
+        //playerChicken.Add(new FightChicken("AAA", 100, 15, 70, 5, 10, 1, 6));
+        //playerChicken.Add(new FightChicken("BBB", 100, 15, 70, 5, 10, 1, 6));
+        //playerChicken.Add(new FightChicken("CCC", 100, 15, 70, 5, 10, 1, 6));
     }
 
     void Start()

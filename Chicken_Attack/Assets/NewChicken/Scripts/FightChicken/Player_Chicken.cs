@@ -9,7 +9,11 @@ public class Player_Chicken : MonoBehaviour
     void Start()
     {
         //按照鸡的种类生成鸡
-        for(int i=0;i<GameSaveNew.Instance.PD.ChickenNum;i++)
-        Instantiate(ga[(int)GameSaveNew.Instance.playerChicken[i].Type],new Vector3(i,i,0),new Quaternion(0,0,0,1));
+        for (int i = 0; i < GameSaveNew.Instance.PD.ChickenNum; i++)
+        {
+           GameObject a= Instantiate(ga[(int)GameSaveNew.Instance.playerChicken[i].Type], new Vector3(i * 2, 0, 0), new Quaternion(0, 0, 0, 1));
+            a.AddComponent<MyFightChicken>();
+            a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken[i];
+        }
     }   
 }
