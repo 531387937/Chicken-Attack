@@ -38,7 +38,7 @@ public class ShopSystem : MonoBehaviour
             //ShopChicken[i].RandomInitial(Random.Range(0,1));
             ShopChicken[i].InitShopChicken(PD.Prestige);
             ShopChickenUI[i].GetComponent<ShopChicken>().ThisChicken = ShopChicken[i];
-            ShopChickenUI[i].GetComponent<ShopChicken>().CostChicken = Random.Range(1,15);
+            ShopChickenUI[i].GetComponent<ShopChicken>().CostChicken = Random.Range(100,150);
             ShopChickenUI[i].GetComponent<ShopChicken>().Tex.texture = ChickenTex[(int)ShopChicken[i].Type];
         }
     }

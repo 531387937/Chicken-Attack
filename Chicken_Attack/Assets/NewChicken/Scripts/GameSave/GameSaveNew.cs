@@ -12,7 +12,7 @@ public class GameSaveNew : Singleton<GameSaveNew>
 {
     private string Mac;//设备MAC
     //private bool CanSave = true;//是否可以保存
-    public List<FightChicken> playerChicken=new List<FightChicken>(3); /*= new FightChicken("棋子");*/
+    public List<FightChicken> playerChicken; /*= new FightChicken("棋子");*/
     public PlayerData PD = new PlayerData();
     public FightChicken ChooseChicken=null;
     //string path = Application.persistentDataPath + @"/GameData.json";

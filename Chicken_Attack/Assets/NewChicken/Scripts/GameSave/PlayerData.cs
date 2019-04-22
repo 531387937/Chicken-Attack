@@ -15,7 +15,8 @@ public class PlayerData
     public int ChickenNum;
     //商店买到的鸡寄存
     public FightChicken ShopChicken;
-
+    //诞生的小鸡
+    public FightChicken Chick;
     public PlayerData()
     {
         Gold = 100;
@@ -23,5 +24,6 @@ public class PlayerData
         Pt = 10;
         ChickenNum = 1;
         ShopChicken = null;
+        Chick = null;
     }
 }
