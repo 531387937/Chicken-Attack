@@ -38,7 +38,7 @@ public class DropDownUI_NEW : MonoBehaviour
                 break;
         }
     }
-    //诞生新的鸡，以后加上命名
+    //诞生新的鸡，以后加上命名功能
     public void Decided()
     {
         if(chooseChicken!=null)

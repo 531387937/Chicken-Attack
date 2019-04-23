@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ShopSystem : MonoBehaviour
 {
-    public PlayerData PD;
     public Text Pt;
     public Text Gold;
     public Text Prestige;
@@ -20,14 +19,13 @@ public class ShopSystem : MonoBehaviour
         ChickenUI = GameObject.FindGameObjectWithTag("ChickenUI");
         ChickenUI.SetActive(false);
 
-        PD = GameSaveNew.Instance.PD;
-        PD.ShopChicken = null;
+        GameSaveNew.Instance.PD.ShopChicken = null;
 
-        if (PD.Prestige <= 6)
+        if (GameSaveNew.Instance.PD.Prestige <= 6)
         {
-            ShopChicken = new FightChicken[PD.Prestige];
+            ShopChicken = new FightChicken[GameSaveNew.Instance.PD.Prestige];
         }
-        else if(PD.Prestige > 6)
+        else if(GameSaveNew.Instance.PD.Prestige > 6)
         {
             ShopChicken = new FightChicken[6];
         }
@@ -36,7 +34,7 @@ public class ShopSystem : MonoBehaviour
         {
             ShopChicken[i] = new FightChicken();
             //ShopChicken[i].RandomInitial(Random.Range(0,1));
-            ShopChicken[i].InitShopChicken(PD.Prestige);
+            ShopChicken[i].InitShopChicken(GameSaveNew.Instance.PD.Prestige);
             ShopChickenUI[i].GetComponent<ShopChicken>().ThisChicken = ShopChicken[i];
             ShopChickenUI[i].GetComponent<ShopChicken>().CostChicken = Random.Range(100,150);
             ShopChickenUI[i].GetComponent<ShopChicken>().Tex.texture = ChickenTex[(int)ShopChicken[i].Type];
@@ -46,9 +44,9 @@ public class ShopSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Pt.text = PD.Pt.ToString();
-        Gold.text = PD.Gold.ToString();
-        Prestige.text = PD.Prestige.ToString();
+        Pt.text = GameSaveNew.Instance.PD.Pt.ToString();
+        Gold.text = GameSaveNew.Instance.PD.Gold.ToString();
+        Prestige.text = GameSaveNew.Instance.PD.Prestige.ToString();
 
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         //RaycastHit hit;

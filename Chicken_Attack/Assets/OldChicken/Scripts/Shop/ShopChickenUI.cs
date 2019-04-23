@@ -14,13 +14,11 @@ public class ShopChickenUI : MonoBehaviour
     public RawImage Pics;
     public Texture[] textures;
 
-    public ShopSystem ShopSystem;
     private int Cost;
     private FightChicken ChooseChicken;
 
     private void Start()
     {
-        ShopSystem = GameObject.Find("ShopChickenS").GetComponent<ShopSystem>();
     }
 
     public void SetShopChickenUi(FightChicken fightChicken,int cost)
@@ -38,15 +36,15 @@ public class ShopChickenUI : MonoBehaviour
 
     public void Buy()
     {
-        if (ShopSystem.PD.ShopChicken == null)
+        if (GameSaveNew.Instance.PD.ShopChicken == null&& GameSaveNew.Instance.PD.Gold>=Cost)
         {
-            ShopSystem.PD.Gold -= Cost;
-            ShopSystem.PD.ShopChicken = ChooseChicken;
+            GameSaveNew.Instance.PD.Gold -= Cost;
+            GameSaveNew.Instance.PD.ShopChicken = ChooseChicken;
             this.gameObject.SetActive(false);
         }
-        else if(ShopSystem.PD.ShopChicken != null)
+        else
         {
-            //您只能买一只鸡
+            //您的金钱不足
             this.gameObject.SetActive(false);
         }
         GameSaveNew.Instance.SaveAllData();
