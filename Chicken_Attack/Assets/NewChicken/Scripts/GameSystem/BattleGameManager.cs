@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class BattleGameManager : MonoBehaviour
 {
-
     public int level;
     FightChicken player_chicken;
     FightChicken enemy_chicken;
@@ -12,15 +12,27 @@ public class BattleGameManager : MonoBehaviour
     public Slider EnemyHP;
     public Slider PlayerSpirit;
     public Slider EnemySpirit;
+    public TextMeshPro HP_Damage;
+    public TextMeshPro MP_Damage;
     bool gameend = false;
     private string PlayerSkillName;
     private string PlayerSkillEffect;
     private string EnemySkillName;
     private string EnemySkillEffect;
+
+    public Transform playerHPPos;
+    public Transform playerMPPos;
+
+    public Transform EnemyHPPos;
+    public Transform EnemyMPPos;
     //string enemyPath = "Assets/Resources/EnemyData.json";
     void Start()
     {
         player_chicken = GameSaveNew.Instance.ChooseChicken;
+        if (GameSaveNew.Instance.ChooseChicken == null)
+        {
+            player_chicken = new FightChicken("fdsf");
+        }
         string aa = Resources.Load("EnemyData").ToString();
         List<FightChicken> FC = IOHelper.GetData(aa, typeof(List<FightChicken>),1) as List<FightChicken>;
         enemy_chicken = FC[level-1];
@@ -53,9 +65,22 @@ public class BattleGameManager : MonoBehaviour
     {
         if (!gameend)
         {
+            //重置两伤害的初始化
+            HP_Damage.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            HP_Damage.gameObject.transform.position = EnemyHPPos.position;
+            MP_Damage.gameObject.transform.position = EnemyMPPos.position;
+            MP_Damage.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            //进行伤害判定
+            float damage =(int)player_chicken.Attack * Random.Range(0.95f, 1.05f);
+            HP_Damage.text = "-"+(int)damage;
+            HP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(5.0f, 8.0f), 10.0f));
+            EnemyHP.value -=(int)damage;
+            damage= (int)player_chicken.Strong * Random.Range(0.95f, 1.05f);
+            MP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(5.0f, 8.0f), 10.0f));
+            MP_Damage.text = "-" + (int)damage;
+            EnemySpirit.value -= (int)damage;
+            //进行速度的判定
             enemy_chicken.Speed += enemy_chicken.Speed;
-            EnemyHP.value -= player_chicken.Attack * Random.Range(0.95f, 1.05f);
-            EnemySpirit.value -= player_chicken.Strong * Random.Range(0.95f, 1.05f);
             if(enemy_chicken.Speed>=player_chicken.Speed)
             Invoke("EnemyAttack", 2);
             else
@@ -67,10 +92,23 @@ public class BattleGameManager : MonoBehaviour
     {
         if (!gameend)
         {
+            //重置两伤害的初始化
+            HP_Damage.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            MP_Damage.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            HP_Damage.gameObject.transform.position = playerHPPos.position;
+            MP_Damage.gameObject.transform.position = playerMPPos.position;
+            //进行伤害判定
+            float damage = (int)player_chicken.Attack * Random.Range(0.95f, 1.05f);
+            HP_Damage.text = "-" + (int)damage;
+            HP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5.0f, -8.0f), 10.0f));
+            PlayerHP.value -= (int)damage;
+            damage = (int)player_chicken.Strong * Random.Range(0.95f, 1.05f);
+            MP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5.0f, -.0f), 10.0f));
+            MP_Damage.text = "-" + (int)damage;
+            PlayerSpirit.value -= (int)damage;
+            //进行速度的判定
             player_chicken.Speed += player_chicken.Speed;
-            PlayerHP.value -= enemy_chicken.Attack * Random.Range(0.95f, 1.05f);
-            PlayerSpirit.value -= enemy_chicken.Strong * Random.Range(0.95f, 1.05f);
-            if(player_chicken.Speed>=enemy_chicken.Speed)
+            if (player_chicken.Speed>=enemy_chicken.Speed)
             Invoke("PlayerAttack", 2);
             else
             Invoke("EnemyAttack", 2);
