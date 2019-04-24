@@ -38,6 +38,21 @@ public class DropDownUI_NEW : MonoBehaviour
                 break;
         }
     }
+    public void Battle_Chicken(int value)
+    {
+        switch (value)
+        {
+            case 0:
+                GameSaveNew.Instance.ChooseChicken = GameSaveNew.Instance.playerChicken[0];
+                break;
+            case 1:
+                GameSaveNew.Instance.ChooseChicken = GameSaveNew.Instance.playerChicken[1];
+                break;
+            case 2:
+                GameSaveNew.Instance.ChooseChicken = GameSaveNew.Instance.playerChicken[2];
+                break;
+        }
+    }
     //诞生新的鸡，以后加上命名功能
     public void Decided()
     {

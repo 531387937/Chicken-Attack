@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class BattleGameManager : MonoBehaviour
 {
     public int level;
@@ -36,11 +37,9 @@ public class BattleGameManager : MonoBehaviour
     //string enemyPath = "Assets/Resources/EnemyData.json";
     void Start()
     {
+        level = SceneChange.Level;
         player_chicken = GameSaveNew.Instance.ChooseChicken;
-        if (GameSaveNew.Instance.ChooseChicken == null)
-        {
-            player_chicken = new FightChicken("fdsf");
-        }
+        print(player_chicken.Name);
         string aa = Resources.Load("EnemyData").ToString();
         FC = IOHelper.GetData(aa, typeof(List<LevelSet>),1) as List<LevelSet>;
         enemy_chicken = FC[level-1].EnemyChicken;
@@ -90,7 +89,18 @@ public class BattleGameManager : MonoBehaviour
             EndGamePanel.SetActive(true);
             Gold.text = "+" + FC[level - 1].GoldGet;
             GameSaveNew.Instance.PD.Gold+= FC[level - 1].GoldGet;
+            GameSaveNew.Instance.PD.Prestige += FC[level - 1].PrestigeGet;
+            GameSaveNew.Instance.PD.Pt += FC[level - 1].PtGet;
+            GameSaveNew.Instance.SaveAllData();
             Time.timeScale = 1;
+        }
+        if(gameend)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                SceneChange.SceneName = "QiZiNewChicken";
+                SceneManager.LoadScene("LoadScene");
+            }
         }
     }
     void GameStar()
@@ -142,11 +152,11 @@ public class BattleGameManager : MonoBehaviour
             HP_Damage.gameObject.transform.position = playerHPPos.position;
             MP_Damage.gameObject.transform.position = playerMPPos.position;
             //进行伤害判定
-            float damage = (int)player_chicken.Attack * Random.Range(0.95f, 1.05f);
+            float damage = (int)enemy_chicken.Attack * Random.Range(0.95f, 1.05f);
             HP_Damage.text = "-" + (int)damage;
             HP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5.0f, -8.0f), 10.0f));
             PlayerHP.value -= (int)damage;
-            damage = (int)player_chicken.Strong * Random.Range(0.95f, 1.05f);
+            damage = (int)enemy_chicken.Strong * Random.Range(0.95f, 1.05f);
             MP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5.0f, -.0f), 10.0f));
             MP_Damage.text = "-" + (int)damage;
             PlayerSpirit.value -= (int)damage;
@@ -171,13 +181,13 @@ public class BattleGameManager : MonoBehaviour
         EnemySpirit.value = EnemySpirit.maxValue;
     }
     //种族读取技能
-    void SkillRead()
-    {
-        string aa = Resources.Load("ChickenSkill").ToString();
-        List<FightChickenSkill> skills = IOHelper.GetData(aa, typeof(List<FightChickenSkill>)) as List<FightChickenSkill>;
-        PlayerSkillName = skills[(int)player_chicken.Type].SkillName;
-        PlayerSkillEffect = skills[(int)player_chicken.Type].SkillEffect;
-        EnemySkillName = skills[(int)enemy_chicken.Type].SkillName;
-        EnemySkillEffect = skills[(int)enemy_chicken.Type].SkillEffect;
-    }
+    //void SkillRead()
+    //{
+    //    string aa = Resources.Load("ChickenSkill").ToString();
+    //    List<FightChickenSkill> skills = IOHelper.GetData(aa, typeof(List<FightChickenSkill>)) as List<FightChickenSkill>;
+    //    PlayerSkillName = skills[(int)player_chicken.Type].SkillName;
+    //    PlayerSkillEffect = skills[(int)player_chicken.Type].SkillEffect;
+    //    EnemySkillName = skills[(int)enemy_chicken.Type].SkillName;
+    //    EnemySkillEffect = skills[(int)enemy_chicken.Type].SkillEffect;
+    //}
 }
