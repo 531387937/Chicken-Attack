@@ -14,6 +14,7 @@ public class BattleGameManager : MonoBehaviour
     public Slider EnemySpirit;
     public TextMeshPro HP_Damage;
     public TextMeshPro MP_Damage;
+    bool gameBegin = false;
     bool gameend = false;
     private string PlayerSkillName;
     private string PlayerSkillEffect;
@@ -25,6 +26,13 @@ public class BattleGameManager : MonoBehaviour
 
     public Transform EnemyHPPos;
     public Transform EnemyMPPos;
+
+    public TextMeshProUGUI UI_Text;
+
+    public TextMeshProUGUI Gold;
+    public GameObject EndGamePanel;
+    private float timer = 3;
+    List<LevelSet> FC;
     //string enemyPath = "Assets/Resources/EnemyData.json";
     void Start()
     {
@@ -34,31 +42,67 @@ public class BattleGameManager : MonoBehaviour
             player_chicken = new FightChicken("fdsf");
         }
         string aa = Resources.Load("EnemyData").ToString();
-        List<FightChicken> FC = IOHelper.GetData(aa, typeof(List<FightChicken>),1) as List<FightChicken>;
-        enemy_chicken = FC[level-1];
+        FC = IOHelper.GetData(aa, typeof(List<LevelSet>),1) as List<LevelSet>;
+        enemy_chicken = FC[level-1].EnemyChicken;
         SliderSet();
         //SkillRead();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(timer>=-0.5)
+        {
+            timer -= Time.deltaTime;
+            if(timer>=2)
+            {
+                UI_Text.text = "3";
+            }
+            else if(timer>=1)
+            {
+                UI_Text.text = "2";
+            }
+            else if(timer>=0)
+            {
+                UI_Text.text = "1";
+            }
+            else
+            {
+                UI_Text.text = "Star!";
+            }
+        }
+        else
+        {            
+            if(!gameBegin)
+            GameStar();
+        }
+        if ((PlayerHP.value<=0||PlayerSpirit.value<=0)&&!gameend)
+        {
+            gameend = true;
+            UI_Text.text = "You Lose!";
+            EndGamePanel.SetActive(true);
+            Time.timeScale = 1;
+        }
+        if ((EnemyHP.value <= 0||EnemySpirit.value<=0) && !gameend)
+        {
+            gameend = true;
+            UI_Text.text = "You Win!";
+            EndGamePanel.SetActive(true);
+            Gold.text = "+" + FC[level - 1].GoldGet;
+            GameSaveNew.Instance.PD.Gold+= FC[level - 1].GoldGet;
+            Time.timeScale = 1;
+        }
+    }
+    void GameStar()
+    {
+        UI_Text.text = null;
+        gameBegin = true;
         if (player_chicken.Speed >= enemy_chicken.Speed)
         {
             PlayerAttack();
         }
         else
             EnemyAttack();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if((PlayerHP.value<=0||PlayerSpirit.value<=0)&&!gameend)
-        {
-            gameend = true;
-            print("Player Lose!");
-        }
-        if ((EnemyHP.value <= 0||EnemySpirit.value<=0) && !gameend)
-        {
-            gameend = true;
-            print("Player Win!");
-        }
     }
     //玩家的回合
     void PlayerAttack()

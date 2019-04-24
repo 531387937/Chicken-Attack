@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class UIManager_NEW : Singleton<UIManager>
 {
     public ToolTip_NEW toolTip;
+    public TextMeshProUGUI Gold;
+    public TextMeshProUGUI Prestige;
+    public TextMeshProUGUI Pt;
     private bool isShow = false;
     private bool isDrag = false;
     [SerializeField]
@@ -46,6 +49,9 @@ public class UIManager_NEW : Singleton<UIManager>
             toolTip.Show();
             isShow = false;
         }
+        Gold.text = GameSaveNew.Instance.PD.Gold.ToString();
+        Prestige.text = GameSaveNew.Instance.PD.Prestige.ToString();
+        Pt.text = GameSaveNew.Instance.PD.Prestige.ToString();
     }
     private void GridImage_OnEnter(Transform obj)
     {
