@@ -115,6 +115,9 @@ public class FightChicken
         Strong = 10;//气势
         Type = 0;
         Talent = 0;//天赋
+        Grand = new List<FightChicken>();
+        enemyChickens = new List<FightChicken>();
+        Skills = new List<int>();
     }
     public FightChicken(string name,int hp,int attack,int spirit,int speed,int strong,int type,int talent)
     {
@@ -136,7 +139,7 @@ public class FightChicken
     {
         Name = name;
         FightChicken parent;
-        if(playerChicken.Getpower()>=shopChicken.Getpower())
+        if(playerChicken.Getpower() >= shopChicken.Getpower())
         {
             parent = shopChicken;
         }
@@ -157,20 +160,22 @@ public class FightChicken
     {
         isCock = (Random.Range(0, 1) == 0 ? false : true);
     }
-
-   
+    
 
     //用于商店生成的鸡,根据名声生成
     public void InitShopChicken(int fame)
     {
         Type = (chickentype)Random.Range(0, System.Enum.GetNames(Type.GetType()).Length);
         Name = Type.ToString();
-        HP = 60 * (1 + fame/100);
-        Attack = 10 * (1 + fame / 100);
-        Spirit = 50 * (1 + fame / 100);
-        Speed = 5 * (1 + fame / 100);
-        Strong = 10 * (1 + fame / 100);
-        Talent = 1 * (1 + fame / 100);
+        HP = Random.Range(40, 80) * (1 + fame/10);
+        Attack = Random.Range(5, 15) * (1 + fame / 10);
+        Spirit = Random.Range(45, 65) * (1 + fame / 10);
+        Speed = Random.Range(3, 8) * (1 + fame / 10);
+        Strong = Random.Range(8, 13) * (1 + fame / 10);
+        Talent = Random.Range(0, 4) * (1 + fame / 10);
+        Grand = new List<FightChicken>();
+        enemyChickens = new List<FightChicken>();
+        Skills = new List<int>();
     }
 
     //鸡死亡简报信息（人数/最强战力）

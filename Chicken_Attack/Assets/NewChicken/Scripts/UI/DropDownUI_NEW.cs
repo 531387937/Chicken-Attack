@@ -4,13 +4,20 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class DropDownUI_NEW : MonoBehaviour
-{ Dropdown dropDownItem;
+{
+    Dropdown dropDownItem;
+    public RawImage ChooseChickenPic;
+    public RawImage BuyChickenPic;
+    public Texture2D[] Pics;
+    public GameObject NewChickUI;
+
     //public override void OnSelect(BaseEventData eventData)
     //{
     //    base.OnSelect(eventData);
     //    choose = true;
     //}
-    private FightChicken chooseChicken=null;
+    private FightChicken chooseChicken = null;
+
     void Start()
     {
         dropDownItem = this.GetComponent<Dropdown>();
@@ -22,6 +29,11 @@ public class DropDownUI_NEW : MonoBehaviour
             temoData.text = GameSaveNew.Instance.playerChicken[i].Name;
             dropDownItem.options.Add(temoData);
         }
+        if (GameSaveNew.Instance.PD.ShopChicken != null)
+        {
+            BuyChickenPic.texture = Pics[(int)GameSaveNew.Instance.PD.ShopChicken.Type];
+        }
+        NewChickUI.SetActive(false);
     }
     public void Chosen_Chicken(int value)
     {
@@ -29,12 +41,15 @@ public class DropDownUI_NEW : MonoBehaviour
         {
             case 0:
                 chooseChicken = GameSaveNew.Instance.playerChicken[0];
+                ChooseChickenPic.texture = Pics[(int)chooseChicken.Type];
                 break;
             case 1:
                 chooseChicken = GameSaveNew.Instance.playerChicken[1];
+                ChooseChickenPic.texture = Pics[(int)chooseChicken.Type];
                 break;
             case 2:
                 chooseChicken = GameSaveNew.Instance.playerChicken[2];
+                ChooseChickenPic.texture = Pics[(int)chooseChicken.Type];
                 break;
         }
     }
@@ -56,9 +71,13 @@ public class DropDownUI_NEW : MonoBehaviour
     //诞生新的鸡，以后加上命名功能
     public void Decided()
     {
-        if(chooseChicken!=null)
+        if(chooseChicken != null)
         {
             GameSaveNew.Instance.PD.Chick = new FightChicken("Child", chooseChicken, GameSaveNew.Instance.PD.ShopChicken);
+            //鸡诞生动画
+            NewChickUI.GetComponent<ShopChickenUI>().SetShopChickenUi(GameSaveNew.Instance.PD.Chick);
+            NewChickUI.SetActive(true);
+            Debug.Log("生小鸡！！！！");
         }
         //清空商店买的鸡
         GameSaveNew.Instance.PD.ShopChicken = null;

@@ -11,6 +11,7 @@ public class BuyChicken : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         SR = GetComponent<SpriteRenderer>();
         buyChicken = GameSaveNew.Instance.PD.ShopChicken;
     }

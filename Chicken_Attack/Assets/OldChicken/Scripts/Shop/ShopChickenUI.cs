@@ -17,10 +17,11 @@ public class ShopChickenUI : MonoBehaviour
     private int Cost;
     private FightChicken ChooseChicken;
 
-    private void Start()
-    {
-    }
-
+    /// <summary>
+    /// 商店用
+    /// </summary>
+    /// <param name="fightChicken"></param>
+    /// <param name="cost"></param>
     public void SetShopChickenUi(FightChicken fightChicken,int cost)
     {
         Attack.text = "攻击力：" + fightChicken.Attack;
@@ -34,9 +35,24 @@ public class ShopChickenUI : MonoBehaviour
         ChooseChicken = fightChicken;
     }
 
+    /// <summary>
+    /// 繁殖用
+    /// </summary>
+    /// <param name="fightChicken"></param>
+    public void SetShopChickenUi(FightChicken fightChicken)
+    {
+        Attack.text = "攻击力：" + fightChicken.Attack;
+        HP.text = "生命值：" + fightChicken.HP;
+        Spirit.text = "斗志" + fightChicken.Spirit;
+        Speed.text = "速度" + fightChicken.Speed;
+        Strong.text = "气势" + fightChicken.Strong;
+        Talent.text = "天赋" + fightChicken.Talent;
+        Pics.texture = textures[(int)fightChicken.Type];
+    }
+
     public void Buy()
     {
-        if (GameSaveNew.Instance.PD.ShopChicken == null&& GameSaveNew.Instance.PD.Gold>=Cost)
+        if (GameSaveNew.Instance.PD.ShopChicken == null && GameSaveNew.Instance.PD.Gold >= Cost)
         {
             GameSaveNew.Instance.PD.Gold -= Cost;
             GameSaveNew.Instance.PD.ShopChicken = ChooseChicken;
@@ -53,6 +69,20 @@ public class ShopChickenUI : MonoBehaviour
     public void NotBuy()
     {
         this.gameObject.SetActive(false);
+    }
+
+
+    //繁殖系统部分
+
+    public void Take()
+    {
+        GameSaveNew.Instance.SaveAllData();
+    }
+
+    public void NotTake()
+    {
+        GameSaveNew.Instance.PD.Chick = null;
+        GameSaveNew.Instance.SaveAllData();
     }
 
 }

@@ -35,6 +35,7 @@ public class ShopSystem : MonoBehaviour
             ShopChicken[i] = new FightChicken();
             //ShopChicken[i].RandomInitial(Random.Range(0,1));
             ShopChicken[i].InitShopChicken(GameSaveNew.Instance.PD.Prestige);
+            ShopChicken[i].Grand.Add(new FightChicken("ShopGod"));
             ShopChickenUI[i].GetComponent<ShopChicken>().ThisChicken = ShopChicken[i];
             ShopChickenUI[i].GetComponent<ShopChicken>().CostChicken = Random.Range(100,150);
             ShopChickenUI[i].GetComponent<ShopChicken>().Tex.texture = ChickenTex[(int)ShopChicken[i].Type];
@@ -47,15 +48,5 @@ public class ShopSystem : MonoBehaviour
         Pt.text = GameSaveNew.Instance.PD.Pt.ToString();
         Gold.text = GameSaveNew.Instance.PD.Gold.ToString();
         Prestige.text = GameSaveNew.Instance.PD.Prestige.ToString();
-
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //RaycastHit hit;
-        //if(Physics.Raycast(ray,out hit))
-        //{
-        //    if (hit.collider.tag == "ShopChicken")
-        //    {
-
-        //    }
-        //}
     }
 }
