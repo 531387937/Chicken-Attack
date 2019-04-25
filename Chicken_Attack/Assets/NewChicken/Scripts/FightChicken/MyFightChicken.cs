@@ -5,15 +5,16 @@ using UnityEngine;
 public class MyFightChicken : MonoBehaviour
 {
     public FightChicken self;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        
+        StartCoroutine(SavePos());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator SavePos()
     {
-        
+        self.Pos = this.transform.position;
+        yield return new WaitForSeconds(30);
+        StartCoroutine(SavePos());
     }
 }

@@ -33,7 +33,10 @@ public class DropDownUI_NEW : MonoBehaviour
         {
             BuyChickenPic.texture = Pics[(int)GameSaveNew.Instance.PD.ShopChicken.Type];
         }
-        NewChickUI.SetActive(false);
+        if (NewChickUI)
+        {
+            NewChickUI.SetActive(false);
+        }
     }
     public void Chosen_Chicken(int value)
     {

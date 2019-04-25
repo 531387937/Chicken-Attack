@@ -34,6 +34,8 @@ public class FightChicken
     public List<FightChicken> Grand;
     //此生遇到的敌机
     public List<FightChicken> enemyChickens;
+    //在场景中位置
+    public Vector3 Pos = new Vector3(0,0,0);
 
     //设置鸡的种族
     private chickentype setChickenType(FightChicken playerChicken,FightChicken shopChicken)
