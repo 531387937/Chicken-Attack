@@ -6,19 +6,17 @@ public class SceneChange : MonoBehaviour
 {
     public static string SceneName;
     public static int Level;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void GoLoadingScene(string name)
     {
+        if(name == "ChickenBreedScene"  && GameSaveNew.Instance.PD.Chick.Count != 0)
+        {
+            return;
+        }
+        if (name == "XYShop" && GameSaveNew.Instance.PD.ShopChicken != null)
+        {
+            return;
+        }
         SceneName = name;
         SceneManager.LoadScene("LoadScene");
     }

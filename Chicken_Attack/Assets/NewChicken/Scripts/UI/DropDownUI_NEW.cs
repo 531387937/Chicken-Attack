@@ -76,9 +76,10 @@ public class DropDownUI_NEW : MonoBehaviour
     {
         if(chooseChicken != null)
         {
-            GameSaveNew.Instance.PD.Chick = new FightChicken("Child", chooseChicken, GameSaveNew.Instance.PD.ShopChicken);
+            FightChicken NewChick = new FightChicken("Child", chooseChicken, GameSaveNew.Instance.PD.ShopChicken);
+            GameSaveNew.Instance.PD.Chick.Add(NewChick);
             //鸡诞生动画
-            NewChickUI.GetComponent<ShopChickenUI>().SetShopChickenUi(GameSaveNew.Instance.PD.Chick);
+            NewChickUI.GetComponent<ShopChickenUI>().SetShopChickenUi(NewChick);
             NewChickUI.SetActive(true);
             Debug.Log("生小鸡！！！！");
         }

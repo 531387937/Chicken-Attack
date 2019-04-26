@@ -11,6 +11,7 @@ public class ShopSystem : MonoBehaviour
     public FightChicken[] ShopChicken;
     public GameObject[] ShopChickenUI;
     public Texture[] ChickenTex;
+    [HideInInspector]
     public GameObject ChickenUI;
 
     // Start is called before the first frame update

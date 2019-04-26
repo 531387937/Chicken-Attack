@@ -8,6 +8,7 @@ public class Player_Chicken : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(GameSaveNew.Instance.PD.Chick[0].Pos);
         //按照鸡的种类生成鸡
         for (int i = 0; i < GameSaveNew.Instance.PD.ChickenNum; i++)
         {
@@ -15,6 +16,12 @@ public class Player_Chicken : MonoBehaviour
             a.AddComponent<MyFightChicken>();
             a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken[i];
         }
+        //遍历小鸡
+        for (int i = 0; i < GameSaveNew.Instance.PD.Chick.Count; i++)
+        {
+            GameObject a = Instantiate(ga[4], GameSaveNew.Instance.PD.Chick[i].Pos, new Quaternion(0, 0, 0, 1));
+        }
+
         StartCoroutine(SaveGame());
     }
 

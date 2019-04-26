@@ -9,7 +9,9 @@ public class ShopChicken : MonoBehaviour
     public Text Name;
     public Text Cost;
     public RawImage Tex;
+    [HideInInspector]
     public int CostChicken;
+    [HideInInspector]
     public ShopSystem ShopSystem;
 
     private void Start()

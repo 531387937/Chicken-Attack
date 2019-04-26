@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/NewChicken/Scenes/QiZiNewChicken.unity
+    path: Assets/NewChicken/Scripts/Scenes/QiZiNewChicken.unity
     guid: 5b3e309db5f53b74e9f8427f31fbc3ba
   - enabled: 0
     path: Assets/OldChicken/Scenes/XYTest.unity
@@ -18,15 +18,15 @@ EditorBuildSettings:
     path: Assets/OldChicken/Scenes/LoadScene.unity
     guid: eca8c9f16388fbc45994f18d14594ffd
   - enabled: 1
-    path: Assets/NewChicken/Scenes/BattleNew.unity
+    path: Assets/NewChicken/Scripts/Scenes/BattleNew.unity
     guid: 13f1e559ad59a034c9aaa6f1fe8be70a
   - enabled: 1
     path: Assets/OldChicken/Scenes/XYShop.unity
     guid: d366f291356fe4e4b98f8b8a87e60f90
   - enabled: 1
-    path: Assets/NewChicken/Scenes/ChickenBreedScene.unity
+    path: Assets/NewChicken/Scripts/Scenes/ChickenBreedScene.unity
     guid: 1203ebb5f86292d4baed2a114d520ccd
   - enabled: 1
-    path: Assets/NewChicken/Scenes/BattleChoose.unity
+    path: Assets/NewChicken/Scripts/Scenes/BattleChoose.unity
     guid: 554049f3d4acc7640a52066273508731
   m_configObjects: {}

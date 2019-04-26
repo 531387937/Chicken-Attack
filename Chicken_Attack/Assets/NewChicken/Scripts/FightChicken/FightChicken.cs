@@ -29,11 +29,11 @@ public class FightChicken
     [Range(5,8)]
     public int Talent;
     //鸡的技能组
-    public List<int> Skills;
+    public List<int> Skills = new List<int>();
     //鸡的前辈种族
-    public List<FightChicken> Grand;
+    public List<FightChicken> Grand = new List<FightChicken>();
     //此生遇到的敌机
-    public List<FightChicken> enemyChickens;
+    public List<FightChicken> enemyChickens = new List<FightChicken>();
     //在场景中位置
     public Vector3 Pos = new Vector3(0,0,0);
 
@@ -117,9 +117,6 @@ public class FightChicken
         Strong = 10;//气势
         Type = 0;
         Talent = 0;//天赋
-        Grand = new List<FightChicken>();
-        enemyChickens = new List<FightChicken>();
-        Skills = new List<int>();
     }
     public FightChicken(string name,int hp,int attack,int spirit,int speed,int strong,int type,int talent)
     {
@@ -175,9 +172,6 @@ public class FightChicken
         Speed = Random.Range(3, 8) * (1 + fame / 10);
         Strong = Random.Range(8, 13) * (1 + fame / 10);
         Talent = Random.Range(0, 4) * (1 + fame / 10);
-        Grand = new List<FightChicken>();
-        enemyChickens = new List<FightChicken>();
-        Skills = new List<int>();
     }
 
     //鸡死亡简报信息（人数/最强战力）
