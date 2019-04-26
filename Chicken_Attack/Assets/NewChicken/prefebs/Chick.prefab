@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6755918194917635185}
   - component: {fileID: 4965442289092558502}
-  - component: {fileID: 7006678078519952060}
   - component: {fileID: 180395182515893510}
   - component: {fileID: 5814174893412453142}
   m_Layer: 0
   m_Name: Chick
-  m_TagString: Untagged
+  m_TagString: Chick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,18 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7006678078519952060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6812302023276745596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ae3353601fe5a940b0292a7f8b76a36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &180395182515893510
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ TagManager:
   - BattleUI
   - ShopChicken
   - ChickenUI
+  - FightChicken
+  - Chick
   layers:
   - Default
   - TransparentFX

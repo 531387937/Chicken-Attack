@@ -14,7 +14,7 @@ public class MyFightChicken : MonoBehaviour
     IEnumerator SavePos()
     {
         self.Pos = this.transform.position;
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(5);
         StartCoroutine(SavePos());
     }
 }

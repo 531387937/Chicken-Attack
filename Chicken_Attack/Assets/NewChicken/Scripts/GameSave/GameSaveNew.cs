@@ -69,6 +69,7 @@ public class GameSaveNew : Singleton<GameSaveNew>
         //    CanSave = false;
         //}
     }
+
     //存档
     public void SaveAllData()
     {
@@ -87,12 +88,14 @@ public class GameSaveNew : Singleton<GameSaveNew>
             playerChicken = IOHelper.GetData(path, typeof(List<FightChicken>), Mac) as List<FightChicken>;           
         }
     }
+
     //更新鸡的状态
     private void ChickenUpdate()
     {
         
     }
-    private static string GetDataPath()                         //获取路径
+
+    private static string GetDataPath()//获取路径
     {
         if (Application.platform == RuntimePlatform.IPhonePlayer)//如果是iphone
         {

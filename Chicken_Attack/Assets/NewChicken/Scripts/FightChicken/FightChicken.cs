@@ -101,12 +101,20 @@ public class FightChicken
     {
         return Grand;
     }
-    //计算鸡的综合战斗力（待修改）
+
+    /// <summary>
+    /// 计算鸡的综合战斗力（待修改）
+    /// </summary>
+    /// <returns></returns>
     public float Getpower()
     {
         return HP / 30 * Attack / 5 * Speed / 30 * Spirit / 15 * Strong / 5;
     }
-    //主角初始的鸡
+
+    /// <summary>
+    /// 主角初始的鸡
+    /// </summary>
+    /// <param name="name"></param>
     public FightChicken(string name)
     {
         Name = name;
@@ -118,6 +126,18 @@ public class FightChicken
         Type = 0;
         Talent = 0;//天赋
     }
+
+    /// <summary>
+    /// 自定义鸡
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="hp"></param>
+    /// <param name="attack"></param>
+    /// <param name="spirit"></param>
+    /// <param name="speed"></param>
+    /// <param name="strong"></param>
+    /// <param name="type"></param>
+    /// <param name="talent"></param>
     public FightChicken(string name,int hp,int attack,int spirit,int speed,int strong,int type,int talent)
     {
         Name = name;
@@ -129,11 +149,18 @@ public class FightChicken
         Type =(chickentype)type;
         Talent = talent;//天赋
     }
+
     public FightChicken()
     {
 
     }
-    //繁殖得到的鸡
+    
+/// <summary>
+/// 繁殖得到鸡
+/// </summary>
+/// <param name="name"></param>
+/// <param name="playerChicken"></param>
+/// <param name="shopChicken"></param>
     public FightChicken(string name,FightChicken playerChicken,FightChicken shopChicken)
     {
         Name = name;
@@ -146,22 +173,29 @@ public class FightChicken
         {
             parent = playerChicken;
         }
-        HP = parent.getHP() * Random.Range(0.95f, 1.05f);
-        Attack = parent.GetAttack()* Random.Range(0.95f, 1.05f);
-        Spirit = parent.GetSpirit()*Random.Range(0.95f, 1.05f);
-        Speed = parent.GetSpeed()* Random.Range(0.95f, 1.05f);
-        Strong = parent.GetStrong()* Random.Range(0.95f, 1.05f);
+        HP = Mathf.Floor(parent.getHP() * Random.Range(0.95f, 1.05f));
+        Attack = Mathf.Floor(parent.GetAttack() * Random.Range(0.95f, 1.05f));
+        Spirit = Mathf.Floor(parent.GetSpirit() * Random.Range(0.95f, 1.05f));
+        Speed = Mathf.Floor(parent.GetSpeed() * Random.Range(0.95f, 1.05f));
+        Strong = Mathf.Floor(parent.GetStrong() * Random.Range(0.95f, 1.05f));
         Type = setChickenType(playerChicken, shopChicken);
         /*Skills.Add(2);*///待加入技能，从外部读取数据
         Talent = Random.Range(0, 3);
     }
+
+    /// <summary>
+    /// 设定性别
+    /// </summary>
     public void setCock()
     {
         isCock = (Random.Range(0, 1) == 0 ? false : true);
     }
-    
 
-    //用于商店生成的鸡,根据名声生成
+
+    /// <summary>
+    /// 用于商店生成的鸡,根据名声生成
+    /// </summary>
+    /// <param name="fame"></param>
     public void InitShopChicken(int fame)
     {
         Type = (chickentype)Random.Range(0, System.Enum.GetNames(Type.GetType()).Length);
@@ -174,7 +208,10 @@ public class FightChicken
         Talent = Random.Range(0, 4) * (1 + fame / 10);
     }
 
-    //鸡死亡简报信息（人数/最强战力）
+    /// <summary>
+    /// 鸡死亡简报信息（人数/最强战力）
+    /// </summary>
+    /// <returns></returns>
     public Vector2 ThisChickenBrief()
     {
         if (enemyChickens.Count > 0)//曾经与他人对战

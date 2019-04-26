@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1316583442014603561}
   m_Layer: 0
   m_Name: "armatureName_SR\u8D70_\u590D\u52361_00"
-  m_TagString: Untagged
+  m_TagString: FightChicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
