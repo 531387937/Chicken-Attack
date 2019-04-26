@@ -21,7 +21,7 @@ public class DropDownUI_NEW : MonoBehaviour
     void Start()
     {
         dropDownItem = this.GetComponent<Dropdown>();
-        dropDownItem.options.Clear();
+        //dropDownItem.options.Clear();
         Dropdown.OptionData temoData;
         for(int i = 0;i< GameSaveNew.Instance.playerChicken.Count;i++)
         {
@@ -43,14 +43,18 @@ public class DropDownUI_NEW : MonoBehaviour
         switch (value)
         {
             case 0:
+                chooseChicken = null;
+                ChooseChickenPic.texture = null;
+                break;
+            case 1:
                 chooseChicken = GameSaveNew.Instance.playerChicken[0];
                 ChooseChickenPic.texture = Pics[(int)chooseChicken.Type];
                 break;
-            case 1:
+            case 2:
                 chooseChicken = GameSaveNew.Instance.playerChicken[1];
                 ChooseChickenPic.texture = Pics[(int)chooseChicken.Type];
                 break;
-            case 2:
+            case 3:
                 chooseChicken = GameSaveNew.Instance.playerChicken[2];
                 ChooseChickenPic.texture = Pics[(int)chooseChicken.Type];
                 break;
