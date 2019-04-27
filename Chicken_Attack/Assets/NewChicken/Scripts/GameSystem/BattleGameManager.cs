@@ -31,6 +31,8 @@ public class BattleGameManager : MonoBehaviour
     public TextMeshProUGUI UI_Text;
 
     public TextMeshProUGUI Gold;
+    public TextMeshProUGUI Prestige;
+    public TextMeshProUGUI Pt;
     public GameObject EndGamePanel;
     private float timer = 3;
 
@@ -98,6 +100,9 @@ public class BattleGameManager : MonoBehaviour
             gameend = true;
             UI_Text.text = "You Lose!";
             EndGamePanel.SetActive(true);
+            Gold.text = "+ 0";
+            Prestige.text = "+ 0";
+            Pt.text = "+ 0";
             Time.timeScale = 1;
         }
         if ((EnemyHP.value <= 0||EnemySpirit.value<=0) && !gameend)
@@ -106,6 +111,8 @@ public class BattleGameManager : MonoBehaviour
             UI_Text.text = "You Win!";
             EndGamePanel.SetActive(true);
             Gold.text = "+" + FC[level - 1].GoldGet;
+            Prestige.text = "+" + FC[level - 1].PrestigeGet;
+            Pt.text = "+" + FC[level - 1].PtGet;
             GameSaveNew.Instance.PD.Gold+= FC[level - 1].GoldGet;
             GameSaveNew.Instance.PD.Prestige += FC[level - 1].PrestigeGet;
             GameSaveNew.Instance.PD.Pt += FC[level - 1].PtGet;

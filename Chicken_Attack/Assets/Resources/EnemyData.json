@@ -6,7 +6,7 @@
       "HP": 60.0,
       "Attack": 12.0,
       "Speed": 5.0,
-      "Spirit": 50.0,
+      "Spirit": 80.0,
       "Strong": 8.0,
       "isCock": false,
       "Talent": 0,
@@ -15,6 +15,25 @@
       "enemyChickens": null
     },
     "GoldGet": 10,
+    "PrestigeGet": 5,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "aa",
+      "HP": 90.0,
+      "Attack": 13.0,
+      "Speed": 5.1,
+      "Spirit": 60.0,
+      "Strong": 8.0,
+      "isCock": false,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 15,
     "PrestigeGet": 5,
     "PtGet": 1
   },
