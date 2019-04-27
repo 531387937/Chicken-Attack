@@ -33,17 +33,34 @@ public class BattleGameManager : MonoBehaviour
     public TextMeshProUGUI Gold;
     public GameObject EndGamePanel;
     private float timer = 3;
+
+    public GameObject[] Chicken;
+    public Transform PlayerPos;
+    public Transform EnemyPos;
+
+    private GameObject player;
+    private GameObject enemy;
     List<LevelSet> FC;
+
+    private bool playeratk=false;
+    private bool enemyatk=false;
+
+    private float PlayerSpeed;
+    private float EnemySpeed;
     //string enemyPath = "Assets/Resources/EnemyData.json";
     void Start()
     {
         level = SceneChange.Level;
         player_chicken = GameSaveNew.Instance.ChooseChicken;
-        print(player_chicken.Name);
+        PlayerSpeed = player_chicken.Speed;
         string aa = Resources.Load("EnemyData").ToString();
         FC = IOHelper.GetData(aa, typeof(List<LevelSet>),1) as List<LevelSet>;
         enemy_chicken = FC[level-1].EnemyChicken;
-        player_chicken.enemyChickens.Add(enemy_chicken);//将此敌人加入玩家此生遇到敌人队列
+        EnemySpeed = enemy_chicken.Speed;
+        //player_chicken.enemyChickens.Add(enemy_chicken);//将此敌人加入玩家此生遇到敌人队列
+        //生成对战的两只鸡
+        ChickenInit();
+        //初始化血条
         SliderSet();
         //SkillRead();
     }
@@ -92,7 +109,7 @@ public class BattleGameManager : MonoBehaviour
             GameSaveNew.Instance.PD.Gold+= FC[level - 1].GoldGet;
             GameSaveNew.Instance.PD.Prestige += FC[level - 1].PrestigeGet;
             GameSaveNew.Instance.PD.Pt += FC[level - 1].PtGet;
-            GameSaveNew.Instance.SaveAllData();
+            GameSaveNew.Instance.SavePlayerData();
             Time.timeScale = 1;
         }
         if(gameend)
@@ -108,15 +125,26 @@ public class BattleGameManager : MonoBehaviour
     {
         UI_Text.text = null;
         gameBegin = true;
-        if (player_chicken.Speed >= enemy_chicken.Speed)
+        if (PlayerSpeed >= EnemySpeed)
         {
-            PlayerAttack();
+            PlayerReady();
         }
         else
-            EnemyAttack();
+            EnemyReady();
+    }
+    public void Attack(float timer)
+    {
+        if(playeratk)
+        {
+            PlayerAttack(timer);
+        }
+        if(enemyatk)
+        {
+            EnemyAttack(timer);
+        }
     }
     //玩家的回合
-    void PlayerAttack()
+    public void PlayerAttack(float time=1)
     {
         if (!gameend)
         {
@@ -126,24 +154,24 @@ public class BattleGameManager : MonoBehaviour
             MP_Damage.gameObject.transform.position = EnemyMPPos.position;
             MP_Damage.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             //进行伤害判定
-            float damage =(int)player_chicken.Attack * Random.Range(0.95f, 1.05f);
+            float damage =(int)player_chicken.Attack * Random.Range(0.95f, 1.05f)*time;
             HP_Damage.text = "-"+(int)damage;
             HP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(5.0f, 8.0f), 10.0f));
             EnemyHP.value -=(int)damage;
-            damage= (int)player_chicken.Strong * Random.Range(0.95f, 1.05f);
+            damage= (int)player_chicken.Strong * Random.Range(0.95f, 1.05f)*time;
             MP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(5.0f, 8.0f), 10.0f));
             MP_Damage.text = "-" + (int)damage;
             EnemySpirit.value -= (int)damage;
             //进行速度的判定
-            enemy_chicken.Speed += enemy_chicken.Speed;
-            if(enemy_chicken.Speed>=player_chicken.Speed)
-            Invoke("EnemyAttack", 2);
+            EnemySpeed += enemy_chicken.Speed;
+            if(EnemySpeed>=PlayerSpeed)
+            Invoke("EnemyReady", 2);
             else
-            Invoke("PlayerAttack", 2);
+            Invoke("PlayerReady", 2);
         }
     }
     //敌人的回合
-    void EnemyAttack()
+    public void EnemyAttack(float time=1)
     {
         if (!gameend)
         {
@@ -153,20 +181,20 @@ public class BattleGameManager : MonoBehaviour
             HP_Damage.gameObject.transform.position = playerHPPos.position;
             MP_Damage.gameObject.transform.position = playerMPPos.position;
             //进行伤害判定
-            float damage = (int)enemy_chicken.Attack * Random.Range(0.95f, 1.05f);
+            float damage = (int)enemy_chicken.Attack * Random.Range(0.95f, 1.05f)*time;
             HP_Damage.text = "-" + (int)damage;
             HP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5.0f, -8.0f), 10.0f));
             PlayerHP.value -= (int)damage;
-            damage = (int)enemy_chicken.Strong * Random.Range(0.95f, 1.05f);
+            damage = (int)enemy_chicken.Strong * Random.Range(0.95f, 1.05f)*time;
             MP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5.0f, -.0f), 10.0f));
             MP_Damage.text = "-" + (int)damage;
             PlayerSpirit.value -= (int)damage;
             //进行速度的判定
-            player_chicken.Speed += player_chicken.Speed;
-            if (player_chicken.Speed>=enemy_chicken.Speed)
-            Invoke("PlayerAttack", 2);
+            PlayerSpeed += player_chicken.Speed;
+            if (PlayerSpeed>=EnemySpeed)
+            Invoke("PlayerReady", 2);
             else
-            Invoke("EnemyAttack", 2);
+            Invoke("EnemyReady", 2);
         }
     }
      //设置生命值等血条
@@ -180,6 +208,38 @@ public class BattleGameManager : MonoBehaviour
         PlayerSpirit.value = PlayerSpirit.maxValue;
         EnemySpirit.maxValue = enemy_chicken.Spirit;
         EnemySpirit.value = EnemySpirit.maxValue;
+    }
+    //生成对战的鸡
+    void ChickenInit()
+    {
+        player = Instantiate(Chicken[(int)player_chicken.Type], PlayerPos.position,new Quaternion(0,0,0,1),this.transform);
+        enemy = Instantiate(Chicken[(int)enemy_chicken.Type], EnemyPos.position, new Quaternion(0, 180, 0, 1),this.transform);
+    }
+    void PlayerReady()
+    {
+        if (!gameend)
+        {
+            playeratk = true;
+            enemyatk = false;
+            int a = Random.Range(0, 10);
+            if (a == 9)
+                player.GetComponent<Animator>().SetTrigger("Attack1");
+            else
+                player.GetComponent<Animator>().SetTrigger("Attack");
+        }
+    }
+    void EnemyReady()
+    {
+        if (!gameend)
+        {
+            playeratk = false;
+            enemyatk = true;
+            int a = Random.Range(0, 10);
+            if (a == 9)
+                enemy.GetComponent<Animator>().SetTrigger("Attack1");
+            else
+                enemy.GetComponent<Animator>().SetTrigger("Attack");
+        }
     }
     //种族读取技能
     //void SkillRead()

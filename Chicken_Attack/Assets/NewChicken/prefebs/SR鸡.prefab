@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 8105479440551353421}
   - component: {fileID: 8056791716102740277}
   - component: {fileID: 6195234065671489470}
+  - component: {fileID: 1989828800934898541}
   m_Layer: 0
   m_Name: "SR\u9E21"
-  m_TagString: Untagged
+  m_TagString: FightChicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8105479440551353420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.36, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -142,3 +143,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3194737, y: 2.3852901}
   m_EdgeRadius: 0
+--- !u!114 &1989828800934898541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105479440551353420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bdeb4c53da90f94482b3fbf6ae34e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

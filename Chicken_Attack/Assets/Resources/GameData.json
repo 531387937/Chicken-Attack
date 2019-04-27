@@ -1,80 +1,60 @@
 [
+  
   {
-    "Type": 1,
+    "Type": 0,
     "Name": "AAA",
-    "HP": 100.0,
-    "Attack": 15.0,
+    "HP": 70.0,
+    "Attack": 14.0,
     "Speed": 5.0,
-    "Spirit": 70.0,
+    "Spirit": 60.0,
     "Strong": 10.0,
     "isCock": false,
     "Talent": 6,
     "Skills": null,
-    "Grand": [
-      {
-        "Type": 0,
-        "Name": "ShopGod",
-        "HP": 60.0,
-        "Attack": 10.0,
-        "Speed": 5.0,
-        "Spirit": 50.0,
-        "Strong": 10.0,
-        "isCock": false,
-        "Talent": 0,
-        "Skills": [],
-        "Grand": [],
-        "enemyChickens": [],
-        "Pos": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        }
-      }
-    ],
+    "Grand": null,
     "enemyChickens": null,
     "Pos": {
-      "x": -3.54955149,
-      "y": 1.19961321,
+      "x": -3.93416643,
+      "y": -0.7437062,
       "z": 0.0
     }
   },
   {
     "Type": 1,
     "Name": "BBB",
-    "HP": 70.0,
+    "HP": 60.0,
     "Attack": 10.0,
-    "Speed": 160.0,
-    "Spirit": 100.0,
+    "Speed": 5.0,
+    "Spirit": 80.0,
     "Strong": 15.0,
     "isCock": false,
     "Talent": 6,
     "Skills": null,
-    "Grand": [
-      {
-        "Type": 0,
-        "Name": "ShopGod",
-        "HP": 60.0,
-        "Attack": 10.0,
-        "Speed": 5.0,
-        "Spirit": 50.0,
-        "Strong": 10.0,
-        "isCock": false,
-        "Talent": 0,
-        "Skills": [],
-        "Grand": [],
-        "enemyChickens": [],
-        "Pos": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        }
-      }
-    ],
+    "Grand": null,
     "enemyChickens": null,
     "Pos": {
-      "x": 2.16159153,
-      "y": 0.469987273,
+      "x": 3.41665244,
+      "y": -0.440943956,
       "z": 0.0
     }
   },
-  {"Type":0,"Name":"CCC","HP":80.0,"Attack":12.0,"Speed":7.0,"Spirit":80.0,"Strong":12.0,"isCock":false,"Talent":6,"Skills":null,"Grand":[{"Type":0,"Name":"ShopGod","HP":60.0,"Attack":10.0,"Speed":5.0,"Spirit":50.0,"Strong":10.0,"isCock":false,"Talent":0,"Skills":[],"Grand":[],"enemyChickens":[],"Pos":{"x":0.0,"y":0.0,"z":0.0}}],"enemyChickens":null,"Pos":{"x":-0.981341541,"y":-1.06759381,"z":0.0}}]
+  {
+    "Type": 0,
+    "Name": "CCC",
+    "HP": 80.0,
+    "Attack": 12.0,
+    "Speed": 5.0,
+    "Spirit": 80.0,
+    "Strong": 12.0,
+    "isCock": false,
+    "Talent": 6,
+    "Skills": null,
+    "Grand": null,
+    "enemyChickens": null,
+    "Pos": {
+      "x": 0.1522615,
+      "y": -2.01901054,
+      "z": 0.0
+    }
+  }
+]

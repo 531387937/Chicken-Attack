@@ -65,12 +65,15 @@ public class DropDownUI_NEW : MonoBehaviour
         switch (value)
         {
             case 0:
-                GameSaveNew.Instance.ChooseChicken = GameSaveNew.Instance.playerChicken[0];
+                GameSaveNew.Instance.ChooseChicken = null;
                 break;
             case 1:
-                GameSaveNew.Instance.ChooseChicken = GameSaveNew.Instance.playerChicken[1];
+                GameSaveNew.Instance.ChooseChicken = GameSaveNew.Instance.playerChicken[0];
                 break;
             case 2:
+                GameSaveNew.Instance.ChooseChicken = GameSaveNew.Instance.playerChicken[1];
+                break;
+            case 3:
                 GameSaveNew.Instance.ChooseChicken = GameSaveNew.Instance.playerChicken[2];
                 break;
         }

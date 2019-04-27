@@ -97,7 +97,7 @@ public class UIManager_NEW : Singleton<UIManager>
 
     private string GetTooltipText(FightChicken chicken)
     {
-        string te ="生命值:" + chicken.HP + "\n" + "攻击力:" + chicken.Attack + "\n"+"斗志：" + chicken.Spirit + "\n"+ "气势:" + chicken.Strong + "\n"+"速度："+chicken.Speed+"\n";
+        string te ="生命值：" + chicken.HP + "\n" + "攻击力：" + chicken.Attack + "\n"+"斗志：" + chicken.Spirit + "\n"+ "气势：" + chicken.Strong +"\n";
         return te;
     }
 

@@ -69,7 +69,14 @@ public class GameSaveNew : Singleton<GameSaveNew>
         //    CanSave = false;
         //}
     }
-
+    public void SavePlayerData()
+    {
+        IOHelper.SetData(PlayerPath, PD, Mac);
+    }
+    public void SaveChickenData()
+    {
+        IOHelper.SetData(path, playerChicken, Mac);
+    }
     //存档
     public void SaveAllData()
     {

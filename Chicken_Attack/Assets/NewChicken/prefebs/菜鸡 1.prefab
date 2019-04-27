@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4593388267631407816}
   - component: {fileID: 832133930064501060}
   - component: {fileID: 4832268674503805914}
+  - component: {fileID: 79464237160746175}
   m_Layer: 0
   m_Name: "\u83DC\u9E21 1"
-  m_TagString: Untagged
+  m_TagString: FightChicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,3 +143,15 @@ MonoBehaviour:
   _time: 0
   timer: 0
   IsDrag: 0
+--- !u!114 &79464237160746175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3045997677048443577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bdeb4c53da90f94482b3fbf6ae34e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
