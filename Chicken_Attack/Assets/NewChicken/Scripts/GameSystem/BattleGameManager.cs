@@ -242,7 +242,7 @@ public class BattleGameManager : MonoBehaviour
             playeratk = false;
             enemyatk = true;
             int a = Random.Range(0, 10);
-            if (a == 9)
+            if (a >= 5)
                 enemy.GetComponent<Animator>().SetTrigger("Attack1");
             else
                 enemy.GetComponent<Animator>().SetTrigger("Attack");

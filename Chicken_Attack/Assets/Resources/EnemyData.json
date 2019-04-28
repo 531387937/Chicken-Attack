@@ -1,7 +1,7 @@
 [
   {
     "EnemyChicken": {
-      "Type": 0,
+      "Type": 1,
       "Name": "aa",
       "HP": 60.0,
       "Attack": 12.0,
@@ -25,7 +25,7 @@
       "HP": 90.0,
       "Attack": 13.0,
       "Speed": 5.1,
-      "Spirit": 60.0,
+      "Spirit": 53.0,
       "Strong": 8.0,
       "isCock": false,
       "Talent": 0,
