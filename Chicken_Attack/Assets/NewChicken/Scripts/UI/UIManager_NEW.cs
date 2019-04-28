@@ -48,7 +48,7 @@ public class UIManager_NEW : Singleton<UIManager>
         }
         Gold.text = GameSaveNew.Instance.PD.Gold.ToString();
         Prestige.text = GameSaveNew.Instance.PD.Prestige.ToString();
-        Pt.text = GameSaveNew.Instance.PD.Prestige.ToString();
+        Pt.text = GameSaveNew.Instance.PD.Pt.ToString();
     }
 
     private void GridImage_OnEnter(Transform obj)

@@ -1,1 +1,68 @@
-{"Gold":5143,"Prestige":671,"Pt":889,"ChickenNum":3,"ShopChicken":null,"Chick":null}
+{
+  "Gold": 5555,
+  "Prestige": 666,
+  "Pt": 888,
+  "ChickenNum": 3,
+  "ShopChicken": null,
+  "Chick": [
+    {
+      "Type": 0,
+      "Name": "Child",
+      "HP": 57.0,
+      "Attack": 9.0,
+      "Speed": 4.0,
+      "Spirit": 82.0,
+      "Strong": 14.0,
+      "isCock": false,
+      "Talent": 1,
+      "Skills": [],
+      "Grand": [
+        {
+          "Type": 1,
+          "Name": "BBB",
+          "HP": 60.0,
+          "Attack": 10.0,
+          "Speed": 5.0,
+          "Spirit": 80.0,
+          "Strong": 15.0,
+          "isCock": false,
+          "Talent": 6,
+          "Skills": null,
+          "Grand": [
+            {
+              "Type": 0,
+              "Name": "ShopGod",
+              "HP": 60.0,
+              "Attack": 10.0,
+              "Speed": 5.0,
+              "Spirit": 50.0,
+              "Strong": 10.0,
+              "isCock": false,
+              "Talent": 0,
+              "Skills": [],
+              "Grand": [],
+              "enemyChickens": [],
+              "Pos": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              }
+            }
+          ],
+          "enemyChickens": null,
+          "Pos": {
+            "x": 3.66836739,
+            "y": -2.18007421,
+            "z": 0.0
+          }
+        }
+      ],
+      "enemyChickens": [],
+      "Pos": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    }
+  ]
+}

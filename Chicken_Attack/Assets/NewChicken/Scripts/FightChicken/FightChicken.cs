@@ -37,7 +37,12 @@ public class FightChicken
     //在场景中位置
     public Vector3 Pos = new Vector3(0,0,0);
 
-    //设置鸡的种族
+    /// <summary>
+    /// 设置鸡的种族
+    /// </summary>
+    /// <param name="playerChicken"></param>
+    /// <param name="shopChicken"></param>
+    /// <returns></returns>
     private chickentype setChickenType(FightChicken playerChicken,FightChicken shopChicken)
     {
         chickentype NewChickenType=0;
@@ -173,14 +178,15 @@ public class FightChicken
         {
             parent = playerChicken;
         }
-        HP = Mathf.Floor(parent.getHP() * Random.Range(0.95f, 1.05f));
-        Attack = Mathf.Floor(parent.GetAttack() * Random.Range(0.95f, 1.05f));
-        Spirit = Mathf.Floor(parent.GetSpirit() * Random.Range(0.95f, 1.05f));
-        Speed = Mathf.Floor(parent.GetSpeed() * Random.Range(0.95f, 1.05f));
-        Strong = Mathf.Floor(parent.GetStrong() * Random.Range(0.95f, 1.05f));
+        HP = Mathf.Ceil(parent.getHP() * Random.Range(0.95f, 1.05f));
+        Attack = Mathf.Ceil(parent.GetAttack() * Random.Range(0.95f, 1.05f));
+        Spirit = Mathf.Ceil(parent.GetSpirit() * Random.Range(0.95f, 1.05f));
+        Speed = Mathf.Ceil(parent.GetSpeed() * Random.Range(0.95f, 1.05f));
+        Strong = Mathf.Ceil(parent.GetStrong() * Random.Range(0.95f, 1.05f));
         Type = setChickenType(playerChicken, shopChicken);
         /*Skills.Add(2);*///待加入技能，从外部读取数据
         Talent = Random.Range(0, 3);
+        Grand.Add(parent);
     }
 
     /// <summary>
