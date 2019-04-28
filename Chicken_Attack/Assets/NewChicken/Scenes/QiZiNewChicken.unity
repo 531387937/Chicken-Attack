@@ -1816,7 +1816,7 @@ GameObject:
   - component: {fileID: 1185659038}
   - component: {fileID: 1185659037}
   m_Layer: 0
-  m_Name: "QQ\u56FE\u724720190424111808"
+  m_Name: Bkg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2087,7 +2087,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2714,7 +2714,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 583, y: -309}
-  m_SizeDelta: {x: -800, y: -449.93564}
+  m_SizeDelta: {x: -799.99994, y: -449.99997}
   m_Pivot: {x: -0.00000020116568, y: 1.0000006}
 --- !u!114 &1926721774
 MonoBehaviour:

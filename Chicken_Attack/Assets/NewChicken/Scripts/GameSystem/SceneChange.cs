@@ -9,10 +9,10 @@ public class SceneChange : MonoBehaviour
 
     public void GoLoadingScene(string name)
     {
-        if (name == "ChickenBreedScene"||name == "XYShop" && GameSaveNew.Instance.PD.ShopChicken != null)
-        {
-            return;
-        }
+        //if (name == "ChickenBreedScene"||name == "XYShop" && GameSaveNew.Instance.PD.ShopChicken != null)
+        //{
+        //    return;
+        //}
         SceneName = name;
         SceneManager.LoadScene("LoadScene");
     }

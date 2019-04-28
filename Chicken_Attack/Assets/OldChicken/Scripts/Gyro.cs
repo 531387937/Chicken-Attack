@@ -72,11 +72,10 @@ public class Gyro : MonoBehaviour
         currentPos = this.transform.position;
     }
 
-    void OnGUI()
-    {
-        GUI.Label(new Rect(50, 100, 500, 20), "Label : " + Input.gyro.attitude.ToEuler().x);
-    }
-
-
+    //void OnGUI()
+    //{
+    //    GUI.Label(new Rect(50, 100, 500, 20), "Label : " + Input.gyro.attitude.ToEuler().x);
+    //}
+    
 }
 
