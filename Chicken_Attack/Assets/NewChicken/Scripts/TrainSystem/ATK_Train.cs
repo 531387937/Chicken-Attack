@@ -18,10 +18,6 @@ public class ATK_Train : MonoBehaviour
     public GameObject ATK_Panel;
     public Canvas Old;
     // Start is called before the first frame update
-    void Start()
-    {
-        InitAtk();
-    }
 
     // Update is called once per frame
     void Update()
