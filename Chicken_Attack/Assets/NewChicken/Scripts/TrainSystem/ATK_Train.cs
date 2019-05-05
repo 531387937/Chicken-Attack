@@ -4,27 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ATK_Train : MonoBehaviour
 {
-    [Range(0,10)]
+    [Range(0, 10)]
     private float KeyValue1;
     private float KeyValue2;
-    [SerializeField]
     private float currentValue;
     private float add_Value;
-    private bool Training=false;
+    private bool Training = false;
     private int level = 0;
     public float add;
     public Scrollbar Scroll;
     public Image BackImage;
     public GameObject ATK_Panel;
-    public Canvas Old;
+    public GameObject Pos;
+    public GameObject[] Chicken;
+    private GameObject Train_Chicken;
+    private Animator An;
     // Start is called before the first frame update
-
+    private void Start()
+    {
+        InitAtk();
+        Train_Chicken = Instantiate(Chicken[(int)GameSaveNew.Instance.ChooseChicken.Type], Pos.transform.position, Pos.transform.rotation);
+        An = Train_Chicken.GetComponent<Animator>();
+    }
     // Update is called once per frame
     void Update()
     {
         if (Training)
         {
-            switch(level)
+            switch (level)
             {
                 case 0:
                     add = 10;
@@ -57,18 +64,21 @@ public class ATK_Train : MonoBehaviour
     }
     public void InitAtk()
     {
-        StartCoroutine(AtkTrain());
-        level = 0;
-        Old.gameObject.SetActive(false);
-        currentValue = 0;
-        ATK_Panel.SetActive(true);
-        KeyValue1 = Random.Range(0f,7.5f);
-        KeyValue2 = (KeyValue1 + 2.5f);
-        BackImage.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(15+KeyValue1/3*44, 0, 0);
+        if (GameSaveNew.Instance.PD.Pt >= 0)
+        {
+            GameSaveNew.Instance.PD.Pt--;
+            StartCoroutine(AtkTrain());
+            level = 0;
+            currentValue = 0;
+            ATK_Panel.SetActive(true);
+            KeyValue1 = Random.Range(0f, 7.5f);
+            KeyValue2 = (KeyValue1 + 2.5f);
+            BackImage.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(15 + KeyValue1 / 3 * 44, 0, 0);
+        }
     }
     private void LevelUp()
     {
-         level++;
+        level++;
         KeyValue1 = Random.Range(0f, 7.5f);
         KeyValue2 = (KeyValue1 + 2.5f);
         BackImage.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(15 + KeyValue1 / 3 * 44, 0, 0);
@@ -86,17 +96,48 @@ public class ATK_Train : MonoBehaviour
             Training = false;
             if (currentValue > KeyValue1 && currentValue < KeyValue2)
             {
-                if(level==4)
+                if (level == 4)
                 {
+                    An.SetTrigger("Attack1");
                     //弹出结算窗口，显示提升攻击力（根据关卡完成数）
+                    Invoke("ATK_END", 1.5f);
+                    ATK_END();
                 }
                 else
-                LevelUp();
+                    An.SetTrigger("Attack");
+                    Invoke("LevelUp",1.5f);
             }
             else
             {
                 //弹出结算窗口
+                ATK_END();
             }
         }
+    }
+    void ATK_END()
+    {
+        switch (level)
+        {
+            case 0:
+                GameSaveNew.Instance.ChooseChicken.Attack += 0;
+                break;
+            case 1:
+                GameSaveNew.Instance.ChooseChicken.Attack += 0;
+                GameSaveNew.Instance.ChooseChicken.Speed += 0.05f;
+                break;
+            case 2:
+                GameSaveNew.Instance.ChooseChicken.Attack += 1;
+                GameSaveNew.Instance.ChooseChicken.Speed += 0.1f;
+                break;
+            case 3:
+                GameSaveNew.Instance.ChooseChicken.Attack += 1;
+                GameSaveNew.Instance.ChooseChicken.Speed += 0.15f;
+                break;
+            case 4:
+                GameSaveNew.Instance.ChooseChicken.Attack += 2;
+                GameSaveNew.Instance.ChooseChicken.Speed += 0.2f;
+                break;
+        }
+        GameSaveNew.Instance.SaveAllData();
     }
 }
