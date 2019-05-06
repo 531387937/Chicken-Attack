@@ -23,20 +23,19 @@ public class FightChicken
     public float Spirit;
     //鸡的气势
     public float Strong;
-    //鸡的公母
-    public bool isCock;
     //鸡的天赋
     [Range(5,8)]
     public int Talent;
     //鸡的技能组
-    public List<int> Skills = new List<int>();
+    //public List<int> Skills = new List<int>();
     //鸡的前辈种族
     public List<FightChicken> Grand = new List<FightChicken>();
-    //此生遇到的敌机
-    public List<FightChicken> enemyChickens = new List<FightChicken>();
+    //此生遇到的敌鸡战斗力
+    public List<float> enemyChickens = new List<float>();
     //在场景中位置
     public Vector3 Pos = new Vector3(0,0,0);
-
+    //玩家的第几只鸡
+    public int Ch_Num;
     /// <summary>
     /// 设置鸡的种族
     /// </summary>
@@ -92,11 +91,6 @@ public class FightChicken
     {
         return Strong;
     }
-    //检查鸡的公母
-    public bool CheckCock()
-    {
-        return isCock;
-    }
     //获得鸡的天赋
     public int GetTalent()
     {
@@ -108,12 +102,12 @@ public class FightChicken
     }
 
     /// <summary>
-    /// 计算鸡的综合战斗力（待修改）
+    /// 计算鸡的综合战斗力评价（待修改）
     /// </summary>
     /// <returns></returns>
     public float Getpower()
     {
-        return HP / 30 * Attack / 5 * Speed / 30 * Spirit / 15 * Strong / 5;
+        return Mathf.Ceil(HP / 30 * Attack / 12 * Speed /1.2f * Spirit / 30 * Strong / 12);
     }
 
     /// <summary>
@@ -123,13 +117,13 @@ public class FightChicken
     public FightChicken(string name)
     {
         Name = name;
-        HP = 60; //生命值
+        HP = 50; //生命值
         Attack = 10;//攻击力
         Spirit = 50; //斗志
         Speed = 5; //速度
         Strong = 10;//气势
         Type = 0;
-        Talent = 0;//天赋
+        Talent = 5;//天赋
     }
 
     /// <summary>
@@ -178,24 +172,24 @@ public class FightChicken
         {
             parent = playerChicken;
         }
-        HP = Mathf.Ceil(parent.getHP() * Random.Range(0.95f, 1.05f));
-        Attack = Mathf.Ceil(parent.GetAttack() * Random.Range(0.95f, 1.05f));
-        Spirit = Mathf.Ceil(parent.GetSpirit() * Random.Range(0.95f, 1.05f));
-        Speed = Mathf.Ceil(parent.GetSpeed() * Random.Range(0.95f, 1.05f));
-        Strong = Mathf.Ceil(parent.GetStrong() * Random.Range(0.95f, 1.05f));
+        HP = Mathf.Ceil(playerChicken.HP*0.75f+shopChicken.HP*0.25f* Random.Range(0.95f, 1.05f));
+        Attack = Mathf.Ceil(playerChicken.Attack * 0.75f + shopChicken.Attack * 0.25f * Random.Range(0.95f, 1.05f));
+        Spirit = Mathf.Ceil(playerChicken.Spirit * 0.75f + shopChicken.Spirit * 0.25f * Random.Range(0.95f, 1.05f));
+        Speed = playerChicken.Speed;
+        Strong = Mathf.Ceil(playerChicken.Strong * 0.75f + shopChicken.Strong * 0.25f * Random.Range(0.95f, 1.05f));
         Type = setChickenType(playerChicken, shopChicken);
         /*Skills.Add(2);*///待加入技能，从外部读取数据
-        Talent = Random.Range(0, 3);
+        Talent = Random.Range(5, 8);
         Grand.Add(parent);
     }
 
     /// <summary>
     /// 设定性别
     /// </summary>
-    public void setCock()
-    {
-        isCock = (Random.Range(0, 1) == 0 ? false : true);
-    }
+    //public void setCock()
+    //{
+    //    isCock = (Random.Range(0, 1) == 0 ? false : true);
+    //}
 
 
     /// <summary>
@@ -215,7 +209,7 @@ public class FightChicken
     }
 
     /// <summary>
-    /// 鸡死亡简报信息（人数/最强战力）
+    /// 鸡退休简报信息（人数/最强战力）
     /// </summary>
     /// <returns></returns>
     public Vector2 ThisChickenBrief()
@@ -225,9 +219,9 @@ public class FightChicken
             float EnemyMaxAttack = 0;
             for (int i = 0;i< enemyChickens.Count; i++)
             {
-                if(enemyChickens[i].Getpower() > EnemyMaxAttack)
+                if(enemyChickens[i]> EnemyMaxAttack)
                 {
-                    EnemyMaxAttack = enemyChickens[i].Getpower();
+                    EnemyMaxAttack = enemyChickens[i];
                 }
             }
             return new Vector2(enemyChickens.Count, EnemyMaxAttack);

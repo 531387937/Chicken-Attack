@@ -1248,7 +1248,7 @@ GameObject:
   - component: {fileID: 449512466}
   - component: {fileID: 449512465}
   m_Layer: 0
-  m_Name: R)PKJ`(G1Y%[XKX](PQ_WOJ (1)
+  m_Name: "\u9E21\u7B3C"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2683,7 +2683,7 @@ GameObject:
   - component: {fileID: 904309575}
   - component: {fileID: 904309574}
   m_Layer: 0
-  m_Name: R)PKJ`(G1Y%[XKX](PQ_WOJ
+  m_Name: "\u7E41\u6B96\u5C0F\u5C4B"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6586,7 +6586,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1529552800}
-        m_MethodName: Exit
+        m_MethodName: Go_Train
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6594,6 +6594,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1529552800}
+        m_MethodName: Train_Class
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Strong_Train
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,

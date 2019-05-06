@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 public class PaoPao : MonoBehaviour
 {
     public static Action<Transform> OnEnter;
     private GameObject Train_Manager;
-    private float timer = 0;
+    public SpriteRenderer SR;
+    public Sprite Sp;
+    public int Num;
+    public TextMeshPro txt;
     public void OnMouseDown()
     {
         if (OnEnter != null)
@@ -19,19 +23,12 @@ public class PaoPao : MonoBehaviour
     void Start()
     {
         Train_Manager = GameObject.Find("Train_Manager");
+        SR = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer>2)
-        {
-            Destroy(this.gameObject);
-        }
-    }
-    public void Miss()
-    {
-        Train_Manager.GetComponent<Spirit_Train>().MissNum++;
+        txt.text = Num.ToString();
     }
 }

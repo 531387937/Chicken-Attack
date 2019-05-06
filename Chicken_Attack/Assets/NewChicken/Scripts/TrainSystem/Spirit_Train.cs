@@ -11,10 +11,11 @@ public class Spirit_Train : MonoBehaviour
     private GameObject Train_Chicken;
     public GameObject[] PaoPaos;
     public int maxPaoPao;
-    public int succeed_Num=0;
-    private int timer=0;
-    public int MissNum = 0;
     private bool train_End;
+    private int currentNum=1;
+    private int level = 3;
+    GameObject[] a;
+    public int train_Num;
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -26,17 +27,15 @@ public class Spirit_Train : MonoBehaviour
     }
     void Start()
     {
-        Train_Chicken = Instantiate(Chicken[(int)GameSaveNew.Instance.ChooseChicken.Type], Pos.transform.position, Pos.transform.rotation);
+        train_Num = GameSaveNew.Instance.ChooseChicken.Ch_Num;
+        Train_Chicken = Instantiate(Chicken[(int)GameSaveNew.Instance.playerChicken[train_Num].Type], Pos.transform.position,new Quaternion(0,0,0,1));
         Start_Train();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if((MissNum+succeed_Num==maxPaoPao)&&(!train_End))
-        {
-            Train_End();
-        }
+
     }
     public void Start_Train()
     {
@@ -45,45 +44,70 @@ public class Spirit_Train : MonoBehaviour
     }
     void Apear_PaoPao()
     {
-        GameObject a;
-        timer++;
-        a=Instantiate(PaoPaos[Random.Range(0, PaoPaos.Length)], new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0), new Quaternion(0, 0, 0, 1));
-        if(timer<maxPaoPao)
-        Invoke("Apear_PaoPao", Random.Range(0.3f, 0.8f));
+        a=new GameObject[level];
+        for (int i = 0; i < level; i++)
+        {
+            a[i] = Instantiate(PaoPaos[Random.Range(0, PaoPaos.Length)], new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0), new Quaternion(0, 0, 0, 1));
+            a[i].GetComponent<PaoPao>().Num = i + 1;
+        }
     }
 
     private void OnEnter(Transform obj)
     {
-        succeed_Num++;
-        Destroy(obj.gameObject);
+        if (currentNum == obj.GetComponent<PaoPao>().Num)
+        {
+            currentNum++;
+            obj.GetComponent<PaoPao>().SR.sprite = obj.GetComponent<PaoPao>().Sp;
+            obj.GetComponent<Animator>().speed = 0;
+        }
+        else
+        {
+            foreach (GameObject q in a)
+            {
+                Destroy(q);
+            }
+            Train_End();
+        }
+        if(currentNum==level+1)
+        {
+            currentNum = 1;
+            foreach (GameObject q in a)
+            {
+                Destroy(q, 0.5f);
+            }
+            Invoke("LevelUp", 2f);
+        }
     }
-
-    void Train_End()
+    void LevelUp()
+    {
+        level++;
+        if (level < 6)
+        {
+            Apear_PaoPao();
+        }
+        if(level==5&&!train_End)
+        {
+            Train_End();
+        }
+    }
+    public void Train_End()
     {
         train_End = true;
-        if (succeed_Num <= 3 && succeed_Num > 0)
+        switch(level)
         {
-            GameSaveNew.Instance.ChooseChicken.Spirit += 1;
-        }
-        if (succeed_Num <= 5&&succeed_Num>3)
-        {
-            GameSaveNew.Instance.ChooseChicken.Spirit += 2;
-            GameSaveNew.Instance.ChooseChicken.Speed += 0.05f;
-        }
-        if(succeed_Num>5&&succeed_Num<7)
-        {
-            GameSaveNew.Instance.ChooseChicken.Spirit += 3;
-            GameSaveNew.Instance.ChooseChicken.Speed += 0.1f;
-        }
-        if (succeed_Num > 7 && succeed_Num < 10)
-        {
-            GameSaveNew.Instance.ChooseChicken.Spirit += 4;
-            GameSaveNew.Instance.ChooseChicken.Speed += 0.15f;
-        }
-        if(succeed_Num==10)
-        {
-            GameSaveNew.Instance.ChooseChicken.Spirit += 5;
-            GameSaveNew.Instance.ChooseChicken.Speed += 0.2f;
+            case 3:
+                break;
+            case 4:
+                GameSaveNew.Instance.playerChicken[train_Num].Strong += 1;
+                break;
+            case 5:
+                GameSaveNew.Instance.playerChicken[train_Num].Strong += 1;
+                GameSaveNew.Instance.playerChicken[train_Num].Speed += 0.1f;
+                break;
+            case 6:
+                GameSaveNew.Instance.playerChicken[train_Num].Strong += 2;
+                GameSaveNew.Instance.playerChicken[train_Num].Speed += 0.2f;
+                break;
         }
         GameSaveNew.Instance.SaveAllData();
     }

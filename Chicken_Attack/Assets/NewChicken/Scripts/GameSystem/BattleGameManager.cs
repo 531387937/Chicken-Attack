@@ -113,10 +113,11 @@ public class BattleGameManager : MonoBehaviour
             Gold.text = "+" + FC[level - 1].GoldGet;
             Prestige.text = "+" + FC[level - 1].PrestigeGet;
             Pt.text = "+" + FC[level - 1].PtGet;
+            player_chicken.enemyChickens.Add(enemy_chicken.Getpower());
             GameSaveNew.Instance.PD.Gold+= FC[level - 1].GoldGet;
             GameSaveNew.Instance.PD.Prestige += FC[level - 1].PrestigeGet;
             GameSaveNew.Instance.PD.Pt += FC[level - 1].PtGet;
-            GameSaveNew.Instance.SavePlayerData();
+            GameSaveNew.Instance.SaveAllData();
             Time.timeScale = 1;
         }
         if(gameend)

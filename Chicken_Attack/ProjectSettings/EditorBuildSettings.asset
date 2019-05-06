@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/NewChicken/Scenes/ATK_Training.unity
     guid: 90f1d0da9930c234b9b867b5a74fbfa1
   - enabled: 1
-    path: Assets/NewChicken/Scenes/Spirit_Train.unity
+    path: Assets/NewChicken/Scenes/Strong_Train.unity
     guid: 3785ddefa52e95f4babb3c68de216cf8
   m_configObjects: {}
