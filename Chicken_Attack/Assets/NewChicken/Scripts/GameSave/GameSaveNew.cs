@@ -14,7 +14,7 @@ public class GameSaveNew : Singleton<GameSaveNew>
     //private bool CanSave = true;//是否可以保存
     public List<FightChicken> playerChicken; /*= new FightChicken("棋子");*/
     public PlayerData PD = new PlayerData();
-    public FightChicken ChooseChicken = null;
+    public int ChooseChicken = 0;
     //string path = Application.persistentDataPath + @"/GameData.json";
     string path = "Assets/Resources/GameData.json";
     string PlayerPath = "Assets/Resources/GamePlayerData.json";
@@ -68,6 +68,7 @@ public class GameSaveNew : Singleton<GameSaveNew>
         //{
         //    CanSave = false;
         //}
+        print(ChooseChicken);
     }
     public void SavePlayerData()
     {

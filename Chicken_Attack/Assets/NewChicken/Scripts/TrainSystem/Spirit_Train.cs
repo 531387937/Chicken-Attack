@@ -27,7 +27,7 @@ public class Spirit_Train : MonoBehaviour
     }
     void Start()
     {
-        train_Num = GameSaveNew.Instance.ChooseChicken.Ch_Num;
+        train_Num = GameSaveNew.Instance.ChooseChicken;
         Train_Chicken = Instantiate(Chicken[(int)GameSaveNew.Instance.playerChicken[train_Num].Type], Pos.transform.position,new Quaternion(0,0,0,1));
         Start_Train();
     }

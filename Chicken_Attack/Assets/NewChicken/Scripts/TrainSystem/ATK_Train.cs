@@ -23,7 +23,7 @@ public class ATK_Train : MonoBehaviour
     private void Start()
     {
         InitAtk();
-        Train_Chicken = Instantiate(Chicken[(int)GameSaveNew.Instance.ChooseChicken.Type], Pos.transform.position, Pos.transform.rotation);
+        Train_Chicken = Instantiate(Chicken[(int)(GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Type)], Pos.transform.position, Pos.transform.rotation);
         An = Train_Chicken.GetComponent<Animator>();
     }
     // Update is called once per frame
@@ -119,23 +119,23 @@ public class ATK_Train : MonoBehaviour
         switch (level)
         {
             case 0:
-                GameSaveNew.Instance.ChooseChicken.Attack += 0;
+                GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Attack += 0;
                 break;
             case 1:
-                GameSaveNew.Instance.ChooseChicken.Attack += 0;
-                GameSaveNew.Instance.ChooseChicken.Speed += 0.05f;
+                GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Attack += 0;
+                GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Speed += 0.05f;
                 break;
             case 2:
-                GameSaveNew.Instance.ChooseChicken.Attack += 1;
-                GameSaveNew.Instance.ChooseChicken.Speed += 0.1f;
+                GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Attack += 1;
+                GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Speed += 0.1f;
                 break;
             case 3:
-                GameSaveNew.Instance.ChooseChicken.Attack += 1;
-                GameSaveNew.Instance.ChooseChicken.Speed += 0.15f;
+                GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Attack += 1;
+                GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Speed += 0.15f;
                 break;
             case 4:
-                GameSaveNew.Instance.ChooseChicken.Attack += 2;
-                GameSaveNew.Instance.ChooseChicken.Speed += 0.2f;
+                GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Attack += 2;
+                GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Speed += 0.2f;
                 break;
         }
         GameSaveNew.Instance.SaveAllData();

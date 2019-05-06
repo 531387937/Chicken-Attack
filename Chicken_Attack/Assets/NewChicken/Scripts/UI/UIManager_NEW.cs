@@ -61,10 +61,10 @@ public class UIManager_NEW : Singleton<UIManager>
         Pt.text = GameSaveNew.Instance.PD.Pt.ToString();
         if (GameSaveNew.Instance.ChooseChicken!= null)
         {
-            ATK.text = GameSaveNew.Instance.ChooseChicken.Attack.ToString();
-            HP.text = GameSaveNew.Instance.ChooseChicken.HP.ToString();
-            Spirit.text = GameSaveNew.Instance.ChooseChicken.Spirit.ToString();
-            Strong.text = GameSaveNew.Instance.ChooseChicken.Strong.ToString();
+            ATK.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Attack.ToString();
+            HP.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].HP.ToString();
+            Spirit.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Spirit.ToString();
+            Strong.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Strong.ToString();
         }
     }
     //没有拖拽动画，暂且取消拖拽事件
@@ -96,7 +96,7 @@ public class UIManager_NEW : Singleton<UIManager>
 
         //直接将被点击的鸡成为被选择的鸡，用于前往战斗、训练、繁殖等
         gridImage = obj.gameObject.GetComponent<GridImage_NEW>();
-        GameSaveNew.Instance.ChooseChicken = obj.gameObject.GetComponent<MyFightChicken>().self;
+        GameSaveNew.Instance.ChooseChicken = obj.gameObject.GetComponent<MyFightChicken>().self.Ch_Num;
         ChickenPanel.SetActive(true);
     }
 

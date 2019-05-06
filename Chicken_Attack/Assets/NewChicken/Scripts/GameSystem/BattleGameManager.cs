@@ -53,7 +53,7 @@ public class BattleGameManager : MonoBehaviour
     void Start()
     {
         level = SceneChange.Level;
-        player_chicken = GameSaveNew.Instance.ChooseChicken;
+        player_chicken = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken];
         PlayerSpeed = player_chicken.Speed;
         string aa = Resources.Load("EnemyData").ToString();
         FC = IOHelper.GetData(aa, typeof(List<LevelSet>),1) as List<LevelSet>;
