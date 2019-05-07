@@ -13,9 +13,10 @@ public class Spirit_Train : MonoBehaviour
     public int maxPaoPao;
     private bool train_End;
     private int currentNum=1;
-    private int level = 3;
+    private int level = 1;
     GameObject[] a;
-    public int train_Num;
+    private List<Vector3> Ve;
+    private bool canTouch = false;
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -27,8 +28,8 @@ public class Spirit_Train : MonoBehaviour
     }
     void Start()
     {
-        train_Num = GameSaveNew.Instance.ChooseChicken;
-        Train_Chicken = Instantiate(Chicken[(int)GameSaveNew.Instance.playerChicken[train_Num].Type], Pos.transform.position,new Quaternion(0,0,0,1));
+        Ve = new List<Vector3>();
+        Train_Chicken = Instantiate(Chicken[(int)GameSaveNew.Instance.playerChicken.Type], Pos.transform.position,new Quaternion(0,0,0,1));
         Start_Train();
     }
 
@@ -40,7 +41,8 @@ public class Spirit_Train : MonoBehaviour
     public void Start_Train()
     {
         GameSaveNew.Instance.PD.Pt--;
-        Apear_PaoPao();
+        //Apear_PaoPao();
+        StartCoroutine(apearPaoPao());
     }
     void Apear_PaoPao()
     {
@@ -54,20 +56,22 @@ public class Spirit_Train : MonoBehaviour
 
     private void OnEnter(Transform obj)
     {
-        if (currentNum == obj.GetComponent<PaoPao>().Num)
-        {
-            currentNum++;
-            obj.GetComponent<PaoPao>().SR.sprite = obj.GetComponent<PaoPao>().Sp;
-            obj.GetComponent<Animator>().speed = 0;
-        }
-        else
-        {
-            foreach (GameObject q in a)
+
+            if (currentNum == obj.GetComponent<PaoPao>().Num)
             {
-                Destroy(q);
+                currentNum++;
+                obj.GetComponent<PaoPao>().SR.sprite = obj.GetComponent<PaoPao>().Sp;
+                obj.GetComponent<Animator>().speed = 0;
             }
-            Train_End();
-        }
+            else
+            {
+                foreach (GameObject q in a)
+                {
+                    Destroy(q);
+                }
+                Train_End();
+            }
+        
         if(currentNum==level+1)
         {
             currentNum = 1;
@@ -78,14 +82,15 @@ public class Spirit_Train : MonoBehaviour
             Invoke("LevelUp", 2f);
         }
     }
+    //增加难度
     void LevelUp()
     {
-        level++;
-        if (level < 6)
+        if (level < 5)
         {
-            Apear_PaoPao();
+            level++;
+            StartCoroutine(apearPaoPao());
         }
-        if(level==5&&!train_End)
+        else if(level==5&&!train_End)
         {
             Train_End();
         }
@@ -95,20 +100,69 @@ public class Spirit_Train : MonoBehaviour
         train_End = true;
         switch(level)
         {
+            case 1:
+                GameSaveNew.Instance.playerChicken.Power += 1;
+                break;
+            case 2:
+                GameSaveNew.Instance.playerChicken.Power += 5;
+                break;
             case 3:
+                GameSaveNew.Instance.playerChicken.Power += 9;
                 break;
             case 4:
-                GameSaveNew.Instance.playerChicken[train_Num].Strong += 1;
+                GameSaveNew.Instance.playerChicken.Power += 14;
                 break;
             case 5:
-                GameSaveNew.Instance.playerChicken[train_Num].Strong += 1;
-                GameSaveNew.Instance.playerChicken[train_Num].Speed += 0.1f;
-                break;
-            case 6:
-                GameSaveNew.Instance.playerChicken[train_Num].Strong += 2;
-                GameSaveNew.Instance.playerChicken[train_Num].Speed += 0.2f;
+                GameSaveNew.Instance.playerChicken.Power += 20;
                 break;
         }
         GameSaveNew.Instance.SaveAllData();
+    }
+    //生成谷物气泡
+    IEnumerator apearPaoPao()
+    {
+        int[] Num = new int[level];
+        for(int i=0;i<Num.Length;i++)
+        {
+            Num[i] = i+1;
+        }
+        Shuffle(Num);
+        Ve.Clear();
+        canTouch = false;
+        a = new GameObject[level];
+        for (int i = 0; i < level; i++)
+        {
+            Vector3 pos = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y),0);
+            for(int c=0;c<Ve.Count;c++)
+            {
+                if(Vector3.Distance(pos,Ve[c])<=1.2f)
+                {
+                    pos = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0);
+                    c = 0;
+                }
+            }
+            Ve.Add(pos);
+            a[i] = Instantiate(PaoPaos[Random.Range(0, PaoPaos.Length)], pos, new Quaternion(0, 0, 0, 1));
+            a[i].GetComponent<PaoPao>().Num = Num[i];
+            a[i].GetComponent<Animator>().speed = 0;
+            yield return new WaitForSeconds(0.5f);
+        }
+        foreach(GameObject aa in a)
+        {
+            aa.GetComponent<Animator>().speed = 1;
+            aa.GetComponent<PaoPao>().enabled = true;
+            aa.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        canTouch = true;
+    }
+    void Shuffle(int[] intArray)
+    {
+        for (int i = 0; i < intArray.Length; i++)
+        {
+            int temp = intArray[i];
+            int randomIndex = Random.Range(0, intArray.Length);
+            intArray[i] = intArray[randomIndex];
+            intArray[randomIndex] = temp;
+        }
     }
 }

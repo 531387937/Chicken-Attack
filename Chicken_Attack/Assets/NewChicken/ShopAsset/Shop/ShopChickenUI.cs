@@ -24,11 +24,11 @@ public class ShopChickenUI : MonoBehaviour
     /// <param name="cost"></param>
     public void SetShopChickenUi(FightChicken fightChicken,int cost)
     {
-        Attack.text = "攻击力：" + fightChicken.Attack;
-        HP.text = "生命值：" + fightChicken.HP;
-        Spirit.text = "斗志" + fightChicken.Spirit;
-        Speed.text = "速度" + fightChicken.Speed;
-        Strong.text = "气势" + fightChicken.Strong;
+        //Attack.text = "攻击力：" + fightChicken.Attack;
+        //HP.text = "生命值：" + fightChicken.HP;
+        //Spirit.text = "斗志" + fightChicken.Spirit;
+        //Speed.text = "速度" + fightChicken.Speed;
+        //Strong.text = "气势" + fightChicken.Strong;
         Talent.text = "天赋" + fightChicken.Talent;
         Pics.texture = textures[(int)fightChicken.Type];
         Cost = cost;
@@ -41,11 +41,11 @@ public class ShopChickenUI : MonoBehaviour
     /// <param name="fightChicken"></param>
     public void SetShopChickenUi(FightChicken fightChicken)
     {
-        Attack.text = "攻击力：" + fightChicken.Attack;
-        HP.text = "生命值：" + fightChicken.HP;
-        Spirit.text = "斗志" + fightChicken.Spirit;
-        Speed.text = "速度" + fightChicken.Speed;
-        Strong.text = "气势" + fightChicken.Strong;
+        //Attack.text = "攻击力：" + fightChicken.Attack;
+        //HP.text = "生命值：" + fightChicken.HP;
+        //Spirit.text = "斗志" + fightChicken.Spirit;
+        //Speed.text = "速度" + fightChicken.Speed;
+        //Strong.text = "气势" + fightChicken.Strong;
         Talent.text = "天赋" + fightChicken.Talent;
         Pics.texture = textures[(int)fightChicken.Type];
     }

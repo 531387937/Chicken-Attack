@@ -9,25 +9,20 @@ public class Player_Chicken : MonoBehaviour
     void Start()
     {
         //按照鸡的种类生成鸡
-        if (GameSaveNew.Instance.PD.ChickenNum > 0)
-        {
-            for (int i = 0; i < GameSaveNew.Instance.PD.ChickenNum; i++)
-            {
-                GameSaveNew.Instance.playerChicken[i].Ch_Num = i;
-                GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken[i].Type], GameSaveNew.Instance.playerChicken[i].Pos, new Quaternion(0, 0, 0, 1));
+                GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], GameSaveNew.Instance.playerChicken.Pos, new Quaternion(0, 0, 0, 1));
                 a.AddComponent<MyFightChicken>();
-                a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken[i];
-            }
-        }
+                a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken;
+            
+        
 
         //遍历小鸡
         if (GameSaveNew.Instance.PD.Chick != null)
         {
             for (int i = 0; i < GameSaveNew.Instance.PD.Chick.Count; i++)
             {
-                GameObject a = Instantiate(ga[4], GameSaveNew.Instance.PD.Chick[i].Pos, new Quaternion(0, 0, 0, 1));
-                a.AddComponent<Chick>();
-                a.GetComponent<Chick>().self = GameSaveNew.Instance.PD.Chick[i];
+                GameObject b = Instantiate(ga[4], GameSaveNew.Instance.PD.Chick[i].Pos, new Quaternion(0, 0, 0, 1));
+                b.AddComponent<Chick>();
+                b.GetComponent<Chick>().self = GameSaveNew.Instance.PD.Chick[i];
             }
         }
         

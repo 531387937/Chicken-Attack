@@ -12,9 +12,8 @@ public class GameSaveNew : Singleton<GameSaveNew>
 {
     private string Mac;//设备MAC
     //private bool CanSave = true;//是否可以保存
-    public List<FightChicken> playerChicken; /*= new FightChicken("棋子");*/
+    public FightChicken playerChicken; /*= new FightChicken("棋子");*/
     public PlayerData PD = new PlayerData();
-    public int ChooseChicken = 0;
     //string path = Application.persistentDataPath + @"/GameData.json";
     string path = "Assets/Resources/GameData.json";
     string PlayerPath = "Assets/Resources/GamePlayerData.json";
@@ -68,7 +67,6 @@ public class GameSaveNew : Singleton<GameSaveNew>
         //{
         //    CanSave = false;
         //}
-        print(ChooseChicken);
     }
     public void SavePlayerData()
     {
@@ -93,7 +91,7 @@ public class GameSaveNew : Singleton<GameSaveNew>
         }
         if (IOHelper.IsFileExists(path))
         {          
-            playerChicken = IOHelper.GetData(path, typeof(List<FightChicken>), Mac) as List<FightChicken>;           
+            playerChicken = IOHelper.GetData(path, typeof(FightChicken), Mac) as FightChicken;           
         }
     }
 

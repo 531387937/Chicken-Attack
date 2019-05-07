@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-public class UIManager_NEW : Singleton<UIManager>
+public class UIManager_NEW : Singleton<UIManager_NEW>
 {
     //public ToolTip_NEW toolTip;
     public TextMeshProUGUI Gold;
@@ -23,6 +23,8 @@ public class UIManager_NEW : Singleton<UIManager>
     public TextMeshProUGUI HP;
     public TextMeshProUGUI Spirit;
     public TextMeshProUGUI Strong;
+
+    public bool CanTouch = true;
     //鸡的大头照
     public Image Head;
     private void OnEnable()
@@ -59,13 +61,10 @@ public class UIManager_NEW : Singleton<UIManager>
         Gold.text = GameSaveNew.Instance.PD.Gold.ToString();
         Prestige.text = GameSaveNew.Instance.PD.Prestige.ToString();
         Pt.text = GameSaveNew.Instance.PD.Pt.ToString();
-        if (GameSaveNew.Instance.ChooseChicken!= null)
-        {
-            ATK.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Attack.ToString();
-            HP.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].HP.ToString();
-            Spirit.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Spirit.ToString();
-            Strong.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Strong.ToString();
-        }
+            ATK.text = GameSaveNew.Instance.playerChicken.Power.ToString();
+            //HP.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].HP.ToString();
+            //Spirit.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Spirit.ToString();
+            //Strong.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Strong.ToString();
     }
     //没有拖拽动画，暂且取消拖拽事件
     private void GridImage_OnEnter(Transform obj)
@@ -95,9 +94,11 @@ public class UIManager_NEW : Singleton<UIManager>
 
 
         //直接将被点击的鸡成为被选择的鸡，用于前往战斗、训练、繁殖等
-        gridImage = obj.gameObject.GetComponent<GridImage_NEW>();
-        GameSaveNew.Instance.ChooseChicken = obj.gameObject.GetComponent<MyFightChicken>().self.Ch_Num;
-        ChickenPanel.SetActive(true);
+        if (CanTouch)
+        {
+            gridImage = obj.gameObject.GetComponent<GridImage_NEW>();
+            ChickenPanel.SetActive(true);
+        }
     }
 
     private void GridImage_OnExit()
@@ -136,4 +137,5 @@ public class UIManager_NEW : Singleton<UIManager>
         //fa.transform.position = new Vector3(pos.x, pos.y, 0);
         //obj.SetParent(fa.transform);
     }
+
 }

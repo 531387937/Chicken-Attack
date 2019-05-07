@@ -17,11 +17,13 @@ public class Train: MonoBehaviour
     public void ShowTrain()
     {
         TrainGameObj.SetActive(true);
+        UIManager_NEW.Instance.CanTouch = false;
     }
 
     public void Exit()
     {
         TrainGameObj.SetActive(false);
+        UIManager_NEW.Instance.CanTouch = true;
     }
     public void Go_Train()
     {
