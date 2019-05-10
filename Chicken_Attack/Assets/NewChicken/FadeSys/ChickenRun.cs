@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChickenRun : MonoBehaviour
 {
-    private bool Do = true;
+    private bool OutSide = true;
 
     enum WalkMode
     {
@@ -29,6 +29,8 @@ public class ChickenRun : MonoBehaviour
         {
             mode = WalkMode.Left;
         }
+        StartCoroutine(RandomChange());
+        StartCoroutine(EatSomthing());
     }
 
     private void Update()
@@ -44,6 +46,37 @@ public class ChickenRun : MonoBehaviour
         }
     }
 
+    IEnumerator EatSomthing()
+    {
+        yield return new WaitForSeconds(Random.Range(1,3));
+        if (OutSide)
+        {
+            if (Random.Range(0, 5) == 0)
+            {
+                this.gameObject.GetComponent<Animator>().SetBool("Eat", true);
+            }
+        }
+        StartCoroutine(EatSomthing());
+    }
+
+    IEnumerator RandomChange()
+    {
+        yield return new WaitForSeconds(Random.Range(5, 15));
+        if (OutSide)
+        {
+            if (Random.Range(0, 1) == 0)
+            {
+                mode = WalkMode.Left;
+                
+            }
+            else
+            {
+                mode = WalkMode.Right;
+            }
+        }
+        StartCoroutine(RandomChange());
+    }
+
     void Run(float length)
     {
         switch (mode)
@@ -57,11 +90,16 @@ public class ChickenRun : MonoBehaviour
         }
     }
 
+    void FinishEat()
+    {
+        this.gameObject.GetComponent<Animator>().SetBool("Eat", false);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Edge" && Do)
+        if (collision.tag == "Edge" && OutSide)
         {
-            Do = false;
+            OutSide = false;
             if (mode == WalkMode.Right)
             {
                 mode = WalkMode.Left;
@@ -77,7 +115,7 @@ public class ChickenRun : MonoBehaviour
     {
         if (collision.tag == "Edge")
         {
-            Do = true;
+            OutSide = true;
         }
     }
 
