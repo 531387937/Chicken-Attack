@@ -29,9 +29,9 @@ public class ShopSystem : MonoBehaviour
         {
             ShopChicken[i] = new FightChicken();
             //ShopChicken[i].RandomInitial(Random.Range(0,1));
-            ShopChicken[i].InitShopChicken(GameSaveNew.Instance.PD.Prestige,(i+95f)/100f);
+            ShopChicken[i].InitShopChicken(GameSaveNew.Instance.PD.Prestige,(i+110f)/100f);
             ShopChickenUI[i].GetComponent<ShopChicken>().ThisChicken = ShopChicken[i];
-            ShopChickenUI[i].GetComponent<ShopChicken>().CostChicken = Mathf.CeilToInt(ShopChicken[i].Power/ 1.5f);
+            ShopChickenUI[i].GetComponent<ShopChicken>().CostChicken = Mathf.CeilToInt(ShopChicken[i].Power* 1.33f);
             ShopChickenUI[i].GetComponent<ShopChicken>().Tex.texture = ChickenTex[(int)ShopChicken[i].Type];
         }
     }
