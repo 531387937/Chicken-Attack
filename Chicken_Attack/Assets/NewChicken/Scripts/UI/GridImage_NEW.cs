@@ -12,7 +12,7 @@ public class GridImage_NEW : MonoBehaviour
     public static Action OnExit;
     public static Action OnUp;
     public static Action<Transform> OnDrag;
-    public int _time=0;
+    public int _time = 0;
     public float timer;
     public bool IsDrag = false;
 

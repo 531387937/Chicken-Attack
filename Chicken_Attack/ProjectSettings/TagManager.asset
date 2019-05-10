@@ -10,6 +10,7 @@ TagManager:
   - ChickenUI
   - FightChicken
   - Chick
+  - Edge
   layers:
   - Default
   - TransparentFX
