@@ -9,7 +9,6 @@ public class ShopChicken : MonoBehaviour
     public Text Name;
     public Text Cost;
     public RawImage Tex;
-    [HideInInspector]
     public int CostChicken;
     [HideInInspector]
     public ShopSystem ShopSystem;
@@ -25,7 +24,7 @@ public class ShopChicken : MonoBehaviour
         if (ThisChicken != null)
         {
             this.gameObject.SetActive(true);
-            Name.text = ThisChicken.Type.ToString();
+            Name.text = ThisChicken.Power.ToString();
             Cost.text = CostChicken.ToString()+"G";
         }
         else if(ThisChicken == null)

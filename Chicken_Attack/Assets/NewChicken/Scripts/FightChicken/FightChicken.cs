@@ -47,17 +47,32 @@ public class FightChicken
     {
         chickentype NewChickenType=0;
         int GrandNum = playerChicken.GetGrand().Count;
-        for(int i =0;i<GrandNum;i++)
+        if (playerChicken.GetGrand().Count > 0)
         {
-            if (i == 0)
-                NewChickenType = (chickentype)playerChicken.GetGrand()[i].Type;
+            for (int i = 0; i < GrandNum; i++)
+            {
+                if (i == 0)
+                    NewChickenType = (chickentype)playerChicken.GetGrand()[i].Type;
+                else
+                {
+                    float a = Random.Range(0f, 1f);
+                    if (a >= (GrandNum - i) / ((GrandNum + 1) * 2))
+                    {
+                        NewChickenType = (chickentype)playerChicken.GetGrand()[i].Type;
+                    }
+                }
+            }
+        }
+        else
+        {
+            float a = Random.Range(0f, 1f);
+            if(a>=0.5f)
+            {
+                NewChickenType = playerChicken.Type;
+            }
             else
             {
-                float a = Random.Range(0f, 1f);
-                if (a >=(GrandNum- i) / ((GrandNum + 1)*2))
-                {
-                    NewChickenType = (chickentype)playerChicken.GetGrand()[i].Type;
-                }
+                NewChickenType = shopChicken.Type;
             }
         }
         return NewChickenType;
@@ -178,9 +193,13 @@ public class FightChicken
     /// <param name="fame"></param>
     public void InitShopChicken(int fame,float time)
     {
+        string aa = Resources.Load("EnemyData").ToString();
+        List<LevelSet> NowLevel= IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
+        float New_Power = NowLevel[fame - 1].EnemyChicken.Power;
         Type = (chickentype)Random.Range(0, System.Enum.GetNames(Type.GetType()).Length);
         Name = Type.ToString();
-        Power = fame * time;
+        Power =Mathf.Ceil(New_Power*time*Random.Range(0.95f,1.05f));
+        Debug.Log(Power);
         Talent = Random.Range(0, 4) * (1 + fame / 10);
     }
 

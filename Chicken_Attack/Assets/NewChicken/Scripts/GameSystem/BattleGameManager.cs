@@ -44,8 +44,8 @@
 //    private GameObject enemy;
 //    List<LevelSet> FC;
 
-//    private bool playeratk=false;
-//    private bool enemyatk=false;
+//    private bool playeratk = false;
+//    private bool enemyatk = false;
 
 //    private float PlayerSpeed;
 //    private float EnemySpeed;
@@ -56,8 +56,8 @@
 //        player_chicken = GameSaveNew.Instance.playerChicken;
 //        PlayerSpeed = player_chicken.Speed;
 //        string aa = Resources.Load("EnemyData").ToString();
-//        FC = IOHelper.GetData(aa, typeof(List<LevelSet>),1) as List<LevelSet>;
-//        enemy_chicken = FC[level-1].EnemyChicken;
+//        FC = IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
+//        enemy_chicken = FC[level - 1].EnemyChicken;
 //        EnemySpeed = enemy_chicken.Speed;
 //        //player_chicken.enemyChickens.Add(enemy_chicken);//将此敌人加入玩家此生遇到敌人队列
 //        //生成对战的两只鸡
@@ -70,18 +70,18 @@
 //    // Update is called once per frame
 //    void Update()
 //    {
-//        if(timer>=-0.5)
+//        if (timer >= -0.5)
 //        {
 //            timer -= Time.deltaTime;
-//            if(timer>=2)
+//            if (timer >= 2)
 //            {
 //                UI_Text.text = "3";
 //            }
-//            else if(timer>=1)
+//            else if (timer >= 1)
 //            {
 //                UI_Text.text = "2";
 //            }
-//            else if(timer>=0)
+//            else if (timer >= 0)
 //            {
 //                UI_Text.text = "1";
 //            }
@@ -91,11 +91,11 @@
 //            }
 //        }
 //        else
-//        {            
-//            if(!gameBegin)
-//            GameStar();
+//        {
+//            if (!gameBegin)
+//                GameStar();
 //        }
-//        if ((PlayerHP.value<=0||PlayerSpirit.value<=0)&&!gameend)
+//        if ((PlayerHP.value <= 0 || PlayerSpirit.value <= 0) && !gameend)
 //        {
 //            gameend = true;
 //            UI_Text.text = "You Lose!";
@@ -105,7 +105,7 @@
 //            Pt.text = "+ 0";
 //            Time.timeScale = 1;
 //        }
-//        if ((EnemyHP.value <= 0||EnemySpirit.value<=0) && !gameend)
+//        if ((EnemyHP.value <= 0 || EnemySpirit.value <= 0) && !gameend)
 //        {
 //            gameend = true;
 //            UI_Text.text = "You Win!";
@@ -114,15 +114,15 @@
 //            Prestige.text = "+" + FC[level - 1].PrestigeGet;
 //            Pt.text = "+" + FC[level - 1].PtGet;
 //            player_chicken.enemyChickens.Add(enemy_chicken.Power);
-//            GameSaveNew.Instance.PD.Gold+= FC[level - 1].GoldGet;
+//            GameSaveNew.Instance.PD.Gold += FC[level - 1].GoldGet;
 //            GameSaveNew.Instance.PD.Prestige += FC[level - 1].PrestigeGet;
 //            GameSaveNew.Instance.PD.Pt += FC[level - 1].PtGet;
 //            GameSaveNew.Instance.SaveAllData();
 //            Time.timeScale = 1;
 //        }
-//        if(gameend)
+//        if (gameend)
 //        {
-//            if(Input.GetMouseButtonDown(0))
+//            if (Input.GetMouseButtonDown(0))
 //            {
 //                SceneChange.SceneName = "QiZiNewChicken";
 //                SceneManager.LoadScene("LoadScene");
@@ -142,17 +142,17 @@
 //    }
 //    public void Attack(float timer)
 //    {
-//        if(playeratk)
+//        if (playeratk)
 //        {
 //            PlayerAttack(timer);
 //        }
-//        if(enemyatk)
+//        if (enemyatk)
 //        {
 //            EnemyAttack(timer);
 //        }
 //    }
 //    //玩家的回合
-//    public void PlayerAttack(float time=1)
+//    public void PlayerAttack(float time = 1)
 //    {
 //        if (!gameend)
 //        {
@@ -162,24 +162,24 @@
 //            MP_Damage.gameObject.transform.position = EnemyMPPos.position;
 //            MP_Damage.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 //            //进行伤害判定
-//            float damage =(int)player_chicken.Attack * Random.Range(0.95f, 1.05f)*time;
-//            HP_Damage.text = "-"+(int)damage;
+//            float damage = (int)player_chicken.Attack * Random.Range(0.95f, 1.05f) * time;
+//            HP_Damage.text = "-" + (int)damage;
 //            HP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(5.0f, 8.0f), 10.0f));
-//            EnemyHP.value -=(int)damage;
-//            damage= (int)player_chicken.Strong * Random.Range(0.95f, 1.05f)*time;
+//            EnemyHP.value -= (int)damage;
+//            damage = (int)player_chicken.Strong * Random.Range(0.95f, 1.05f) * time;
 //            MP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(5.0f, 8.0f), 10.0f));
 //            MP_Damage.text = "-" + (int)damage;
 //            EnemySpirit.value -= (int)damage;
 //            //进行速度的判定
 //            EnemySpeed += enemy_chicken.Speed;
-//            if(EnemySpeed>=PlayerSpeed)
-//            Invoke("EnemyReady", 2);
+//            if (EnemySpeed >= PlayerSpeed)
+//                Invoke("EnemyReady", 2);
 //            else
-//            Invoke("PlayerReady", 2);
+//                Invoke("PlayerReady", 2);
 //        }
 //    }
 //    //敌人的回合
-//    public void EnemyAttack(float time=1)
+//    public void EnemyAttack(float time = 1)
 //    {
 //        if (!gameend)
 //        {
@@ -189,23 +189,23 @@
 //            HP_Damage.gameObject.transform.position = playerHPPos.position;
 //            MP_Damage.gameObject.transform.position = playerMPPos.position;
 //            //进行伤害判定
-//            float damage = (int)enemy_chicken.Attack * Random.Range(0.95f, 1.05f)*time;
+//            float damage = (int)enemy_chicken.Attack * Random.Range(0.95f, 1.05f) * time;
 //            HP_Damage.text = "-" + (int)damage;
 //            HP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5.0f, -8.0f), 10.0f));
 //            PlayerHP.value -= (int)damage;
-//            damage = (int)enemy_chicken.Strong * Random.Range(0.95f, 1.05f)*time;
+//            damage = (int)enemy_chicken.Strong * Random.Range(0.95f, 1.05f) * time;
 //            MP_Damage.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5.0f, -.0f), 10.0f));
 //            MP_Damage.text = "-" + (int)damage;
 //            PlayerSpirit.value -= (int)damage;
 //            //进行速度的判定
 //            PlayerSpeed += player_chicken.Speed;
-//            if (PlayerSpeed>=EnemySpeed)
-//            Invoke("PlayerReady", 2);
+//            if (PlayerSpeed >= EnemySpeed)
+//                Invoke("PlayerReady", 2);
 //            else
-//            Invoke("EnemyReady", 2);
+//                Invoke("EnemyReady", 2);
 //        }
 //    }
-//     //设置生命值等血条
+//    //设置生命值等血条
 //    void SliderSet()
 //    {
 //        PlayerHP.maxValue = player_chicken.HP;
@@ -220,8 +220,8 @@
 //    //生成对战的鸡
 //    void ChickenInit()
 //    {
-//        player = Instantiate(Chicken[(int)player_chicken.Type], PlayerPos.position,new Quaternion(0,0,0,1),this.transform);
-//        enemy = Instantiate(Chicken[(int)enemy_chicken.Type], EnemyPos.position, new Quaternion(0, 180, 0, 1),this.transform);
+//        player = Instantiate(Chicken[(int)player_chicken.Type], PlayerPos.position, new Quaternion(0, 0, 0, 1), this.transform);
+//        enemy = Instantiate(Chicken[(int)enemy_chicken.Type], EnemyPos.position, new Quaternion(0, 180, 0, 1), this.transform);
 //    }
 //    void PlayerReady()
 //    {

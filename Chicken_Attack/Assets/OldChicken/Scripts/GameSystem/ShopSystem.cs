@@ -22,23 +22,16 @@ public class ShopSystem : MonoBehaviour
 
         GameSaveNew.Instance.PD.ShopChicken = null;
 
-        if (GameSaveNew.Instance.PD.Prestige <= 6)
-        {
-            ShopChicken = new FightChicken[GameSaveNew.Instance.PD.Prestige];
-        }
-        else if(GameSaveNew.Instance.PD.Prestige > 6)
-        {
-            ShopChicken = new FightChicken[6];
-        }
+       
+            ShopChicken = new FightChicken[2];        
         //将耗费改为和鸡的战斗力有关
         for(int i = 0;i< ShopChicken.Length; i++)
         {
             ShopChicken[i] = new FightChicken();
             //ShopChicken[i].RandomInitial(Random.Range(0,1));
-            ShopChicken[i].InitShopChicken(GameSaveNew.Instance.PD.Prestige,1.0f);
-            ShopChicken[i].Grand.Add(new FightChicken("ShopGod"));
+            ShopChicken[i].InitShopChicken(GameSaveNew.Instance.PD.Prestige,(i+95f)/100f);
             ShopChickenUI[i].GetComponent<ShopChicken>().ThisChicken = ShopChicken[i];
-            ShopChickenUI[i].GetComponent<ShopChicken>().CostChicken = Random.Range(100,150);
+            ShopChickenUI[i].GetComponent<ShopChicken>().CostChicken = Mathf.CeilToInt(ShopChicken[i].Power/ 1.5f);
             ShopChickenUI[i].GetComponent<ShopChicken>().Tex.texture = ChickenTex[(int)ShopChicken[i].Type];
         }
     }
