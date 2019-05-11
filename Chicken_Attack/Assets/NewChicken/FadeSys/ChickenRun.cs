@@ -55,16 +55,20 @@ public class ChickenRun : MonoBehaviour
             {
                 this.gameObject.GetComponent<Animator>().SetBool("Eat", true);
             }
+            else
+            {
+                this.gameObject.GetComponent<Animator>().SetBool("DoRun", true);
+            }
         }
         StartCoroutine(EatSomthing());
     }
 
     IEnumerator RandomChange()
     {
-        yield return new WaitForSeconds(Random.Range(5, 15));
+        yield return new WaitForSeconds(Random.Range(6, 20));
         if (OutSide)
         {
-            if (Random.Range(0, 1) == 0)
+            if (Random.Range(0, 2) == 0)
             {
                 mode = WalkMode.Left;
                 
@@ -92,7 +96,19 @@ public class ChickenRun : MonoBehaviour
 
     void FinishEat()
     {
-        this.gameObject.GetComponent<Animator>().SetBool("Eat", false);
+        if (SceneManager.GetActiveScene().name == "QiZiNewChicken")
+        {
+            this.gameObject.GetComponent<Animator>().SetBool("Eat", false);
+        }
+    }
+
+    void FinishRun()
+    {
+        if (SceneManager.GetActiveScene().name == "QiZiNewChicken")
+        {
+            this.gameObject.GetComponent<Animator>().SetBool("Run", false);
+            this.gameObject.GetComponent<Animator>().SetBool("DoRun", false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
