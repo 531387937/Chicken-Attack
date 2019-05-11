@@ -30,7 +30,7 @@ public class ChickenRun : MonoBehaviour
             mode = WalkMode.Left;
         }
         StartCoroutine(RandomChange());
-        StartCoroutine(EatSomthing());
+        StartCoroutine(DoSomthing());
     }
 
     private void Update()
@@ -46,7 +46,7 @@ public class ChickenRun : MonoBehaviour
         }
     }
 
-    IEnumerator EatSomthing()
+    IEnumerator DoSomthing()
     {
         yield return new WaitForSeconds(Random.Range(1,3));
         if (OutSide)
@@ -60,7 +60,11 @@ public class ChickenRun : MonoBehaviour
                 this.gameObject.GetComponent<Animator>().SetBool("DoRun", true);
             }
         }
-        StartCoroutine(EatSomthing());
+        else
+        {
+            this.gameObject.GetComponent<Animator>().SetBool("DoRun", true);
+        }
+        StartCoroutine(DoSomthing());
     }
 
     IEnumerator RandomChange()
