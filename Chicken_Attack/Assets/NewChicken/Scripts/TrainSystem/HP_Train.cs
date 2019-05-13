@@ -16,11 +16,13 @@ public class HP_Train : MonoBehaviour
 
     public float JumpSpeed;
 
+    private float MaxSpeed;
     private bool Falling = false;
     private bool Jumping=false;
     // Start is called before the first frame update
     void Start()
     {
+        MaxSpeed = JumpSpeed;
         Train_Chicken = Instantiate(Chicken[(int)(GameSaveNew.Instance.playerChicken.Type)], Vector3.zero, Quaternion.identity);
         for (int i=0;i<HurdleNum;i++)
         {
@@ -32,12 +34,13 @@ public class HP_Train : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Train_Chicken.transform.position.y>=2.5f&&!Falling)
+        if(JumpSpeed<=0&&!Falling)
         {
             Down();
         }
-        if(Train_Chicken.transform.position.y <= 0f&&Falling)
+        if(Train_Chicken.transform.position.y <= 0.1f&&Falling)
         {
+            Train_Chicken.transform.position = new Vector3(Train_Chicken.transform.position.x, 0, Train_Chicken.transform.position.z);
             Land();
         }
         if(Input.GetMouseButtonDown(0)&&!Jumping&&!Falling)
@@ -51,13 +54,13 @@ public class HP_Train : MonoBehaviour
         if(Falling&&Jumping)
         {
             Train_Chicken.transform.position = new Vector3(Train_Chicken.transform.position.x, Train_Chicken.transform.position.y - JumpSpeed * Time.deltaTime, Train_Chicken.transform.position.z);
-            JumpSpeed += 6f * Time.deltaTime;
+            JumpSpeed += 14f * Time.deltaTime;
         }
     }
     void Jump()
     {
         Train_Chicken.transform.position = new Vector3(Train_Chicken.transform.position.x, Train_Chicken.transform.position.y + JumpSpeed * Time.deltaTime, Train_Chicken.transform.position.z);
-        JumpSpeed -= 6f* Time.deltaTime;
+        JumpSpeed -= 14f* Time.deltaTime;
     }
     void Down()
     {
@@ -65,6 +68,7 @@ public class HP_Train : MonoBehaviour
     }
     void Land()
     {
+        JumpSpeed = MaxSpeed;
         Jumping = false;
         Falling = false;
     }

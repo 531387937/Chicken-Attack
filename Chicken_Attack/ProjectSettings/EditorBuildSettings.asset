@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/NewChicken/Scenes/Strong_Train.unity
     guid: 3785ddefa52e95f4babb3c68de216cf8
+  - enabled: 1
+    path: Assets/NewChicken/Scenes/HP_Train.unity
+    guid: e2700020f17ecca4586475da4ecd8c2e
   m_configObjects: {}
