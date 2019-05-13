@@ -163,7 +163,7 @@ MonoBehaviour:
   m_hurdle: {fileID: 1276103731810310791, guid: e0b3b2a275a99f74098fd5413e8709a2,
     type: 3}
   HurdleNum: 10
-  JumpSpeed: 5.47
+  JumpSpeed: 10
 --- !u!1 &233685094
 GameObject:
   m_ObjectHideFlags: 0
