@@ -25,7 +25,18 @@ public class Player_Chicken : MonoBehaviour
                 b.GetComponent<Chick>().self = GameSaveNew.Instance.PD.Chick[i];
             }
         }
+
+        //快排区分每只鸡的前后位置
+        GameObject[] G = GameObject.FindGameObjectsWithTag("FightChicken");
         
+        QuickSortArray(G, 0, G.Length - 1);
+
+        for(int i = 0; i <= G.Length; i++)
+        {
+            G[i].gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Chicken";
+            G[i].gameObject.GetComponent<SpriteRenderer>().sortingOrder = i;
+        }
+
         StartCoroutine(SaveGame());
     }
 
@@ -35,6 +46,48 @@ public class Player_Chicken : MonoBehaviour
         GameSaveNew.Instance.SaveAllData();
         Debug.Log("保存");
         StartCoroutine(SaveGame());
+    }
+
+    /// <summary>
+    /// 快速排序的方法
+    /// </summary>
+    /// <param name="array">数组</param>
+    /// <param name="start">数组起始位置</param>
+    /// <param name="end">数组终止位置</param>
+    void QuickSortArray(GameObject[] array, int start, int end)
+    {
+        //若数组中数小于等于0直接返回
+        if (start >= end) return;
+        //定义一个基准值
+        GameObject pivot = array[start];
+        //定义2个索引指向数组的而开头和结束
+        int left = start;
+        int right = end;
+        //按照从小到大的排序，直到2数相遇结束排序
+        while (left < right)
+        {
+            //第一轮比较
+            //把所有left右边的数都和基准值比较,获得最左边数在排序后位于数组中的位置（索引）
+            while (left < right && array[right].GetComponent<Transform>().position.y >= pivot.GetComponent<Transform>().position.y)
+            {
+                right--;
+            }
+            //将该数放到数组中的该位置
+            array[left] = array[right];
+            //第二轮比较
+            //把所有left右边的数都和基准值比较,获得最左边数在排序后位于数组中的位置（索引）
+            while (left < right && array[left].GetComponent<Transform>().position.y <= pivot.GetComponent<Transform>().position.y)
+            {
+                left++;
+            }
+            //将该数放到数组中的该位置
+            array[right] = array[left];
+        }
+        //将2轮比较之后的数组的起始值再赋为基准值（已经得到最大值，并在最后一位）
+        array[left] = pivot;
+        //递归该方法（每次剔除一个排好的数）
+        QuickSortArray(array, start, left - 1);
+        QuickSortArray(array, left + 1, end);
     }
 
 }
