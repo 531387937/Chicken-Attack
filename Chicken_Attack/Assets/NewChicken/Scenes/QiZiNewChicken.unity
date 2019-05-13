@@ -2417,7 +2417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3, y: 48}
+  m_AnchoredPosition: {x: 3, y: 13}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &737507037
@@ -2533,6 +2533,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u573A\u666F\u884C\u8D70\u83DC\u9E21"
       objectReference: {fileID: 0}
+    - target: {fileID: 498372586942774012, guid: 0a3e3ca57a625f643ac78cd17012d174,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 498372586942773889, guid: 0a3e3ca57a625f643ac78cd17012d174,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2541,7 +2546,7 @@ PrefabInstance:
     - target: {fileID: 498372586942773889, guid: 0a3e3ca57a625f643ac78cd17012d174,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.89
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 498372586942773889, guid: 0a3e3ca57a625f643ac78cd17012d174,
         type: 3}
@@ -2760,6 +2765,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "\u83DC\u9E21 1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045997677048443577, guid: 4ed31a8dbd7dc3b4b98a1da86fae6129,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3865376912595208213, guid: 4ed31a8dbd7dc3b4b98a1da86fae6129,
         type: 3}
@@ -4477,7 +4487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.9999084, y: 108.7}
+  m_AnchoredPosition: {x: 2.9999084, y: 73.7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335171065
@@ -6499,7 +6509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ga:
   - {fileID: 8105479440551353420, guid: 1bd9af7af69317e4a91d2fce5b0bb988, type: 3}
-  - {fileID: 3045997677048443577, guid: 4ed31a8dbd7dc3b4b98a1da86fae6129, type: 3}
+  - {fileID: 498372586942774012, guid: 0a3e3ca57a625f643ac78cd17012d174, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 6812302023276745596, guid: c097364949000ae4fb06bf34ec4cb5c5, type: 3}
