@@ -33,8 +33,8 @@ public class Player_Chicken : MonoBehaviour
 
         for(int i = 0; i <= G.Length; i++)
         {
-            //G[i].gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Chicken";
-            //G[i].gameObject.GetComponent<SpriteRenderer>().sortingOrder = i;
+            G[i].gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Chicken";
+            G[i].gameObject.GetComponent<SpriteRenderer>().sortingOrder = G.Length - i;
         }
 
         StartCoroutine(SaveGame());

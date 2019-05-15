@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6151111889978574829}
   m_Layer: 0
   m_Name: "SR\u9E21\u573A\u666F"
-  m_TagString: Untagged
+  m_TagString: FightChicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
