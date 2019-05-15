@@ -31,7 +31,7 @@ public class Player_Chicken : MonoBehaviour
         
         QuickSortArray(G, 0, G.Length - 1);
 
-        for(int i = 0; i <= G.Length; i++)
+        for(int i = 0; i < G.Length; i++)
         {
             G[i].gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Chicken";
             G[i].gameObject.GetComponent<SpriteRenderer>().sortingOrder = G.Length - i;
