@@ -1,18 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class MyFightChicken : MonoBehaviour
 {
     public FightChicken self;
-    public int selfNum;
+    private GameObject GameUI;
+    public GameObject Name_UI;
+    private Vector3 Pos;
+    private GameObject a;
     private void Start()
     {
+        Name_UI = Resources.Load("Name") as GameObject;
+        GameUI = GameObject.Find("Canvas");
+        Pos = Camera.main.WorldToScreenPoint(this.transform.position);
+       a= Instantiate(Name_UI, Pos,Quaternion.identity,GameUI.transform);
+        print(self.Name);
+        a.GetComponent<TextMeshProUGUI>().text = self.Name;
+        
         StartCoroutine(SavePos());
     }
     private void Update()
     {
-        selfNum = self.Ch_Num;
+        Pos = new Vector3(Camera.main.WorldToScreenPoint(this.transform.position).x, Camera.main.WorldToScreenPoint(this.transform.position).y + 140f, 0);
+        a.transform.position = Pos;
     }
     IEnumerator SavePos()
     {

@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: "SR\u9E21"
+  m_Name: "sr\u9E21"
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Attack

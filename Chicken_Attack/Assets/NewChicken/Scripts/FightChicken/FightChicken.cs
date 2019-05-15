@@ -36,7 +36,7 @@ public class FightChicken
     //在场景中位置
     public Vector3 Pos = new Vector3(0,Random.Range(0.5f,3.5f),0);//随机Y值
     //玩家的第几只鸡
-    public int Ch_Num;
+    //public int Ch_Num;
     
     public int Hungry;
     /// <summary>
