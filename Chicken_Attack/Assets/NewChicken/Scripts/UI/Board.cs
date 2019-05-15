@@ -6,22 +6,11 @@ using UnityEngine.SceneManagement;
 public class Board : MonoBehaviour
 {
     public GameObject m_Board;
-
     public TextMeshProUGUI TMP;
     //变暗的遮罩
     public GameObject Mask;
     private bool ReadyChangeScene=false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     //用于是否前往斗鸡场景
     public void Go_Attack()
     {
@@ -42,6 +31,7 @@ public class Board : MonoBehaviour
         TMP.text = "确定要前往商店吗？";
         SceneChange.SceneName = "XYShop";
     }
+
     //用于是否前往繁殖场景
     public void Go_Breed()
     {
@@ -52,6 +42,7 @@ public class Board : MonoBehaviour
         TMP.text = "确定要前往繁殖场吗？";
         SceneChange.SceneName = "ChickenBreedScene";
     }
+
     public void Go_Train()
     {
         Mask.SetActive(true);
@@ -73,6 +64,7 @@ public class Board : MonoBehaviour
                 break;
         }
     }
+
     public void Yes()
     {
         Time.timeScale = 1;

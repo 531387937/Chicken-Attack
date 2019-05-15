@@ -26,6 +26,17 @@ public class Player_Chicken : MonoBehaviour
             }
         }
 
+        //遍历退役鸡
+        if (GameSaveNew.Instance.PD.OldChicken != null)
+        {
+            for (int i = 0; i < GameSaveNew.Instance.PD.OldChicken.Count; i++)
+            {
+                GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], GameSaveNew.Instance.PD.OldChicken[i].Pos, new Quaternion(0, 0, 0, 1));
+                a.AddComponent<MyFightChicken>();
+                a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+            }
+        }
+
         //快排区分每只鸡的前后位置
         GameObject[] G = GameObject.FindGameObjectsWithTag("FightChicken");
         

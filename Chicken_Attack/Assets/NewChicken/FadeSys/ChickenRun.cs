@@ -48,7 +48,7 @@ public class ChickenRun : MonoBehaviour
 
     IEnumerator DoSomthing()
     {
-        yield return new WaitForSeconds(Random.Range(1,3));
+        yield return new WaitForSeconds(Random.Range(3,6));
         if (OutSide)
         {
             if (Random.Range(0, 5) == 0)

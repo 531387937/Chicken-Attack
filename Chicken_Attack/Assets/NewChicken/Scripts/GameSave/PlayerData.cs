@@ -15,6 +15,8 @@ public class PlayerData
     public FightChicken ShopChicken;
     //诞生的小鸡
     public List<FightChicken> Chick = new List<FightChicken>();
+    //退役的老鸡
+    public List<FightChicken> OldChicken = new List<FightChicken>();
 
     public PlayerData()
     {

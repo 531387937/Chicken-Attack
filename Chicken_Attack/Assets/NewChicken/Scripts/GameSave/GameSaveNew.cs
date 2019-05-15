@@ -11,10 +11,8 @@ using System.Reflection;
 public class GameSaveNew : Singleton<GameSaveNew>
 {
     private string Mac;//设备MAC
-    //private bool CanSave = true;//是否可以保存
-    public FightChicken playerChicken; /*= new FightChicken("棋子");*/
+    public FightChicken playerChicken;
     public PlayerData PD = new PlayerData();
-    //string path = Application.persistentDataPath + @"/GameData.json";
     string path = "Assets/Resources/GameData.json";
     string PlayerPath = "Assets/Resources/GamePlayerData.json";
     void Awake()
@@ -27,9 +25,6 @@ public class GameSaveNew : Singleton<GameSaveNew>
         NetworkInterface[] nis = NetworkInterface.GetAllNetworkInterfaces();
         Mac = nis[0].GetPhysicalAddress().ToString() + "0824";
         DontDestroyOnLoad(this.gameObject);
-        //playerChicken.Add(new FightChicken("AAA", 100, 15, 70, 5, 10, 1, 6));
-        //playerChicken.Add(new FightChicken("BBB", 100, 15, 70, 5, 10, 1, 6));
-        //playerChicken.Add(new FightChicken("CCC", 100, 15, 70, 5, 10, 1, 6));
     }
 
     void Start()
@@ -60,28 +55,24 @@ public class GameSaveNew : Singleton<GameSaveNew>
         //    Debug.Log("GD:" + ChickenList.chickenList[0].Name);
         //}  
     }
-
-    private void Update()
-    {
-        //if (CanSave)//存档
-        //{
-        //    CanSave = false;
-        //}
-    }
+    
     public void SavePlayerData()
     {
         IOHelper.SetData(PlayerPath, PD, Mac);
     }
+
     public void SaveChickenData()
     {
         IOHelper.SetData(path, playerChicken, Mac);
     }
+
     //存档
     public void SaveAllData()
     {
         IOHelper.SetData(PlayerPath, PD, Mac);
         IOHelper.SetData(path, playerChicken, Mac);
     }
+
     //读档
     public void LoadAllData()
     {
@@ -93,12 +84,6 @@ public class GameSaveNew : Singleton<GameSaveNew>
         {          
             playerChicken = IOHelper.GetData(path, typeof(FightChicken), Mac) as FightChicken;           
         }
-    }
-
-    //更新鸡的状态
-    private void ChickenUpdate()
-    {
-        
     }
 
     private static string GetDataPath()//获取路径

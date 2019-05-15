@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 576681}
   - component: {fileID: 576680}
   - component: {fileID: 576684}
+  - component: {fileID: 576683}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -195,6 +196,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &576683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd047cbec8245c240b5ed0c8004dfeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChooseChickenPic: {fileID: 1846412324}
+  BuyChickenPic: {fileID: 1111414056}
+  Pics:
+  - {fileID: 2800000, guid: 4cf204028fbda5b4597c1e50e63b6012, type: 3}
+  - {fileID: 2800000, guid: c6aa9dc84fbf9a9438af87a805af5b82, type: 3}
+  - {fileID: 2800000, guid: 23b610bf6025021489fbd499f2ca3377, type: 3}
+  - {fileID: 2800000, guid: 75d5493e608e797418e059321af06454, type: 3}
+  NewChickUI: {fileID: 8821130}
 --- !u!114 &576684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8821131
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1989,8 +2010,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 190, y: -30}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 235.00003, y: -16.8}
+  m_SizeDelta: {x: 158.73, y: 158.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1846412324
 MonoBehaviour:
