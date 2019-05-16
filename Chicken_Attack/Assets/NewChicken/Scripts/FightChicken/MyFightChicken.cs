@@ -16,7 +16,7 @@ public class MyFightChicken : MonoBehaviour
         Pos = Camera.main.WorldToScreenPoint(this.transform.position);
        a= Instantiate(Name_UI, Pos,Quaternion.identity,GameUI.transform);
         print(self.Name);
-        a.GetComponent<TextMeshProUGUI>().text = self.Name;
+        a.GetComponentInChildren<TextMeshProUGUI>().text = self.Name;
         
         StartCoroutine(SavePos());
     }
