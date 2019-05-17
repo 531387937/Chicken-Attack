@@ -15,6 +15,8 @@ public class GameSaveNew : Singleton<GameSaveNew>
     public PlayerData PD = new PlayerData();
     string path = "Assets/Resources/GameData.json";
     string PlayerPath = "Assets/Resources/GamePlayerData.json";
+    //之后用这个来表现对训练的影响浮动值
+    public float buffer=1.0f;
     void Awake()
     {
         //导出时切换

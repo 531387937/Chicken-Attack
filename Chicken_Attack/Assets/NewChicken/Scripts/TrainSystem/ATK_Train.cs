@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class ATK_Train : MonoBehaviour
 {
     [Range(0, 10)]
@@ -12,6 +13,8 @@ public class ATK_Train : MonoBehaviour
     private bool Training = false;
     private int level = 0;
     public float add;
+    //显示训练效果
+    public GameObject Panel;
     public Scrollbar Scroll;
     public Image BackImage;
     public GameObject ATK_Panel;
@@ -98,6 +101,7 @@ public class ATK_Train : MonoBehaviour
             {
                 if (level == 4)
                 {
+                    level++;
                     An.SetTrigger("Attack1");
                     //弹出结算窗口，显示提升攻击力（根据关卡完成数）
                     Invoke("ATK_END", 1.5f);
@@ -105,7 +109,7 @@ public class ATK_Train : MonoBehaviour
                 }
                 else
                     An.SetTrigger("Attack");
-                    Invoke("LevelUp",1.5f);
+                Invoke("LevelUp", 1.5f);
             }
             else
             {
@@ -119,21 +123,36 @@ public class ATK_Train : MonoBehaviour
         switch (level)
         {
             case 0:
-                GameSaveNew.Instance.playerChicken.Power += 1;
+                GameSaveNew.Instance.playerChicken.Power += 0;
+                ShowPanel(0);
                 break;
             case 1:
-                GameSaveNew.Instance.playerChicken.Power += 5;
+                GameSaveNew.Instance.playerChicken.Power += 2;
+                ShowPanel(2);
                 break;
             case 2:
-                GameSaveNew.Instance.playerChicken.Power += 9;
+                GameSaveNew.Instance.playerChicken.Power += 5;
+                ShowPanel(5);
                 break;
             case 3:
-                GameSaveNew.Instance.playerChicken.Power += 14;
+                GameSaveNew.Instance.playerChicken.Power += 9;
+                ShowPanel(9);
                 break;
             case 4:
+                GameSaveNew.Instance.playerChicken.Power += 14;
+                ShowPanel(14);
+                break;
+            case 5:
                 GameSaveNew.Instance.playerChicken.Power += 20;
+                ShowPanel(20);
                 break;
         }
         GameSaveNew.Instance.SaveAllData();
+    }
+    void ShowPanel(int Value)
+    {
+        Panel.SetActive(true);
+        int Inscreace = Mathf.CeilToInt(Value * GameSaveNew.Instance.buffer * Random.Range(0.95f, 1.05f));
+        Panel.GetComponentInChildren<TextMeshProUGUI>().text ="本次训练中"+ GameSaveNew.Instance.playerChicken.Name + "的战斗力增加了" + Inscreace;
     }
 }
