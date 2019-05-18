@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Spirit_Train : MonoBehaviour
 {
     public GameObject[] Chicken;
@@ -17,6 +17,8 @@ public class Spirit_Train : MonoBehaviour
     GameObject[] a;
     private List<Vector3> Ve;
     private bool canTouch = false;
+
+    public GameObject Panel;
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -92,6 +94,7 @@ public class Spirit_Train : MonoBehaviour
         }
         else if(level==5&&!train_End)
         {
+            level++;
             Train_End();
         }
     }
@@ -101,19 +104,28 @@ public class Spirit_Train : MonoBehaviour
         switch(level)
         {
             case 1:
-                GameSaveNew.Instance.playerChicken.Power += 1;
+                GameSaveNew.Instance.playerChicken.Power += 0;
+                ShowPanel(0);
                 break;
             case 2:
-                GameSaveNew.Instance.playerChicken.Power += 5;
+                GameSaveNew.Instance.playerChicken.Power += 2;
+                ShowPanel(2);
                 break;
             case 3:
-                GameSaveNew.Instance.playerChicken.Power += 9;
+                GameSaveNew.Instance.playerChicken.Power += 5;
+                ShowPanel(5);
                 break;
             case 4:
-                GameSaveNew.Instance.playerChicken.Power += 14;
+                GameSaveNew.Instance.playerChicken.Power += 9;
+                ShowPanel(9);
                 break;
             case 5:
+                GameSaveNew.Instance.playerChicken.Power += 14;
+                ShowPanel(14);
+                break;
+            case 6:
                 GameSaveNew.Instance.playerChicken.Power += 20;
+                ShowPanel(20);
                 break;
         }
         GameSaveNew.Instance.SaveAllData();
@@ -164,5 +176,12 @@ public class Spirit_Train : MonoBehaviour
             intArray[i] = intArray[randomIndex];
             intArray[randomIndex] = temp;
         }
+    }
+
+    void ShowPanel(int Value)
+    {
+        Panel.SetActive(true);
+        int Inscreace = Mathf.CeilToInt(Value * GameSaveNew.Instance.buffer * Random.Range(0.95f, 1.05f));
+        Panel.GetComponentInChildren<TextMeshProUGUI>().text = "本次训练中" + GameSaveNew.Instance.playerChicken.Name + "的战斗力增加了" + Inscreace;
     }
 }
