@@ -37,7 +37,7 @@ public class FightChicken
     public Vector3 Pos = new Vector3(0,Random.Range(0.5f,3.5f),0);//随机Y值
     //玩家的第几只鸡
     //public int Ch_Num;
-    
+    //饥饿值
     public int Hungry;
     /// <summary>
     /// 设置鸡的种族
