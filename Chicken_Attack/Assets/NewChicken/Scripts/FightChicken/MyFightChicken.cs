@@ -35,16 +35,6 @@ public class MyFightChicken : MonoBehaviour
         StartCoroutine(SavePos());
     }
 
-    private void OnDisable()
-    {
-        Current_Name_UI.SetActive(false);
-    }
-
-    private void OnEnable()
-    {
-        Current_Name_UI.SetActive(true);
-    }
-
     private void OnDestroy()
     {
         Destroy(Current_Name_UI);

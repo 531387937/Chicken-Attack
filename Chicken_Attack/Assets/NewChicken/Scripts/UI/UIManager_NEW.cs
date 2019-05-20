@@ -20,9 +20,9 @@ public class UIManager_NEW : Singleton<UIManager_NEW>
     public GameObject ChickenPanel;
     //鸡的属性
     public TextMeshProUGUI ATK;
-    public TextMeshProUGUI HP;
-    public TextMeshProUGUI Spirit;
-    public TextMeshProUGUI Strong;
+    //public TextMeshProUGUI HP;
+    //public TextMeshProUGUI Spirit;
+    //public TextMeshProUGUI Strong;
 
     public bool CanTouch = true;
     //鸡的大头照
@@ -61,7 +61,7 @@ public class UIManager_NEW : Singleton<UIManager_NEW>
         Gold.text = GameSaveNew.Instance.PD.Gold.ToString();
         Prestige.text = GameSaveNew.Instance.PD.Prestige.ToString();
         Pt.text = GameSaveNew.Instance.PD.Pt.ToString();
-            ATK.text = GameSaveNew.Instance.playerChicken.Power.ToString();
+        ATK.text = GameSaveNew.Instance.playerChicken.Power.ToString();
             //HP.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].HP.ToString();
             //Spirit.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Spirit.ToString();
             //Strong.text = GameSaveNew.Instance.playerChicken[GameSaveNew.Instance.ChooseChicken].Strong.ToString();
