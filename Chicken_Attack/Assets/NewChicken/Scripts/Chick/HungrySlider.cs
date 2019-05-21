@@ -25,5 +25,6 @@ public class HungrySlider : MonoBehaviour
         yield return new WaitForSeconds(60);
         thisChicken.Hungry -= 2;
         Debug.Log("饥饿值-2");
+        StartCoroutine(Hungry());
     }
 }
