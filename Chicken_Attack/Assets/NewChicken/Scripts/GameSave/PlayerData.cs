@@ -18,11 +18,13 @@ public class PlayerData
     //退役的老鸡
     public List<FightChicken> OldChicken = new List<FightChicken>();
 
+    public int HomeLevel;
     public PlayerData()
     {
         Gold = 100;
         Prestige = 10;
         Pt = 10;
         ShopChicken = null;
+        HomeLevel = 0;
     }
 }

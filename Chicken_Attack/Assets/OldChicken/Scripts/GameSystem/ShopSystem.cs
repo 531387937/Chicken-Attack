@@ -14,6 +14,7 @@ public class ShopSystem : MonoBehaviour
     [HideInInspector]
     public GameObject ChickenUI;
 
+
     // Start is called before the first frame update
     void Start()
     {

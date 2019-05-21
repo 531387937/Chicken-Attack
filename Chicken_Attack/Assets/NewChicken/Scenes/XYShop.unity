@@ -456,8 +456,9 @@ GameObject:
   m_Component:
   - component: {fileID: 195756257}
   - component: {fileID: 195756258}
+  - component: {fileID: 195756259}
   m_Layer: 5
-  m_Name: Food
+  m_Name: Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -477,8 +478,8 @@ RectTransform:
   - {fileID: 1082205144}
   - {fileID: 2084490744}
   - {fileID: 255275497}
-  m_Father: {fileID: 313718953}
-  m_RootOrder: 2
+  m_Father: {fileID: 2009460224}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -511,6 +512,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
+--- !u!114 &195756259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195756256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9b6844174e5b8448160e8a311a4b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cost: 640000002c010000
+  te: {fileID: 255275498}
 --- !u!1 &255275496
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,7 +788,6 @@ RectTransform:
   m_Children:
   - {fileID: 1763454230}
   - {fileID: 1333817603}
-  - {fileID: 195756257}
   - {fileID: 619587852}
   m_Father: {fileID: 2009460224}
   m_RootOrder: 0
@@ -1371,7 +1385,7 @@ RectTransform:
   - {fileID: 912271358}
   - {fileID: 1507229328}
   m_Father: {fileID: 313718953}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4540,6 +4554,7 @@ GameObject:
   - component: {fileID: 2009460223}
   - component: {fileID: 2009460222}
   - component: {fileID: 2009460221}
+  - component: {fileID: 2009460225}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4603,7 +4618,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -4622,6 +4637,7 @@ RectTransform:
   - {fileID: 2027530428}
   - {fileID: 595226587}
   - {fileID: 727401837}
+  - {fileID: 195756257}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4630,6 +4646,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2009460225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009460220}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4532981a6a31c748b345d2815b9e8f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pt: {fileID: 1241101145}
+  Gold: {fileID: 1087834416}
+  Prestige: {fileID: 582539444}
+  ShopChickenUI:
+  - {fileID: 173537008}
+  - {fileID: 1025269735}
+  ChickenTex:
+  - {fileID: 2800000, guid: d232d9daf2d192149a93a4a064b788c2, type: 3}
+  - {fileID: 2800000, guid: fbb83818914e0d049a9b313dd3493b75, type: 3}
+  - {fileID: 2800000, guid: 0f261cb127ce9bb4c97a1ee7c5c967c8, type: 3}
+  - {fileID: 2800000, guid: 9af01d0054e18e648938c119b4fe1a7e, type: 3}
+  ChickenUI: {fileID: 0}
 --- !u!1 &2027530427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4686,10 +4726,6 @@ MonoBehaviour:
   ShopChickenUI:
   - {fileID: 173537008}
   - {fileID: 1025269735}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   ChickenTex:
   - {fileID: 2800000, guid: d232d9daf2d192149a93a4a064b788c2, type: 3}
   - {fileID: 2800000, guid: fbb83818914e0d049a9b313dd3493b75, type: 3}
@@ -4845,7 +4881,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: "\u5347\u7EA7\u9E21\u7A9D"
 --- !u!222 &2084490746
 CanvasRenderer:
   m_ObjectHideFlags: 0

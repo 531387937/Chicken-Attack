@@ -1542,6 +1542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 449512466}
   - component: {fileID: 449512465}
+  - component: {fileID: 449512467}
   m_Layer: 0
   m_Name: "\u9E21\u7B3C"
   m_TagString: Untagged
@@ -1611,6 +1612,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &449512467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449512464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b2b52cff601de49a04a5d6732216f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sp:
+  - {fileID: 21300000, guid: 60873cdd4db6e5b45a33af3be342b808, type: 3}
+  - {fileID: 21300000, guid: c8e011c4203a1e044a955791cb4ffad5, type: 3}
+  - {fileID: 0}
+  HomeScale:
+  - {x: 1, y: 1, z: 1}
+  - {x: 0.7, y: 0.7, z: 0.7}
+  - {x: 0, y: 0, z: 0}
 --- !u!114 &559870499 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4120178986523022149, guid: a319b04f6a0e06f41b0d1a5b3b213ebb,
