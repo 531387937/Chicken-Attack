@@ -208,3 +208,206 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.20833333
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.25
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.29166666
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.375
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.41666666
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.45833334
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5416667
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5833333
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.625
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6666667
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.7083333
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.75
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.0416666
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.0833334
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.125
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.1666666
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.2083334
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.25
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.2916666
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.005
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.3333334
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.375
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.4166666
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.4583334
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5416666
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5833334
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.625
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0

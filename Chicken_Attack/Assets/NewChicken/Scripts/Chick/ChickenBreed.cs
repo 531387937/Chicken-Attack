@@ -12,6 +12,7 @@ public class ChickenBreed : MonoBehaviour
     public GameObject eggs;
     public GameObject Pos;
     private GameObject Breed_Chicken;
+
     void Start()
     {
         Breed_Chicken = Instantiate(Chicken[(int)GameSaveNew.Instance.playerChicken.Type], Pos.transform.position, new Quaternion(0, 180, 0, 1));
@@ -33,10 +34,12 @@ public class ChickenBreed : MonoBehaviour
             eggs.SetActive(true);
         }
     }
+
     public void Dis(GameObject otherEgg)
     {
         otherEgg.SetActive(false);
     }
+
     //诞生新的鸡，以后加上命名功能
     public void Decided()
     {
