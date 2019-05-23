@@ -9,7 +9,6 @@ public class Egg2Chicken : MonoBehaviour
     public void ToChi()
     {
         a.SetActive(true);
-        Handheld.Vibrate();
         this.gameObject.SetActive(false);
     }
 }
