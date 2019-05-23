@@ -278,7 +278,7 @@ MonoBehaviour:
   tempPos: {x: 10, y: 0, z: 0}
   Chicken:
   - {fileID: 498372586942774012, guid: 0a3e3ca57a625f643ac78cd17012d174, type: 3}
-  - {fileID: 980766463013693485, guid: 249620fdb8b6dd7468bf934f269f962e, type: 3}
+  - {fileID: 8105479440551353420, guid: 1bd9af7af69317e4a91d2fce5b0bb988, type: 3}
   m_hurdle: {fileID: 1276103731810310791, guid: e0b3b2a275a99f74098fd5413e8709a2,
     type: 3}
   HurdleNum: 10

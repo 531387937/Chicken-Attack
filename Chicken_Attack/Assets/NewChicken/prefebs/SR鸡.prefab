@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6195234065671489470}
   - component: {fileID: 8056791716102740277}
   - component: {fileID: 1989828800934898541}
-  - component: {fileID: 3721930673574145439}
   m_Layer: 0
   m_Name: "SR\u9E21"
   m_TagString: FightChicken
@@ -154,17 +153,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bdeb4c53da90f94482b3fbf6ae34e62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3721930673574145439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8105479440551353420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a19b16d256310c349a0a62fd9d23cbcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
