@@ -176,7 +176,7 @@ public class FightChicken
     {
         Hungry = 75;
         Name = "小鸡";
-        Power = Mathf.Ceil(playerChicken.Power*0.75f+shopChicken.Power*0.25f * Random.Range(0.95f, 1.05f));
+        Power = Mathf.Ceil(playerChicken.Power * 0.75f + shopChicken.Power * 0.25f * Random.Range(0.95f, 1.05f));
         Type = setChickenType(playerChicken, shopChicken);
         /*Skills.Add(2);*///待加入技能，从外部读取数据
         Talent = Random.Range(5, 8);
