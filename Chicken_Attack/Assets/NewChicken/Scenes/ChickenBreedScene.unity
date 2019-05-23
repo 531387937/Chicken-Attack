@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Chicken:
-  - {fileID: 8105479440551353420, guid: 1bd9af7af69317e4a91d2fce5b0bb988, type: 3}
   - {fileID: 3045997677048443577, guid: 4ed31a8dbd7dc3b4b98a1da86fae6129, type: 3}
+  - {fileID: 8105479440551353420, guid: 1bd9af7af69317e4a91d2fce5b0bb988, type: 3}
   - {fileID: 0}
   BuyChickenPic: {fileID: 1111414056}
   Pics:
@@ -717,6 +717,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: {fileID: 1659255013}
+  Others:
+  - {fileID: 1718932201}
+  - {fileID: 544697307}
 --- !u!1 &399077386
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +983,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: {fileID: 1659255013}
+  Others:
+  - {fileID: 341952752}
+  - {fileID: 1718932201}
 --- !u!1001 &652616093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2810,6 +2816,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: {fileID: 1659255013}
+  Others:
+  - {fileID: 341952752}
+  - {fileID: 544697307}
 --- !u!1 &1770138853
 GameObject:
   m_ObjectHideFlags: 0

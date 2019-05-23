@@ -4,16 +4,18 @@ using UnityEngine;
 using System.Xml;
 public class Player_Chicken : MonoBehaviour
 {
-    public GameObject[] ga; 
+    public GameObject[] ga;
+
     // Start is called before the first frame update
     void Start()
     {
         //按照鸡的种类生成鸡
-                GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], GameSaveNew.Instance.playerChicken.Pos, new Quaternion(0, 0, 0, 1));
-                a.AddComponent<MyFightChicken>();
-                a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken;
-            
-        
+        if (GameSaveNew.Instance.playerChicken != null)
+        {
+            GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], GameSaveNew.Instance.playerChicken.Pos, new Quaternion(0, 0, 0, 1));
+            a.AddComponent<MyFightChicken>();
+            a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken;
+        }    
 
         //遍历小鸡
         if (GameSaveNew.Instance.PD.Chick != null)
@@ -32,8 +34,8 @@ public class Player_Chicken : MonoBehaviour
             for (int i = 0; i < GameSaveNew.Instance.PD.OldChicken.Count; i++)
             {
                 GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], GameSaveNew.Instance.PD.OldChicken[i].Pos, new Quaternion(0, 0, 0, 1));
-                a.AddComponent<MyFightChicken>();
-                a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                b.AddComponent<MyFightChicken>();
+                b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
             }
         }
 

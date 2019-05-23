@@ -24,9 +24,9 @@ public class FightChicken
     ////鸡的气势
     //public float Strong;
     ////鸡的天赋
-    public float Power;
+    public float Power = 100;
     [Range(5,8)]
-    public int Talent;
+    public int Talent = 5;
     //鸡的技能组
     //public List<int> Skills = new List<int>();
     //鸡的前辈种族
@@ -34,11 +34,11 @@ public class FightChicken
     //此生遇到的敌鸡战斗力
     public List<float> enemyChickens = new List<float>();
     //在场景中位置
-    public Vector3 Pos = new Vector3(0,Random.Range(0.5f,3.5f),0);//随机Y值
+    public Vector3 Pos = new Vector3(0,Random.Range(0.5f,-3.5f),0);//随机Y值
     //玩家的第几只鸡
     //public int Ch_Num;
     //饥饿值
-    public int Hungry;
+    public int Hungry = 100;
     /// <summary>
     /// 设置鸡的种族
     /// </summary>
@@ -176,7 +176,7 @@ public class FightChicken
     {
         Hungry = 75;
         Name = "小鸡";
-        Power = Mathf.Ceil(playerChicken.Power*0.75f+shopChicken.Power*0.25f * Random.Range(0.95f, 1.05f));
+        Power = Mathf.Ceil(playerChicken.Power * 0.75f + shopChicken.Power * 0.25f * Random.Range(0.95f, 1.05f));
         Type = setChickenType(playerChicken, shopChicken);
         /*Skills.Add(2);*///待加入技能，从外部读取数据
         Talent = Random.Range(5, 8);

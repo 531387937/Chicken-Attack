@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HungrySlider : MonoBehaviour
 {
     public FightChicken thisChicken;
-    public Slider HungryStrip;   
+    public Slider HungryStrip;
+    public TextMeshProUGUI ATK;
 
     void Start()
     {
+        ATK.text = thisChicken.Power.ToString();
         HungryStrip.maxValue = 100;
         StartCoroutine(Hungry());
     }

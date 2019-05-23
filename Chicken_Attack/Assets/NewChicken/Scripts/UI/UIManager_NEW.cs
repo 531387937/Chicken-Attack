@@ -17,7 +17,7 @@ public class UIManager_NEW : Singleton<UIManager_NEW>
     public GameObject fa;
     //private bool Showing = false;
     //新的鸡的属性显示
-    public GameObject ChickenPanel;
+    //public GameObject ChickenPanel;
     //鸡的属性
     public TextMeshProUGUI ATK;
     //public TextMeshProUGUI HP;
@@ -94,11 +94,11 @@ public class UIManager_NEW : Singleton<UIManager_NEW>
 
 
         //直接将被点击的鸡成为被选择的鸡，用于前往战斗、训练、繁殖等
-        if (CanTouch)
-        {
-            gridImage = obj.gameObject.GetComponent<GridImage_NEW>();
-            ChickenPanel.SetActive(true);
-        }
+        //if (CanTouch)
+        //{
+            //gridImage = obj.gameObject.GetComponent<GridImage_NEW>();
+            //ChickenPanel.SetActive(true);
+        //}
     }
 
     private void GridImage_OnExit()

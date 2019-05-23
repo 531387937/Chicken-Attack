@@ -15,13 +15,15 @@ public class GameSaveNew : Singleton<GameSaveNew>
     public PlayerData PD = new PlayerData();
     string path = "Assets/Resources/GameData.json";
     string PlayerPath = "Assets/Resources/GamePlayerData.json";
+
     //之后用这个来表现对训练的影响浮动值
     public float buffer=1.0f;
+
     void Awake()
     {
         //导出时切换
-        //path = GetDataPath() + "/GameData.json";
-        //PlayerPath = GetDataPath() + "/GamePlayerData.json";
+        path = GetDataPath() + "/GameData.json";
+        PlayerPath = GetDataPath() + "/GamePlayerData.json";
         LoadAllData();
         //获取MAC
         NetworkInterface[] nis = NetworkInterface.GetAllNetworkInterfaces();
@@ -31,31 +33,19 @@ public class GameSaveNew : Singleton<GameSaveNew>
 
     void Start()
     {
-        //--------测试---------
-        //Chicken chicken = new Chicken();
-        //chicken.Type = Chicken.chickenType.KFC;
-        //chicken.Name = chicken.Type.ToString();
-        //AddChicken(chicken);
-        //---------------------
-        
-        //if (!IOHelper.IsFileExists(path))
-        //{
-        //    //如没有则创建空记录文件
-        //    IOHelper.SetData(path,ChickenList.chickenList,Mac);
-        //    Debug.Log("创建完成");
-        //}
-        //if (!IOHelper.IsFileExists(PlayerPath))
-        //{
-        //    //如没有则创建空记录文件
-        //    IOHelper.SetData(PlayerPath, PD, Mac);
-        //    Debug.Log("创建完成");
-        //}
-        //if (IOHelper.IsFileExists(path))
-        //{
-        //    //读取
-        //    ChickenList.chickenList = IOHelper.GetData(path, typeof(List<Chicken>), Mac) as List<Chicken>;
-        //    Debug.Log("GD:" + ChickenList.chickenList[0].Name);
-        //}  
+        if (!IOHelper.IsFileExists(path))
+        {
+            //如没有则创建空记录文件
+            playerChicken = new FightChicken("初始鸡");
+            IOHelper.SetData(path, playerChicken, Mac);
+            Debug.Log("创建完成");
+        }
+        if (!IOHelper.IsFileExists(PlayerPath))
+        {
+            //如没有则创建空记录文件
+            IOHelper.SetData(PlayerPath, PD, Mac);
+            Debug.Log("创建完成");
+        }
     }
     
     public void SavePlayerData()
@@ -92,9 +82,9 @@ public class GameSaveNew : Singleton<GameSaveNew>
     {
         if (Application.platform == RuntimePlatform.IPhonePlayer)//如果是iphone
         {
-            string path = Application.persistentDataPath;//.Substring (0, Application.dataPath.Length - 5);
-                                                         //path = path.Substring(0, path.LastIndexOf('/'));  
-            return path;//+ "/Documents"; 
+            string path = Application.persistentDataPath;
+                                                         
+            return path;
         }
         else if (Application.platform == RuntimePlatform.Android)//如果是android
         {
