@@ -3,41 +3,61 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 namespace Script
 {
-    class FoodUI : MonoBehaviour
+    class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        public Image Body;//ui元素的本体, panel等
-        public RectTransform CanvasRectangle; //image所在的画布
-        private bool dragging;
-        private Vector2 targetPosition;//移动时目标位置
-        private Vector2 offset;//开始移动前记录鼠标与body之间的偏移距离
-        public void Update()
+        private Image ThisFoodImage;
+        private RectTransform CanvasRectangle; 
+        private Vector2 StartPos;
+        public Sprite NormalSprite;
+        public Sprite CanUseSprite;
+        private GameObject CurrentChicken;
+        public int HungryADD;
+
+        private void Start()
         {
-            if (dragging)
+            ThisFoodImage = GetComponent<Image>();
+            CanvasRectangle = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<RectTransform>();
+            StartPos = ThisFoodImage.rectTransform.anchoredPosition;
+            ThisFoodImage.sprite = NormalSprite;
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            ThisFoodImage.transform.position = Input.mousePosition;
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit.collider != null)
             {
-                //以0.5倍的单位将ui向目标位置移动
-                Body.rectTransform.anchoredPosition += (targetPosition - Body.rectTransform.anchoredPosition) * 0.5f;
+                if (hit.collider.tag == "FightChicken")
+                {
+                    CurrentChicken = hit.collider.gameObject;
+                    ThisFoodImage.sprite = CanUseSprite;
+                    Debug.Log("Target Position: " + hit.collider.gameObject.name);
+                }
+                else
+                {
+                    CurrentChicken = null;
+                    ThisFoodImage.sprite = NormalSprite;
+                }
             }
         }
-        public void OnBeginDrag(BaseEventData baseEventData)
+
+        public void OnEndDrag(PointerEventData eventData)
         {
-            PointerEventData pointerEventData = baseEventData as PointerEventData;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                CanvasRectangle, pointerEventData.position, pointerEventData.pressEventCamera, out offset);
-            //计算偏移量
-            offset = Body.rectTransform.anchoredPosition - offset;
-            dragging = true;
+            ThisFoodImage.rectTransform.anchoredPosition = StartPos;
+            if (CurrentChicken != null && ThisFoodImage.sprite == CanUseSprite)
+            {
+                CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD;
+                ThisFoodImage.sprite = NormalSprite;
+                if (CurrentChicken.GetComponent<MyFightChicken>().self.Hungry > 100)
+                {
+                    CurrentChicken.GetComponent<MyFightChicken>().self.Hungry = 100;
+                }
+            }
         }
-        public void OnDrag(BaseEventData baseEventData)
+
+        public void OnBeginDrag(PointerEventData eventData)
         {
-            PointerEventData pointerEventData = baseEventData as PointerEventData;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                CanvasRectangle, pointerEventData.position, pointerEventData.pressEventCamera, out targetPosition);
-            //更新目标位置
-            targetPosition = targetPosition + offset;
-        }
-        public void OnEndDrag(BaseEventData baseEventData)
-        {
-            dragging = false;
+
         }
     }
 }

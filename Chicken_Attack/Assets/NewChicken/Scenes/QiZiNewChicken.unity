@@ -488,8 +488,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33ae30bb8bced45ab3978a246367a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Body: {fileID: 0}
-  CanvasRectangle: {fileID: 0}
+  NormalSprite: {fileID: 0}
+  CanUseSprite: {fileID: 0}
+  HungryADD: 0
 --- !u!1 &89608378
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,8 +935,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33ae30bb8bced45ab3978a246367a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Body: {fileID: 0}
-  CanvasRectangle: {fileID: 0}
+  NormalSprite: {fileID: 0}
+  CanUseSprite: {fileID: 0}
+  HungryADD: 0
 --- !u!1 &255587512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,8 +1577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33ae30bb8bced45ab3978a246367a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Body: {fileID: 0}
-  CanvasRectangle: {fileID: 0}
+  NormalSprite: {fileID: 0}
+  CanUseSprite: {fileID: 0}
+  HungryADD: 0
 --- !u!1 &449512464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,7 +2442,7 @@ GameObject:
   - component: {fileID: 758368256}
   - component: {fileID: 758368258}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: "\u9EA6\u5B50"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2484,7 +2487,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 793917bb4009c4a4e8154e4a5e542afb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2513,8 +2516,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33ae30bb8bced45ab3978a246367a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Body: {fileID: 0}
-  CanvasRectangle: {fileID: 0}
+  NormalSprite: {fileID: 21300000, guid: 793917bb4009c4a4e8154e4a5e542afb, type: 3}
+  CanUseSprite: {fileID: 21300000, guid: a34c5bac6f4ea4a4f85d9a4a50b6d934, type: 3}
+  HungryADD: 5
 --- !u!1 &762860711
 GameObject:
   m_ObjectHideFlags: 0
@@ -4730,8 +4734,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33ae30bb8bced45ab3978a246367a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Body: {fileID: 0}
-  CanvasRectangle: {fileID: 0}
+  NormalSprite: {fileID: 0}
+  CanUseSprite: {fileID: 0}
+  HungryADD: 0
 --- !u!1 &1340286446
 GameObject:
   m_ObjectHideFlags: 0
@@ -4819,8 +4824,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33ae30bb8bced45ab3978a246367a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Body: {fileID: 0}
-  CanvasRectangle: {fileID: 0}
+  NormalSprite: {fileID: 0}
+  CanUseSprite: {fileID: 0}
+  HungryADD: 0
 --- !u!1 &1373962879
 GameObject:
   m_ObjectHideFlags: 0
@@ -4913,7 +4919,7 @@ GameObject:
   - component: {fileID: 1390411569}
   - component: {fileID: 1390411571}
   m_Layer: 5
-  m_Name: Image
+  m_Name: "\u7EFF\u8C46"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4958,7 +4964,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 34199e7b852678043b45a22ef2ff6a14, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4987,8 +4993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33ae30bb8bced45ab3978a246367a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Body: {fileID: 0}
-  CanvasRectangle: {fileID: 0}
+  NormalSprite: {fileID: 21300000, guid: 34199e7b852678043b45a22ef2ff6a14, type: 3}
+  CanUseSprite: {fileID: 21300000, guid: 43f0dbb632d89694f99c5b50b3226747, type: 3}
+  HungryADD: 5
 --- !u!1 &1396030851
 GameObject:
   m_ObjectHideFlags: 0
@@ -5163,7 +5170,7 @@ GameObject:
   - component: {fileID: 1529552800}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: MainCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5898,7 +5905,7 @@ GameObject:
   - component: {fileID: 1804904393}
   - component: {fileID: 1804904395}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: "\u82B1\u751F"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5943,7 +5950,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 346da7632256b3342aad2fa6fea20f3d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5972,8 +5979,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33ae30bb8bced45ab3978a246367a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Body: {fileID: 0}
-  CanvasRectangle: {fileID: 0}
+  NormalSprite: {fileID: 21300000, guid: 346da7632256b3342aad2fa6fea20f3d, type: 3}
+  CanUseSprite: {fileID: 21300000, guid: 3f987514c1ddf0a46b006d48450141c5, type: 3}
+  HungryADD: 5
 --- !u!1 &1838861810
 GameObject:
   m_ObjectHideFlags: 0

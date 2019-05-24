@@ -11,6 +11,7 @@ TagManager:
   - FightChicken
   - Chick
   - Edge
+  - MainCanvas
   layers:
   - Default
   - TransparentFX
