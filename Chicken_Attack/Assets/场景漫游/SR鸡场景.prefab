@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7388603238277133137}
   - component: {fileID: 4986299111138750804}
   - component: {fileID: 6151111889978574829}
-  - component: {fileID: 6506807230206290459}
   - component: {fileID: 778081582068346144}
+  - component: {fileID: 1515276894623393394}
   m_Layer: 0
   m_Name: "SR\u9E21\u573A\u666F"
   m_TagString: FightChicken
@@ -101,19 +101,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &6506807230206290459
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980766463013693485}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3, y: 2.56, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &778081582068346144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,3 +113,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19b16d256310c349a0a62fd9d23cbcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1515276894623393394
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980766463013693485}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 2.56}
+    newSize: {x: 3, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3, y: 2.56}
+  m_EdgeRadius: 0
