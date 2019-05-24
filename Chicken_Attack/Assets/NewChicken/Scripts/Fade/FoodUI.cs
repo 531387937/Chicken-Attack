@@ -11,12 +11,15 @@ namespace Script
         public Sprite NormalSprite;
         public Sprite CanUseSprite;
         private GameObject CurrentChicken;
-        public int HungryADD;
+        public int HungryADD = 5;
+        public int Cost = 5;
+        private GameSaveNew GameData;
 
         private void Start()
         {
             ThisFoodImage = GetComponent<Image>();
             CanvasRectangle = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<RectTransform>();
+            GameData = GameObject.FindGameObjectWithTag("GM").GetComponent<GameSaveNew>();
             StartPos = ThisFoodImage.rectTransform.anchoredPosition;
             ThisFoodImage.sprite = NormalSprite;
         }
@@ -47,6 +50,7 @@ namespace Script
             if (CurrentChicken != null && ThisFoodImage.sprite == CanUseSprite)
             {
                 CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD;
+                GameData.PD.Gold -= Cost;
                 ThisFoodImage.sprite = NormalSprite;
                 if (CurrentChicken.GetComponent<MyFightChicken>().self.Hungry > 100)
                 {

@@ -12,6 +12,7 @@ TagManager:
   - Chick
   - Edge
   - MainCanvas
+  - GM
   layers:
   - Default
   - TransparentFX

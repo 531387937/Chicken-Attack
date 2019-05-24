@@ -490,7 +490,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalSprite: {fileID: 0}
   CanUseSprite: {fileID: 0}
-  HungryADD: 0
+  HungryADD: 5
+  Cost: 5
 --- !u!1 &89608378
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +938,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalSprite: {fileID: 0}
   CanUseSprite: {fileID: 0}
-  HungryADD: 0
+  HungryADD: 5
+  Cost: 5
 --- !u!1 &255587512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,7 +1581,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalSprite: {fileID: 0}
   CanUseSprite: {fileID: 0}
-  HungryADD: 0
+  HungryADD: 5
+  Cost: 5
 --- !u!1 &449512464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2518,7 +2521,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalSprite: {fileID: 21300000, guid: 793917bb4009c4a4e8154e4a5e542afb, type: 3}
   CanUseSprite: {fileID: 21300000, guid: a34c5bac6f4ea4a4f85d9a4a50b6d934, type: 3}
-  HungryADD: 5
+  HungryADD: -10
+  Cost: 5
 --- !u!1 &762860711
 GameObject:
   m_ObjectHideFlags: 0
@@ -4736,7 +4740,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalSprite: {fileID: 0}
   CanUseSprite: {fileID: 0}
-  HungryADD: 0
+  HungryADD: 5
+  Cost: 5
 --- !u!1 &1340286446
 GameObject:
   m_ObjectHideFlags: 0
@@ -4826,7 +4831,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalSprite: {fileID: 0}
   CanUseSprite: {fileID: 0}
-  HungryADD: 0
+  HungryADD: 5
+  Cost: 5
 --- !u!1 &1373962879
 GameObject:
   m_ObjectHideFlags: 0
@@ -4995,7 +5001,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalSprite: {fileID: 21300000, guid: 34199e7b852678043b45a22ef2ff6a14, type: 3}
   CanUseSprite: {fileID: 21300000, guid: 43f0dbb632d89694f99c5b50b3226747, type: 3}
-  HungryADD: 5
+  HungryADD: 10
+  Cost: 5
 --- !u!1 &1396030851
 GameObject:
   m_ObjectHideFlags: 0
@@ -5981,7 +5988,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalSprite: {fileID: 21300000, guid: 346da7632256b3342aad2fa6fea20f3d, type: 3}
   CanUseSprite: {fileID: 21300000, guid: 3f987514c1ddf0a46b006d48450141c5, type: 3}
-  HungryADD: 5
+  HungryADD: 10
+  Cost: 5
 --- !u!1 &1838861810
 GameObject:
   m_ObjectHideFlags: 0
@@ -6155,7 +6163,7 @@ GameObject:
   - component: {fileID: 1902311636}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
