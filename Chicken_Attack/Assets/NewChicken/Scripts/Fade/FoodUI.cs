@@ -49,12 +49,15 @@ namespace Script
             ThisFoodImage.rectTransform.anchoredPosition = StartPos;
             if (CurrentChicken != null && ThisFoodImage.sprite == CanUseSprite)
             {
-                CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD;
-                GameData.PD.Gold -= Cost;
-                ThisFoodImage.sprite = NormalSprite;
-                if (CurrentChicken.GetComponent<MyFightChicken>().self.Hungry > 100)
+                if (GameData.PD.Gold - Cost > 0)//有钱才可以购买
                 {
-                    CurrentChicken.GetComponent<MyFightChicken>().self.Hungry = 100;
+                    CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD;
+                    GameData.PD.Gold -= Cost;
+                    ThisFoodImage.sprite = NormalSprite;
+                    if (CurrentChicken.GetComponent<MyFightChicken>().self.Hungry > 100)
+                    {
+                        CurrentChicken.GetComponent<MyFightChicken>().self.Hungry = 100;
+                    }
                 }
             }
         }
