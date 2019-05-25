@@ -3505,6 +3505,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "SR\u9E21\u573A\u666F"
       objectReference: {fileID: 0}
+    - target: {fileID: 980766463013693485, guid: 249620fdb8b6dd7468bf934f269f962e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7388603238277133137, guid: 249620fdb8b6dd7468bf934f269f962e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7565,6 +7570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "\u5C0F\u9E21\u573A\u666F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833806591072149098, guid: aa08be589345faf4e9c8f714199b1c2c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4833806591072149103, guid: aa08be589345faf4e9c8f714199b1c2c,
         type: 3}
