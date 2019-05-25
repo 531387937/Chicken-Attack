@@ -13,6 +13,7 @@ TagManager:
   - Edge
   - MainCanvas
   - GM
+  - ShopFood
   layers:
   - Default
   - TransparentFX

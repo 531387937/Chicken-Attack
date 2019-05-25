@@ -13,6 +13,7 @@ public class ShopSystem : MonoBehaviour
     public Texture[] ChickenTex;
     [HideInInspector]
     //public GameObject ChickenUI;
+    public GameObject Broad;
 
 
     // Start is called before the first frame update
@@ -20,10 +21,11 @@ public class ShopSystem : MonoBehaviour
     {
         //ChickenUI = GameObject.FindGameObjectWithTag("ChickenUI");
         //ChickenUI.SetActive(false);
-
+        Broad = GameObject.FindGameObjectWithTag("ChickenUI");
+        Broad.SetActive(false);
         GameSaveNew.Instance.PD.ShopChicken = null;
-       
         ShopChicken = new FightChicken[2];        
+
         //将耗费改为和鸡的战斗力有关
         for(int i = 0;i< ShopChicken.Length; i++)
         {
