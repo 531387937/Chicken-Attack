@@ -5,6 +5,12 @@ namespace Script
 {
     class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
+        public enum Food
+        {
+            绿豆 = 0,
+            花生 = 1,
+            麦子 = 2
+        }
         private Image ThisFoodImage;
         private RectTransform CanvasRectangle; 
         private Vector2 StartPos;
@@ -14,6 +20,9 @@ namespace Script
         public int HungryADD = 5;
         public int Cost = 5;
         private GameSaveNew GameData;
+        public Food food;
+        private bool CurrentFoodActive = false;
+        public GameObject Cover;
 
         private void Start()
         {
@@ -22,19 +31,32 @@ namespace Script
             GameData = GameObject.FindGameObjectWithTag("GM").GetComponent<GameSaveNew>();
             StartPos = ThisFoodImage.rectTransform.anchoredPosition;
             ThisFoodImage.sprite = NormalSprite;
+            if (GameData.PD.FoodRights[(int)food])
+            {
+                CurrentFoodActive = true;
+            }
+            Debug.Log(food.ToString() + ":" + GameData.PD.FoodRights[(int)food]);
+            Debug.Log(" CurrentFoodActive:" + CurrentFoodActive);
+            if (CurrentFoodActive)
+            {
+                Cover.SetActive(false);
+            }
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            ThisFoodImage.transform.position = Input.mousePosition;
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider != null)
+            if (CurrentFoodActive)
             {
-                if (hit.collider.tag == "FightChicken")
+                ThisFoodImage.transform.position = Input.mousePosition;
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                if (hit.collider != null)
                 {
-                    CurrentChicken = hit.collider.gameObject;
-                    ThisFoodImage.sprite = CanUseSprite;
-                    Debug.Log("Target Position: " + hit.collider.gameObject.name);
+                    if (hit.collider.tag == "FightChicken")
+                    {
+                        CurrentChicken = hit.collider.gameObject;
+                        ThisFoodImage.sprite = CanUseSprite;
+                        Debug.Log("Target Position: " + hit.collider.gameObject.name);
+                    }
                 }
                 else
                 {
@@ -46,17 +68,20 @@ namespace Script
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            ThisFoodImage.rectTransform.anchoredPosition = StartPos;
-            if (CurrentChicken != null && ThisFoodImage.sprite == CanUseSprite)
+            if (CurrentFoodActive)
             {
-                if (GameData.PD.Gold - Cost > 0)//有钱才可以购买
+                ThisFoodImage.rectTransform.anchoredPosition = StartPos;
+                if (CurrentChicken != null && ThisFoodImage.sprite == CanUseSprite)
                 {
-                    CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD;
-                    GameData.PD.Gold -= Cost;
-                    ThisFoodImage.sprite = NormalSprite;
-                    if (CurrentChicken.GetComponent<MyFightChicken>().self.Hungry > 100)
+                    if (GameData.PD.Gold - Cost > 0)//有钱才可以购买
                     {
-                        CurrentChicken.GetComponent<MyFightChicken>().self.Hungry = 100;
+                        CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD;
+                        GameData.PD.Gold -= Cost;
+                        ThisFoodImage.sprite = NormalSprite;
+                        if (CurrentChicken.GetComponent<MyFightChicken>().self.Hungry > 100)
+                        {
+                            CurrentChicken.GetComponent<MyFightChicken>().self.Hungry = 100;
+                        }
                     }
                 }
             }
