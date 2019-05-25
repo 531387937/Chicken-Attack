@@ -4956,10 +4956,8 @@ MonoBehaviour:
   - {fileID: 173537008}
   - {fileID: 460276748}
   ChickenTex:
-  - {fileID: 2800000, guid: d232d9daf2d192149a93a4a064b788c2, type: 3}
-  - {fileID: 2800000, guid: fbb83818914e0d049a9b313dd3493b75, type: 3}
-  - {fileID: 2800000, guid: 0f261cb127ce9bb4c97a1ee7c5c967c8, type: 3}
-  - {fileID: 2800000, guid: 9af01d0054e18e648938c119b4fe1a7e, type: 3}
+  - {fileID: 8400000, guid: 7b68611b82556df4e967eda1f8cd204e, type: 2}
+  - {fileID: 8400000, guid: d0e4900bb57468140b8a865436102063, type: 2}
   ChickenUI: {fileID: 0}
 --- !u!1 &2030572733
 GameObject:

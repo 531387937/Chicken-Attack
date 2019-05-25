@@ -200,6 +200,7 @@ public class FightChicken
     {
         string aa = Resources.Load("EnemyData").ToString();
         List<LevelSet> NowLevel= IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
+        //------该行有问题---xy19.5.25
         float New_Power = NowLevel[fame - 1].EnemyChicken.Power;
         Type = (chickentype)Random.Range(0, System.Enum.GetNames(Type.GetType()).Length);
         Name = Type.ToString();
