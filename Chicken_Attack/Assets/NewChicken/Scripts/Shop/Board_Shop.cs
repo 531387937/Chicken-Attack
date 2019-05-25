@@ -9,6 +9,7 @@ public class Board_Shop : MonoBehaviour
     private Food CurrentFood;
     private bool BuyFood = false;
     private bool BuyHome = false;
+    public string AfterBuyChickenChangeTo = "ChickenBreedScene";
 
     private void Update()
     {
@@ -48,6 +49,7 @@ public class Board_Shop : MonoBehaviour
                 GameSaveNew.Instance.PD.ShopChicken = ChooseChicken;
                 this.gameObject.SetActive(false);
                 InitAll();
+                GetComponent<SceneChange>().GoLoadingScene(AfterBuyChickenChangeTo);
             }
             else
             {
