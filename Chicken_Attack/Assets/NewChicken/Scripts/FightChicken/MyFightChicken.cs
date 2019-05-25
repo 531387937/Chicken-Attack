@@ -8,6 +8,7 @@ public class MyFightChicken : MonoBehaviour
     private GameObject GameUI;
     public GameObject Name_UI;
     private Vector3 Pos;
+    [HideInInspector]
     public GameObject Current_Name_UI;
     private void Start()
     {
