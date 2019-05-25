@@ -11,11 +11,11 @@ public class ShopChicken : MonoBehaviour
     public RawImage Tex;
     public int CostChicken;
     [HideInInspector]
-    public ShopSystem ShopSystem;
+    //public ShopSystem ShopSystem;
 
     private void Start()
     {
-        ShopSystem = GameObject.Find("ShopChickenS").GetComponent<ShopSystem>();
+        //ShopSystem = GameObject.Find("ShopChickenS").GetComponent<ShopSystem>();
     }
 
     // Update is called once per frame
@@ -36,8 +36,8 @@ public class ShopChicken : MonoBehaviour
         {
             if (GetComponent<BoxCollider2D>().OverlapPoint(Input.mousePosition))
             {
-                ShopSystem.ChickenUI.active = true;
-                ShopSystem.ChickenUI.GetComponent<ShopChickenUI>().SetShopChickenUi(ThisChicken,CostChicken);
+                //ShopSystem.ChickenUI.active = true;
+                //ShopSystem.ChickenUI.GetComponent<ShopChickenUI>().SetShopChickenUi(ThisChicken,CostChicken);
             }
         }
     }

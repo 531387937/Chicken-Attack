@@ -7,9 +7,9 @@ public class FightChicken
     public enum chickentype
     {
         菜鸡 = 0,
-        木鸡 = 1,
-        飞机 = 2,
-        肉鸡 = 3
+        SR鸡 = 1,
+        //飞机 = 2,
+        //肉鸡 = 3
     }
     public chickentype Type;
     public string Name;
@@ -201,10 +201,10 @@ public class FightChicken
         string aa = Resources.Load("EnemyData").ToString();
         List<LevelSet> NowLevel= IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
         //------该行有问题---xy19.5.25
-        float New_Power = NowLevel[fame - 1].EnemyChicken.Power;
+        float New_Power = NowLevel[fame].EnemyChicken.Power;
         Type = (chickentype)Random.Range(0, System.Enum.GetNames(Type.GetType()).Length);
         Name = Type.ToString();
-        Power =Mathf.Ceil(New_Power*time*Random.Range(0.95f,1.05f));
+        Power =Mathf.Ceil(New_Power * time * Random.Range(0.95f,1.05f));
         Debug.Log(Power);
         Talent = Random.Range(0, 4) * (1 + fame / 10);
     }

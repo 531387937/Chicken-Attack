@@ -12,14 +12,14 @@ public class ShopSystem : MonoBehaviour
     public GameObject[] ShopChickenUI;
     public Texture[] ChickenTex;
     [HideInInspector]
-    public GameObject ChickenUI;
+    //public GameObject ChickenUI;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        ChickenUI = GameObject.FindGameObjectWithTag("ChickenUI");
-        ChickenUI.SetActive(false);
+        //ChickenUI = GameObject.FindGameObjectWithTag("ChickenUI");
+        //ChickenUI.SetActive(false);
 
         GameSaveNew.Instance.PD.ShopChicken = null;
        
