@@ -23,6 +23,7 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     public Food food;
     private bool CurrentFoodActive = false;
     public GameObject Cover;
+    public Material Grey;
 
     private void Start()
     {
@@ -37,9 +38,10 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
         }
         Debug.Log(food.ToString() + ":" + GameData.PD.FoodRights[(int)food]);
         Debug.Log(" CurrentFoodActive:" + CurrentFoodActive);
-        if (CurrentFoodActive)
+        if (!CurrentFoodActive)
         {
-            Cover.SetActive(false);
+            //Cover.SetActive(false);
+            GetComponent<Image>().material = Grey;
         }
     }
 
