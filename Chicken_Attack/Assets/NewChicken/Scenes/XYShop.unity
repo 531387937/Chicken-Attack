@@ -4783,7 +4783,6 @@ GameObject:
   - component: {fileID: 2009460223}
   - component: {fileID: 2009460222}
   - component: {fileID: 2009460221}
-  - component: {fileID: 2009460225}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4875,30 +4874,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2009460225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009460220}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4532981a6a31c748b345d2815b9e8f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Pt: {fileID: 1241101145}
-  Gold: {fileID: 1087834416}
-  Prestige: {fileID: 582539444}
-  ShopChickenUI:
-  - {fileID: 173537008}
-  - {fileID: 0}
-  ChickenTex:
-  - {fileID: 2800000, guid: d232d9daf2d192149a93a4a064b788c2, type: 3}
-  - {fileID: 2800000, guid: fbb83818914e0d049a9b313dd3493b75, type: 3}
-  - {fileID: 2800000, guid: 0f261cb127ce9bb4c97a1ee7c5c967c8, type: 3}
-  - {fileID: 2800000, guid: 9af01d0054e18e648938c119b4fe1a7e, type: 3}
-  ChickenUI: {fileID: 0}
 --- !u!1 &2027530427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4956,8 +4931,8 @@ MonoBehaviour:
   - {fileID: 173537008}
   - {fileID: 460276748}
   ChickenTex:
-  - {fileID: 2800000, guid: d232d9daf2d192149a93a4a064b788c2, type: 3}
-  - {fileID: 2800000, guid: fbb83818914e0d049a9b313dd3493b75, type: 3}
+  - {fileID: 2800000, guid: ceff627a5f029a44ebba702cbfa32c0d, type: 3}
+  - {fileID: 2800000, guid: 96fd6e5e8b581b84db9195ccd988194b, type: 3}
   - {fileID: 2800000, guid: 0f261cb127ce9bb4c97a1ee7c5c967c8, type: 3}
   - {fileID: 2800000, guid: 9af01d0054e18e648938c119b4fe1a7e, type: 3}
   ChickenUI: {fileID: 0}

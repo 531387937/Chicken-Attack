@@ -9,6 +9,7 @@ public class SceneChange : MonoBehaviour
 
     public void GoLoadingScene(string name)
     {
+        Time.timeScale = 1;
         SceneName = name;
         SceneManager.LoadScene("LoadScene");
     }

@@ -36,7 +36,7 @@ public class ShopChicken : MonoBehaviour
         {
             if (GetComponent<BoxCollider2D>().OverlapPoint(Input.mousePosition))
             {
-                ShopSystem.ChickenUI.active = true;
+                ShopSystem.ChickenUI.SetActive(true);
                 ShopSystem.ChickenUI.GetComponent<ShopChickenUI>().SetShopChickenUi(ThisChicken,CostChicken);
             }
         }

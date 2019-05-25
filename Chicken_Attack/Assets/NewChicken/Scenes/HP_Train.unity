@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &12065132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1690581288001956108, guid: 43de869d4bc217745ac4441d39227b18,
+    type: 3}
+  m_PrefabInstance: {fileID: 133289242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &133289242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277,11 +283,12 @@ MonoBehaviour:
   SucceedNum: 0
   tempPos: {x: 10, y: 0, z: 0}
   Chicken:
-  - {fileID: 498372586942774012, guid: 0a3e3ca57a625f643ac78cd17012d174, type: 3}
-  - {fileID: 8105479440551353420, guid: 1bd9af7af69317e4a91d2fce5b0bb988, type: 3}
+  - {fileID: 3045997677048443577, guid: d6ce4bf2ee34b0d4790a5fb88b7c52f0, type: 3}
+  - {fileID: 8105479440551353420, guid: 526e8c0def6e4b24d9169b72e2fc3e20, type: 3}
   m_hurdle: {fileID: 1276103731810310791, guid: e0b3b2a275a99f74098fd5413e8709a2,
     type: 3}
   HurdleNum: 10
+  Panel: {fileID: 12065132}
   JumpSpeed: 10
 --- !u!1 &233685094
 GameObject:

@@ -23,7 +23,7 @@ public class PlayerData
     public PlayerData()
     {
         Gold = 100;
-        Prestige = 10;
+        Prestige = 0;
         Pt = 10;
         ShopChicken = null;
         HomeLevel = 0;
