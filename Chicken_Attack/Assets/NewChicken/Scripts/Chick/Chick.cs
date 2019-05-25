@@ -26,6 +26,7 @@ public class Chick : MonoBehaviour
             if (GetComponent<BoxCollider2D>().OverlapPoint(Input.mousePosition))
             {
                 //喂养小鸡
+                //摸摸小鸡动画
             }
         }
     }

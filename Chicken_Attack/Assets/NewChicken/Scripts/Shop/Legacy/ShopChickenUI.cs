@@ -22,18 +22,18 @@ public class ShopChickenUI : MonoBehaviour
     /// </summary>
     /// <param name="fightChicken"></param>
     /// <param name="cost"></param>
-    public void SetShopChickenUi(FightChicken fightChicken,int cost)
-    {
-        //Attack.text = "攻击力：" + fightChicken.Attack;
-        //HP.text = "生命值：" + fightChicken.HP;
-        //Spirit.text = "斗志" + fightChicken.Spirit;
-        //Speed.text = "速度" + fightChicken.Speed;
-        //Strong.text = "气势" + fightChicken.Strong;
-        Talent.text = "天赋" + fightChicken.Talent;
-        Pics.texture = textures[(int)fightChicken.Type];
-        Cost = cost;
-        ChooseChicken = fightChicken;
-    }
+    //public void SetShopChickenUi(FightChicken fightChicken,int cost)
+    //{
+    //    //Attack.text = "攻击力：" + fightChicken.Attack;
+    //    //HP.text = "生命值：" + fightChicken.HP;
+    //    //Spirit.text = "斗志" + fightChicken.Spirit;
+    //    //Speed.text = "速度" + fightChicken.Speed;
+    //    //Strong.text = "气势" + fightChicken.Strong;
+    //    Talent.text = "天赋" + fightChicken.Talent;
+    //    Pics.texture = textures[(int)fightChicken.Type];
+    //    Cost = cost;
+    //    ChooseChicken = fightChicken;
+    //}
 
     /// <summary>
     /// 繁殖用

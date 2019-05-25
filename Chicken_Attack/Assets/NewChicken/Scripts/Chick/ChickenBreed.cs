@@ -13,8 +13,21 @@ public class ChickenBreed : MonoBehaviour
     public GameObject Pos;
     private GameObject Breed_Chicken;
 
+    //记录上一次的重力感应的Y值
+    private float old_y = 0;
+    //记录当前的重力感应的Y值
+    private float new_y;
+    //当前手机晃动的距离
+    private float currentDistance = 0;
+    //手机晃动的有效距离
+    public float distance;
+    private bool DoOnce = true;
+
+   
     void Start()
     {
+        DoOnce = true;
+        eggs.SetActive(false);
         Breed_Chicken = Instantiate(Chicken[(int)GameSaveNew.Instance.playerChicken.Type], Pos.transform.position, new Quaternion(0, 180, 0, 1));
         Breed_Chicken.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
         if (GameSaveNew.Instance.PD.ShopChicken != null)
@@ -24,6 +37,23 @@ public class ChickenBreed : MonoBehaviour
         if (NewChickUI)
         {
             NewChickUI.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        if (DoOnce)
+        {
+            new_y = Input.acceleration.y;
+            currentDistance = new_y - old_y;
+            old_y = new_y;
+            if (currentDistance > distance)
+            {
+                Debug.Log("晃动");
+                Three_Eggs();
+                Handheld.Vibrate();
+                DoOnce = false;
+            }
         }
     }
 

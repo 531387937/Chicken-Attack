@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ShopChicken : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ShopChicken : MonoBehaviour
     public Text Name;
     public Text Cost;
     public RawImage Tex;
+    [HideInInspector]
     public int CostChicken;
     [HideInInspector]
     public ShopSystem ShopSystem;
@@ -24,10 +26,10 @@ public class ShopChicken : MonoBehaviour
         if (ThisChicken != null)
         {
             this.gameObject.SetActive(true);
-            Name.text = ThisChicken.Power.ToString();
-            Cost.text = CostChicken.ToString()+"G";
+            Name.text = "母鸡（" + ThisChicken.Power.ToString() + ")";
+            Cost.text = CostChicken.ToString() + "G";
         }
-        else if(ThisChicken == null)
+        else if (ThisChicken == null)
         {
             this.gameObject.SetActive(false);
         }
@@ -36,8 +38,9 @@ public class ShopChicken : MonoBehaviour
         {
             if (GetComponent<BoxCollider2D>().OverlapPoint(Input.mousePosition))
             {
-                ShopSystem.ChickenUI.SetActive(true);
-                ShopSystem.ChickenUI.GetComponent<ShopChickenUI>().SetShopChickenUi(ThisChicken,CostChicken);
+                ShopSystem.Broad.active = true;
+                ShopSystem.Broad.GetComponent<Board_Shop>().SetSomeThing2Buy(ThisChicken, CostChicken);
+                ShopSystem.Broad.GetComponentInChildren<TextMeshProUGUI>().text = "是否花费" + Cost.text + "购买" + Name.text + "?";
             }
         }
     }
