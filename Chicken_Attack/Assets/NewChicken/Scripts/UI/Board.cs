@@ -35,12 +35,15 @@ public class Board : MonoBehaviour
     //用于是否前往繁殖场景
     public void Go_Breed()
     {
-        Mask.SetActive(true);
-        Time.timeScale = 0;
-        ReadyChangeScene = true;
-        m_Board.SetActive(true);
-        TMP.text = "确定要前往繁殖场吗？";
-        SceneChange.SceneName = "ChickenBreedScene";
+        if (GameSaveNew.Instance.PD.ShopChicken != null)
+        {
+            Mask.SetActive(true);
+            Time.timeScale = 0;
+            ReadyChangeScene = true;
+            m_Board.SetActive(true);
+            TMP.text = "确定要前往繁殖场吗？";
+            SceneChange.SceneName = "ChickenBreedScene";
+        }
     }
 
     public void Go_Train()
