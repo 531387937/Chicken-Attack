@@ -972,29 +972,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921bb9ef5d88c854cb5551494dbba29f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
-  PlayerHP: {fileID: 1343983191}
-  EnemyHP: {fileID: 1255118084}
-  PlayerSpirit: {fileID: 1118496698}
-  EnemySpirit: {fileID: 189595760}
-  HP_Damage: {fileID: 914822958}
-  MP_Damage: {fileID: 305090800}
-  playerHPPos: {fileID: 340837411}
-  playerMPPos: {fileID: 1549566888}
-  EnemyHPPos: {fileID: 2079757526}
-  EnemyMPPos: {fileID: 288400433}
-  UI_Text: {fileID: 415766197}
-  Gold: {fileID: 837491669}
-  Prestige: {fileID: 189567793}
-  Pt: {fileID: 1606621194}
-  EndGamePanel: {fileID: 4675205}
-  Chicken:
-  - {fileID: 8105479440551353420, guid: 1bd9af7af69317e4a91d2fce5b0bb988, type: 3}
-  - {fileID: 3045997677048443577, guid: 4ed31a8dbd7dc3b4b98a1da86fae6129, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  PlayerPos: {fileID: 846301943}
-  EnemyPos: {fileID: 1771529105}
 --- !u!114 &342672468
 MonoBehaviour:
   m_ObjectHideFlags: 0
