@@ -51,18 +51,27 @@ public class ChickenRun : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(3,6));
         if (OutSide)
         {
-            if (Random.Range(0, 5) == 0)
+            if (Random.Range(0, 3) == 0)
             {
-                this.gameObject.GetComponent<Animator>().SetBool("Eat", true);
+                this.gameObject.GetComponent<Animator>().SetBool("Fly", true);
             }
             else
             {
-                this.gameObject.GetComponent<Animator>().SetBool("DoRun", true);
+                if(Random.Range(0, 3) == 0)
+                {
+                    this.gameObject.GetComponent<Animator>().SetBool("Eat", true);
+                }
+                else
+                {
+                    //this.gameObject.GetComponent<Animator>().SetBool("DoRun", true);
+                    this.gameObject.GetComponent<Animator>().SetBool("Run", true);
+                }
             }
         }
         else
         {
-            this.gameObject.GetComponent<Animator>().SetBool("DoRun", true);
+            //this.gameObject.GetComponent<Animator>().SetBool("DoRun", true);
+            this.gameObject.GetComponent<Animator>().SetBool("Run", true);
         }
         StartCoroutine(DoSomthing());
     }
@@ -111,7 +120,15 @@ public class ChickenRun : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "QiZiNewChicken")
         {
             this.gameObject.GetComponent<Animator>().SetBool("Run", false);
-            this.gameObject.GetComponent<Animator>().SetBool("DoRun", false);
+            //this.gameObject.GetComponent<Animator>().SetBool("DoRun", false);
+        }
+    }
+
+    void FinishFly()
+    {
+        if (SceneManager.GetActiveScene().name == "QiZiNewChicken")
+        {
+            this.gameObject.GetComponent<Animator>().SetBool("Fly", false);
         }
     }
 

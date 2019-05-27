@@ -60,5 +60,9 @@ public class HungrySlider : MonoBehaviour
                 StartCoroutine(Hungry());
                 break;
         }
+        if (thisChicken.Hungry < 0)
+        {
+            thisChicken.Hungry = 0;
+        }
     }
 }
