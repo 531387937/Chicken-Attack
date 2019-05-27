@@ -42,8 +42,23 @@ public class HungrySlider : MonoBehaviour
     IEnumerator Hungry()
     {
         yield return new WaitForSeconds(60);
-        thisChicken.Hungry -= 2;
-        Debug.Log("饥饿值-2");
-        StartCoroutine(Hungry());
+        switch (GameSaveNew.Instance.PD.HomeLevel)
+        {
+            case 0:
+                thisChicken.Hungry -= 6;
+                Debug.Log("饥饿值-6");
+                StartCoroutine(Hungry());
+                break;
+            case 1:
+                thisChicken.Hungry -= 4;
+                Debug.Log("饥饿值-4");
+                StartCoroutine(Hungry());
+                break;
+            case 2:
+                thisChicken.Hungry -= 2;
+                Debug.Log("饥饿值-2");
+                StartCoroutine(Hungry());
+                break;
+        }
     }
 }
