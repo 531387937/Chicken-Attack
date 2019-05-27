@@ -3,7 +3,9 @@ guid: 716056189a738fb46b7308c67db91154
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ShopSystem: {instanceID: 0}
+  - UnActiveGrey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -10,13 +10,16 @@ public class FoodShopUI : MonoBehaviour
     public ShopSystem ShopSystem;
     public int Cost;
     public Food food;
+    public Material UnActiveGrey;
 
     private void Start()
     {
         ShopSystem = GameObject.Find("ShopChickenS").GetComponent<ShopSystem>();
         if (GameSaveNew.Instance.PD.FoodRights[(int)food])
         {
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
+            gameObject.GetComponentInChildren<RawImage>().material = UnActiveGrey;
+            this.enabled = false;
         }
     }
 

@@ -507,7 +507,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: XXXG
 --- !u!222 &167095392
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -630,6 +630,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1082205144}
+  - {fileID: 1277513748}
   - {fileID: 2084490744}
   - {fileID: 255275497}
   m_Father: {fileID: 2009460224}
@@ -784,11 +785,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 195756257}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 133, y: 1}
+  m_AnchoredPosition: {x: 22.4, y: -44.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &255275498
@@ -824,7 +825,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: XXXG
 --- !u!222 &255275499
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1416,6 +1417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5763e9f3868095c459837630108989aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AfterBuyChickenChangeTo: ChickenBreedScene
 --- !u!1 &460276748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,6 +2157,7 @@ MonoBehaviour:
   ShopSystem: {fileID: 0}
   Cost: 50
   food: 0
+  UnActiveGrey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}
 --- !u!1 &662437652
 GameObject:
   m_ObjectHideFlags: 0
@@ -2386,7 +2389,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: XXXG
 --- !u!222 &723706084
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3488,6 +3491,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264562715}
   m_CullTransparentMesh: 0
+--- !u!1 &1277513747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1277513748}
+  - component: {fileID: 1277513750}
+  - component: {fileID: 1277513749}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1277513748
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277513747}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 195756257}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 16.4, y: 9.4}
+  m_SizeDelta: {x: 70, y: 34}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1277513749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277513747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: c6b15b0601700a74f8dcc01636e72526, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1277513750
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277513747}
+  m_CullTransparentMesh: 0
 --- !u!1 &1282687842
 GameObject:
   m_ObjectHideFlags: 0
@@ -3643,6 +3720,7 @@ MonoBehaviour:
   ShopSystem: {fileID: 0}
   Cost: 150
   food: 2
+  UnActiveGrey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}
 --- !u!1 &1375905997
 GameObject:
   m_ObjectHideFlags: 0
@@ -4596,6 +4674,7 @@ MonoBehaviour:
   ShopSystem: {fileID: 0}
   Cost: 100
   food: 1
+  UnActiveGrey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}
 --- !u!1 &1771821192
 GameObject:
   m_ObjectHideFlags: 0
@@ -5525,7 +5604,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 195756257}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

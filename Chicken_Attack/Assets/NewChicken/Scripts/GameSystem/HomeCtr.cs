@@ -12,10 +12,4 @@ public class HomeCtr : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = Sp[GameSaveNew.Instance.PD.HomeLevel];
         gameObject.transform.localScale = HomeScale[GameSaveNew.Instance.PD.HomeLevel];
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
