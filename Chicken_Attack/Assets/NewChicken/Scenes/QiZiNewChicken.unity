@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 147777411}
   - component: {fileID: 147777410}
   m_Layer: 0
-  m_Name: "\u56FE\u5C42 1"
+  m_Name: Shit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2724,7 +2724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &762860712
 Transform:
   m_ObjectHideFlags: 0

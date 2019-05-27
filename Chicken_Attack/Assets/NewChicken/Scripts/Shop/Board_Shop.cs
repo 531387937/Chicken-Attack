@@ -39,6 +39,16 @@ public class Board_Shop : MonoBehaviour
         CurrentFood = food;
     }
 
+    /// <summary>
+    /// 买房
+    /// </summary>
+    /// <param name="cost"></param>
+    public void SetSomeThing2Buy(int cost)
+    {
+        BuyHome = true;
+        Cost = cost;
+    }
+
     public void Buy()
     {
         if (ChooseChicken != null)
@@ -79,6 +89,8 @@ public class Board_Shop : MonoBehaviour
                 {
                     GameSaveNew.Instance.PD.Gold -= Cost;
                     //升级房屋操作
+                    GameSaveNew.Instance.PD.HomeLevel += 1;
+                    GameObject.FindGameObjectWithTag("ShopHome").GetComponent<ShopChickenHome>().Fresh();
                 }
                 this.gameObject.SetActive(false);
                 InitAll();

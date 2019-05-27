@@ -610,10 +610,10 @@ GameObject:
   m_Component:
   - component: {fileID: 195756257}
   - component: {fileID: 195756258}
-  - component: {fileID: 195756259}
+  - component: {fileID: 195756260}
   m_Layer: 5
   m_Name: Home
-  m_TagString: Untagged
+  m_TagString: ShopHome
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -667,7 +667,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
---- !u!114 &195756259
+--- !u!114 &195756260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -676,11 +676,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 195756256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de9b6844174e5b8448160e8a311a4b9f, type: 3}
+  m_Script: {fileID: 11500000, guid: 93d5871a288315a44b9806bc5f1af6a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cost: 640000002c010000
-  te: {fileID: 255275498}
+  ChickenHomes:
+  - {fileID: 2800000, guid: 60873cdd4db6e5b45a33af3be342b808, type: 3}
+  - {fileID: 2800000, guid: c8e011c4203a1e044a955791cb4ffad5, type: 3}
+  - {fileID: 0}
+  Cost: f4010000e8030000
+  CostText: {fileID: 255275498}
+  HomeTex: {fileID: 1082205145}
+  HomeScale:
+  - {x: 1.5, y: 1.5, z: 0}
+  - {x: 0, y: 0, z: 0}
+  MaxLevel: 1
 --- !u!1 &218239976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,8 +1105,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 133, y: 31}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 133, y: 17.33}
+  m_SizeDelta: {x: 160, y: 57.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &296897634
 MonoBehaviour:
@@ -1132,7 +1141,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'New Text
+
+    XXXXXX'
 --- !u!222 &296897635
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1761,8 +1772,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 133, y: 31}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 133, y: 17.33}
+  m_SizeDelta: {x: 160, y: 57.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498618839
 MonoBehaviour:
@@ -1797,7 +1808,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'New Text
+
+    XXXXXX'
 --- !u!222 &498618840
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2154,7 +2167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716056189a738fb46b7308c67db91154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShopSystem: {fileID: 0}
   Cost: 50
   food: 0
   UnActiveGrey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}
@@ -3194,7 +3206,7 @@ GameObject:
   - component: {fileID: 1082205146}
   - component: {fileID: 1082205145}
   m_Layer: 5
-  m_Name: Chicken
+  m_Name: Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3717,7 +3729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716056189a738fb46b7308c67db91154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShopSystem: {fileID: 0}
   Cost: 150
   food: 2
   UnActiveGrey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}
@@ -4671,7 +4682,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716056189a738fb46b7308c67db91154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShopSystem: {fileID: 0}
   Cost: 100
   food: 1
   UnActiveGrey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}

@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class FoodShopUI : MonoBehaviour
 {
-    [HideInInspector]
-    public ShopSystem ShopSystem;
+    private ShopSystem ShopSystem;
     public int Cost;
     public Food food;
     public Material UnActiveGrey;
@@ -40,7 +39,9 @@ public class FoodShopUI : MonoBehaviour
     {
         if (GameSaveNew.Instance.PD.FoodRights[(int)food])
         {
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
+            gameObject.GetComponentInChildren<RawImage>().material = UnActiveGrey;
+            this.enabled = false;
         }
     }
 }
