@@ -9,6 +9,7 @@ public class Chick : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SavePos());
+        Invoke("ChangeTag", 1f);//临时避免对小鸡喂食
     }
 
     IEnumerator SavePos()
@@ -16,6 +17,11 @@ public class Chick : MonoBehaviour
         self.Pos = this.transform.position;
         yield return new WaitForSeconds(5);
         StartCoroutine(SavePos());
+    }
+
+    void ChangeTag()
+    {
+        this.tag = "Chick";
     }
 
     // Update is called once per frame
