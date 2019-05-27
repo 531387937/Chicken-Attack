@@ -215,9 +215,9 @@ MonoBehaviour:
   BuyChickenPic: {fileID: 1111414056}
   Pics:
   - {fileID: 2800000, guid: 4cf204028fbda5b4597c1e50e63b6012, type: 3}
-  - {fileID: 2800000, guid: c6aa9dc84fbf9a9438af87a805af5b82, type: 3}
-  - {fileID: 2800000, guid: 23b610bf6025021489fbd499f2ca3377, type: 3}
-  - {fileID: 2800000, guid: 75d5493e608e797418e059321af06454, type: 3}
+  - {fileID: 2800000, guid: 48ecb1e94cac6994eadc1558cdd63eb5, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   NewChickUI: {fileID: 8821130}
   eggs: {fileID: 1053838161}
   Pos: {fileID: 795111754}
@@ -2280,7 +2280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1414358777
 RectTransform:
   m_ObjectHideFlags: 0

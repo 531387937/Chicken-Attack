@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class ChickenBreed : MonoBehaviour
 {
     public GameObject[] Chicken;
@@ -86,6 +88,13 @@ public class ChickenBreed : MonoBehaviour
             //清空商店买的鸡
             GameSaveNew.Instance.PD.ShopChicken = null;
             Handheld.Vibrate();//震动
+            Invoke("ChangeScene2Main", 6f);
         }
     }
+
+    void ChangeScene2Main()
+    {
+        SceneManager.LoadScene("QiZiNewChicken");
+    }
+
 }
