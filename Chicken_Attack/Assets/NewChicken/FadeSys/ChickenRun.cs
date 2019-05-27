@@ -51,7 +51,7 @@ public class ChickenRun : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(3,6));
         if (OutSide)
         {
-            if (Random.Range(0, 3) == 0)
+            if (Random.Range(0, 5) == 0)
             {
                 this.gameObject.GetComponent<Animator>().SetBool("Fly", true);
             }
