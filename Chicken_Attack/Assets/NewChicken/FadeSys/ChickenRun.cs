@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChickenRun : MonoBehaviour
 {
+    private FightChicken thisChicken;
     private bool OutSide = true;
 
     enum WalkMode
@@ -31,6 +32,7 @@ public class ChickenRun : MonoBehaviour
         }
         StartCoroutine(RandomChange());
         StartCoroutine(DoSomthing());
+        thisChicken = GetComponent<MyFightChicken>().self;
     }
 
     private void Update()
@@ -43,6 +45,18 @@ public class ChickenRun : MonoBehaviour
             case WalkMode.Right:
                 this.transform.localEulerAngles = Vector3.zero;
                 break;
+        }
+        if (thisChicken.Hungry > 60)
+        {
+            this.gameObject.GetComponent<Animator>().SetFloat("SpeedScale", 1f);
+        }
+        else if (thisChicken.Hungry > 40)
+        {
+            this.gameObject.GetComponent<Animator>().SetFloat("SpeedScale", 0.8f);
+        }
+        else if (thisChicken.Hungry < 40)
+        {
+            this.gameObject.GetComponent<Animator>().SetFloat("SpeedScale", 0.5f);
         }
     }
 
