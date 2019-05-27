@@ -7,6 +7,8 @@ public class ChickenRun : MonoBehaviour
 {
     private FightChicken thisChicken;
     private bool OutSide = true;
+    private Board board;
+    private bool Do = true;
 
     enum WalkMode
     {
@@ -33,6 +35,7 @@ public class ChickenRun : MonoBehaviour
         StartCoroutine(RandomChange());
         StartCoroutine(DoSomthing());
         thisChicken = GetComponent<MyFightChicken>().self;
+        board = GameObject.Find("EventSystem").GetComponent<Board>();
     }
 
     private void Update()
@@ -49,14 +52,33 @@ public class ChickenRun : MonoBehaviour
         if (thisChicken.Hungry > 60)
         {
             this.gameObject.GetComponent<Animator>().SetFloat("SpeedScale", 1f);
+            GameSaveNew.Instance.buffer = 1f;
         }
         else if (thisChicken.Hungry > 40)
         {
             this.gameObject.GetComponent<Animator>().SetFloat("SpeedScale", 0.8f);
+            GameSaveNew.Instance.buffer = 0.8f;
         }
         else if (thisChicken.Hungry < 40)
         {
             this.gameObject.GetComponent<Animator>().SetFloat("SpeedScale", 0.5f);
+            GameSaveNew.Instance.buffer = 0.5f;
+        }
+        if (thisChicken.Hungry <= 0 && Do)
+        {
+            Debug.Log("鸡饿坏了！！！");
+            board.DoSomething("由于您的疏忽" + thisChicken.Name + "已经十分饥饿了，请花费200G恢复饥饿值");
+            board.NO.gameObject.SetActive(false);
+            Do = false;
+            board.YES.onClick.AddListener(delegate
+            {
+                GameSaveNew.Instance.PD.Gold -= 200;
+                thisChicken.Hungry = 100;
+                board.NO.gameObject.SetActive(true);
+                board.Mask.SetActive(false);
+                board.m_Board.SetActive(false);
+                Do = true;
+            });
         }
     }
 
@@ -65,13 +87,13 @@ public class ChickenRun : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(3,6));
         if (OutSide)
         {
-            if (Random.Range(0, 5) == 0)
+            if (Random.Range(0, 10) == 0)
             {
                 this.gameObject.GetComponent<Animator>().SetBool("Fly", true);
             }
             else
             {
-                if(Random.Range(0, 3) == 0)
+                if(Random.Range(0, 5) == 0)
                 {
                     this.gameObject.GetComponent<Animator>().SetBool("Eat", true);
                 }

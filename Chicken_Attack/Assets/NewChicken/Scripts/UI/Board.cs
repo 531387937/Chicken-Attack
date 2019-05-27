@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class Board : MonoBehaviour
 {
     public GameObject m_Board;
     public TextMeshProUGUI TMP;
+    public Button YES;
+    public Button NO;
     //变暗的遮罩
     public GameObject Mask;
-    private bool ReadyChangeScene=false;
+    private bool ReadyChangeScene = false;
 
     //用于是否前往斗鸡场景
     public void Go_Attack()
@@ -46,6 +50,7 @@ public class Board : MonoBehaviour
         }
     }
 
+    //前往训练场
     public void Go_Train()
     {
         Mask.SetActive(true);
@@ -66,6 +71,14 @@ public class Board : MonoBehaviour
                 SceneChange.SceneName = "HP_Train";
                 break;
         }
+    }
+
+    public void DoSomething(string Text)
+    {
+        Mask.SetActive(true);
+        Time.timeScale = 0;
+        m_Board.SetActive(true);
+        TMP.text = Text;
     }
 
     public void Yes()
