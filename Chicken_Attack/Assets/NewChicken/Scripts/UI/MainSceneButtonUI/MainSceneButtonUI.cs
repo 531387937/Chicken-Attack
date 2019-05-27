@@ -23,7 +23,6 @@ public class MainSceneButtonUI : MonoBehaviour
         {
             if (Input.touches[0].position.y < Screen.height / AreaScale)
                 began = Input.touches[0].position;
-            Debug.Log(began);
         }
         if (Input.touches[0].phase == TouchPhase.Ended)
         {
@@ -37,7 +36,7 @@ public class MainSceneButtonUI : MonoBehaviour
                 Debug.Log("下滑");
                 Animator.SetBool("Show", false);
             }
-            else if (began.y - FingerDistance < End.y)//上滑
+            else if (began.y + FingerDistance < End.y)//上滑
             {
                 Debug.Log("上滑");
                 Animator.SetBool("Show", true);

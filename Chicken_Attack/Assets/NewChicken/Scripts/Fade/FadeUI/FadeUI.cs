@@ -23,7 +23,6 @@ public class FadeUI : MonoBehaviour
         {
             if (Input.touches[0].position.x > Screen.width / AreaScale)
                 began = Input.touches[0].position;
-            Debug.Log(began);
         }
         if (Input.touches[0].phase == TouchPhase.Ended)
         {
