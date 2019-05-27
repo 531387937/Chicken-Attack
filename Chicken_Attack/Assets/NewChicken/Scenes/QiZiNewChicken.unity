@@ -1893,13 +1893,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sp:
+  - {fileID: 21300000, guid: 98d8f57228a671b48b4d65c7a1c71c9e, type: 3}
   - {fileID: 21300000, guid: 60873cdd4db6e5b45a33af3be342b808, type: 3}
   - {fileID: 21300000, guid: c8e011c4203a1e044a955791cb4ffad5, type: 3}
-  - {fileID: 0}
   HomeScale:
+  - {x: 1.15, y: 1.15, z: 1}
   - {x: 1, y: 1, z: 1}
-  - {x: 0.7, y: 0.7, z: 0.7}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0.7, y: 0.7, z: 1}
 --- !u!114 &559870499 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4120178986523022149, guid: a319b04f6a0e06f41b0d1a5b3b213ebb,

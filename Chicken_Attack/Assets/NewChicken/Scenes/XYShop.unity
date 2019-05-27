@@ -680,16 +680,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChickenHomes:
+  - {fileID: 2800000, guid: 98d8f57228a671b48b4d65c7a1c71c9e, type: 3}
   - {fileID: 2800000, guid: 60873cdd4db6e5b45a33af3be342b808, type: 3}
   - {fileID: 2800000, guid: c8e011c4203a1e044a955791cb4ffad5, type: 3}
-  - {fileID: 0}
   Cost: f4010000e8030000
   CostText: {fileID: 255275498}
   HomeTex: {fileID: 1082205145}
   HomeScale:
+  - {x: 1.2, y: 1.2, z: 0}
   - {x: 1.5, y: 1.5, z: 0}
-  - {x: 0, y: 0, z: 0}
-  MaxLevel: 1
+  MaxLevel: 2
 --- !u!1 &218239976
 GameObject:
   m_ObjectHideFlags: 0

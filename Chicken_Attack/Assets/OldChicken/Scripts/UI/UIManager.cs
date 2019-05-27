@@ -63,8 +63,6 @@ public class UIManager : Singleton<UIManager>
     }
     private void GridImage_OnExit()
     {
-
-
         Showing = false;
         isShow = false;
        

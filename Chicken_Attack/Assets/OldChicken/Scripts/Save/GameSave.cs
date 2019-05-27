@@ -19,7 +19,7 @@ public class GameSave : Singleton<GameSave>
     public GameObject BaseChicken;
     public static Chicken[] AllChicken;
     private string Mac;//设备MAC
-    //private bool CanSave = true;//是否可以保存
+                       //private bool CanSave = true;//是否可以保存
     public PlayerData PD = new PlayerData();
     //string path = Application.persistentDataPath + @"/GameData.json";
     string path = "Assets/Resources/GameData.json";
@@ -42,7 +42,7 @@ public class GameSave : Singleton<GameSave>
         //chicken.Name = chicken.Type.ToString();
         //AddChicken(chicken);
         //---------------------
-        
+
         //if (!IOHelper.IsFileExists(path))
         //{
         //    //如没有则创建空记录文件
@@ -71,7 +71,7 @@ public class GameSave : Singleton<GameSave>
         //}
     }
 
-    public void AddChicken(Chicken chicken,string Name)//新增鸡数据存储方法，新增一只鸡调用
+    public void AddChicken(Chicken chicken, string Name)//新增鸡数据存储方法，新增一只鸡调用
     {
         chicken.Name = Name;
         ChickenList.chickenList.Add(chicken);//在静态鸡列表里增加本鸡
@@ -104,7 +104,7 @@ public class GameSave : Singleton<GameSave>
     //读档
     public void LoadAllData()
     {
-        if(IOHelper.IsFileExists(PlayerPath))
+        if (IOHelper.IsFileExists(PlayerPath))
         {
             PD = IOHelper.GetData(PlayerPath, typeof(PlayerData), Mac) as PlayerData;
         }
