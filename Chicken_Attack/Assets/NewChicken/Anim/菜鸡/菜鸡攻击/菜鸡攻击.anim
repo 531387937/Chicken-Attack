@@ -151,10 +151,73 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.45833334
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5416667
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5833333
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.625
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6666667
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.7083333
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.75
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.05
+    intParameter: 0
+    messageOptions: 0
   - time: 0.7916667
     functionName: ATK
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 1
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.0833334
+    functionName: Run
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 1.9
     intParameter: 0
     messageOptions: 0
