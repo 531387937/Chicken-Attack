@@ -13,9 +13,15 @@ public class HungrySlider : MonoBehaviour
     public Color NormalColor = new Color(1, 1, 1, 1);
     public Color NoteColor = new Color(1, 1, 1, 1);
     public Color WarnColor = new Color(1, 1, 1, 1);
+    public Sprite RetireTex;
+    public Image HeadTex;
 
     void Start()
     {
+        if (thisChicken.Retire)
+        {
+            HeadTex.sprite = RetireTex;
+        }
         ATK.text = thisChicken.Power.ToString();
         HungryStrip.maxValue = 100;
         StartCoroutine(Hungry());

@@ -6,7 +6,7 @@ public enum Food
 {
     绿豆 = 0,
     花生 = 1,
-    麦子 = 2
+    麦子 = 2,
 }
 
 class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler

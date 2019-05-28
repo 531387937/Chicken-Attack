@@ -98,6 +98,8 @@ MonoBehaviour:
   NormalColor: {r: 0, g: 0.6862745, b: 0.9607844, a: 1}
   NoteColor: {r: 1, g: 0.5372549, b: 0, a: 1}
   WarnColor: {r: 0.735849, g: 0.05900677, b: 0.05900677, a: 1}
+  RetireTex: {fileID: 21300000, guid: d16aa78ca0517c747a6602259c4b9e6e, type: 3}
+  HeadTex: {fileID: 8373181938299545630}
 --- !u!223 &8055744610065652781
 Canvas:
   m_ObjectHideFlags: 0

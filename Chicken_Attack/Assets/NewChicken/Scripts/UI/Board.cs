@@ -14,6 +14,12 @@ public class Board : MonoBehaviour
     //变暗的遮罩
     public GameObject Mask;
     private bool ReadyChangeScene = false;
+    public NamedSystem namedSystem;
+
+    private void Start()
+    {
+        namedSystem.gameObject.SetActive(false);
+    }
 
     //用于是否前往斗鸡场景
     public void Go_Attack()

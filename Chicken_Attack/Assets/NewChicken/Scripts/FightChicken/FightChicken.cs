@@ -39,6 +39,11 @@ public class FightChicken
     //public int Ch_Num;
     //饥饿值
     public int Hungry = 100;
+    //退役
+    public bool Retire = false;
+    //显示退役证书
+    public bool ShowRetirePlane = false;
+
     /// <summary>
     /// 设置鸡的种族
     /// </summary>

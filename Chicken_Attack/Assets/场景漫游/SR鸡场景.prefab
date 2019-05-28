@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7388603238277133137}
   - component: {fileID: 4986299111138750804}
   - component: {fileID: 6151111889978574829}
-  - component: {fileID: 778081582068346144}
   - component: {fileID: 1515276894623393394}
+  - component: {fileID: 778081582068346144}
   m_Layer: 0
   m_Name: "SR\u9E21\u573A\u666F"
   m_TagString: FightChicken
@@ -101,18 +101,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &778081582068346144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980766463013693485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a19b16d256310c349a0a62fd9d23cbcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1515276894623393394
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -139,3 +127,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 2.56}
   m_EdgeRadius: 0
+--- !u!114 &778081582068346144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980766463013693485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19b16d256310c349a0a62fd9d23cbcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

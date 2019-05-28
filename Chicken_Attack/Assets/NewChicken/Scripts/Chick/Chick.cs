@@ -33,7 +33,17 @@ public class Chick : MonoBehaviour
             {
                 //喂养小鸡
                 //摸摸小鸡动画
+                Debug.Log("点击小鸡！！！");
+                //Time.timeScale = 0;
+                //GameObject.FindGameObjectWithTag("EventSystem").GetComponent<Board>().namedSystem.Mask.SetActive(false);
+                //GameObject.FindGameObjectWithTag("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(true);//小鸡长大
             }
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Time.timeScale = 0;
+            GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Mask.SetActive(false);
+            GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(true);//小鸡长大
         }
     }
 }
