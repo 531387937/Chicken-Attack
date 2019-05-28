@@ -31,4 +31,8 @@ public class PaoPao : MonoBehaviour
     {
         txt.text = Num.ToString();
     }
+    public void Stop()
+    {
+        GameObject.Find("Train_Manager").GetComponent<Spirit_Train>().Train_End();
+    }
 }
