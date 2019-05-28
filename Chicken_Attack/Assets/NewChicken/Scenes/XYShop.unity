@@ -1675,6 +1675,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4120178986612447163, guid: a319b04f6a0e06f41b0d1a5b3b213ebb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 455390273}
+    - target: {fileID: 4120178986612447163, guid: a319b04f6a0e06f41b0d1a5b3b213ebb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NotBuy
+      objectReference: {fileID: 0}
     - target: {fileID: 4120178984941008543, guid: a319b04f6a0e06f41b0d1a5b3b213ebb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1719,16 +1729,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: ChickenBreedScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 4120178986612447163, guid: a319b04f6a0e06f41b0d1a5b3b213ebb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 455390273}
-    - target: {fileID: 4120178986612447163, guid: a319b04f6a0e06f41b0d1a5b3b213ebb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NotBuy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a319b04f6a0e06f41b0d1a5b3b213ebb, type: 3}
@@ -5515,8 +5515,8 @@ MonoBehaviour:
   - {fileID: 173537008}
   - {fileID: 460276748}
   ChickenTex:
-  - {fileID: 8400000, guid: 7b68611b82556df4e967eda1f8cd204e, type: 2}
-  - {fileID: 8400000, guid: d0e4900bb57468140b8a865436102063, type: 2}
+  - {fileID: 2800000, guid: 96fd6e5e8b581b84db9195ccd988194b, type: 3}
+  - {fileID: 2800000, guid: 4e76169850d50ab42a393af5f6b89438, type: 3}
   Broad: {fileID: 0}
 --- !u!1 &2030572733
 GameObject:
