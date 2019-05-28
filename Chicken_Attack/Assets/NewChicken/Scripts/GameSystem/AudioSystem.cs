@@ -41,7 +41,7 @@ public class AudioSystem : Singleton<AudioSystem>
                     currentPlay = 3;
                     changeAudio = true;
                     break;
-                case "NewBattle":
+                case "BattleNew":
                     currentPlay = 4;
                     changeAudio = true;
                     break;
