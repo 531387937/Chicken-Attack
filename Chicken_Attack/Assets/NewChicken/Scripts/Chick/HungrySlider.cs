@@ -7,6 +7,7 @@ using TMPro;
 public class HungrySlider : MonoBehaviour
 {
     public FightChicken thisChicken;
+    public MyFightChicken myFightChicken;
     public Slider HungryStrip;
     public TextMeshProUGUI ATK;
     public Image Fill;
@@ -21,6 +22,10 @@ public class HungrySlider : MonoBehaviour
         if (thisChicken.Retire)
         {
             HeadTex.sprite = RetireTex;
+            Destroy(HungryStrip.gameObject);
+            Destroy(ATK.gameObject);
+            myFightChicken.tag = "RetireChicken";
+            Destroy(this);
         }
         ATK.text = thisChicken.Power.ToString();
         HungryStrip.maxValue = 100;

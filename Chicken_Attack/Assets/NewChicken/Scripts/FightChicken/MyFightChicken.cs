@@ -18,6 +18,7 @@ public class MyFightChicken : MonoBehaviour
         Current_Name_UI = Instantiate(Name_UI, Pos,Quaternion.identity,GameUI.transform);
         Current_Name_UI.GetComponentInChildren<TextMeshProUGUI>().text = self.Name;
         Current_Name_UI.GetComponent<HungrySlider>().thisChicken = self;
+        Current_Name_UI.GetComponent<HungrySlider>().myFightChicken = this;
         print(self.Name);
 
         StartCoroutine(SavePos());
@@ -25,7 +26,7 @@ public class MyFightChicken : MonoBehaviour
 
     private void Update()
     {
-        Pos = new Vector3(Camera.main.WorldToScreenPoint(this.transform.position).x, Camera.main.WorldToScreenPoint(this.transform.position).y + 70f, 0);
+        Pos = new Vector3(Camera.main.WorldToScreenPoint(this.transform.position).x, Camera.main.WorldToScreenPoint(this.transform.position).y + 90f, 0);
         Current_Name_UI.transform.position = Pos;
     }
     

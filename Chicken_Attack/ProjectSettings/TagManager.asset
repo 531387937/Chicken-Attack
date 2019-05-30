@@ -15,6 +15,8 @@ TagManager:
   - GM
   - ShopFood
   - ShopHome
+  - NameBoard
+  - RetireChicken
   layers:
   - Default
   - TransparentFX
