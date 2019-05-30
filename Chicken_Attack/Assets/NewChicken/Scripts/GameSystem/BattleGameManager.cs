@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class BattleGameManager : MonoBehaviour
 {
+    
+
     public int level;
     FightChicken enemy_chicken;
     bool gameBegin = false;
@@ -31,13 +33,20 @@ public class BattleGameManager : MonoBehaviour
 
     private float PlayerSpeed;
     private float EnemySpeed;
+
+    private BattleAttribute Player;
+    private BattleAttribute Enemy;
     //string enemyPath = "Assets/Resources/EnemyData.json";
     void Start()
     {
+        
         level = SceneChange.Level;
+
         string aa = Resources.Load("EnemyData").ToString();
         FC = IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
-        enemy_chicken = FC[level - 1].EnemyChicken;
+        Player = new BattleAttribute(GameSaveNew.Instance.playerChicken);
+        Enemy = new BattleAttribute(FC[level+1].EnemyChicken);
+        enemy_chicken = FC[level].EnemyChicken;
         //player_chicken.enemyChickens.Add(enemy_chicken);//将此敌人加入玩家此生遇到敌人队列
         //生成对战的两只鸡
         ChickenInit();
