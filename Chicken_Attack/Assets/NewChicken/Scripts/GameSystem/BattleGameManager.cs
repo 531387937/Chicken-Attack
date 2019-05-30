@@ -6,8 +6,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class BattleGameManager : MonoBehaviour
 {
-    
-
+    public Sprite[] sprites;
+    [HideInInspector]
     public int level;
     FightChicken enemy_chicken;
     bool gameBegin = false;
@@ -21,12 +21,14 @@ public class BattleGameManager : MonoBehaviour
     private float timer = 3;
 
     public GameObject[] Chicken;
+    [HideInInspector]
     public Transform PlayerPos;
+    [HideInInspector]
     public Transform EnemyPos;
 
-    private GameObject player;
+    [HideInInspector]
+    public GameObject player_Chicken;
     private GameObject enemy;
-    List<LevelSet> FC;
 
     private bool playeratk = false;
     private bool enemyatk = false;
@@ -36,14 +38,33 @@ public class BattleGameManager : MonoBehaviour
 
     private BattleAttribute Player;
     private BattleAttribute Enemy;
+    [HideInInspector]
+    public GameObject Acts;
+    [HideInInspector]
+    public GameObject BtnGroup;
+    [HideInInspector]
+    public GameObject EnemyGroup;
+
+    public BattleAttribute.Duel PlayerCurrent_duel;
+    private int CurrnetRound = 0;
+
+    public GameObject Player_Hurt;
+    public GameObject Enemy_Hurt;
+
+    private int CurrHurt_Player;
+    private int CurrHurt_Enemy;
+    private int TotalHurt_Player;
+    private int TotalHurt_Enemy;
+
+    public AudioSource[] sounds;
     //string enemyPath = "Assets/Resources/EnemyData.json";
-    void Start()
+    void Awake()
     {
         
         level = SceneChange.Level;
 
         string aa = Resources.Load("EnemyData").ToString();
-        FC = IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
+       List<LevelSet> FC = IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
         Player = new BattleAttribute(GameSaveNew.Instance.playerChicken);
         Enemy = new BattleAttribute(FC[level+1].EnemyChicken);
         enemy_chicken = FC[level].EnemyChicken;
@@ -52,6 +73,11 @@ public class BattleGameManager : MonoBehaviour
         ChickenInit();
         //初始化血条
         //SkillRead();
+        for (int i = 0; i < 5; i++)
+        {
+            BtnGroup.transform.GetChild(i).GetComponent<GameBtn>().duel = Player.duel[i];
+            BtnGroup.transform.GetChild(i).GetComponent<Image>().sprite = sprites[(int)Player.duel[i]];
+        }
     }
 
     // Update is called once per frame
@@ -96,53 +122,131 @@ public class BattleGameManager : MonoBehaviour
     {
         UI_Text.text = null;
         gameBegin = true;
-        if (PlayerSpeed >= EnemySpeed)
-        {
-            PlayerReady();
-        }
-        else
-            EnemyReady();
+       
     }
     //生成对战的鸡
     void ChickenInit()
     {
-        player = Instantiate(Chicken[(int)GameSaveNew.Instance.playerChicken.Type], PlayerPos.position, new Quaternion(0, 0, 0, 1), this.transform);
+        player_Chicken = Instantiate(Chicken[(int)GameSaveNew.Instance.playerChicken.Type], PlayerPos.position, new Quaternion(0, 0, 0, 1), this.transform);
         enemy = Instantiate(Chicken[(int)enemy_chicken.Type], EnemyPos.position, new Quaternion(0, 180, 0, 1), this.transform);
     }
-    void PlayerReady()
+    //进行回合的战斗
+    public void Round()
     {
-        if (!gameend)
+        EnemyGroup.transform.GetChild(CurrnetRound).gameObject.SetActive(false);
+        Acts.SetActive(false);
+        switch (PlayerCurrent_duel)
         {
-            playeratk = true;
-            enemyatk = false;
-            int a = Random.Range(0, 10);
-            if (a == 9)
-                player.GetComponent<Animator>().SetTrigger("Attack1");
-            else
-                player.GetComponent<Animator>().SetTrigger("Attack");
+            case BattleAttribute.Duel.scissors:
+                player_Chicken.GetComponent<Animator>().SetTrigger("Attack2");
+                break;
+            case BattleAttribute.Duel.paper:
+                player_Chicken.GetComponent<Animator>().SetTrigger("Attack1");
+                break;
+            case BattleAttribute.Duel.rock:
+                player_Chicken.GetComponent<Animator>().SetTrigger("Attack");
+                break;
         }
-    }
-    void EnemyReady()
-    {
-        if (!gameend)
+        switch(Enemy.duel[CurrnetRound])
         {
-            playeratk = false;
-            enemyatk = true;
-            int a = Random.Range(0, 10);
-            if (a >= 5)
+            case BattleAttribute.Duel.scissors:
+                enemy.GetComponent<Animator>().SetTrigger("Attack2");
+                break;
+            case BattleAttribute.Duel.paper:
                 enemy.GetComponent<Animator>().SetTrigger("Attack1");
-            else
+                break;
+            case BattleAttribute.Duel.rock:
                 enemy.GetComponent<Animator>().SetTrigger("Attack");
+                break;
+        }
+        if (PlayerCurrent_duel == BattleAttribute.Duel.scissors)
+        {
+            if(Enemy.duel[CurrnetRound]== BattleAttribute.Duel.scissors)
+            {
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power*Random.Range(0.97f,1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * Random.Range(0.97f, 1.03f));
+            }
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.rock)
+            {
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power*1.1f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power*0.9f * Random.Range(0.97f, 1.03f));
+            }
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.paper)
+            {
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
+            }
+        }
+        else if (PlayerCurrent_duel == BattleAttribute.Duel.rock)
+        {
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.scissors)
+            {
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
+            }
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.rock)
+            {
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * Random.Range(0.97f, 1.03f));
+            }
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.paper)
+            {
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 1.1f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * 0.9f * Random.Range(0.97f, 1.03f));
+            }
+        }
+        else if (PlayerCurrent_duel == BattleAttribute.Duel.paper)
+        {
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.scissors)
+            {
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 1.1f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * 0.9f * Random.Range(0.97f, 1.03f));
+            }
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.rock)
+            {
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
+            }
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.paper)
+            {
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
+            }
+        }
+        CurrnetRound++;
+        Invoke("NextRound", 1.5f);
+        Invoke("ShowHurt", 0.3f);
+    }
+
+    private void NextRound()
+    {
+        Acts.SetActive(true);
+    }
+
+    private void ShowHurt()
+    {
+        Player_Hurt.SetActive(true);
+        Player_Hurt.GetComponent<TextMeshPro>().text = CurrHurt_Enemy.ToString();
+        TotalHurt_Enemy += CurrHurt_Enemy;
+        TotalHurt_Player += CurrHurt_Player;
+        Enemy_Hurt.SetActive(true);
+        Enemy_Hurt.GetComponent<TextMeshPro>().text = CurrHurt_Player.ToString();
+        if(CurrnetRound==5)
+        {
+            sounds[0].Play();
+            GameResult();
         }
     }
-    //种族读取技能
-    //void SkillRead()
-    //{
-    //    string aa = Resources.Load("ChickenSkill").ToString();
-    //    List<FightChickenSkill> skills = IOHelper.GetData(aa, typeof(List<FightChickenSkill>)) as List<FightChickenSkill>;
-    //    PlayerSkillName = skills[(int)player_chicken.Type].SkillName;
-    //    PlayerSkillEffect = skills[(int)player_chicken.Type].SkillEffect;
-    //    EnemySkillName = skills[(int)enemy_chicken.Type].SkillName;
-    //    EnemySkillEffect = skills[(int)enemy_chicken.Type].SkillEffect;
-    //}
+
+    private void GameResult()
+    {
+        if(TotalHurt_Enemy<=TotalHurt_Player)
+        {
+
+        }
+        if (TotalHurt_Enemy > TotalHurt_Player)
+        {
+
+        }
+    }
 }
