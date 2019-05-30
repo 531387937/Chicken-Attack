@@ -17,6 +17,8 @@ public class HungrySlider : MonoBehaviour
     public Color WarnColor = new Color(1, 1, 1, 1);
     public Color GrowColor = new Color(1, 1, 1, 1);
     public Sprite RetireTex;
+    public Sprite FightChickneTex;
+    public Sprite ChickTex;
     public Image HeadTex;
 
     void Start()
@@ -29,8 +31,9 @@ public class HungrySlider : MonoBehaviour
             myFightChicken.tag = "RetireChicken";
             Destroy(this);
         }
-        if (thisChicken.Chick)
+        else if (thisChicken.Chick)
         {
+            HeadTex.sprite = ChickTex;
             Destroy(ATK.gameObject);
             Fill.color = GrowColor;
             HungryStrip.maxValue = 100;
@@ -38,6 +41,7 @@ public class HungrySlider : MonoBehaviour
         }
         else if (!thisChicken.Chick)
         {
+            HeadTex.sprite = FightChickneTex;
             ATK.text = thisChicken.Power.ToString();
             HungryStrip.maxValue = 100;
             StartCoroutine(Hungry());

@@ -102,6 +102,8 @@ MonoBehaviour:
   WarnColor: {r: 0.735849, g: 0.05900677, b: 0.05900677, a: 1}
   GrowColor: {r: 0, g: 0.9716981, b: 0.11304381, a: 1}
   RetireTex: {fileID: 21300000, guid: d16aa78ca0517c747a6602259c4b9e6e, type: 3}
+  FightChickneTex: {fileID: 21300000, guid: eb88424808402984192026cedab40830, type: 3}
+  ChickTex: {fileID: 21300000, guid: 193b849929e78574fb84f8c4f6f3eb8f, type: 3}
   HeadTex: {fileID: 8373181938299545630}
 --- !u!223 &8055744610065652781
 Canvas:

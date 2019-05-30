@@ -36,6 +36,7 @@ public class Chick : MonoBehaviour
     void ChangeTag()
     {
         this.tag = "Chick";
+        GetComponent<Animator>().SetFloat("Speed", Random.Range(1f, 1.5f));
     }
 
     // Update is called once per frame
