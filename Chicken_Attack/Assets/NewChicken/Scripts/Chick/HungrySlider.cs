@@ -29,6 +29,7 @@ public class HungrySlider : MonoBehaviour
             Destroy(HungryStrip.gameObject);
             Destroy(ATK.gameObject);
             myFightChicken.tag = "RetireChicken";
+            myFightChicken.GetComponent<Animator>().SetFloat("SpeedScale", Random.Range(0.8f, 1.5f));
             Destroy(this);
         }
         else if (thisChicken.Chick)

@@ -49,36 +49,39 @@ public class ChickenRun : MonoBehaviour
                 this.transform.localEulerAngles = Vector3.zero;
                 break;
         }
-        if (thisChicken.Hungry > 60)
+        if (!thisChicken.Retire)
         {
-            this.gameObject.GetComponent<Animator>().SetFloat("SpeedScale", 1f);
-            GameSaveNew.Instance.buffer = 1f;
-        }
-        else if (thisChicken.Hungry > 40)
-        {
-            this.gameObject.GetComponent<Animator>().SetFloat("SpeedScale", 0.8f);
-            GameSaveNew.Instance.buffer = 0.8f;
-        }
-        else if (thisChicken.Hungry < 40)
-        {
-            this.gameObject.GetComponent<Animator>().SetFloat("SpeedScale", 0.5f);
-            GameSaveNew.Instance.buffer = 0.5f;
-        }
-        if (thisChicken.Hungry <= 0 && Do)
-        {
-            Debug.Log("鸡饿坏了！！！");
-            board.DoSomething("由于您的疏忽" + thisChicken.Name + "已经十分饥饿了，请花费50G恢复饥饿值");
-            board.NO.gameObject.SetActive(false);
-            Do = false;
-            board.YES.onClick.AddListener(delegate
+            if (thisChicken.Hungry > 60)
             {
-                GameSaveNew.Instance.PD.Gold -= 50;
-                thisChicken.Hungry = 100;
-                board.NO.gameObject.SetActive(true);
-                board.Mask.SetActive(false);
-                board.m_Board.SetActive(false);
-                Do = true;
-            });
+                this.gameObject.GetComponent<Animator>().SetFloat("SpeedScale", 1f);
+                GameSaveNew.Instance.buffer = 1f;
+            }
+            else if (thisChicken.Hungry > 40)
+            {
+                this.gameObject.GetComponent<Animator>().SetFloat("SpeedScale", 0.8f);
+                GameSaveNew.Instance.buffer = 0.8f;
+            }
+            else if (thisChicken.Hungry < 40)
+            {
+                this.gameObject.GetComponent<Animator>().SetFloat("SpeedScale", 0.5f);
+                GameSaveNew.Instance.buffer = 0.5f;
+            }
+            if (thisChicken.Hungry <= 0 && Do)
+            {
+                Debug.Log("鸡饿坏了！！！");
+                board.DoSomething("由于您的疏忽" + thisChicken.Name + "已经十分饥饿了，请花费50G恢复饥饿值");
+                board.NO.gameObject.SetActive(false);
+                Do = false;
+                board.YES.onClick.AddListener(delegate
+                {
+                    GameSaveNew.Instance.PD.Gold -= 50;
+                    thisChicken.Hungry = 100;
+                    board.NO.gameObject.SetActive(true);
+                    board.Mask.SetActive(false);
+                    board.m_Board.SetActive(false);
+                    Do = true;
+                });
+            }
         }
     }
 
