@@ -19,7 +19,6 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     private GameObject CurrentChicken;
     public int HungryADD = 5;
     public int Cost = 5;
-    private GameSaveNew GameData;
     public Food food;
     private bool CurrentFoodActive = false;
     public GameObject Cover;
@@ -29,14 +28,13 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         ThisFoodImage = GetComponent<Image>();
         CanvasRectangle = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<RectTransform>();
-        GameData = GameObject.FindGameObjectWithTag("GM").GetComponent<GameSaveNew>();
         StartPos = ThisFoodImage.rectTransform.anchoredPosition;
         ThisFoodImage.sprite = NormalSprite;
-        if (GameData.PD.FoodRights[(int)food])
+        if (GameSaveNew.Instance.PD.FoodRights[(int)food])
         {
             CurrentFoodActive = true;
         }
-        Debug.Log(food.ToString() + ":" + GameData.PD.FoodRights[(int)food]);
+        Debug.Log(food.ToString() + ":" + GameSaveNew.Instance.PD.FoodRights[(int)food]);
         Debug.Log(" CurrentFoodActive:" + CurrentFoodActive);
         if (!CurrentFoodActive)
         {
@@ -75,10 +73,10 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
             ThisFoodImage.rectTransform.anchoredPosition = StartPos;
             if (CurrentChicken != null && ThisFoodImage.sprite == CanUseSprite)
             {
-                if (GameData.PD.Gold - Cost > 0)//有钱才可以购买
+                if (GameSaveNew.Instance.PD.Gold - Cost > 0)//有钱才可以购买
                 {
                     CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD;
-                    GameData.PD.Gold -= Cost;
+                    GameSaveNew.Instance.PD.Gold -= Cost;
                     ThisFoodImage.sprite = NormalSprite;
                     if (CurrentChicken.GetComponent<MyFightChicken>().self.Hungry > 100)
                     {
