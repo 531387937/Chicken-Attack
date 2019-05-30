@@ -15,14 +15,13 @@ public class GameSaveNew : Singleton<GameSaveNew>
     public PlayerData PD = new PlayerData();
     string path = "Assets/Resources/GameData.json";
     string PlayerPath = "Assets/Resources/GamePlayerData.json";
+    //private static bool isNoDestroyHandler = true;//是否没有DontDestroyOnLoad处理
 
     //之后用这个来表现对训练的影响浮动值
     public float buffer = 1.0f;
-    
 
     void Awake()
     {
-        //导出时切换
         path = GetDataPath() + "/GameData.json";
         PlayerPath = GetDataPath() + "/GamePlayerData.json";
         LoadAllData();
@@ -34,6 +33,14 @@ public class GameSaveNew : Singleton<GameSaveNew>
 
     void Start()
     {
+        //if (isNoDestroyHandler)
+        //{
+        //    isNoDestroyHandler = false;
+        //}
+        //else if (!isNoDestroyHandler)
+        //{
+        //    Destroy(this.gameObject);
+        //}
         if (!IOHelper.IsFileExists(path))
         {
             //如没有则创建空记录文件

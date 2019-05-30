@@ -88,7 +88,7 @@ public class ChickenBreed : MonoBehaviour
             //清空商店买的鸡
             GameSaveNew.Instance.PD.ShopChicken = null;
             Handheld.Vibrate();//震动
-            Invoke("ChangeScene2Main", 6f);
+            Invoke("ChangeScene2Main", 10f);
         }
     }
 

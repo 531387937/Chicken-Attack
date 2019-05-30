@@ -92,12 +92,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4032ca8e78945604d86ae4d5340df96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myFightChicken: {fileID: 0}
+  Name: {fileID: 2073854248493994923}
   HungryStrip: {fileID: 1090579038620410005}
   ATK: {fileID: 3841771888976398781}
   Fill: {fileID: 6468070760228288202}
   NormalColor: {r: 0, g: 0.6862745, b: 0.9607844, a: 1}
   NoteColor: {r: 1, g: 0.5372549, b: 0, a: 1}
   WarnColor: {r: 0.735849, g: 0.05900677, b: 0.05900677, a: 1}
+  GrowColor: {r: 0, g: 0.9716981, b: 0.11304381, a: 1}
   RetireTex: {fileID: 21300000, guid: d16aa78ca0517c747a6602259c4b9e6e, type: 3}
   HeadTex: {fileID: 8373181938299545630}
 --- !u!223 &8055744610065652781

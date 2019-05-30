@@ -8,11 +8,21 @@ public class AudioSystem : Singleton<AudioSystem>
     private string currentScene;
     private bool changeAudio = false;
     private int currentPlay;
+    //private static bool isNoDestroyHandler = true;//是否没有DontDestroyOnLoad处理
+
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
-        currentScene = SceneManager.GetActiveScene().name;
+        //if (isNoDestroyHandler)
+        //{
+           //isNoDestroyHandler = false;
+            DontDestroyOnLoad(this.gameObject);
+            currentScene = SceneManager.GetActiveScene().name;
+       // }
+        //else if (!isNoDestroyHandler)
+        //{
+           // Destroy(this.gameObject);
+        //}
     }
 
     // Update is called once per frame

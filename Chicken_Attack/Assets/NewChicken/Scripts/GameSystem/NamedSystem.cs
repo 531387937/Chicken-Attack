@@ -30,6 +30,7 @@ public class NamedSystem : MonoBehaviour
         GameSaveNew.Instance.playerChicken.Retire = true;
         GameSaveNew.Instance.PD.OldChicken.Add(GameSaveNew.Instance.playerChicken);
         GameSaveNew.Instance.playerChicken = GameSaveNew.Instance.PD.Chick[0];
+        GameSaveNew.Instance.playerChicken.Chick = false;
         GameSaveNew.Instance.PD.Chick.Remove(GameSaveNew.Instance.PD.Chick[0]);
         GameSaveNew.Instance.playerChicken.Name = Name;
         //保存&&刷新

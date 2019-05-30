@@ -67,12 +67,12 @@ public class ChickenRun : MonoBehaviour
         if (thisChicken.Hungry <= 0 && Do)
         {
             Debug.Log("鸡饿坏了！！！");
-            board.DoSomething("由于您的疏忽" + thisChicken.Name + "已经十分饥饿了，请花费200G恢复饥饿值");
+            board.DoSomething("由于您的疏忽" + thisChicken.Name + "已经十分饥饿了，请花费50G恢复饥饿值");
             board.NO.gameObject.SetActive(false);
             Do = false;
             board.YES.onClick.AddListener(delegate
             {
-                GameSaveNew.Instance.PD.Gold -= 200;
+                GameSaveNew.Instance.PD.Gold -= 50;
                 thisChicken.Hungry = 100;
                 board.NO.gameObject.SetActive(true);
                 board.Mask.SetActive(false);
@@ -89,7 +89,8 @@ public class ChickenRun : MonoBehaviour
         {
             if (Random.Range(0, 10) == 0)
             {
-                this.gameObject.GetComponent<Animator>().SetBool("Fly", true);
+                //this.gameObject.GetComponent<Animator>().SetBool("Fly", true);
+                this.gameObject.GetComponent<Animator>().SetBool("Run", true);
             }
             else
             {

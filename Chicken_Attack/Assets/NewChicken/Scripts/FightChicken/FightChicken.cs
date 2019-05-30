@@ -39,6 +39,10 @@ public class FightChicken
     //public int Ch_Num;
     //饥饿值
     public int Hungry = 100;
+    //成长值
+    public int Grow = 0;
+    //是否是小鸡
+    public bool Chick = false;
     //退役
     public bool Retire = false;
     //显示退役证书
@@ -179,12 +183,13 @@ public class FightChicken
 /// <param name="shopChicken"></param>
     public FightChicken(string name,FightChicken playerChicken,FightChicken shopChicken)
     {
-        Hungry = 75;
+        Hungry = 100;
         Name = "小鸡";
         Power = Mathf.Ceil(playerChicken.Power * 0.75f + shopChicken.Power * 0.25f * Random.Range(0.95f, 1.05f));
         Type = setChickenType(playerChicken, shopChicken);
         /*Skills.Add(2);*///待加入技能，从外部读取数据
         Talent = Random.Range(5, 8);
+        Chick = true;
         Grand.Add(playerChicken);
     }
 

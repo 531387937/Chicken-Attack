@@ -8,12 +8,14 @@ public class HungrySlider : MonoBehaviour
 {
     public FightChicken thisChicken;
     public MyFightChicken myFightChicken;
+    public GameObject Name;
     public Slider HungryStrip;
     public TextMeshProUGUI ATK;
     public Image Fill;
     public Color NormalColor = new Color(1, 1, 1, 1);
     public Color NoteColor = new Color(1, 1, 1, 1);
     public Color WarnColor = new Color(1, 1, 1, 1);
+    public Color GrowColor = new Color(1, 1, 1, 1);
     public Sprite RetireTex;
     public Image HeadTex;
 
@@ -27,26 +29,71 @@ public class HungrySlider : MonoBehaviour
             myFightChicken.tag = "RetireChicken";
             Destroy(this);
         }
-        ATK.text = thisChicken.Power.ToString();
-        HungryStrip.maxValue = 100;
-        StartCoroutine(Hungry());
+        if (thisChicken.Chick)
+        {
+            Destroy(ATK.gameObject);
+            Fill.color = GrowColor;
+            HungryStrip.maxValue = 100;
+            StartCoroutine(GrowUp());
+        }
+        else if (!thisChicken.Chick)
+        {
+            ATK.text = thisChicken.Power.ToString();
+            HungryStrip.maxValue = 100;
+            StartCoroutine(Hungry());
+        }
     }
 
     private void Update()
     {
-        Debug.Log("thisChicken.Hungry" + thisChicken.Hungry);
-        HungryStrip.value = thisChicken.Hungry;
-        if (thisChicken.Hungry > 60)
+        if (thisChicken.Chick)
         {
-            Fill.color = NormalColor;
+            Debug.Log("thisChicken.Grow" + thisChicken.Grow);
+            HungryStrip.value = thisChicken.Grow;
         }
-        else if (thisChicken.Hungry > 40)
+        else if (!thisChicken.Chick)
         {
-            Fill.color = NoteColor;
+            Debug.Log("thisChicken.Hungry" + thisChicken.Hungry);
+            HungryStrip.value = thisChicken.Hungry;
+            if (thisChicken.Hungry > 60)
+            {
+                Fill.color = NormalColor;
+            }
+            else if (thisChicken.Hungry > 40)
+            {
+                Fill.color = NoteColor;
+            }
+            else if (thisChicken.Hungry < 40)
+            {
+                Fill.color = WarnColor;
+            }
         }
-        else if (thisChicken.Hungry < 40)
+    }
+
+    IEnumerator GrowUp()
+    {
+        yield return new WaitForSeconds(90);
+        switch (GameSaveNew.Instance.PD.HomeLevel)
         {
-            Fill.color = WarnColor;
+            case 0:
+                thisChicken.Grow += 2;
+                Debug.Log("成长值+2");
+                StartCoroutine(GrowUp());
+                break;
+            case 1:
+                thisChicken.Grow += 4;
+                Debug.Log("成长值+4");
+                StartCoroutine(GrowUp());
+                break;
+            case 2:
+                thisChicken.Grow += 6;
+                Debug.Log("成长值+6");
+                StartCoroutine(GrowUp());
+                break;
+        }
+        if (thisChicken.Hungry < 0)
+        {
+            thisChicken.Hungry = 0;
         }
     }
 
