@@ -26,7 +26,7 @@ public class MyFightChicken : MonoBehaviour
 
     private void Update()
     {
-        Pos = new Vector3(Camera.main.WorldToScreenPoint(this.transform.position).x, Camera.main.WorldToScreenPoint(this.transform.position).y + 90f, 0);
+        Pos = new Vector3(Camera.main.WorldToScreenPoint(this.transform.position).x, Camera.main.WorldToScreenPoint(this.transform.position).y + 150f, 0);
         Current_Name_UI.transform.position = Pos;
     }
     

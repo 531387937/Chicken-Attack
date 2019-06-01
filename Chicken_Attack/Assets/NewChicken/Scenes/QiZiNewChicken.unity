@@ -3429,7 +3429,6 @@ MonoBehaviour:
   Player_Chicken: {fileID: 2126344732}
   TMP_In: {fileID: 1109296957}
   Mask: {fileID: 2001950829}
-  m_Board: {fileID: 663136896}
 --- !u!1 &861141223
 GameObject:
   m_ObjectHideFlags: 0
@@ -7949,7 +7948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1902311634
 MonoBehaviour:
   m_ObjectHideFlags: 0
