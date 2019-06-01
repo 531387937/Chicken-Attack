@@ -3426,8 +3426,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f8c75dc5a4b7741a0c1d72f2b1f7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player_Chicken: {fileID: 2126344732}
   TMP_In: {fileID: 1109296957}
   Mask: {fileID: 2001950829}
+  m_Board: {fileID: 663136896}
 --- !u!1 &861141223
 GameObject:
   m_ObjectHideFlags: 0

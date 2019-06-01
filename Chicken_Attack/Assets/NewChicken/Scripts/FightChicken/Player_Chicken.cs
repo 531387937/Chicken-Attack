@@ -12,9 +12,19 @@ public class Player_Chicken : MonoBehaviour
         //按照鸡的种类生成鸡
         if (GameSaveNew.Instance.playerChicken != null)
         {
-            GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], GameSaveNew.Instance.playerChicken.Pos, new Quaternion(0, 0, 0, 1));
-            a.AddComponent<MyFightChicken>();
-            a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken;
+            if(GameSaveNew.Instance.playerChicken.Pos.y > -6.5f && GameSaveNew.Instance.playerChicken.Pos.y < 6.5f)
+            {
+                GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], GameSaveNew.Instance.playerChicken.Pos, new Quaternion(0, 0, 0, 1));
+                a.AddComponent<MyFightChicken>();
+                a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken;
+            }
+            else
+            {
+                GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], new Vector3(Random.Range(-6f,6f),GameSaveNew.Instance.playerChicken.Pos.y, GameSaveNew.Instance.playerChicken.Pos.z), new Quaternion(0, 0, 0, 1));
+                a.AddComponent<MyFightChicken>();
+                a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken;
+            }
+           
         }    
 
         //遍历小鸡
@@ -22,9 +32,18 @@ public class Player_Chicken : MonoBehaviour
         {
             for (int i = 0; i < GameSaveNew.Instance.PD.Chick.Count; i++)
             {
-                GameObject b = Instantiate(ga[4], GameSaveNew.Instance.PD.Chick[i].Pos, new Quaternion(0, 0, 0, 1));
-                b.AddComponent<Chick>();
-                b.GetComponent<Chick>().self = GameSaveNew.Instance.PD.Chick[i];
+                if(GameSaveNew.Instance.PD.Chick[i].Pos.x >- 6.5f && GameSaveNew.Instance.PD.Chick[i].Pos.x < 6.5f)
+                {
+                    GameObject b = Instantiate(ga[4], GameSaveNew.Instance.PD.Chick[i].Pos, new Quaternion(0, 0, 0, 1));
+                    b.AddComponent<Chick>();
+                    b.GetComponent<Chick>().self = GameSaveNew.Instance.PD.Chick[i];
+                }
+                else
+                {
+                    GameObject b = Instantiate(ga[4], new Vector3(Random.Range(-6f, 6f), GameSaveNew.Instance.PD.Chick[i].Pos.y, GameSaveNew.Instance.PD.Chick[i].Pos.z), new Quaternion(0, 0, 0, 1));
+                    b.AddComponent<Chick>();
+                    b.GetComponent<Chick>().self = GameSaveNew.Instance.PD.Chick[i];
+                }
             }
         }
 
@@ -33,9 +52,18 @@ public class Player_Chicken : MonoBehaviour
         {
             for (int i = 0; i < GameSaveNew.Instance.PD.OldChicken.Count; i++)
             {
-                GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], GameSaveNew.Instance.PD.OldChicken[i].Pos, new Quaternion(0, 0, 0, 1));
-                b.AddComponent<MyFightChicken>();
-                b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                if (GameSaveNew.Instance.PD.OldChicken[i].Pos.x >- 6.5f && GameSaveNew.Instance.PD.OldChicken[i].Pos.x < 6.5f)
+                {
+                    GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], GameSaveNew.Instance.PD.OldChicken[i].Pos, new Quaternion(0, 0, 0, 1));
+                    b.AddComponent<MyFightChicken>();
+                    b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                }
+                else
+                {
+                    GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], new Vector3(Random.Range(-6f, 6f), GameSaveNew.Instance.PD.OldChicken[i].Pos.y, GameSaveNew.Instance.PD.OldChicken[i].Pos.z), new Quaternion(0, 0, 0, 1));
+                    b.AddComponent<MyFightChicken>();
+                    b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                }
             }
         }
 
@@ -101,6 +129,79 @@ public class Player_Chicken : MonoBehaviour
         //递归该方法（每次剔除一个排好的数）
         QuickSortArray(array, start, left - 1);
         QuickSortArray(array, left + 1, end);
+    }
+
+
+    public void RefreshChicken()
+    {
+        //按照鸡的种类生成鸡
+        if (GameSaveNew.Instance.playerChicken != null)
+        {
+            if (GameSaveNew.Instance.playerChicken.Pos.y > -6.5f && GameSaveNew.Instance.playerChicken.Pos.y < 6.5f)
+            {
+                GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], GameSaveNew.Instance.playerChicken.Pos, new Quaternion(0, 0, 0, 1));
+                a.AddComponent<MyFightChicken>();
+                a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken;
+            }
+            else
+            {
+                GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], new Vector3(Random.Range(-6f, 6f), GameSaveNew.Instance.playerChicken.Pos.y, GameSaveNew.Instance.playerChicken.Pos.z), new Quaternion(0, 0, 0, 1));
+                a.AddComponent<MyFightChicken>();
+                a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken;
+            }
+
+        }
+
+        //遍历小鸡
+        if (GameSaveNew.Instance.PD.Chick != null)
+        {
+            for (int i = 0; i < GameSaveNew.Instance.PD.Chick.Count; i++)
+            {
+                if (GameSaveNew.Instance.PD.Chick[i].Pos.x > -6.5f && GameSaveNew.Instance.PD.Chick[i].Pos.x < 6.5f)
+                {
+                    GameObject b = Instantiate(ga[4], GameSaveNew.Instance.PD.Chick[i].Pos, new Quaternion(0, 0, 0, 1));
+                    b.AddComponent<Chick>();
+                    b.GetComponent<Chick>().self = GameSaveNew.Instance.PD.Chick[i];
+                }
+                else
+                {
+                    GameObject b = Instantiate(ga[4], new Vector3(Random.Range(-6f, 6f), GameSaveNew.Instance.PD.Chick[i].Pos.y, GameSaveNew.Instance.PD.Chick[i].Pos.z), new Quaternion(0, 0, 0, 1));
+                    b.AddComponent<Chick>();
+                    b.GetComponent<Chick>().self = GameSaveNew.Instance.PD.Chick[i];
+                }
+            }
+        }
+
+        //遍历退役鸡
+        if (GameSaveNew.Instance.PD.OldChicken != null)
+        {
+            for (int i = 0; i < GameSaveNew.Instance.PD.OldChicken.Count; i++)
+            {
+                if (GameSaveNew.Instance.PD.OldChicken[i].Pos.x > -6.5f && GameSaveNew.Instance.PD.OldChicken[i].Pos.x < 6.5f)
+                {
+                    GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], GameSaveNew.Instance.PD.OldChicken[i].Pos, new Quaternion(0, 0, 0, 1));
+                    b.AddComponent<MyFightChicken>();
+                    b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                }
+                else
+                {
+                    GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], new Vector3(Random.Range(-6f, 6f), GameSaveNew.Instance.PD.OldChicken[i].Pos.y, GameSaveNew.Instance.PD.OldChicken[i].Pos.z), new Quaternion(0, 0, 0, 1));
+                    b.AddComponent<MyFightChicken>();
+                    b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                }
+            }
+        }
+
+        //快排区分每只鸡的前后位置
+        GameObject[] G = GameObject.FindGameObjectsWithTag("FightChicken");
+
+        QuickSortArray(G, 0, G.Length - 1);
+
+        for (int i = 0; i < G.Length; i++)
+        {
+            G[i].gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Chicken";
+            G[i].gameObject.GetComponent<SpriteRenderer>().sortingOrder = G.Length - i;
+        }
     }
 
 }

@@ -196,4 +196,16 @@ public class ChickenRun : MonoBehaviour
         }
     }
 
+    //private void OnDestroy()
+    //{
+    //    if (this.tag == "MyFightChicken"|| this.tag == "RetireChicken")
+    //    {
+    //        Destroy(GetComponent<MyFightChicken>().Current_Name_UI);
+    //    }
+    //    else if (this.tag == "Chick")
+    //    {
+    //        Destroy(GetComponent<Chick>().Current_Name_UI);
+    //    }
+    //}
+
 }
