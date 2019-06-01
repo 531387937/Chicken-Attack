@@ -56,6 +56,8 @@ public class BattleGameManager : MonoBehaviour
     private int TotalHurt_Player;
     private int TotalHurt_Enemy;
 
+    public Transform HurtPos_Player;
+    public Transform HurtPos_Enemy;
     public AudioSource[] sounds;
     //string enemyPath = "Assets/Resources/EnemyData.json";
     void Awake()
@@ -107,7 +109,7 @@ public class BattleGameManager : MonoBehaviour
         {
             if (!gameBegin)
                 GameStar();
-        }
+        } 
        
         if (gameend)
         {
@@ -122,7 +124,8 @@ public class BattleGameManager : MonoBehaviour
     {
         UI_Text.text = null;
         gameBegin = true;
-       
+        StartCoroutine(NextRound());
+
     }
     //生成对战的鸡
     void ChickenInit()
@@ -214,39 +217,72 @@ public class BattleGameManager : MonoBehaviour
             }
         }
         CurrnetRound++;
-        Invoke("NextRound", 1.5f);
+        StartCoroutine(NextRound());
         Invoke("ShowHurt", 0.3f);
     }
 
-    private void NextRound()
+    IEnumerator NextRound()
     {
+        yield return new WaitForSeconds(1.5f);
+        UI_Text.gameObject.SetActive(true);
+        UI_Text.fontSize = 85;
+        UI_Text.text = "Round " + (CurrnetRound+1);
+        yield return new WaitForSeconds(1f);
         Acts.SetActive(true);
+        UI_Text.gameObject.SetActive(false);
+        if (CurrnetRound==5)
+        {
+            GameResult();
+        }
     }
 
     private void ShowHurt()
     {
-        Player_Hurt.SetActive(true);
-        Player_Hurt.GetComponent<TextMeshPro>().text = CurrHurt_Enemy.ToString();
-        TotalHurt_Enemy += CurrHurt_Enemy;
-        TotalHurt_Player += CurrHurt_Player;
-        Enemy_Hurt.SetActive(true);
-        Enemy_Hurt.GetComponent<TextMeshPro>().text = CurrHurt_Player.ToString();
-        if(CurrnetRound==5)
-        {
-            sounds[0].Play();
-            GameResult();
-        }
+        Player_GetHurt();
+        Enemy_GetHurt();
     }
 
     private void GameResult()
     {
         if(TotalHurt_Enemy<=TotalHurt_Player)
         {
-
+            StartCoroutine(PlayerWin());
         }
         if (TotalHurt_Enemy > TotalHurt_Player)
         {
-
+            StartCoroutine(PlayerLose());
         }
     }
+    public void Player_GetHurt()
+    {
+ Player_Hurt.transform.position = HurtPos_Player.position;
+        Player_Hurt.SetActive(true);
+        Player_Hurt.GetComponent<TextMeshPro>().text = CurrHurt_Enemy.ToString();
+        Player_Hurt.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Player_Hurt.GetComponent<Rigidbody>().AddForce(new Vector3(-105, 60, 0));
+        TotalHurt_Enemy += CurrHurt_Enemy;
+    }
+    public void Enemy_GetHurt()
+    {
+       Enemy_Hurt.transform.position = HurtPos_Enemy.position;
+        Enemy_Hurt.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Enemy_Hurt.GetComponent<Rigidbody>().AddForce(new Vector3(105, 60, 0));
+        TotalHurt_Player += CurrHurt_Player;
+        Enemy_Hurt.SetActive(true);
+        Enemy_Hurt.GetComponent<TextMeshPro>().text = CurrHurt_Player.ToString();
+    }
+
+    IEnumerator PlayerWin()
+    {
+        enemy.GetComponent<Animator>().SetTrigger("Defeat");
+        yield return new WaitForSeconds(1.3f);
+        sounds[0].Play();
+    }
+    IEnumerator PlayerLose()
+    {
+        player_Chicken.GetComponent<Animator>().SetTrigger("Defeat");
+        yield return new WaitForSeconds(1.3f);
+        sounds[0].Play();
+    }
+    
 }
