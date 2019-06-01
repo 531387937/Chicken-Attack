@@ -13,6 +13,7 @@ public class BattleGameManager : MonoBehaviour
     bool gameBegin = false;
     bool gameend = false;
     public TextMeshProUGUI UI_Text;
+    public TextMeshProUGUI End_Text;
 
     public TextMeshProUGUI Gold;
     public TextMeshProUGUI Prestige;
@@ -59,6 +60,8 @@ public class BattleGameManager : MonoBehaviour
     public Transform HurtPos_Player;
     public Transform HurtPos_Enemy;
     public AudioSource[] sounds;
+    //关卡信息
+    List<LevelSet> FC;
     //string enemyPath = "Assets/Resources/EnemyData.json";
     void Awake()
     {
@@ -66,9 +69,9 @@ public class BattleGameManager : MonoBehaviour
         level = SceneChange.Level;
 
         string aa = Resources.Load("EnemyData").ToString();
-       List<LevelSet> FC = IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
+      FC = IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
         Player = new BattleAttribute(GameSaveNew.Instance.playerChicken);
-        Enemy = new BattleAttribute(FC[level+1].EnemyChicken);
+        Enemy = new BattleAttribute(FC[level].EnemyChicken);
         enemy_chicken = FC[level].EnemyChicken;
         //player_chicken.enemyChickens.Add(enemy_chicken);//将此敌人加入玩家此生遇到敌人队列
         //生成对战的两只鸡
@@ -224,15 +227,18 @@ public class BattleGameManager : MonoBehaviour
     IEnumerator NextRound()
     {
         yield return new WaitForSeconds(1.5f);
-        UI_Text.gameObject.SetActive(true);
-        UI_Text.fontSize = 85;
-        UI_Text.text = "Round " + (CurrnetRound+1);
-        yield return new WaitForSeconds(1f);
-        Acts.SetActive(true);
-        UI_Text.gameObject.SetActive(false);
-        if (CurrnetRound==5)
+        if (CurrnetRound == 5)
         {
             GameResult();
+        }
+        else
+        {
+            UI_Text.gameObject.SetActive(true);
+            UI_Text.fontSize = 85;
+            UI_Text.text = "Round " + (CurrnetRound + 1);
+            yield return new WaitForSeconds(1f);
+            Acts.SetActive(true);
+            UI_Text.gameObject.SetActive(false);
         }
     }
 
@@ -277,12 +283,29 @@ public class BattleGameManager : MonoBehaviour
         enemy.GetComponent<Animator>().SetTrigger("Defeat");
         yield return new WaitForSeconds(1.3f);
         sounds[0].Play();
+        yield return new WaitForSeconds(1.5f);
+        Gold.text ="+"+ FC[level].GoldGet.ToString();
+        Prestige.text = "+" + FC[level].PrestigeGet.ToString();
+        Pt.text = "+" + FC[level].PtGet.ToString();
+        EndGamePanel.SetActive(true);
+        gameend = true;
+        GameSaveNew.Instance.PD.Gold += FC[level].GoldGet;
+        GameSaveNew.Instance.PD.Prestige += FC[level].PrestigeGet;
+        GameSaveNew.Instance.PD.Pt += FC[level].PtGet;
+        End_Text.gameObject.SetActive(true);
+        End_Text.text = "你的鸡取得了胜利！";
     }
     IEnumerator PlayerLose()
     {
         player_Chicken.GetComponent<Animator>().SetTrigger("Defeat");
         yield return new WaitForSeconds(1.3f);
         sounds[0].Play();
+        yield return new WaitForSeconds(1.5f);
+        EndGamePanel.SetActive(true);
+        gameend = true;
+        End_Text.gameObject.SetActive(true);
+        End_Text.text = "你的鸡输掉了比赛！";
+
     }
-    
+
 }
