@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class NamedSystem : MonoBehaviour
 {
+    public Player_Chicken Player_Chicken;
     private string Name;
     public TMP_InputField TMP_In;
     //变暗的遮罩
@@ -35,6 +36,23 @@ public class NamedSystem : MonoBehaviour
         GameSaveNew.Instance.playerChicken.Name = Name;
         //保存&&刷新
         GameSaveNew.Instance.SaveAllData();
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        foreach(GameObject g in GameObject.FindGameObjectsWithTag("FightChicken"))
+        {
+            Destroy(g.GetComponent<MyFightChicken>().Current_Name_UI);
+            Destroy(g);
+        }
+        foreach (GameObject g in GameObject.FindGameObjectsWithTag("Chick"))
+        {
+            Destroy(g.GetComponent<Chick>().Current_Name_UI);
+            Destroy(g);
+        }
+        foreach (GameObject g in GameObject.FindGameObjectsWithTag("RetireChicken"))
+        {
+            Destroy(g.GetComponent<MyFightChicken>().Current_Name_UI);
+            Destroy(g);
+        }
+        Player_Chicken.RefreshChicken();
+        this.gameObject.SetActive(false);
     }
 }
