@@ -54,28 +54,67 @@ public class Board : MonoBehaviour
             TMP.text = "确定要前往繁殖场吗？";
             SceneChange.SceneName = "ChickenBreedScene";
         }
+        else 
+        {
+            Mask.SetActive(true);
+            Time.timeScale = 0;
+            m_Board.SetActive(true);
+            TMP.text = "您还没有在商店购买野鸡";
+            YES.gameObject.SetActive(false);
+        }
     }
 
     //前往训练场
     public void Go_Train()
     {
-        Mask.SetActive(true);
-        Time.timeScale = 0;
-        ReadyChangeScene = true;
-        m_Board.SetActive(true);
-        TMP.text = "确定要前往训练场吗？";
-        int a = Random.Range(1, 4);
-        switch(a)
+        if (GameSaveNew.Instance.playerChicken.Hungry > 5 && GameSaveNew.Instance.PD.Pt > 1)
         {
-            case 1:
-                SceneChange.SceneName = "ATK_Training";
-                break;
-            case 2:
-                SceneChange.SceneName = "Strong_Train";
-                break;
-            case 3:
-                SceneChange.SceneName = "HP_Train";
-                break;
+            Mask.SetActive(true);
+            Time.timeScale = 0;
+            ReadyChangeScene = true;
+            m_Board.SetActive(true);
+            TMP.text = "确定要前往训练场吗？";
+            //switch (GameSaveNew.Instance.PD.HomeLevel)
+            //{
+            //    case 0:
+            //        GameSaveNew.Instance.playerChicken.Hungry -= 15;
+            //        break;
+            //    case 1:
+            //        GameSaveNew.Instance.playerChicken.Hungry -= 10;
+            //        break;
+            //    case 2:
+            //        GameSaveNew.Instance.playerChicken.Hungry -= 5;
+            //        break;
+            //}
+            int a = Random.Range(1, 4);
+            switch (a)
+            {
+                case 1:
+                    SceneChange.SceneName = "ATK_Training";
+                    break;
+                case 2:
+                    SceneChange.SceneName = "Strong_Train";
+                    break;
+                case 3:
+                    SceneChange.SceneName = "HP_Train";
+                    break;
+            }
+        }
+        else if(GameSaveNew.Instance.PD.Pt > 1)
+        {
+            Mask.SetActive(true);
+            Time.timeScale = 0;
+            m_Board.SetActive(true);
+            TMP.text = "您的鸡饥饿值太低了,无力训练";
+            YES.gameObject.SetActive(false);
+        }
+        else if (GameSaveNew.Instance.playerChicken.Hungry > 10)
+        {
+            Mask.SetActive(true);
+            Time.timeScale = 0;
+            m_Board.SetActive(true);
+            TMP.text = "您没有足够的鸡毛参加训练";
+            YES.gameObject.SetActive(false);
         }
     }
 
