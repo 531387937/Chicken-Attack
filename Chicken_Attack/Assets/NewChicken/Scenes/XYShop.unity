@@ -1105,7 +1105,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 94.99998, y: 17.33}
+  m_AnchoredPosition: {x: 100.799995, y: 17.33}
   m_SizeDelta: {x: 160, y: 57.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &296897634
@@ -1770,7 +1770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 97, y: 17.33}
+  m_AnchoredPosition: {x: 102.8, y: 17.33}
   m_SizeDelta: {x: 160, y: 57.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498618839
@@ -5513,7 +5513,7 @@ MonoBehaviour:
   ChickenTex:
   - {fileID: 2800000, guid: 96fd6e5e8b581b84db9195ccd988194b, type: 3}
   - {fileID: 2800000, guid: 4e76169850d50ab42a393af5f6b89438, type: 3}
-  - {fileID: 2800000, guid: 26724394ed4eebc4f8df205d9e747cbb, type: 3}
+  - {fileID: 2800000, guid: cdf8241a2420d2c4487aa5625a0fa425, type: 3}
   Broad: {fileID: 0}
 --- !u!1 &2030572733
 GameObject:

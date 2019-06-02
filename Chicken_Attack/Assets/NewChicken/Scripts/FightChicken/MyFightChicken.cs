@@ -10,7 +10,7 @@ public class MyFightChicken : MonoBehaviour
     private Vector3 Pos;
     [HideInInspector]
     public GameObject Current_Name_UI;
-    private float Widthscale = 95f / 1080f;
+    private float Widthscale = 90f / 1080f;
 
     private void Start()
     {
