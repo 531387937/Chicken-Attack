@@ -280,6 +280,7 @@ public class BattleGameManager : MonoBehaviour
 
     IEnumerator PlayerWin()
     {
+        GameSaveNew.Instance.playerChicken.enemyChickens.Add(Enemy.power);
         enemy.GetComponent<Animator>().SetTrigger("Defeat");
         yield return new WaitForSeconds(1.3f);
         sounds[0].Play();
