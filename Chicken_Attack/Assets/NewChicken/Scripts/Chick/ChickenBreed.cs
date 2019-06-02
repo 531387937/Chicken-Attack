@@ -14,7 +14,12 @@ public class ChickenBreed : MonoBehaviour
     public GameObject eggs;
     public GameObject Pos;
     private GameObject Breed_Chicken;
+    float timer = 0;
+    private bool btn = false;
+    private bool btn1 = false;
+    public Image dark;
 
+    public GameObject Light;
     //记录上一次的重力感应的Y值
     private float old_y = 0;
     //记录当前的重力感应的Y值
@@ -57,13 +62,26 @@ public class ChickenBreed : MonoBehaviour
                 DoOnce = false;
             }
         }
+        if (btn)
+        {
+            timer += Time.deltaTime;
+            dark.color = new Color(0, 0, 0, timer);
+        }
+        if(!btn&&btn1)
+        {
+        timer -= Time.deltaTime;
+        dark.color = new Color(0, 0, 0, timer);
+        }
+        print(timer);
     }
 
     public void Three_Eggs()
     {
+        print("???");
+        StartCoroutine(Dark());
         if (GameSaveNew.Instance.PD.ShopChicken != null)
         {
-            eggs.SetActive(true);
+            StartCoroutine(Dark());
         }
     }
 
@@ -96,5 +114,15 @@ public class ChickenBreed : MonoBehaviour
     {
         SceneManager.LoadScene("QiZiNewChicken");
     }
-
+    IEnumerator Dark()
+    {
+        btn = true;
+        timer = 0;
+        yield return new WaitForSeconds(2);
+        btn = false;
+        Light.SetActive(false);
+        btn1 = true;
+        timer = 1;
+        eggs.SetActive(true);
+    }
 }
