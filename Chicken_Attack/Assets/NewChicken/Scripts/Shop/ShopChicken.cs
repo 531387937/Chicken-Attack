@@ -26,7 +26,7 @@ public class ShopChicken : MonoBehaviour
         if (ThisChicken != null)
         {
             this.gameObject.SetActive(true);
-            Name.text = "母鸡（" + ThisChicken.Power.ToString() + ")"+"\n"+"种群："+ ThisChicken.Type.ToString();
+            Name.text = "野鸡（" + ThisChicken.Power.ToString() + ")"+"\n"+"种群："+ ThisChicken.Type.ToString();
             Cost.text = CostChicken.ToString() + "G";
         }
         else if (ThisChicken == null)

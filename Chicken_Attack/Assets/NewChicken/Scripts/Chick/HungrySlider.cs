@@ -53,12 +53,12 @@ public class HungrySlider : MonoBehaviour
     {
         if (thisChicken.Chick)
         {
-            Debug.Log("thisChicken.Grow" + thisChicken.Grow);
+            //Debug.Log("thisChicken.Grow" + thisChicken.Grow);
             HungryStrip.value = thisChicken.Grow;
         }
         else if (!thisChicken.Chick)
         {
-            Debug.Log("thisChicken.Hungry" + thisChicken.Hungry);
+            //Debug.Log("thisChicken.Hungry" + thisChicken.Hungry);
             HungryStrip.value = thisChicken.Hungry;
             if (thisChicken.Hungry > 60)
             {
@@ -118,7 +118,7 @@ public class HungrySlider : MonoBehaviour
     void UpdateGrow(object obj)
     {
         thisChicken.Grow = (float)obj;
-        Debug.Log("成长值:"+ (float)obj);
+        //Debug.Log("成长值:"+ (float)obj);
     }
 
     IEnumerator Hungry()
@@ -164,7 +164,7 @@ public class HungrySlider : MonoBehaviour
     void UpdateHungry(object obj)
     {
         thisChicken.Hungry = (float)obj;
-        Debug.Log("饥饿值:"+ (float)obj);
+        //Debug.Log("饥饿值:"+ (float)obj);
     }
 
 }
