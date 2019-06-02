@@ -80,8 +80,6 @@ public class ChickenBreed : MonoBehaviour
 
     public void Three_Eggs()
     {
-        print("???");
-        StartCoroutine(Dark());
         if (GameSaveNew.Instance.PD.ShopChicken != null)
         {
             StartCoroutine(Dark());
@@ -119,6 +117,7 @@ public class ChickenBreed : MonoBehaviour
     }
     IEnumerator Dark()
     {
+        yield return new WaitForSeconds(0.5f);
         btn = true;
         timer = 0;
         yield return new WaitForSeconds(2);
