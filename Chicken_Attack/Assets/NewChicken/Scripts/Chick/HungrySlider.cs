@@ -77,55 +77,94 @@ public class HungrySlider : MonoBehaviour
 
     IEnumerator GrowUp()
     {
-        yield return new WaitForSeconds(90);
         switch (GameSaveNew.Instance.PD.HomeLevel)
         {
             case 0:
-                thisChicken.Grow += 2;
-                Debug.Log("成长值+2");
-                StartCoroutine(GrowUp());
+                iTween.ValueTo(gameObject, iTween.Hash("from", thisChicken.Grow, "to", thisChicken.Grow + 2, "time", 90, "onupdate", "UpdateGrow"));
                 break;
             case 1:
-                thisChicken.Grow += 4;
-                Debug.Log("成长值+4");
-                StartCoroutine(GrowUp());
+                iTween.ValueTo(gameObject, iTween.Hash("from", thisChicken.Grow, "to", thisChicken.Grow + 4, "time", 90, "onupdate", "UpdateGrow"));
                 break;
             case 2:
-                thisChicken.Grow += 6;
-                Debug.Log("成长值+6");
-                StartCoroutine(GrowUp());
+                iTween.ValueTo(gameObject, iTween.Hash("from", thisChicken.Grow, "to", thisChicken.Grow + 6, "time", 90, "onupdate", "UpdateGrow"));
                 break;
         }
+        yield return new WaitForSeconds(90);
+        //switch (GameSaveNew.Instance.PD.HomeLevel)
+        //{
+        //    case 0:
+        //        thisChicken.Grow += 2;
+        //        Debug.Log("成长值+2");
+        //        StartCoroutine(GrowUp());
+        //        break;
+        //    case 1:
+        //        thisChicken.Grow += 4;
+        //        Debug.Log("成长值+4");
+        //        StartCoroutine(GrowUp());
+        //        break;
+        //    case 2:
+        //        thisChicken.Grow += 6;
+        //        Debug.Log("成长值+6");
+        //        StartCoroutine(GrowUp());
+        //        break;
+        //}
+        StartCoroutine(GrowUp());
+        if (thisChicken.Grow >100)
+        {
+            thisChicken.Grow = 100;
+        }
+    }
+
+    void UpdateGrow(object obj)
+    {
+        thisChicken.Grow = (float)obj;
+        Debug.Log("成长值:"+ (float)obj);
+    }
+
+    IEnumerator Hungry()
+    {
+        switch (GameSaveNew.Instance.PD.HomeLevel)
+        {
+            case 0:
+                iTween.ValueTo(gameObject, iTween.Hash("from", thisChicken.Hungry, "to", thisChicken.Hungry - 6, "time", 60, "onupdate", "UpdateHungry"));
+                break;
+            case 1:
+                iTween.ValueTo(gameObject, iTween.Hash("from", thisChicken.Hungry, "to", thisChicken.Hungry - 4, "time", 60, "onupdate", "UpdateHungry"));
+                break;
+            case 2:
+                iTween.ValueTo(gameObject, iTween.Hash("from", thisChicken.Hungry, "to", thisChicken.Hungry - 2, "time", 60, "onupdate", "UpdateHungry"));
+                break;
+        }
+        yield return new WaitForSeconds(60);
+        //switch (GameSaveNew.Instance.PD.HomeLevel)
+        //{
+        //    case 0:
+        //        thisChicken.Hungry -= 6;
+        //        Debug.Log("饥饿值-6");
+        //        StartCoroutine(Hungry());
+        //        break;
+        //    case 1:
+        //        thisChicken.Hungry -= 4;
+        //        Debug.Log("饥饿值-4");
+        //        StartCoroutine(Hungry());
+        //        break;
+        //    case 2:
+        //        thisChicken.Hungry -= 2;
+        //        Debug.Log("饥饿值-2");
+        //        StartCoroutine(Hungry());
+        //        break;
+        //}
+        StartCoroutine(Hungry());
         if (thisChicken.Hungry < 0)
         {
             thisChicken.Hungry = 0;
         }
     }
 
-    IEnumerator Hungry()
+    void UpdateHungry(object obj)
     {
-        yield return new WaitForSeconds(60);
-        switch (GameSaveNew.Instance.PD.HomeLevel)
-        {
-            case 0:
-                thisChicken.Hungry -= 6;
-                Debug.Log("饥饿值-6");
-                StartCoroutine(Hungry());
-                break;
-            case 1:
-                thisChicken.Hungry -= 4;
-                Debug.Log("饥饿值-4");
-                StartCoroutine(Hungry());
-                break;
-            case 2:
-                thisChicken.Hungry -= 2;
-                Debug.Log("饥饿值-2");
-                StartCoroutine(Hungry());
-                break;
-        }
-        if (thisChicken.Hungry < 0)
-        {
-            thisChicken.Hungry = 0;
-        }
+        thisChicken.Hungry = (float)obj;
+        Debug.Log("饥饿值:"+ (float)obj);
     }
+
 }

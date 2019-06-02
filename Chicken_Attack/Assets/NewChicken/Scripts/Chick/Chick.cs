@@ -11,6 +11,7 @@ public class Chick : MonoBehaviour
     private Vector3 Pos;
     [HideInInspector]
     public GameObject Current_Name_UI;
+    private float Widthscale = 45f / 1080f;
 
     private void Start()
     {
@@ -42,7 +43,8 @@ public class Chick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Pos = new Vector3(Camera.main.WorldToScreenPoint(this.transform.position).x, Camera.main.WorldToScreenPoint(this.transform.position).y + 90f, 0);
+        Debug.Log("Screen.width * Widthscale" + Screen.width * Widthscale);
+        Pos = new Vector3(Camera.main.WorldToScreenPoint(this.transform.position).x, Camera.main.WorldToScreenPoint(this.transform.position).y + (Screen.width * Widthscale), 0);
         Current_Name_UI.transform.position = Pos;
         if (self.Grow >= 100)
         {

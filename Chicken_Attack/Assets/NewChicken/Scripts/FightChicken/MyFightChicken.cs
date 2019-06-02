@@ -10,6 +10,8 @@ public class MyFightChicken : MonoBehaviour
     private Vector3 Pos;
     [HideInInspector]
     public GameObject Current_Name_UI;
+    private float Widthscale = 95f / 1080f;
+
     private void Start()
     {
         GameUI = GameObject.Find("Canvas");
@@ -26,7 +28,7 @@ public class MyFightChicken : MonoBehaviour
 
     private void Update()
     {
-        Pos = new Vector3(Camera.main.WorldToScreenPoint(this.transform.position).x, Camera.main.WorldToScreenPoint(this.transform.position).y + 150f, 0);
+        Pos = new Vector3(Camera.main.WorldToScreenPoint(this.transform.position).x, Camera.main.WorldToScreenPoint(this.transform.position).y + (Screen.width * Widthscale), 0);
         Current_Name_UI.transform.position = Pos;
     }
     

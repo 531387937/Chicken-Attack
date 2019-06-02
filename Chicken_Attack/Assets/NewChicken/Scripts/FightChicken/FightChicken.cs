@@ -38,9 +38,9 @@ public class FightChicken
     //玩家的第几只鸡
     //public int Ch_Num;
     //饥饿值
-    public int Hungry = 100;
+    public float Hungry = 100;
     //成长值
-    public int Grow = 0;
+    public float Grow = 0;
     //是否是小鸡
     public bool Chick = false;
     //退役
