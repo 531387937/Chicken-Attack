@@ -22,6 +22,7 @@ public class HP_Train : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameSaveNew.Instance.PD.Pt--;
         MaxSpeed = JumpSpeed;
         Train_Chicken = Instantiate(Chicken[(int)(GameSaveNew.Instance.playerChicken.Type)], new Vector3(0,1,0), Quaternion.identity);
         Destroy(Train_Chicken.GetComponent<ChickenRun>());
