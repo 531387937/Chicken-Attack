@@ -8,7 +8,7 @@ public class FightChicken
     {
         菜鸡 = 0,
         SR鸡 = 1,
-        //飞机 = 2,
+        白羽鸡 = 2,
         //肉鸡 = 3
     }
     public chickentype Type;

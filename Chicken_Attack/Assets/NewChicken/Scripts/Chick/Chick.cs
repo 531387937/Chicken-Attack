@@ -53,18 +53,31 @@ public class Chick : MonoBehaviour
             GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(true);//小鸡长大
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            if (GetComponent<BoxCollider2D>().OverlapPoint(Input.mousePosition))
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit)
             {
-                //喂养小鸡
-                //摸摸小鸡动画
-                Debug.Log("点击小鸡！！！");
-                //Time.timeScale = 0;
-                //GameObject.FindGameObjectWithTag("EventSystem").GetComponent<Board>().namedSystem.Mask.SetActive(false);
-                //GameObject.FindGameObjectWithTag("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(true);//小鸡长大
+                if (hit.collider == this.gameObject.GetComponent<Collider2D>())
+                {
+                    Debug.Log(this.gameObject.name +"点击小鸡！！！");
+                }
             }
         }
+
+        //if (Input.GetMouseButton(0))
+        //{
+        //    if (GetComponent<Collider2D>().OverlapPoint(Input.mousePosition))
+        //    {
+        //        //喂养小鸡
+        //        //摸摸小鸡动画
+        //        Debug.Log("点击小鸡！！！");
+        //        //Time.timeScale = 0;
+        //        //GameObject.FindGameObjectWithTag("EventSystem").GetComponent<Board>().namedSystem.Mask.SetActive(false);
+        //        //GameObject.FindGameObjectWithTag("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(true);//小鸡长大
+        //    }
+        //}
+
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Time.timeScale = 0;

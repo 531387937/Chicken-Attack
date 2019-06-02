@@ -30,6 +30,24 @@ public class MyFightChicken : MonoBehaviour
     {
         Pos = new Vector3(Camera.main.WorldToScreenPoint(this.transform.position).x, Camera.main.WorldToScreenPoint(this.transform.position).y + (Screen.width * Widthscale), 0);
         Current_Name_UI.transform.position = Pos;
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit)
+            {
+                if (hit.collider == this.gameObject.GetComponent<Collider2D>())
+                {
+                    if (self.Retire)
+                    {
+                        Debug.Log(this.gameObject.name + "点击退役鸡！！！");
+                    }
+                    else if (!self.Retire)
+                    {
+                        Debug.Log(this.gameObject.name + "点击战斗鸡！！！");
+                    }
+                }
+            }
+        }
     }
     
     IEnumerator SavePos()
