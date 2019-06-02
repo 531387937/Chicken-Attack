@@ -146,7 +146,7 @@ public class FightChicken
         Name = name;
         Power = 100;
         Type = 0;
-        Hungry = 75;
+        Hungry = 100;
         Talent = 5;//天赋
     }
 
@@ -166,7 +166,7 @@ public class FightChicken
         Name = name;
         Power = power;
         Type =(chickentype)type;
-        Hungry = 75;
+        Hungry = 100;
         Talent = talent;//天赋
     }
 
