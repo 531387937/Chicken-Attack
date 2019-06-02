@@ -212,12 +212,12 @@ MonoBehaviour:
   Chicken:
   - {fileID: 3045997677048443577, guid: 4ed31a8dbd7dc3b4b98a1da86fae6129, type: 3}
   - {fileID: 8105479440551353420, guid: 1bd9af7af69317e4a91d2fce5b0bb988, type: 3}
-  - {fileID: 0}
+  - {fileID: 3542307150553448124, guid: da8dcdd49fbfa4f49a6d81f7d01f2afd, type: 3}
   BuyChickenPic: {fileID: 1111414056}
   Pics:
   - {fileID: 2800000, guid: 4cf204028fbda5b4597c1e50e63b6012, type: 3}
   - {fileID: 2800000, guid: 48ecb1e94cac6994eadc1558cdd63eb5, type: 3}
-  - {fileID: 0}
+  - {fileID: 2800000, guid: d705a4c953ccee4418f394ec200c7dfe, type: 3}
   - {fileID: 0}
   NewChickUI: {fileID: 8821130}
   eggs: {fileID: 1053838161}
