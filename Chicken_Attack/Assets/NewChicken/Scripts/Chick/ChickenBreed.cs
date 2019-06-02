@@ -8,11 +8,12 @@ using UnityEngine.SceneManagement;
 public class ChickenBreed : MonoBehaviour
 {
     public GameObject[] Chicken;
-    public RawImage BuyChickenPic;
-    public Texture2D[] Pics;
+    //public RawImage BuyChickenPic;
+    //public Texture2D[] Pics;
     public GameObject NewChickUI;
     public GameObject eggs;
     public GameObject Pos;
+    public GameObject BuyChickenPos;
     private GameObject Breed_Chicken;
     float timer = 0;
     private bool btn = false;
@@ -39,7 +40,9 @@ public class ChickenBreed : MonoBehaviour
         Breed_Chicken.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
         if (GameSaveNew.Instance.PD.ShopChicken != null)
         {
-            BuyChickenPic.texture = Pics[(int)GameSaveNew.Instance.PD.ShopChicken.Type];
+           GameObject g = Instantiate(Chicken[(int)GameSaveNew.Instance.PD.ShopChicken.Type], BuyChickenPos.transform.position, new Quaternion(0, 0, 0, 1));
+            g.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+            //BuyChickenPic.texture = Pics[(int)GameSaveNew.Instance.PD.ShopChicken.Type];
         }
         if (NewChickUI)
         {
