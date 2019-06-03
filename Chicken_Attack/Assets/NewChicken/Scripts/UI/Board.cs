@@ -24,6 +24,8 @@ public class Board : MonoBehaviour
     //用于是否前往斗鸡场景
     public void Go_Attack()
     {
+        YES.gameObject.SetActive(true);
+        NO.gameObject.SetActive(true);
         Mask.SetActive(true);
         Time.timeScale = 0;
         ReadyChangeScene = true;
@@ -34,6 +36,8 @@ public class Board : MonoBehaviour
     //用于是否前往商店场景
     public void Go_Shop()
     {
+        YES.gameObject.SetActive(true);
+        NO.gameObject.SetActive(true);
         Mask.SetActive(true);
         Time.timeScale = 0;
         ReadyChangeScene = true;
@@ -45,6 +49,8 @@ public class Board : MonoBehaviour
     //用于是否前往繁殖场景
     public void Go_Breed()
     {
+        YES.gameObject.SetActive(true);
+        NO.gameObject.SetActive(true);
         if (GameSaveNew.Instance.PD.ShopChicken != null)
         {
             Mask.SetActive(true);
@@ -67,6 +73,8 @@ public class Board : MonoBehaviour
     //前往训练场
     public void Go_Train()
     {
+        YES.gameObject.SetActive(true);
+        NO.gameObject.SetActive(true);
         if (GameSaveNew.Instance.playerChicken.Hungry > 5 && GameSaveNew.Instance.PD.Pt > 1)
         {
             Mask.SetActive(true);
@@ -120,6 +128,8 @@ public class Board : MonoBehaviour
 
     public void DoSomething(string Text)
     {
+        YES.gameObject.SetActive(true);
+        NO.gameObject.SetActive(true);
         Mask.SetActive(true);
         Time.timeScale = 0;
         m_Board.SetActive(true);

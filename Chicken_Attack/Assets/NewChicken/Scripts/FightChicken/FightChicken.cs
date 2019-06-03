@@ -7,7 +7,7 @@ public class FightChicken
     public enum chickentype
     {
         菜鸡 = 0,
-        SR鸡 = 1,
+        野鸡 = 1,
         白羽鸡 = 2,
         //肉鸡 = 3
     }
@@ -46,7 +46,7 @@ public class FightChicken
     //退役
     public bool Retire = false;
     //显示退役证书
-    public bool ShowRetirePlane = false;
+    //public bool ShowRetirePlane = false;
 
     /// <summary>
     /// 设置鸡的种族
