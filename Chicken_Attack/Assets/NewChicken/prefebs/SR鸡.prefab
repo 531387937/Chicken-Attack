@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6195234065671489470}
   - component: {fileID: 8056791716102740277}
   - component: {fileID: 1989828800934898541}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "SR\u9E21"
   m_TagString: FightChicken
   m_Icon: {fileID: 0}

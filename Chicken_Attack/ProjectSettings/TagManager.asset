@@ -17,6 +17,7 @@ TagManager:
   - ShopHome
   - NameBoard
   - RetireChicken
+  - Target
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - 
   - 
   - chicken
-  - 
+  - Target
   - 
   - 
   - 

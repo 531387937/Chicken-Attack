@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 832133930064501060}
   - component: {fileID: 4832268674503805914}
   - component: {fileID: 79464237160746175}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "\u83DC\u9E21 1"
   m_TagString: FightChicken
   m_Icon: {fileID: 0}
