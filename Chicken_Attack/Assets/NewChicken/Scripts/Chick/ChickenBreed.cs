@@ -61,7 +61,7 @@ public class ChickenBreed : MonoBehaviour
             {
                 Debug.Log("晃动");
                 Three_Eggs();
-                Handheld.Vibrate();
+                //Handheld.Vibrate();
                 DoOnce = false;
             }
         }
@@ -107,7 +107,7 @@ public class ChickenBreed : MonoBehaviour
             //清空商店买的鸡
             GameSaveNew.Instance.PD.ShopChicken = null;
             Handheld.Vibrate();//震动
-            Invoke("ChangeScene2Main", 6f);
+            Invoke("ChangeScene2Main", 3f);
         }
     }
 
@@ -117,7 +117,7 @@ public class ChickenBreed : MonoBehaviour
     }
     IEnumerator Dark()
     {
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         btn = true;
         timer = 0;
         yield return new WaitForSeconds(2);
