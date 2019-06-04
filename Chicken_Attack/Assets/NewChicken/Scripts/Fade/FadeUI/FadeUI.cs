@@ -7,8 +7,9 @@ public class FadeUI : MonoBehaviour
     Animator Animator;
     Vector2 began = Vector2.zero;
     Vector2 End = Vector2.zero;
-    public int FingerDistance = 5;
+    //public int FingerDistance = 5;
     public float AreaScale = 2.5f;
+    public float Scale = 0.3f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +32,12 @@ public class FadeUI : MonoBehaviour
         }
         if(began != Vector2.zero && End != Vector2.zero)
         {
-            if (began.x > End.x + FingerDistance)//左滑
+            if (began.x > End.x + Screen.width * Scale)//左滑
             {
                 Debug.Log("左滑");
                 Animator.SetBool("IsShow", true);
             }
-            else if (began.x + FingerDistance < End.x)//右滑
+            else if (began.x + Screen.width * Scale < End.x)//右滑
             {
                 Debug.Log("右滑");
                 Animator.SetBool("IsShow", false);

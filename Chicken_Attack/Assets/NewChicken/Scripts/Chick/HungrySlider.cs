@@ -25,7 +25,8 @@ public class HungrySlider : MonoBehaviour
     {
         if (thisChicken.Retire)
         {
-            HeadTex.sprite = RetireTex;
+            //HeadTex.sprite = RetireTex;
+            Destroy(HeadTex);
             Destroy(HungryStrip.gameObject);
             Destroy(ATK.gameObject);
             myFightChicken.tag = "RetireChicken";
@@ -34,7 +35,8 @@ public class HungrySlider : MonoBehaviour
         }
         else if (thisChicken.Chick)
         {
-            HeadTex.sprite = ChickTex;
+            //HeadTex.sprite = ChickTex;
+            Destroy(HeadTex);
             Destroy(ATK.gameObject);
             Fill.color = GrowColor;
             HungryStrip.maxValue = 100;

@@ -7,8 +7,9 @@ public class MainSceneButtonUI : MonoBehaviour
     Animator Animator;
     Vector2 began = Vector2.zero;
     Vector2 End = Vector2.zero;
-    public int FingerDistance = 5;
+    //public int FingerDistance = 5;
     public float AreaScale = 2.5f;
+    public float Scale = 0.3f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +32,12 @@ public class MainSceneButtonUI : MonoBehaviour
         }
         if (began != Vector2.zero && End != Vector2.zero)
         {
-            if (began.y > End.y + FingerDistance)//下滑
+            if (began.y > End.y + Screen.height * Scale)//下滑
             {
                 Debug.Log("下滑");
                 Animator.SetBool("Show", false);
             }
-            else if (began.y + FingerDistance < End.y)//上滑
+            else if (began.y + Screen.height * Scale < End.y)//上滑
             {
                 Debug.Log("上滑");
                 Animator.SetBool("Show", true);

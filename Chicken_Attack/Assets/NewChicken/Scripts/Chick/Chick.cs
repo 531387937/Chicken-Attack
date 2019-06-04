@@ -61,6 +61,7 @@ public class Chick : MonoBehaviour
                 if (hit.collider == this.gameObject.GetComponent<Collider2D>())
                 {
                     Debug.Log(this.gameObject.name +"点击小鸡！！！");
+                    this.gameObject.GetComponent<Animator>().SetBool("Touch", true);
                 }
             }
         }

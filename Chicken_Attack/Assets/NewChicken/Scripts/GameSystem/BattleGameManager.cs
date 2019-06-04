@@ -122,6 +122,7 @@ public class BattleGameManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                Time.timeScale = 1;
                 SceneChange.SceneName = "QiZiNewChicken";
                 SceneManager.LoadScene("LoadScene");
             }

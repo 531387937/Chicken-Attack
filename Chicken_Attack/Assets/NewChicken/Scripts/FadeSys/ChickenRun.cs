@@ -172,6 +172,14 @@ public class ChickenRun : MonoBehaviour
         }
     }
 
+    void FinishTouch()
+    {
+        if (SceneManager.GetActiveScene().name == "QiZiNewChicken")
+        {
+            this.gameObject.GetComponent<Animator>().SetBool("Touch", false);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Edge" && OutSide)
