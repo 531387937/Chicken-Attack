@@ -18,6 +18,9 @@ public class PlayerData
     public List<FightChicken> OldChicken = new List<FightChicken>();
     //商店购买使用食物的权利
     public bool[] FoodRights;
+
+    //现在所到达的关卡
+    public int NowLevel;
     //房屋等级
     public int HomeLevel;
     public PlayerData()
@@ -28,5 +31,6 @@ public class PlayerData
         ShopChicken = null;
         HomeLevel = 0;
         FoodRights = new bool[3] { true, false, false };
+        NowLevel = 1;
     }
 }

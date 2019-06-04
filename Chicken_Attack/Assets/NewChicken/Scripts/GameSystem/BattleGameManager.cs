@@ -286,7 +286,15 @@ public class BattleGameManager : MonoBehaviour
         sounds[0].Play();
         yield return new WaitForSeconds(1.5f);
         Gold.text ="+"+ FC[level].GoldGet.ToString();
-        Prestige.text = "+" + FC[level].PrestigeGet.ToString();
+        if (GameSaveNew.Instance.PD.NowLevel <= level)
+        {
+            Prestige.text = "+" + FC[level].PrestigeGet.ToString();
+            GameSaveNew.Instance.PD.NowLevel++;
+        }
+        else
+        {
+            Prestige.text = "+0";
+        }
         Pt.text = "+" + FC[level].PtGet.ToString();
         EndGamePanel.SetActive(true);
         gameend = true;
