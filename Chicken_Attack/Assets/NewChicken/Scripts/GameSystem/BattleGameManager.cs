@@ -60,6 +60,10 @@ public class BattleGameManager : MonoBehaviour
     public Transform HurtPos_Player;
     public Transform HurtPos_Enemy;
     public AudioSource[] sounds;
+
+
+    public Image Player_Image;
+    public Image Enemy_Image;
     //关卡信息
     List<LevelSet> FC;
     //string enemyPath = "Assets/Resources/EnemyData.json";
@@ -141,6 +145,11 @@ public class BattleGameManager : MonoBehaviour
     {
         EnemyGroup.transform.GetChild(CurrnetRound).gameObject.SetActive(false);
         Acts.SetActive(false);
+        Player_Image.gameObject.SetActive(true);
+        Enemy_Image.gameObject.SetActive(true);
+        Player_Image.sprite = sprites[(int)PlayerCurrent_duel];
+        Enemy_Image.sprite = sprites[(int)Enemy.duel[CurrnetRound]];
+
         switch (PlayerCurrent_duel)
         {
             case BattleAttribute.Duel.scissors:
@@ -233,6 +242,8 @@ public class BattleGameManager : MonoBehaviour
         }
         else
         {
+            Player_Image.gameObject.SetActive(false);
+            Enemy_Image.gameObject.SetActive(false);
             UI_Text.gameObject.SetActive(true);
             UI_Text.fontSize = 85;
             UI_Text.text = "Round " + (CurrnetRound + 1);
