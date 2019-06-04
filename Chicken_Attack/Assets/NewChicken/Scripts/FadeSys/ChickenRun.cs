@@ -8,7 +8,7 @@ public class ChickenRun : MonoBehaviour
     private FightChicken thisChicken;
     private bool OutSide = true;
     private Board board;
-    public bool Do = true;
+    [HideInInspector]public bool Do = true;
 
     enum WalkMode
     {

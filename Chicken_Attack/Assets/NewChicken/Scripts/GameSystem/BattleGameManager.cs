@@ -69,7 +69,7 @@ public class BattleGameManager : MonoBehaviour
         level = SceneChange.Level;
 
         string aa = Resources.Load("EnemyData").ToString();
-      FC = IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
+        FC = IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
         Player = new BattleAttribute(GameSaveNew.Instance.playerChicken);
         Enemy = new BattleAttribute(FC[level].EnemyChicken);
         enemy_chicken = FC[level].EnemyChicken;
@@ -105,13 +105,13 @@ public class BattleGameManager : MonoBehaviour
             }
             else
             {
-                UI_Text.text = "Star!";
+                UI_Text.text = "Start!";
             }
         }
         else
         {
             if (!gameBegin)
-                GameStar();
+                GameStart();
         } 
        
         if (gameend)
@@ -123,7 +123,7 @@ public class BattleGameManager : MonoBehaviour
             }
         }
     }
-    void GameStar()
+    void GameStart()
     {
         UI_Text.text = null;
         gameBegin = true;
@@ -259,15 +259,17 @@ public class BattleGameManager : MonoBehaviour
             StartCoroutine(PlayerLose());
         }
     }
+
     public void Player_GetHurt()
     {
- Player_Hurt.transform.position = HurtPos_Player.position;
+        Player_Hurt.transform.position = HurtPos_Player.position;
         Player_Hurt.SetActive(true);
         Player_Hurt.GetComponent<TextMeshPro>().text = CurrHurt_Enemy.ToString();
         Player_Hurt.GetComponent<Rigidbody>().velocity = Vector3.zero;
         Player_Hurt.GetComponent<Rigidbody>().AddForce(new Vector3(-105, 60, 0));
         TotalHurt_Enemy += CurrHurt_Enemy;
     }
+
     public void Enemy_GetHurt()
     {
        Enemy_Hurt.transform.position = HurtPos_Enemy.position;
@@ -296,6 +298,7 @@ public class BattleGameManager : MonoBehaviour
         End_Text.gameObject.SetActive(true);
         End_Text.text = "你的鸡取得了胜利！";
     }
+
     IEnumerator PlayerLose()
     {
         player_Chicken.GetComponent<Animator>().SetTrigger("Defeat");
@@ -306,7 +309,6 @@ public class BattleGameManager : MonoBehaviour
         gameend = true;
         End_Text.gameObject.SetActive(true);
         End_Text.text = "你的鸡输掉了比赛！";
-
     }
 
 }
