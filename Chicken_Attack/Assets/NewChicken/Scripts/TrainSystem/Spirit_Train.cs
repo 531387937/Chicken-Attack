@@ -24,10 +24,12 @@ public class Spirit_Train : MonoBehaviour
     {
         PaoPao.OnEnter += OnEnter;
     }
+
     private void OnDisable()
     {
         PaoPao.OnEnter -= OnEnter;
     }
+
     void Start()
     {
         Ve = new List<Vector3>();
@@ -35,17 +37,13 @@ public class Spirit_Train : MonoBehaviour
         Start_Train();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void Start_Train()
     {
         GameSaveNew.Instance.PD.Pt--;
         //Apear_PaoPao();
         StartCoroutine(apearPaoPao());
     }
+
     void Apear_PaoPao()
     {
         a=new GameObject[level];
@@ -58,23 +56,22 @@ public class Spirit_Train : MonoBehaviour
 
     private void OnEnter(Transform obj)
     {
+        if (currentNum == obj.GetComponent<PaoPao>().Num)
+        {
+            currentNum++;
+            obj.GetComponent<PaoPao>().SR.sprite = obj.GetComponent<PaoPao>().Sp;
+            obj.GetComponent<Animator>().speed = 0;
+        }
+        else
+        {
+            foreach (GameObject q in a)
+            {
+                Destroy(q);
+            }
+            Train_End();
+        }
 
-            if (currentNum == obj.GetComponent<PaoPao>().Num)
-            {
-                currentNum++;
-                obj.GetComponent<PaoPao>().SR.sprite = obj.GetComponent<PaoPao>().Sp;
-                obj.GetComponent<Animator>().speed = 0;
-            }
-            else
-            {
-                foreach (GameObject q in a)
-                {
-                    Destroy(q);
-                }
-                Train_End();
-            }
-        
-        if(currentNum==level+1)
+        if (currentNum == level+1)
         {
             currentNum = 1;
             foreach (GameObject q in a)
@@ -84,6 +81,7 @@ public class Spirit_Train : MonoBehaviour
             Invoke("LevelUp", 2f);
         }
     }
+
     //增加难度
     void LevelUp()
     {
@@ -92,44 +90,53 @@ public class Spirit_Train : MonoBehaviour
             level++;
             StartCoroutine(apearPaoPao());
         }
-        else if(level==5&&!train_End)
+        else if(level==5 && !train_End)
         {
             level++;
             Train_End();
         }
     }
+
     public void Train_End()
     {
         train_End = true;
-        switch(level)
+        if (GameSaveNew.Instance.playerChicken.Power < GameSaveNew.Instance.playerChicken.PowerLimit)
         {
-            case 1:
-                GameSaveNew.Instance.playerChicken.Power += 0;
-                ShowPanel(0);
-                break;
-            case 2:
-                GameSaveNew.Instance.playerChicken.Power += 2;
-                ShowPanel(2);
-                break;
-            case 3:
-                GameSaveNew.Instance.playerChicken.Power += 5;
-                ShowPanel(5);
-                break;
-            case 4:
-                GameSaveNew.Instance.playerChicken.Power += 9;
-                ShowPanel(9);
-                break;
-            case 5:
-                GameSaveNew.Instance.playerChicken.Power += 14;
-                ShowPanel(14);
-                break;
-            case 6:
-                GameSaveNew.Instance.playerChicken.Power += 20;
-                ShowPanel(20);
-                break;
+            switch (level)
+            {
+                case 1:
+                    //GameSaveNew.Instance.playerChicken.Power += 0;
+                    ShowPanel(0);
+                    break;
+                case 2:
+                    //GameSaveNew.Instance.playerChicken.Power += 2;
+                    ShowPanel(2);
+                    break;
+                case 3:
+                    //GameSaveNew.Instance.playerChicken.Power += 5;
+                    ShowPanel(5);
+                    break;
+                case 4:
+                    //GameSaveNew.Instance.playerChicken.Power += 9;
+                    ShowPanel(9);
+                    break;
+                case 5:
+                    //GameSaveNew.Instance.playerChicken.Power += 14;
+                    ShowPanel(14);
+                    break;
+                case 6:
+                    //GameSaveNew.Instance.playerChicken.Power += 20;
+                    ShowPanel(20);
+                    break;
+            }
         }
-        GameSaveNew.Instance.SaveAllData();
+        else
+        {
+            ShowPanel(0, "(本鸡战斗力已达上限)\n(已经没有价值，可以下锅了)");
+        }
+        //GameSaveNew.Instance.SaveAllData();
     }
+
     //生成谷物气泡
     IEnumerator apearPaoPao()
     {
@@ -167,6 +174,7 @@ public class Spirit_Train : MonoBehaviour
         }
         canTouch = true;
     }
+
     void Shuffle(int[] intArray)
     {
         for (int i = 0; i < intArray.Length; i++)
@@ -183,5 +191,18 @@ public class Spirit_Train : MonoBehaviour
         Panel.SetActive(true);
         int Inscreace = Mathf.CeilToInt(Value * GameSaveNew.Instance.buffer * Random.Range(0.95f, 1.05f));
         Panel.GetComponentInChildren<TextMeshProUGUI>().text = "本次训练中" + GameSaveNew.Instance.playerChicken.Name + "的战斗力增加了" + Inscreace;
+        GameSaveNew.Instance.playerChicken.Power += Inscreace;
+        GameSaveNew.Instance.playerChicken.Hungry -= 5;
+        GameSaveNew.Instance.SaveAllData();
+    }
+
+    void ShowPanel(int Value, string s)//重载战斗力上限显示面板
+    {
+        Panel.SetActive(true);
+        int Inscreace = Mathf.CeilToInt(Value * GameSaveNew.Instance.buffer * Random.Range(0.95f, 1.05f));
+        Panel.GetComponentInChildren<TextMeshProUGUI>().text = "本次训练中" + GameSaveNew.Instance.playerChicken.Name + "的战斗力增加了" + Inscreace + s;
+        GameSaveNew.Instance.playerChicken.Power += Inscreace;
+        GameSaveNew.Instance.playerChicken.Hungry -= 5;
+        GameSaveNew.Instance.SaveAllData();
     }
 }

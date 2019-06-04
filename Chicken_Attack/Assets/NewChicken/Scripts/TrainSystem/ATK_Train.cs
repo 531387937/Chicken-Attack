@@ -65,12 +65,14 @@ public class ATK_Train : MonoBehaviour
         level++;
         StartCoroutine(AtkTrain());
     }
+
     IEnumerator AtkTrain()
     {
         yield return new WaitForSeconds(1f);
         TC.Speed = add[level];
         Training = true;
     }
+
     public void Rua()
     {
         print("???");
@@ -85,12 +87,12 @@ public class ATK_Train : MonoBehaviour
                     level++;
                     An.SetTrigger("Attack1");
                     //弹出结算窗口，显示提升攻击力（根据关卡完成数）
-                    Invoke("ATK_END", 1.5f);
+                    //Invoke("ATK_END", 1.5f);//会调用两次故停用xy6.5
                     ATK_END();
                 }
                 else
                     An.SetTrigger("Attack");
-                Invoke("LevelUp", 1.5f);
+                Invoke("LevelUp", 1f);//减少停顿时间xy6.5
                 TC.transform.parent.GetComponent<Animator>().SetTrigger("Scroll");
             }
             else
@@ -102,39 +104,59 @@ public class ATK_Train : MonoBehaviour
     }
     void ATK_END()
     {
-        switch (level)
+        if(GameSaveNew.Instance.playerChicken.Power < GameSaveNew.Instance.playerChicken.PowerLimit)
         {
-            case 0:
-                GameSaveNew.Instance.playerChicken.Power += 0;
-                ShowPanel(0);
-                break;
-            case 1:
-                GameSaveNew.Instance.playerChicken.Power += 2;
-                ShowPanel(2);
-                break;
-            case 2:
-                GameSaveNew.Instance.playerChicken.Power += 5;
-                ShowPanel(5);
-                break;
-            case 3:
-                GameSaveNew.Instance.playerChicken.Power += 9;
-                ShowPanel(9);
-                break;
-            case 4:
-                GameSaveNew.Instance.playerChicken.Power += 14;
-                ShowPanel(14);
-                break;
-            case 5:
-                GameSaveNew.Instance.playerChicken.Power += 20;
-                ShowPanel(20);
-                break;
+            switch (level)
+            {
+                case 0:
+                    //GameSaveNew.Instance.playerChicken.Power += 0;
+                    ShowPanel(0);
+                    break;
+                case 1:
+                    //GameSaveNew.Instance.playerChicken.Power += 2;
+                    ShowPanel(2);
+                    break;
+                case 2:
+                    //GameSaveNew.Instance.playerChicken.Power += 5;
+                    ShowPanel(5);
+                    break;
+                case 3:
+                    //GameSaveNew.Instance.playerChicken.Power += 9;
+                    ShowPanel(9);
+                    break;
+                case 4:
+                    //GameSaveNew.Instance.playerChicken.Power += 14;
+                    ShowPanel(14);
+                    break;
+                case 5:
+                    //GameSaveNew.Instance.playerChicken.Power += 20;
+                    ShowPanel(20);
+                    break;
+            }
         }
-        GameSaveNew.Instance.SaveAllData();
+        else
+        {
+            ShowPanel(0, "(本鸡战斗力已达上限)\n(已经没有价值，可以下锅了)");
+        }
+        
+        //GameSaveNew.Instance.SaveAllData();
     }
     void ShowPanel(int Value)
     {
         Panel.SetActive(true);
-        int Inscreace = Mathf.CeilToInt(Value * GameSaveNew.Instance.buffer * Random.Range(0.95f, 1.05f));
+        int Inscreace = Mathf.CeilToInt(Value * GameSaveNew.Instance.buffer * Random.Range(0.95f, 1.05f));//造成显示和实际增加不同的原因，实际增加以此为准xy6.5
         Panel.GetComponentInChildren<TextMeshProUGUI>().text ="本次训练中"+ GameSaveNew.Instance.playerChicken.Name + "的战斗力增加了" + Inscreace;
+        GameSaveNew.Instance.playerChicken.Power += Inscreace;
+        GameSaveNew.Instance.playerChicken.Hungry -= 5;
+        GameSaveNew.Instance.SaveAllData();
+    }
+    void ShowPanel(int Value,string s)//重载战斗力上限显示面板
+    {
+        Panel.SetActive(true);
+        int Inscreace = Mathf.CeilToInt(Value * GameSaveNew.Instance.buffer * Random.Range(0.95f, 1.05f));
+        Panel.GetComponentInChildren<TextMeshProUGUI>().text = "本次训练中" + GameSaveNew.Instance.playerChicken.Name + "的战斗力增加了" + Inscreace+s;
+        GameSaveNew.Instance.playerChicken.Power += Inscreace;
+        GameSaveNew.Instance.playerChicken.Hungry -= 5;
+        GameSaveNew.Instance.SaveAllData();
     }
 }

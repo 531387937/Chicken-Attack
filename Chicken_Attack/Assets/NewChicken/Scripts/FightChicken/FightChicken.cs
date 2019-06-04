@@ -27,6 +27,8 @@ public class FightChicken
     public float Power = 100;
     [Range(5,8)]
     public int Talent = 5;
+    //战斗力上限
+    public float PowerLimit;
     //鸡的技能组
     //public List<int> Skills = new List<int>();
     //鸡的前辈种族
@@ -189,6 +191,7 @@ public class FightChicken
         Type = setChickenType(playerChicken, shopChicken);
         /*Skills.Add(2);*///待加入技能，从外部读取数据
         Talent = Random.Range(5, 8);
+        PowerLimit = Power * (1 + Talent / 15);
         Chick = true;
         Grand.Add(playerChicken);
     }
