@@ -150,6 +150,7 @@ public class FightChicken
         Type = 0;
         Hungry = 100;
         Talent = 5;//天赋
+        PowerLimit = 150;
     }
 
     /// <summary>

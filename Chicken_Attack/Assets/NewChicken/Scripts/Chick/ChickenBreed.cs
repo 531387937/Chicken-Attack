@@ -19,8 +19,8 @@ public class ChickenBreed : MonoBehaviour
     private bool btn = false;
     private bool btn1 = false;
     public Image dark;
-
     public GameObject Light;
+
     //记录上一次的重力感应的Y值
     private float old_y = 0;
     //记录当前的重力感应的Y值
@@ -72,10 +72,14 @@ public class ChickenBreed : MonoBehaviour
         }
         if(!btn&&btn1)
         {
-        timer -= Time.deltaTime;
-        dark.color = new Color(0, 0, 0, timer);
+            timer -= Time.deltaTime;
+            dark.color = new Color(0, 0, 0, timer);
         }
         print(timer);
+        if (Input.GetKey(KeyCode.Space))
+        {
+            StartCoroutine(Dark());
+        }
     }
 
     public void Three_Eggs()
@@ -117,12 +121,13 @@ public class ChickenBreed : MonoBehaviour
     }
     IEnumerator Dark()
     {
-        //yield return new WaitForSeconds(0.5f);
+        Light.GetComponentInChildren<Button>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        Light.SetActive(false);
         btn = true;
         timer = 0;
         yield return new WaitForSeconds(2);
         btn = false;
-        Light.SetActive(false);
         btn1 = true;
         timer = 1;
         eggs.SetActive(true);
