@@ -28,14 +28,18 @@ public class AudioSystem : Singleton<AudioSystem>
     // Update is called once per frame
     void Update()
     {
-        
-            if (currentScene != SceneManager.GetActiveScene().name)
-            {            
+       if(currentScene=="Begin"&&currentScene != SceneManager.GetActiveScene().name&& SceneManager.GetActiveScene().name!="LoadScene")
+        {
+            currentScene = SceneManager.GetActiveScene().name;
+        }
+         else if(currentScene != SceneManager.GetActiveScene().name&&currentScene!="Begin")
+            {
+            print(currentScene);
                 currentScene = SceneManager.GetActiveScene().name;
                 switch (currentScene)
                 {
                     case "QiZiNewChicken":
-                    Destroy(this.gameObject);
+                    //Destroy(this.gameObject);
                     currentPlay = 0;
                     changeAudio = true;
                         break;
@@ -66,6 +70,7 @@ public class AudioSystem : Singleton<AudioSystem>
                     audio.Stop();
                 }
                 audios[currentPlay].Play();
+                changeAudio = false;
             }
         }
     }
