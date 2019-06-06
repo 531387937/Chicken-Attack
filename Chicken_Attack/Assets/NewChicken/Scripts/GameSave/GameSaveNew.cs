@@ -4,7 +4,6 @@ using UnityEngine;
 using LitJson;
 using System.IO;
 using System.Text;
-using UnityEditor;
 using System.Net.NetworkInformation;
 using System.Reflection;
 
@@ -78,13 +77,13 @@ public class GameSaveNew : Singleton<GameSaveNew>
     {
         if (IOHelper.IsFileExists(path))
         {
-            FileUtil.DeleteFileOrDirectory(path);
+            File.Delete(path);
             Debug.Log("删除存档");
             playerChicken = new FightChicken("初始鸡");
         }
         if (IOHelper.IsFileExists(PlayerPath))
         {
-            FileUtil.DeleteFileOrDirectory(PlayerPath);
+            File.Delete(PlayerPath);
             Debug.Log("删除存档");
             PD = new PlayerData();
         }
