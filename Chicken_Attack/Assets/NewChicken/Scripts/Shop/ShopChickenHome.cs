@@ -13,6 +13,8 @@ public class ShopChickenHome : MonoBehaviour
     public RawImage HomeTex;
     public Vector3[] HomeScale;
     public int MaxLevel = 2;
+    public Material UnActiveGrey;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,11 @@ public class ShopChickenHome : MonoBehaviour
         }
         else
         {
-            this.gameObject.SetActive(false);
+            CostText.text = "MAX";
+            HomeTex.texture = ChickenHomes[GameSaveNew.Instance.PD.HomeLevel];
+            HomeTex.transform.localScale = HomeScale[GameSaveNew.Instance.PD.HomeLevel - 1];
+            HomeTex.material = UnActiveGrey;
+            //this.gameObject.SetActive(false);
         }
     }
 
@@ -45,11 +51,18 @@ public class ShopChickenHome : MonoBehaviour
 
     public void Fresh()
     {
-        if (GameSaveNew.Instance.PD.HomeLevel < 2)
+        if (GameSaveNew.Instance.PD.HomeLevel < MaxLevel)
         {
             CostText.text = Cost[GameSaveNew.Instance.PD.HomeLevel].ToString() + "G";
             HomeTex.texture = ChickenHomes[GameSaveNew.Instance.PD.HomeLevel + 1];
             HomeTex.transform.localScale = HomeScale[GameSaveNew.Instance.PD.HomeLevel];
+        }
+        else if (GameSaveNew.Instance.PD.HomeLevel == MaxLevel)
+        {
+            CostText.text = "MAX";
+            HomeTex.texture = ChickenHomes[GameSaveNew.Instance.PD.HomeLevel];
+            HomeTex.transform.localScale = HomeScale[GameSaveNew.Instance.PD.HomeLevel - 1];
+            HomeTex.material = UnActiveGrey;
         }
     }
 

@@ -690,6 +690,7 @@ MonoBehaviour:
   - {x: 1.2, y: 1.2, z: 0}
   - {x: 1.5, y: 1.5, z: 0}
   MaxLevel: 2
+  UnActiveGrey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}
 --- !u!1 &218239976
 GameObject:
   m_ObjectHideFlags: 0
