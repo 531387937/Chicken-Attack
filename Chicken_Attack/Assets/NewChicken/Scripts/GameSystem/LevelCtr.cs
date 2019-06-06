@@ -14,17 +14,13 @@ public class LevelCtr : MonoBehaviour
             if(i<=GameSaveNew.Instance.PD.NowLevel-1)
             {
                 levels[i].interactable = true;
+                levels[i].GetComponentInChildren<Text>().enabled = true;
             }
             else
             {
                 levels[i].interactable = false;
+                levels[i].GetComponentInChildren<Text>().enabled = false;
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
