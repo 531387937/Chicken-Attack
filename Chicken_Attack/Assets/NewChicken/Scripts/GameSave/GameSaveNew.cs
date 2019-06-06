@@ -73,6 +73,24 @@ public class GameSaveNew : Singleton<GameSaveNew>
         IOHelper.SetData(path, playerChicken, Mac);
     }
 
+    //删档
+    public void DestoryALLData()
+    {
+        if (IOHelper.IsFileExists(path))
+        {
+            FileUtil.DeleteFileOrDirectory(path);
+            Debug.Log("删除存档");
+            playerChicken = new FightChicken("初始鸡");
+        }
+        if (IOHelper.IsFileExists(PlayerPath))
+        {
+            FileUtil.DeleteFileOrDirectory(PlayerPath);
+            Debug.Log("删除存档");
+            PD = new PlayerData();
+        }
+
+    }
+
     //读档
     public void LoadAllData()
     {

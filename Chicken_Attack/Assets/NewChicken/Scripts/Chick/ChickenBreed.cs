@@ -76,10 +76,10 @@ public class ChickenBreed : MonoBehaviour
             dark.color = new Color(0, 0, 0, timer);
         }
         print(timer);
-        if (Input.GetKey(KeyCode.Space))
-        {
-            StartCoroutine(Dark());
-        }
+        //if (Input.GetKey(KeyCode.Space))
+        //{
+        //    StartCoroutine(Dark());
+        //}
     }
 
     public void Three_Eggs()
@@ -119,6 +119,7 @@ public class ChickenBreed : MonoBehaviour
     {
         SceneManager.LoadScene("QiZiNewChicken");
     }
+
     IEnumerator Dark()
     {
         Light.GetComponentInChildren<Button>().enabled = false;
