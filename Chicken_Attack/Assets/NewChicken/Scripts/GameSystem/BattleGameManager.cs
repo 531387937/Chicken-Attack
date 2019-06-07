@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
+
 public class BattleGameManager : MonoBehaviour
 {
     public Sprite[] sprites;
@@ -62,8 +64,12 @@ public class BattleGameManager : MonoBehaviour
     public AudioSource[] sounds;
 
 
-    public Image Player_Image;
-    public Image Enemy_Image;
+    public SpriteRenderer Player_Image;
+    public SpriteRenderer Enemy_Image;
+
+    public PlayableDirector win;
+    public PlayableDirector lose;
+    public PlayableDirector peace;
     //关卡信息
     List<LevelSet> FC;
     //string enemyPath = "Assets/Resources/EnemyData.json";
@@ -146,11 +152,103 @@ public class BattleGameManager : MonoBehaviour
     {
         EnemyGroup.transform.GetChild(CurrnetRound).gameObject.SetActive(false);
         Acts.SetActive(false);
+        Player_Image.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        Enemy_Image.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        Player_Image.gameObject.transform.position = new Vector3(-6.75f, 2.18f, 0);
+        Enemy_Image.gameObject.transform.position = new Vector3(6.75f, 2.18f, 0);
         Player_Image.gameObject.SetActive(true);
         Enemy_Image.gameObject.SetActive(true);
         Player_Image.sprite = sprites[(int)PlayerCurrent_duel];
         Enemy_Image.sprite = sprites[(int)Enemy.duel[CurrnetRound]];
 
+       
+        if (PlayerCurrent_duel == BattleAttribute.Duel.scissors)
+        {
+            if(Enemy.duel[CurrnetRound]== BattleAttribute.Duel.scissors)
+            {
+                peace.Play();
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power*Random.Range(0.97f,1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * Random.Range(0.97f, 1.03f));
+            }
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.rock)
+            {
+                lose.Play();
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power*1.1f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power*0.9f * Random.Range(0.97f, 1.03f));
+            }
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.paper)
+            {
+                win.Play();
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
+            }
+        }
+        else if (PlayerCurrent_duel == BattleAttribute.Duel.rock)
+        {
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.scissors)
+            {
+                win.Play();
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
+            }
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.rock)
+            {
+                peace.Play();
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * Random.Range(0.97f, 1.03f));
+            }
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.paper)
+            {
+                lose.Play();
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 1.1f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * 0.9f * Random.Range(0.97f, 1.03f));
+            }
+        }
+        else if (PlayerCurrent_duel == BattleAttribute.Duel.paper)
+        {
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.scissors)
+            {
+                lose.Play();
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 1.1f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * 0.9f * Random.Range(0.97f, 1.03f));
+            }
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.rock)
+            {
+                win.Play();
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
+            }
+            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.paper)
+            {
+                peace.Play();
+                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
+                CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
+            }
+        }
+        StartCoroutine(NextRound());
+        Invoke("ShowHurt", 2.3f);
+    }
+
+    IEnumerator NextRound()
+    {
+        yield return new WaitForSeconds(3.5f);
+        if (CurrnetRound == 5)
+        {
+            GameResult();
+        }
+        else
+        {
+            UI_Text.gameObject.SetActive(true);
+            UI_Text.fontSize = 85;
+            UI_Text.text = "Round " + (CurrnetRound + 1);
+            yield return new WaitForSeconds(1f);
+            Acts.SetActive(true);
+            UI_Text.gameObject.SetActive(false);
+        }
+    }
+
+    private void ShowHurt()
+    {
         switch (PlayerCurrent_duel)
         {
             case BattleAttribute.Duel.scissors:
@@ -163,7 +261,7 @@ public class BattleGameManager : MonoBehaviour
                 player_Chicken.GetComponent<Animator>().SetTrigger("Attack");
                 break;
         }
-        switch(Enemy.duel[CurrnetRound])
+        switch (Enemy.duel[CurrnetRound])
         {
             case BattleAttribute.Duel.scissors:
                 enemy.GetComponent<Animator>().SetTrigger("Attack2");
@@ -175,87 +273,7 @@ public class BattleGameManager : MonoBehaviour
                 enemy.GetComponent<Animator>().SetTrigger("Attack");
                 break;
         }
-        if (PlayerCurrent_duel == BattleAttribute.Duel.scissors)
-        {
-            if(Enemy.duel[CurrnetRound]== BattleAttribute.Duel.scissors)
-            {
-                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power*Random.Range(0.97f,1.03f));
-                CurrHurt_Player = Mathf.CeilToInt(Player.power * Random.Range(0.97f, 1.03f));
-            }
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.rock)
-            {
-                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power*1.1f * Random.Range(0.97f, 1.03f));
-                CurrHurt_Player = Mathf.CeilToInt(Player.power*0.9f * Random.Range(0.97f, 1.03f));
-            }
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.paper)
-            {
-                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
-                CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
-            }
-        }
-        else if (PlayerCurrent_duel == BattleAttribute.Duel.rock)
-        {
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.scissors)
-            {
-                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
-                CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
-            }
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.rock)
-            {
-                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * Random.Range(0.97f, 1.03f));
-                CurrHurt_Player = Mathf.CeilToInt(Player.power * Random.Range(0.97f, 1.03f));
-            }
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.paper)
-            {
-                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 1.1f * Random.Range(0.97f, 1.03f));
-                CurrHurt_Player = Mathf.CeilToInt(Player.power * 0.9f * Random.Range(0.97f, 1.03f));
-            }
-        }
-        else if (PlayerCurrent_duel == BattleAttribute.Duel.paper)
-        {
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.scissors)
-            {
-                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 1.1f * Random.Range(0.97f, 1.03f));
-                CurrHurt_Player = Mathf.CeilToInt(Player.power * 0.9f * Random.Range(0.97f, 1.03f));
-            }
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.rock)
-            {
-                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
-                CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
-            }
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.paper)
-            {
-                CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
-                CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
-            }
-        }
         CurrnetRound++;
-        StartCoroutine(NextRound());
-        Invoke("ShowHurt", 0.3f);
-    }
-
-    IEnumerator NextRound()
-    {
-        yield return new WaitForSeconds(1.5f);
-        if (CurrnetRound == 5)
-        {
-            GameResult();
-        }
-        else
-        {
-            Player_Image.gameObject.SetActive(false);
-            Enemy_Image.gameObject.SetActive(false);
-            UI_Text.gameObject.SetActive(true);
-            UI_Text.fontSize = 85;
-            UI_Text.text = "Round " + (CurrnetRound + 1);
-            yield return new WaitForSeconds(1f);
-            Acts.SetActive(true);
-            UI_Text.gameObject.SetActive(false);
-        }
-    }
-
-    private void ShowHurt()
-    {
         Player_GetHurt();
         Enemy_GetHurt();
     }

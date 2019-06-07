@@ -830,7 +830,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 21300000, guid: cc823d4befef773429b9acd196d491e3, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 6145f850c26151f40a55fdf10b19360b, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -885,7 +885,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f7776d9b865723245bfe41c70891d249, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82a3ccb09da3daf499c5539b9303f961, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
