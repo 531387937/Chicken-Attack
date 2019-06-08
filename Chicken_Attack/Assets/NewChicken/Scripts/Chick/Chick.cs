@@ -33,7 +33,7 @@ public class Chick : MonoBehaviour
     IEnumerator RandomEvent()
     {
         Debug.Log("小鸡事件随机中。。。");
-        if (Random.Range(0, 25) == 1)
+        if (Random.Range(0,50) == 1)
         {
             //小鸡随机事件
             Debug.Log("小鸡随机事件！！！");
@@ -47,7 +47,7 @@ public class Chick : MonoBehaviour
                 board.m_Board.SetActive(false);
             });
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(10);
         StartCoroutine(RandomEvent());
     }
 

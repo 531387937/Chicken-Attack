@@ -204,4 +204,38 @@ public class Player_Chicken : MonoBehaviour
         }
     }
 
-}
+    public void ShowRetire()
+    {
+        //遍历退役鸡
+        if (GameSaveNew.Instance.PD.OldChicken != null)
+        {
+            for (int i = 0; i < GameSaveNew.Instance.PD.OldChicken.Count; i++)
+            {
+                if (GameSaveNew.Instance.PD.OldChicken[i].Pos.x > -6.5f && GameSaveNew.Instance.PD.OldChicken[i].Pos.x < 6.5f)
+                {
+                    GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], GameSaveNew.Instance.PD.OldChicken[i].Pos, new Quaternion(0, 0, 0, 1));
+                    b.AddComponent<MyFightChicken>();
+                    b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                }
+                else
+                {
+                    GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], new Vector3(Random.Range(-5.5f, 5.5f), GameSaveNew.Instance.PD.OldChicken[i].Pos.y, GameSaveNew.Instance.PD.OldChicken[i].Pos.z), new Quaternion(0, 0, 0, 1));
+                    b.AddComponent<MyFightChicken>();
+                    b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                }
+            }
+        }
+
+        //快排区分每只鸡的前后位置
+        GameObject[] G = GameObject.FindGameObjectsWithTag("FightChicken");
+
+        QuickSortArray(G, 0, G.Length - 1);
+
+        for (int i = 0; i < G.Length; i++)
+        {
+            G[i].gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Chicken";
+            G[i].gameObject.GetComponent<SpriteRenderer>().sortingOrder = G.Length - i;
+        }
+    }
+
+ }
