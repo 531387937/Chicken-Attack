@@ -5,14 +5,22 @@ using System.Xml;
 public class Player_Chicken : MonoBehaviour
 {
     public GameObject[] ga;
+    public bool BoardCheck = false;
+    public GameObject retireBack;
 
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(FirstLoadGame());
+        StartCoroutine(SaveGame());
+    }
+
+    IEnumerator FirstLoadGame()
+    {
         //按照鸡的种类生成鸡
         if (GameSaveNew.Instance.playerChicken != null)
         {
-            if(GameSaveNew.Instance.playerChicken.Pos.y > -6.5f && GameSaveNew.Instance.playerChicken.Pos.y < 6.5f)
+            if (GameSaveNew.Instance.playerChicken.Pos.y > -6.5f && GameSaveNew.Instance.playerChicken.Pos.y < 6.5f)
             {
                 GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], GameSaveNew.Instance.playerChicken.Pos, new Quaternion(0, 0, 0, 1));
                 a.AddComponent<MyFightChicken>();
@@ -20,19 +28,19 @@ public class Player_Chicken : MonoBehaviour
             }
             else
             {
-                GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], new Vector3(Random.Range(-5.5f,5.5f),GameSaveNew.Instance.playerChicken.Pos.y, GameSaveNew.Instance.playerChicken.Pos.z), new Quaternion(0, 0, 0, 1));
+                GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], new Vector3(Random.Range(-5.5f, 5.5f), GameSaveNew.Instance.playerChicken.Pos.y, GameSaveNew.Instance.playerChicken.Pos.z), new Quaternion(0, 0, 0, 1));
                 a.AddComponent<MyFightChicken>();
                 a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken;
             }
-           
-        }    
+
+        }
 
         //遍历小鸡
         if (GameSaveNew.Instance.PD.Chick != null)
         {
             for (int i = 0; i < GameSaveNew.Instance.PD.Chick.Count; i++)
             {
-                if(GameSaveNew.Instance.PD.Chick[i].Pos.x >- 6.5f && GameSaveNew.Instance.PD.Chick[i].Pos.x < 6.5f)
+                if (GameSaveNew.Instance.PD.Chick[i].Pos.x > -6.5f && GameSaveNew.Instance.PD.Chick[i].Pos.x < 6.5f)
                 {
                     GameObject b = Instantiate(ga[4], GameSaveNew.Instance.PD.Chick[i].Pos, new Quaternion(0, 0, 0, 1));
                     b.AddComponent<Chick>();
@@ -52,6 +60,25 @@ public class Player_Chicken : MonoBehaviour
         {
             for (int i = 0; i < GameSaveNew.Instance.PD.OldChicken.Count; i++)
             {
+                if (GameSaveNew.Instance.PD.OldChicken[i].OutSide)//如果有野外鸡，决定是不是回来操作
+                {
+                    if (Random.Range(0, 5) == 1)
+                    {
+                        BoardCheck = false;
+                        GameSaveNew.Instance.PD.OldChicken[i].OutSide = false;
+                        //随机计算收益
+                        retireBack.SetActive(true);
+                        int pt = Random.Range(-2, 2);
+                        retireBack.GetComponent<RetireBack>().pt.text = pt.ToString();
+                        GameSaveNew.Instance.PD.Pt += pt;
+                        int gold = Random.Range(-15, 15);
+                        GameSaveNew.Instance.PD.Gold += gold;
+                        retireBack.GetComponent<RetireBack>().gold.text = gold.ToString();
+                        retireBack.GetComponent<RetireBack>().text.text = "恭喜您!“" + GameSaveNew.Instance.PD.OldChicken[i].Name + "”外出归来";
+                        //显示收益面板
+                        yield return new WaitUntil(ThisBoardCheck);
+                    }
+                }
                 if (!GameSaveNew.Instance.PD.OldChicken[i].OutSide)
                 {
                     if (GameSaveNew.Instance.PD.OldChicken[i].Pos.x > -6.5f && GameSaveNew.Instance.PD.OldChicken[i].Pos.x < 6.5f)
@@ -69,19 +96,30 @@ public class Player_Chicken : MonoBehaviour
                 }
             }
         }
-
+        Debug.Log("开始排序");
         //快排区分每只鸡的前后位置
-        GameObject[] G = GameObject.FindGameObjectsWithTag("FightChicken");
-        
+        GameObject[] F = GameObject.FindGameObjectsWithTag("FightChicken");
+        GameObject[] R = GameObject.FindGameObjectsWithTag("RetireChicken");
+        GameObject[] C = GameObject.FindGameObjectsWithTag("Chick");
+
+        List<GameObject> tempList = new List<GameObject>();
+        tempList.AddRange(F);
+        tempList.AddRange(R);
+        tempList.AddRange(C);
+        GameObject[] G = tempList.ToArray();
+
         QuickSortArray(G, 0, G.Length - 1);
 
-        for(int i = 0; i < G.Length; i++)
+        for (int i = 0; i < G.Length; i++)
         {
             G[i].gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Chicken";
             G[i].gameObject.GetComponent<SpriteRenderer>().sortingOrder = G.Length - i;
         }
+    }
 
-        StartCoroutine(SaveGame());
+    bool ThisBoardCheck()
+    {
+        return BoardCheck;
     }
 
     IEnumerator SaveGame()

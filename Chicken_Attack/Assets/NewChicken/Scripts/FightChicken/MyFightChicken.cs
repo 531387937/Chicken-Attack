@@ -39,6 +39,11 @@ public class MyFightChicken : MonoBehaviour
                     if (self.Retire)
                     {
                         Debug.Log(this.gameObject.name + "点击退役鸡！！！");
+                        GameObject.Find("EventSystem").GetComponent<Board>().retireBoard.gameObject.SetActive(true);
+                        GameObject.Find("EventSystem").GetComponent<Board>().retireBoard.MyFightChicken = this;
+                        GameObject.Find("EventSystem").GetComponent<Board>().retireBoard.UpDataText();
+                        GameObject.Find("EventSystem").GetComponent<Board>().Mask.SetActive(true);
+                        Time.timeScale = 0;
                     }
                     else if (!self.Retire)
                     {
