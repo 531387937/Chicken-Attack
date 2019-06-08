@@ -54,12 +54,21 @@ public class NamedSystem : MonoBehaviour
             Destroy(g.GetComponent<Chick>().Current_Name_UI);
             Destroy(g);
         }
-        foreach (GameObject g in GameObject.FindGameObjectsWithTag("RetireChicken"))
+        GameObject[] gs = GameObject.FindGameObjectsWithTag("RetireChicken");
+        foreach (GameObject g in gs)
         {
             Destroy(g.GetComponent<MyFightChicken>().Current_Name_UI);
             Destroy(g);
         }
-        Player_Chicken.RefreshChicken();
+        if (gs.Length == 0)
+        {
+            Player_Chicken.RefreshChickenWithOutRetireChichen();
+        }
+        else
+        {
+            Player_Chicken.RefreshChicken();
+        }
+        
         this.gameObject.SetActive(false);
         ShowPaper();
     }

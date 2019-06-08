@@ -131,7 +131,59 @@ public class Player_Chicken : MonoBehaviour
         QuickSortArray(array, left + 1, end);
     }
 
+    public void RefreshChickenWithOutRetireChichen()
+    {
+        //按照鸡的种类生成鸡
+        if (GameSaveNew.Instance.playerChicken != null)
+        {
+            if (GameSaveNew.Instance.playerChicken.Pos.y > -6.5f && GameSaveNew.Instance.playerChicken.Pos.y < 6.5f)
+            {
+                GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], GameSaveNew.Instance.playerChicken.Pos, new Quaternion(0, 0, 0, 1));
+                a.AddComponent<MyFightChicken>();
+                a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken;
+            }
+            else
+            {
+                GameObject a = Instantiate(ga[(int)GameSaveNew.Instance.playerChicken.Type], new Vector3(Random.Range(-5.5f, 5.5f), GameSaveNew.Instance.playerChicken.Pos.y, GameSaveNew.Instance.playerChicken.Pos.z), new Quaternion(0, 0, 0, 1));
+                a.AddComponent<MyFightChicken>();
+                a.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.playerChicken;
+            }
 
+        }
+
+        //遍历小鸡
+        if (GameSaveNew.Instance.PD.Chick != null)
+        {
+            for (int i = 0; i < GameSaveNew.Instance.PD.Chick.Count; i++)
+            {
+                if (GameSaveNew.Instance.PD.Chick[i].Pos.x > -6.5f && GameSaveNew.Instance.PD.Chick[i].Pos.x < 6.5f)
+                {
+                    GameObject b = Instantiate(ga[4], GameSaveNew.Instance.PD.Chick[i].Pos, new Quaternion(0, 0, 0, 1));
+                    b.AddComponent<Chick>();
+                    b.GetComponent<Chick>().self = GameSaveNew.Instance.PD.Chick[i];
+                }
+                else
+                {
+                    GameObject b = Instantiate(ga[4], new Vector3(Random.Range(-5.5f, 5.5f), GameSaveNew.Instance.PD.Chick[i].Pos.y, GameSaveNew.Instance.PD.Chick[i].Pos.z), new Quaternion(0, 0, 0, 1));
+                    b.AddComponent<Chick>();
+                    b.GetComponent<Chick>().self = GameSaveNew.Instance.PD.Chick[i];
+                }
+            }
+        }
+
+        //快排区分每只鸡的前后位置
+        GameObject[] G = GameObject.FindGameObjectsWithTag("FightChicken");
+
+        QuickSortArray(G, 0, G.Length - 1);
+
+        for (int i = 0; i < G.Length; i++)
+        {
+            G[i].gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Chicken";
+            G[i].gameObject.GetComponent<SpriteRenderer>().sortingOrder = G.Length - i;
+        }
+
+    }
+    
     public void RefreshChicken()
     {
         //按照鸡的种类生成鸡
