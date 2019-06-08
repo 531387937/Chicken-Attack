@@ -8,6 +8,7 @@ public class RetireBoard : MonoBehaviour
     public GameObject Mask;
     [HideInInspector]public MyFightChicken MyFightChicken;
     public TextMeshProUGUI text;
+    public GameObject retireBack;
 
     // Update is called once per frame
     void Update()
@@ -33,9 +34,22 @@ public class RetireBoard : MonoBehaviour
     {
         //卖出操作
         //卖出收益面板
+        retireBack.SetActive(true);
+        GameSaveNew.Instance.PD.OldChicken.Remove(MyFightChicken.self);
+        Destroy(MyFightChicken.gameObject);
+        int pt = Random.Range(0, 2);
+        retireBack.GetComponent<RetireBack>().pt.text = pt.ToString();
+        GameSaveNew.Instance.PD.Pt += pt;
+        int gold = Random.Range(100, 300);
+        GameSaveNew.Instance.PD.Gold += gold;
+        retireBack.GetComponent<RetireBack>().gold.text = gold.ToString();
+        GameSaveNew.Instance.PD.Prestige -= 1;
+        retireBack.GetComponent<RetireBack>().honer.text = "-1";
+        retireBack.GetComponent<RetireBack>().text.text = "售卖本鸡您的声誉减一";
+        GameSaveNew.Instance.SaveAllData();
         this.gameObject.SetActive(false);
-        Mask.SetActive(false);
-        Time.timeScale = 1;
+        //Mask.SetActive(false);
+        //Time.timeScale = 1;
     }
 
     public void OutSide()

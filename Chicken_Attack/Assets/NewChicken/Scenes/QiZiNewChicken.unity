@@ -2148,6 +2148,7 @@ MonoBehaviour:
   Mask: {fileID: 2001950829}
   MyFightChicken: {fileID: 0}
   text: {fileID: 43817991}
+  retireBack: {fileID: 590393107}
 --- !u!114 &279657649
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -62,7 +62,7 @@ public class Player_Chicken : MonoBehaviour
             {
                 if (GameSaveNew.Instance.PD.OldChicken[i].OutSide)//如果有野外鸡，决定是不是回来操作
                 {
-                    if (Random.Range(0, 5) == 1)
+                    if (Random.Range(0, 10) == 1)
                     {
                         BoardCheck = false;
                         GameSaveNew.Instance.PD.OldChicken[i].OutSide = false;
