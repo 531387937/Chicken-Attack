@@ -52,17 +52,20 @@ public class Player_Chicken : MonoBehaviour
         {
             for (int i = 0; i < GameSaveNew.Instance.PD.OldChicken.Count; i++)
             {
-                if (GameSaveNew.Instance.PD.OldChicken[i].Pos.x >- 6.5f && GameSaveNew.Instance.PD.OldChicken[i].Pos.x < 6.5f)
+                if (!GameSaveNew.Instance.PD.OldChicken[i].OutSide)
                 {
-                    GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], GameSaveNew.Instance.PD.OldChicken[i].Pos, new Quaternion(0, 0, 0, 1));
-                    b.AddComponent<MyFightChicken>();
-                    b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
-                }
-                else
-                {
-                    GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], new Vector3(Random.Range(-5.5f, 5.5f), GameSaveNew.Instance.PD.OldChicken[i].Pos.y, GameSaveNew.Instance.PD.OldChicken[i].Pos.z), new Quaternion(0, 0, 0, 1));
-                    b.AddComponent<MyFightChicken>();
-                    b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                    if (GameSaveNew.Instance.PD.OldChicken[i].Pos.x > -6.5f && GameSaveNew.Instance.PD.OldChicken[i].Pos.x < 6.5f)
+                    {
+                        GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], GameSaveNew.Instance.PD.OldChicken[i].Pos, new Quaternion(0, 0, 0, 1));
+                        b.AddComponent<MyFightChicken>();
+                        b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                    }
+                    else
+                    {
+                        GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], new Vector3(Random.Range(-5.5f, 5.5f), GameSaveNew.Instance.PD.OldChicken[i].Pos.y, GameSaveNew.Instance.PD.OldChicken[i].Pos.z), new Quaternion(0, 0, 0, 1));
+                        b.AddComponent<MyFightChicken>();
+                        b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                    }
                 }
             }
         }
@@ -229,17 +232,20 @@ public class Player_Chicken : MonoBehaviour
         {
             for (int i = 0; i < GameSaveNew.Instance.PD.OldChicken.Count; i++)
             {
-                if (GameSaveNew.Instance.PD.OldChicken[i].Pos.x > -6.5f && GameSaveNew.Instance.PD.OldChicken[i].Pos.x < 6.5f)
+                if (!GameSaveNew.Instance.PD.OldChicken[i].OutSide)
                 {
-                    GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], GameSaveNew.Instance.PD.OldChicken[i].Pos, new Quaternion(0, 0, 0, 1));
-                    b.AddComponent<MyFightChicken>();
-                    b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
-                }
-                else
-                {
-                    GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], new Vector3(Random.Range(-5.5f, 5.5f), GameSaveNew.Instance.PD.OldChicken[i].Pos.y, GameSaveNew.Instance.PD.OldChicken[i].Pos.z), new Quaternion(0, 0, 0, 1));
-                    b.AddComponent<MyFightChicken>();
-                    b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                    if (GameSaveNew.Instance.PD.OldChicken[i].Pos.x > -6.5f && GameSaveNew.Instance.PD.OldChicken[i].Pos.x < 6.5f)
+                    {
+                        GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], GameSaveNew.Instance.PD.OldChicken[i].Pos, new Quaternion(0, 0, 0, 1));
+                        b.AddComponent<MyFightChicken>();
+                        b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                    }
+                    else
+                    {
+                        GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], new Vector3(Random.Range(-5.5f, 5.5f), GameSaveNew.Instance.PD.OldChicken[i].Pos.y, GameSaveNew.Instance.PD.OldChicken[i].Pos.z), new Quaternion(0, 0, 0, 1));
+                        b.AddComponent<MyFightChicken>();
+                        b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                    }
                 }
             }
         }
@@ -263,17 +269,20 @@ public class Player_Chicken : MonoBehaviour
         {
             for (int i = 0; i < GameSaveNew.Instance.PD.OldChicken.Count; i++)
             {
-                if (GameSaveNew.Instance.PD.OldChicken[i].Pos.x > -6.5f && GameSaveNew.Instance.PD.OldChicken[i].Pos.x < 6.5f)
+                if (!GameSaveNew.Instance.PD.OldChicken[i].OutSide)
                 {
-                    GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], GameSaveNew.Instance.PD.OldChicken[i].Pos, new Quaternion(0, 0, 0, 1));
-                    b.AddComponent<MyFightChicken>();
-                    b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
-                }
-                else
-                {
-                    GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], new Vector3(Random.Range(-5.5f, 5.5f), GameSaveNew.Instance.PD.OldChicken[i].Pos.y, GameSaveNew.Instance.PD.OldChicken[i].Pos.z), new Quaternion(0, 0, 0, 1));
-                    b.AddComponent<MyFightChicken>();
-                    b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                    if (GameSaveNew.Instance.PD.OldChicken[i].Pos.x > -6.5f && GameSaveNew.Instance.PD.OldChicken[i].Pos.x < 6.5f)
+                    {
+                        GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], GameSaveNew.Instance.PD.OldChicken[i].Pos, new Quaternion(0, 0, 0, 1));
+                        b.AddComponent<MyFightChicken>();
+                        b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                    }
+                    else
+                    {
+                        GameObject b = Instantiate(ga[(int)GameSaveNew.Instance.PD.OldChicken[i].Type], new Vector3(Random.Range(-5.5f, 5.5f), GameSaveNew.Instance.PD.OldChicken[i].Pos.y, GameSaveNew.Instance.PD.OldChicken[i].Pos.z), new Quaternion(0, 0, 0, 1));
+                        b.AddComponent<MyFightChicken>();
+                        b.GetComponent<MyFightChicken>().self = GameSaveNew.Instance.PD.OldChicken[i];
+                    }
                 }
             }
         }

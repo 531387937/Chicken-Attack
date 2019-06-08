@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NamedSystem : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class NamedSystem : MonoBehaviour
     public TextMeshProUGUI enemyPower;
     public TextMeshProUGUI PaperName;
     private Vector2 countandpower;
+    public Image HeadPic;
+    public Sprite[] Pics;
+    private Sprite Buffer;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +40,7 @@ public class NamedSystem : MonoBehaviour
         GameSaveNew.Instance.playerChicken.Retire = true;
         countandpower = GameSaveNew.Instance.playerChicken.ThisChickenBrief();
         PaperName.text = GameSaveNew.Instance.playerChicken.Name;
+        Buffer = Pics[(int)GameSaveNew.Instance.playerChicken.Type];
         GameSaveNew.Instance.PD.OldChicken.Add(GameSaveNew.Instance.playerChicken);
         GameSaveNew.Instance.playerChicken = GameSaveNew.Instance.PD.Chick[0];
         GameSaveNew.Instance.playerChicken.Chick = false;
@@ -68,7 +73,6 @@ public class NamedSystem : MonoBehaviour
         {
             Player_Chicken.RefreshChicken();
         }
-        
         this.gameObject.SetActive(false);
         ShowPaper();
     }
@@ -78,6 +82,7 @@ public class NamedSystem : MonoBehaviour
         Paper.SetActive(true);
         enemyCount.text = countandpower.x.ToString();
         enemyPower.text = countandpower.y.ToString();
+        HeadPic.sprite = Buffer;
     }
 
 }

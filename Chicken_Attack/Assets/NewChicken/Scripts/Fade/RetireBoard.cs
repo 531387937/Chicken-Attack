@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Paper : MonoBehaviour
+public class RetireBoard : MonoBehaviour
 {
     public GameObject Mask;
-   
+    public FightChicken Self;
+
     // Update is called once per frame
     void Update()
     {

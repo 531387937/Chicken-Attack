@@ -107,7 +107,7 @@ public class Chick : MonoBehaviour
         if (self.Grow >= 100)
         {
             Time.timeScale = 0;
-            GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Mask.SetActive(false);
+            GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Mask.SetActive(true);
             GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(true);//小鸡长大
         }
 
@@ -140,7 +140,7 @@ public class Chick : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Time.timeScale = 0;
-            GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Mask.SetActive(false);
+            GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Mask.SetActive(true);
             GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(true);//小鸡长大
         }
     }

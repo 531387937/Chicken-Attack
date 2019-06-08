@@ -15,6 +15,7 @@ public class Board : MonoBehaviour
     public GameObject Mask;
     private bool ReadyChangeScene = false;
     public NamedSystem namedSystem;
+    public RetireBoard retireBoard;
 
     private void Start()
     {

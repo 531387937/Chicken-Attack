@@ -104,7 +104,7 @@ MonoBehaviour:
   GrowColor: {r: 0.33333334, g: 0.85098046, b: 0.28627452, a: 1}
   RetireTex: {fileID: 21300000, guid: cf1117c6424a7a340b3ae485ced0be2f, type: 3}
   FightChickneTex: {fileID: 21300000, guid: cf1117c6424a7a340b3ae485ced0be2f, type: 3}
-  ChickTex: {fileID: 21300000, guid: 193b849929e78574fb84f8c4f6f3eb8f, type: 3}
+  ChickTex: {fileID: 21300000, guid: 7ae379f22e4290a4bad94f0e60111a94, type: 3}
   HeadTex: {fileID: 8373181938299545630}
 --- !u!223 &8055744610065652781
 Canvas:
@@ -477,7 +477,7 @@ RectTransform:
   m_GameObject: {fileID: 4813611222642968562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.70115, y: 5.10345, z: 1.1341}
+  m_LocalScale: {x: 1.8580277, y: 5.574083, z: 1.2386851}
   m_Children: []
   m_Father: {fileID: 692404385719777476}
   m_RootOrder: 1

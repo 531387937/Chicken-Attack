@@ -47,6 +47,8 @@ public class FightChicken
     public bool Chick = false;
     //退役
     public bool Retire = false;
+    //是否外出
+    public bool OutSide = false;
     //显示退役证书
     //public bool ShowRetirePlane = false;
 
