@@ -12,6 +12,7 @@ public class Chick : MonoBehaviour
     [HideInInspector]
     public GameObject Current_Name_UI;
     private float Widthscale = 45f / 1080f;
+    private Board board;
 
     private void Start()
     {
@@ -22,9 +23,32 @@ public class Chick : MonoBehaviour
         Current_Name_UI.GetComponentInChildren<TextMeshProUGUI>().text = self.Name;
         Current_Name_UI.GetComponent<HungrySlider>().thisChicken = self;
         print(self.Name);
+        board = GameObject.Find("EventSystem").GetComponent<Board>();
 
         StartCoroutine(SavePos());
+        StartCoroutine(RandomEvent());
         Invoke("ChangeTag", 1f);//临时避免对小鸡喂食
+    }
+
+    IEnumerator RandomEvent()
+    {
+        Debug.Log("小鸡事件随机中。。。");
+        if (Random.Range(0, 25) == 1)
+        {
+            //小鸡随机事件
+            Debug.Log("小鸡随机事件！！！");
+            board.DoSomething(self.Name + "身体不适，请花费50G恢复");
+            board.NO.gameObject.SetActive(false);
+            board.YES.onClick.AddListener(delegate
+            {
+                GameSaveNew.Instance.PD.Gold -= 50;
+                board.NO.gameObject.SetActive(true);
+                board.Mask.SetActive(false);
+                board.m_Board.SetActive(false);
+            });
+        }
+        yield return new WaitForSeconds(1);
+        StartCoroutine(RandomEvent());
     }
 
     IEnumerator SavePos()

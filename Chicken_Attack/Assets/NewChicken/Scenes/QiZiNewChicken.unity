@@ -9542,6 +9542,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Board
       objectReference: {fileID: 0}
+    - target: {fileID: 4120178986416573414, guid: a319b04f6a0e06f41b0d1a5b3b213ebb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4120178986416573415, guid: a319b04f6a0e06f41b0d1a5b3b213ebb,
         type: 3}
       propertyPath: m_LocalPosition.x
