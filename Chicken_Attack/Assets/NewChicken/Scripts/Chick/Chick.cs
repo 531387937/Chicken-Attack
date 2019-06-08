@@ -32,22 +32,56 @@ public class Chick : MonoBehaviour
 
     IEnumerator RandomEvent()
     {
+        yield return new WaitForSeconds(10);
         Debug.Log("小鸡事件随机中。。。");
-        if (Random.Range(0,50) == 1)
+        if (Random.Range(0,100) == 1)
         {
             //小鸡随机事件
-            Debug.Log("小鸡随机事件！！！");
-            board.DoSomething(self.Name + "身体不适，请花费50G恢复");
+            Debug.Log("小鸡随机坏事件！！！");
+            int Cost = Random.Range(20, 50);
+            board.DoSomething(self.Name + "身体不适，请花费"+Cost+"恢复");
             board.NO.gameObject.SetActive(false);
             board.YES.onClick.AddListener(delegate
             {
-                GameSaveNew.Instance.PD.Gold -= 50;
+                GameSaveNew.Instance.PD.Gold -= Cost;
                 board.NO.gameObject.SetActive(true);
                 board.Mask.SetActive(false);
                 board.m_Board.SetActive(false);
             });
         }
-        yield return new WaitForSeconds(10);
+        else
+        {
+            if (Random.Range(0, 50) == 1)
+            {
+                // 小鸡随机事件
+                Debug.Log("小鸡随机好事件！！！");
+                int Cost = Random.Range(20, 50);
+                board.DoSomething("恭喜您"+self.Name + "在地上发现了闪闪发光的金子，金币+"+Cost+"20G！");
+                board.NO.gameObject.SetActive(false);
+                board.YES.onClick.AddListener(delegate
+                {
+                    GameSaveNew.Instance.PD.Gold += Cost;
+                    board.NO.gameObject.SetActive(true);
+                    board.Mask.SetActive(false);
+                    board.m_Board.SetActive(false);
+                });
+            }
+            else if (Random.Range(0, 80) == 1)
+            {
+                // 小鸡随机事件
+                Debug.Log("小鸡随机好事件！！！");
+                int Cost = Random.Range(1, 5);
+                board.DoSomething("恭喜您" + self.Name + "学会了后空翻转体360大回环，鸡毛+"+Cost+"！");
+                board.NO.gameObject.SetActive(false);
+                board.YES.onClick.AddListener(delegate
+                {
+                    GameSaveNew.Instance.PD.Pt += Cost;
+                    board.NO.gameObject.SetActive(true);
+                    board.Mask.SetActive(false);
+                    board.m_Board.SetActive(false);
+                });
+            }
+        }
         StartCoroutine(RandomEvent());
     }
 
