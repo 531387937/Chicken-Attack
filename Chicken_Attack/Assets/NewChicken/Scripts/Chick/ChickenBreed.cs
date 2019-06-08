@@ -31,7 +31,7 @@ public class ChickenBreed : MonoBehaviour
     public float distance;
     private bool DoOnce = true;
 
-   
+    public AudioSource wonderful;
     void Start()
     {
         DoOnce = true;
@@ -111,6 +111,7 @@ public class ChickenBreed : MonoBehaviour
             //清空商店买的鸡
             GameSaveNew.Instance.PD.ShopChicken = null;
             Handheld.Vibrate();//震动
+            wonderful.Play();
             Invoke("ChangeScene2Main", 3f);
         }
     }
