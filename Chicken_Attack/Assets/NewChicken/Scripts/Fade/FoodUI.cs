@@ -57,6 +57,12 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
                     ThisFoodImage.sprite = CanUseSprite;
                     Debug.Log("Target Position: " + hit.collider.gameObject.name);
                 }
+                else if (hit.collider.tag == "Chick")
+                {
+                    CurrentChicken = hit.collider.gameObject;
+                    ThisFoodImage.sprite = CanUseSprite;
+                    Debug.Log("Target Position: " + hit.collider.gameObject.name);
+                }
             }
             else
             {
@@ -73,14 +79,34 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
             ThisFoodImage.rectTransform.anchoredPosition = StartPos;
             if (CurrentChicken != null && ThisFoodImage.sprite == CanUseSprite)
             {
-                if (GameSaveNew.Instance.PD.Gold - Cost > 0)//有钱才可以购买
+                if(CurrentChicken.tag== "FightChicken")
                 {
-                    CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD;
-                    GameSaveNew.Instance.PD.Gold -= Cost;
-                    ThisFoodImage.sprite = NormalSprite;
-                    if (CurrentChicken.GetComponent<MyFightChicken>().self.Hungry > 100)
+                    if (GameSaveNew.Instance.PD.Gold - Cost > 0)//有钱才可以购买
                     {
-                        CurrentChicken.GetComponent<MyFightChicken>().self.Hungry = 100;
+                        CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD;
+                        GameSaveNew.Instance.PD.Gold -= Cost;
+                        ThisFoodImage.sprite = NormalSprite;
+                        if (CurrentChicken.GetComponent<MyFightChicken>().self.Hungry > 100)
+                        {
+                            CurrentChicken.GetComponent<MyFightChicken>().self.Hungry = 100;
+                        }
+                    }
+                    else
+                    {
+                        ThisFoodImage.sprite = NormalSprite;
+                    }
+                }
+                else if (CurrentChicken.tag == "Chick")
+                {
+                    if (GameSaveNew.Instance.PD.Gold - Cost * 1.2f > 0)//有钱才可以购买
+                    {
+                        CurrentChicken.GetComponent<Chick>().self.Grow += HungryADD * 0.8f;
+                        GameSaveNew.Instance.PD.Gold -= Cost + 2;
+                        ThisFoodImage.sprite = NormalSprite;
+                    }
+                    else
+                    {
+                        ThisFoodImage.sprite = NormalSprite;
                     }
                 }
             }

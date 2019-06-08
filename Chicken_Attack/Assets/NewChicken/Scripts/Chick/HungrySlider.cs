@@ -79,38 +79,38 @@ public class HungrySlider : MonoBehaviour
 
     IEnumerator GrowUp()
     {
-        switch (GameSaveNew.Instance.PD.HomeLevel)
-        {
-            case 0:
-                iTween.ValueTo(gameObject, iTween.Hash("from", thisChicken.Grow, "to", thisChicken.Grow + 2, "time", 90, "onupdate", "UpdateGrow"));
-                break;
-            case 1:
-                iTween.ValueTo(gameObject, iTween.Hash("from", thisChicken.Grow, "to", thisChicken.Grow + 4, "time", 90, "onupdate", "UpdateGrow"));
-                break;
-            case 2:
-                iTween.ValueTo(gameObject, iTween.Hash("from", thisChicken.Grow, "to", thisChicken.Grow + 6, "time", 90, "onupdate", "UpdateGrow"));
-                break;
-        }
-        yield return new WaitForSeconds(90);
         //switch (GameSaveNew.Instance.PD.HomeLevel)
         //{
         //    case 0:
-        //        thisChicken.Grow += 2;
-        //        Debug.Log("成长值+2");
-        //        StartCoroutine(GrowUp());
+        //        iTween.ValueTo(gameObject, iTween.Hash("from", thisChicken.Grow, "to", thisChicken.Grow + 2, "time", 90, "onupdate", "UpdateGrow"));
         //        break;
         //    case 1:
-        //        thisChicken.Grow += 4;
-        //        Debug.Log("成长值+4");
-        //        StartCoroutine(GrowUp());
+        //        iTween.ValueTo(gameObject, iTween.Hash("from", thisChicken.Grow, "to", thisChicken.Grow + 4, "time", 90, "onupdate", "UpdateGrow"));
         //        break;
         //    case 2:
-        //        thisChicken.Grow += 6;
-        //        Debug.Log("成长值+6");
-        //        StartCoroutine(GrowUp());
+        //        iTween.ValueTo(gameObject, iTween.Hash("from", thisChicken.Grow, "to", thisChicken.Grow + 6, "time", 90, "onupdate", "UpdateGrow"));
         //        break;
         //}
-        StartCoroutine(GrowUp());
+        yield return new WaitForSeconds(1);
+        switch (GameSaveNew.Instance.PD.HomeLevel)
+        {
+            case 0:
+                thisChicken.Grow += 2f / 90f;
+                Debug.Log("成长值+"+ 2f / 90f);
+                StartCoroutine(GrowUp());
+                break;
+            case 1:
+                thisChicken.Grow += 4f / 90f;
+                Debug.Log("成长值+"+ 4f / 90f);
+                StartCoroutine(GrowUp());
+                break;
+            case 2:
+                thisChicken.Grow += 6f / 90f;
+                Debug.Log("成长值+"+ 6f / 90f);
+                StartCoroutine(GrowUp());
+                break;
+        }
+        //StartCoroutine(GrowUp());
         if (thisChicken.Grow > 100)
         {
             thisChicken.Grow = 100;
