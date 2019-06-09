@@ -67,7 +67,14 @@ public class NamedSystem : MonoBehaviour
         }
         if (gs.Length == 0)
         {
-            Player_Chicken.RefreshChickenWithOutRetireChichen();
+            if (GameSaveNew.Instance.PD.OldChicken.Count == 1)
+            {
+                Player_Chicken.RefreshChicken();
+            }
+            else
+            {
+                Player_Chicken.RefreshChickenWithOutRetireChichen();
+            }
         }
         else
         {
