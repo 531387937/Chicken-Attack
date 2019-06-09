@@ -9,7 +9,7 @@
       "Grand": null,
       "enemyChickens": null
     },
-    "GoldGet": 10,
+    "GoldGet": 20,
     "PrestigeGet": 1,
     "PtGet": 1
   },
@@ -23,7 +23,7 @@
       "Grand": null,
       "enemyChickens": null
     },
-    "GoldGet": 15,
+    "GoldGet": 25,
     "PrestigeGet": 1,
     "PtGet": 1
   },
@@ -37,7 +37,7 @@
       "Grand": null,
       "enemyChickens": null
     },
-    "GoldGet": 15,
+    "GoldGet": 25,
     "PrestigeGet": 1,
     "PtGet": 1
   },
@@ -51,7 +51,7 @@
       "Grand": null,
       "enemyChickens": null
     },
-    "GoldGet": 25,
+    "GoldGet": 30,
     "PrestigeGet": 1,
     "PtGet": 1
   },
@@ -66,8 +66,8 @@
       "enemyChickens": null
     },
     "GoldGet": 40,
-    "PrestigeGet": 1,
-    "PtGet": 3
+    "PrestigeGet":3,
+    "PtGet": 1
   },
   {
     "EnemyChicken": {
@@ -79,7 +79,7 @@
       "Grand": null,
       "enemyChickens": null
     },
-    "GoldGet": 25,
+    "GoldGet": 40,
     "PrestigeGet": 1,
     "PtGet": 1
   }

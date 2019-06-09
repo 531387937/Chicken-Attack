@@ -27,7 +27,7 @@ public class PlayerData
     {
         Gold = 200;
         Prestige = 0;
-        Pt = 10;
+        Pt = 3;
         ShopChicken = null;
         HomeLevel = 0;
         FoodRights = new bool[3] { true, false, false };
