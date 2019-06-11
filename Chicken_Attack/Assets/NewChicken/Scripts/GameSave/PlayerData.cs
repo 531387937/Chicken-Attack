@@ -23,6 +23,21 @@ public class PlayerData
     //房屋等级
     public int HomeLevel;
 
+
+    //主界面需要的新手引导
+    public int mainHelp;
+    //战斗界面需要的新手引导
+    public int battleHelp;
+    //ATK训练场需要的新手引导
+    public int atkHelp;
+    //商店训练场需要的新手引导
+    public int shopHelp;
+    //繁殖界面需要的新手引导
+    public int breedHelp;
+    //HP训练场需要的新手引导
+    public int hpHelp;
+    //Strong训练场需要的新手引导
+    public int strongHelp;
     public PlayerData()
     {
         Gold = 200;
