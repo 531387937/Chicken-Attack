@@ -19,6 +19,10 @@ public class Spirit_Train : MonoBehaviour
     private bool canTouch = false;
 
     public GameObject Panel;
+
+    public GameObject[] train_An;
+    [SerializeField]
+    private GameObject current_An;
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -31,9 +35,11 @@ public class Spirit_Train : MonoBehaviour
     }
 
     void Start()
-    {
+    {       /* current_An = train_An[(int)GameSaveNew.Instance.playerChicken.Type];*/
+
         Ve = new List<Vector3>();
         Train_Chicken = Instantiate(Chicken[(int)GameSaveNew.Instance.playerChicken.Type], Pos.transform.position,new Quaternion(0,0,0,1));
+        //train_An[(int)GameSaveNew.Instance.playerChicken.Type].gameObject.SetActive(true);
         Start_Train();
     }
 
@@ -42,6 +48,7 @@ public class Spirit_Train : MonoBehaviour
         GameSaveNew.Instance.PD.Pt--;
         //Apear_PaoPao();
         StartCoroutine(apearPaoPao());
+        //train_An[(int)GameSaveNew.Instance.playerChicken.Type].GetComponent<Animator>().SetTrigger("Rua");
     }
 
     void Apear_PaoPao()
@@ -58,6 +65,10 @@ public class Spirit_Train : MonoBehaviour
     {
         if (currentNum == obj.GetComponent<PaoPao>().Num)
         {
+            train_An[(int)GameSaveNew.Instance.playerChicken.Type].SetActive(true);
+            train_An[(int)GameSaveNew.Instance.playerChicken.Type].transform.position = obj.transform.position;
+            train_An[(int)GameSaveNew.Instance.playerChicken.Type].GetComponent<Animator>().SetTrigger("Rua");
+            print("@");
             currentNum++;
             obj.GetComponent<PaoPao>().SR.sprite = obj.GetComponent<PaoPao>().Sp;
             obj.GetComponent<Animator>().speed = 0;

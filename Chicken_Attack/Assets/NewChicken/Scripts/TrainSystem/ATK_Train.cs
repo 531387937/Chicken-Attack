@@ -93,7 +93,7 @@ public class ATK_Train : MonoBehaviour
                 else
                     An.SetTrigger("Attack");
                 Invoke("LevelUp", 1f);//减少停顿时间xy6.5
-                TC.transform.parent.GetComponent<Animator>().SetTrigger("Scroll");
+                TC.gameObject.transform.parent.GetComponent<Animator>().SetTrigger("Sroll");
             }
             else
             {
