@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class HelpManager : MonoBehaviour
 {
+    //使用UI的Panel进行添加
     public GameObject[] helpPanel;
 
     private int currentHelp=0;
 
+    //根据场景改变枚举
     public enum Help
     {
         mainHelp,
@@ -43,7 +45,7 @@ public class HelpManager : MonoBehaviour
                 currentHelp = GameSaveNew.Instance.PD.strongHelp;
                 break;
             case Help.shopHelp:
- currentHelp = GameSaveNew.Instance.PD.shopHelp;
+                currentHelp = GameSaveNew.Instance.PD.shopHelp;
                 break;
         }
        
