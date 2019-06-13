@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Xml;
+using UnityEngine.SceneManagement;
+
 public class Player_Chicken : MonoBehaviour
 {
     public GameObject[] ga;
     public bool BoardCheck = false;
     public GameObject retireBack;
+    public HelpManager helpManager;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,8 @@ public class Player_Chicken : MonoBehaviour
 
     IEnumerator FirstLoadGame()
     {
+        CheckFirstChicken();
+
         //按照鸡的种类生成鸡
         if (GameSaveNew.Instance.playerChicken != null)
         {
@@ -114,6 +118,33 @@ public class Player_Chicken : MonoBehaviour
         {
             G[i].gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Chicken";
             G[i].gameObject.GetComponent<SpriteRenderer>().sortingOrder = G.Length - i;
+        }
+    }
+
+    void CheckFirstChicken()
+    {
+        if (GameSaveNew.Instance.playerChicken.FirstChicken)
+        {
+            //命名
+            Time.timeScale = 0;
+            GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Mask.SetActive(true);
+            GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Text.text = "欢迎进入斗鸡世界！\n给你的第一只鸡起个好听的名字吧";
+            GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(true);
+            GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Yes.gameObject.SetActive(false);
+            GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Yes2.onClick.AddListener(delegate
+            {
+                GameSaveNew.Instance.playerChicken.Name = GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Name;
+                this.gameObject.SetActive(false);
+                GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Mask.SetActive(false);
+                GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(true);
+                GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(false);
+                GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(false);
+                //Time.timeScale = 1;
+                GameSaveNew.Instance.playerChicken.FirstChicken = false;
+                GameSaveNew.Instance.SaveAllData();
+                //helpManager.helpPanel[0].SetActive(true);
+                SceneManager.LoadScene("QiZiNewChicken");
+            });
         }
     }
 

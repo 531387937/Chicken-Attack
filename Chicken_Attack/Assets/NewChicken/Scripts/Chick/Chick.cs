@@ -56,7 +56,7 @@ public class Chick : MonoBehaviour
                 // 小鸡随机事件
                 Debug.Log("小鸡随机好事件！！！");
                 int Cost = Random.Range(20, 50);
-                board.DoSomething("恭喜您"+self.Name + "在地上发现了闪闪发光的金子，金币+"+Cost+"20G！");
+                board.DoSomething("恭喜您"+self.Name + "在地上发现了闪闪发光的金子，金币+"+Cost+"G！");
                 board.NO.gameObject.SetActive(false);
                 board.YES.onClick.AddListener(delegate
                 {
@@ -119,6 +119,7 @@ public class Chick : MonoBehaviour
                 if (hit.collider == this.gameObject.GetComponent<Collider2D>())
                 {
                     Debug.Log(this.gameObject.name +"点击小鸡！！！");
+                    self.Grow += 10;//摸一次加十，展示用
                     this.gameObject.GetComponent<Animator>().SetBool("Touch", true);
                 }
             }

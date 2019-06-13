@@ -8,7 +8,10 @@ using UnityEngine.UI;
 public class NamedSystem : MonoBehaviour
 {
     public Player_Chicken Player_Chicken;
-    private string Name;
+    public TextMeshProUGUI Text;
+    public Button Yes;
+    public Button Yes2;
+    public string Name;
     public TMP_InputField TMP_In;
     //变暗的遮罩
     public GameObject Mask;
@@ -80,6 +83,7 @@ public class NamedSystem : MonoBehaviour
         {
             Player_Chicken.RefreshChicken();
         }
+        Text.text = "恭喜您！在您的精心照料下小鸡长大了\n快来给它起个好听的名字吧！";
         this.gameObject.SetActive(false);
         ShowPaper();
     }

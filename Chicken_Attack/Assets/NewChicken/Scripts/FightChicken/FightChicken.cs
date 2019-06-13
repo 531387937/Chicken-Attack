@@ -49,6 +49,8 @@ public class FightChicken
     public bool Retire = false;
     //是否外出
     public bool OutSide = false;
+    //是否是第一只鸡
+    public bool FirstChicken = false;
     //显示退役证书
     //public bool ShowRetirePlane = false;
 
@@ -153,6 +155,7 @@ public class FightChicken
         Hungry = 100;
         Talent = 5;//天赋
         PowerLimit = 150;
+        FirstChicken = true;
     }
 
     /// <summary>

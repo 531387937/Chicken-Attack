@@ -7,7 +7,7 @@ public class HelpManager : MonoBehaviour
     //使用UI的Panel进行添加
     public GameObject[] helpPanel;
 
-    private int currentHelp=0;
+    private int currentHelp = 0;
 
     public GameObject[] hideObj;
     //根据场景改变枚举
@@ -60,7 +60,7 @@ public class HelpManager : MonoBehaviour
                 break;
         }
        
-        if(currentHelp<helpPanel.Length)
+        if(!GameSaveNew.Instance.playerChicken.FirstChicken && currentHelp < helpPanel.Length)
         {
             helpPanel[currentHelp].SetActive(true);
             Time.timeScale = 0;
@@ -70,13 +70,13 @@ public class HelpManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)&&currentHelp<helpPanel.Length)
+        if (!GameSaveNew.Instance.playerChicken.FirstChicken && Input.GetMouseButtonDown(0) && currentHelp < helpPanel.Length)
         {
             helpPanel[currentHelp].SetActive(false);
             currentHelp++;
             helpPanel[currentHelp].SetActive(true);
         }
-        if(currentHelp == helpPanel.Length)
+        if(!GameSaveNew.Instance.playerChicken.FirstChicken && currentHelp == helpPanel.Length)
         {
             currentHelp++;
             Time.timeScale = 1;

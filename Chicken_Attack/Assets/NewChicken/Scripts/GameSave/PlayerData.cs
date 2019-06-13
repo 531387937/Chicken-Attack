@@ -38,6 +38,7 @@ public class PlayerData
     public int hpHelp;
     //Strong训练场需要的新手引导
     public int strongHelp;
+
     public PlayerData()
     {
         Gold = 200;
