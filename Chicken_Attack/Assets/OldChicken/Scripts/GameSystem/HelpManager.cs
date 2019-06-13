@@ -52,6 +52,7 @@ public class HelpManager : MonoBehaviour
         if(currentHelp<helpPanel.Length)
         {
             helpPanel[currentHelp].SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
@@ -63,6 +64,11 @@ public class HelpManager : MonoBehaviour
             helpPanel[currentHelp].SetActive(false);
             currentHelp++;
             helpPanel[currentHelp].SetActive(true);
+        }
+        if(currentHelp == helpPanel.Length)
+        {
+            currentHelp++;
+            Time.timeScale = 1;
         }
     }
 }

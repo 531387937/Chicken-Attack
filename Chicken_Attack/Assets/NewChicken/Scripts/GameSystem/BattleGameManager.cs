@@ -70,12 +70,18 @@ public class BattleGameManager : MonoBehaviour
     public PlayableDirector win;
     public PlayableDirector lose;
     public PlayableDirector peace;
+
+    [SerializeField]
+    private Slider playerSlider;
+    [SerializeField]
+    private Slider enemySlider;
     //关卡信息
     List<LevelSet> FC;
     //string enemyPath = "Assets/Resources/EnemyData.json";
     void Awake()
     {
-        
+        playerSlider.value = 0.5f;
+        enemySlider.value = 0.5f;
         level = SceneChange.Level;
 
         string aa = Resources.Load("EnemyData").ToString();
@@ -132,6 +138,12 @@ public class BattleGameManager : MonoBehaviour
                 SceneChange.SceneName = "QiZiNewChicken";
                 SceneManager.LoadScene("LoadScene");
             }
+        }
+
+        if(TotalHurt_Player!=0&&TotalHurt_Enemy!=0)
+        {
+            playerSlider.value = (float)TotalHurt_Player /(float)(TotalHurt_Player + TotalHurt_Enemy);
+            enemySlider.value =(float)TotalHurt_Enemy / (float)(TotalHurt_Enemy + TotalHurt_Player);
         }
     }
     void GameStart()
