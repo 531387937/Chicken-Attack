@@ -310,7 +310,7 @@ MonoBehaviour:
   Chicken:
   - {fileID: 3045997677048443577, guid: d6ce4bf2ee34b0d4790a5fb88b7c52f0, type: 3}
   - {fileID: 8105479440551353420, guid: 526e8c0def6e4b24d9169b72e2fc3e20, type: 3}
-  - {fileID: 8105479440551353420, guid: 526e8c0def6e4b24d9169b72e2fc3e20, type: 3}
+  - {fileID: 725781225, guid: 39ed4089406ea7c4488acee6decc17ae, type: 3}
   m_hurdle: {fileID: 1276103731810310791, guid: e0b3b2a275a99f74098fd5413e8709a2,
     type: 3}
   HurdleNum: 10
