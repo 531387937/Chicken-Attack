@@ -47,25 +47,25 @@ public class Gyro : MonoBehaviour
                     this.transform.localPosition = Vector3.MoveTowards(this.transform.localPosition, this.transform.localPosition
                         + new Vector3(Input.gyro.attitude.ToEuler().x, 0, 0), Speed * Time.deltaTime);
                 }
-                else
-                {
-                    if(Mathf.Abs(this.transform.localPosition.x)> limitPosX / 2)
-                    {
-                        if (this.transform.localPosition.x < 0)
-                        {
-                            this.transform.localPosition = new Vector3(-limitPosX, this.transform.localPosition.y, this.transform.localPosition.z);
-                        }
-                        else if (this.transform.localPosition.x > 0)
-                        {
-                            this.transform.localPosition = new Vector3(limitPosX, this.transform.localPosition.y, this.transform.localPosition.z);
-                        }
-                    }
-                    else if(Mathf.Abs(this.transform.localPosition.x) < limitPosX / 2)
-                    {
-                        this.transform.localPosition = new Vector3(0, this.transform.localPosition.y, this.transform.localPosition.z);
-                    }
-                }
-               break;
+                //else
+                //{
+                //    if(Mathf.Abs(this.transform.localPosition.x)> limitPosX / 2)
+                //    {
+                //        if (this.transform.localPosition.x < 0)
+                //        {
+                //            this.transform.localPosition = new Vector3(-limitPosX, this.transform.localPosition.y, this.transform.localPosition.z);
+                //        }
+                //        else if (this.transform.localPosition.x > 0)
+                //        {
+                //            this.transform.localPosition = new Vector3(limitPosX, this.transform.localPosition.y, this.transform.localPosition.z);
+                //        }
+                //    }
+                //    else if(Mathf.Abs(this.transform.localPosition.x) < limitPosX / 2)
+                //    {
+                //        this.transform.localPosition = new Vector3(0, this.transform.localPosition.y, this.transform.localPosition.z);
+                //    }
+                //}
+                break;
            case Mode.PlaneMode:
                 if (Mathf.Abs(startPosX) + Mathf.Abs(currentPos.x) > limitPosX)
                 {
