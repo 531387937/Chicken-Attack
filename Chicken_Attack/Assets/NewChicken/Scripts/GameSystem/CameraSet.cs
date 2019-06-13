@@ -14,7 +14,6 @@ public class CameraSet : MonoBehaviour
         float orthographicSize = this.GetComponent<Camera>().orthographicSize;
         float aspectRatio = Screen.width * 1.0f / Screen.height;
         float cameraWidth = orthographicSize * 2 * aspectRatio;
-        Debug.Log("cameraWidth = " + cameraWidth);
         if (cameraWidth > devWidth)
         {
             orthographicSize = devWidth / (2 * aspectRatio);
