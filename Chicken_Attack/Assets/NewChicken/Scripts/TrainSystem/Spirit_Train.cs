@@ -68,7 +68,6 @@ public class Spirit_Train : MonoBehaviour
             train_An[(int)GameSaveNew.Instance.playerChicken.Type].SetActive(true);
             train_An[(int)GameSaveNew.Instance.playerChicken.Type].transform.position = obj.transform.position;
             train_An[(int)GameSaveNew.Instance.playerChicken.Type].GetComponent<Animator>().SetTrigger("Rua");
-            print("@");
             currentNum++;
             obj.GetComponent<PaoPao>().SR.sprite = obj.GetComponent<PaoPao>().Sp;
             obj.GetComponent<Animator>().speed = 0;

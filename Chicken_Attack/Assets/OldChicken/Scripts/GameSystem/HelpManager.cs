@@ -9,6 +9,7 @@ public class HelpManager : MonoBehaviour
 
     private int currentHelp=0;
 
+    public GameObject[] hideObj;
     //根据场景改变枚举
     public enum Help
     {
@@ -21,6 +22,16 @@ public class HelpManager : MonoBehaviour
         strongHelp
 }
     public Help help;
+    void Awake()
+    {
+        if(hideObj.Length>0)
+        {
+            foreach (GameObject hide in hideObj)
+            {
+                hide.SetActive(false);
+            }
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +80,37 @@ public class HelpManager : MonoBehaviour
         {
             currentHelp++;
             Time.timeScale = 1;
+            if (hideObj.Length > 0)
+            {
+                foreach (GameObject hide in hideObj)
+                {
+                    hide.SetActive(true);
+                }
+            }
+            switch (help)
+            {
+                case Help.mainHelp:
+                    GameSaveNew.Instance.PD.mainHelp=currentHelp;
+                    break;
+                case Help.battleHelp:
+                    GameSaveNew.Instance.PD.battleHelp=currentHelp;
+                    break;
+                case Help.atkHelp:
+                   GameSaveNew.Instance.PD.atkHelp=currentHelp;
+                    break;
+                case Help.breedHelp:
+                    GameSaveNew.Instance.PD.breedHelp= currentHelp;
+                    break;
+                case Help.hpHelp:
+                   GameSaveNew.Instance.PD.hpHelp= currentHelp;
+                    break;
+                case Help.strongHelp:
+                    GameSaveNew.Instance.PD.strongHelp= currentHelp ;
+                    break;
+                case Help.shopHelp:
+                     GameSaveNew.Instance.PD.shopHelp=currentHelp ;
+                    break;
+            }
         }
     }
 }
