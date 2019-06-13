@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3542307150553448123}
   - component: {fileID: 3542307150553448122}
   - component: {fileID: 3542307150553448125}
+  - component: {fileID: 3656365323442247801}
+  - component: {fileID: 2298862368138917861}
   m_Layer: 0
   m_Name: "\u767D\u7FBD\u9E21"
   m_TagString: FightChicken
@@ -90,7 +92,7 @@ Animator:
   m_GameObject: {fileID: 3542307150553448124}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 72eb35d32d3dbe04e9f00b09b588961c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 00441a50648353242b36eba190f1e41d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -99,3 +101,41 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &3656365323442247801
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542307150553448124}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.4014688, y: -0.9867488}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.3170624, y: 2.116853}
+  m_EdgeRadius: 0
+--- !u!114 &2298862368138917861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542307150553448124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bdeb4c53da90f94482b3fbf6ae34e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
