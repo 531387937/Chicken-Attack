@@ -76,7 +76,7 @@ public class Board : MonoBehaviour
     {
         YES.gameObject.SetActive(true);
         NO.gameObject.SetActive(true);
-        if (GameSaveNew.Instance.playerChicken.Hungry > 5 && GameSaveNew.Instance.PD.Pt > 1)
+        if (GameSaveNew.Instance.playerChicken.Hungry > 5 && GameSaveNew.Instance.PD.Pt > 0)
         {
             Mask.SetActive(true);
             Time.timeScale = 0;
