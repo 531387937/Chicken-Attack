@@ -41,7 +41,7 @@ public class ShopChicken : MonoBehaviour
             this.gameObject.SetActive(false);
         }
 
-        if (Input.GetMouseButton(0) && !IsPointerOverUIObject())
+        if (Input.GetMouseButton(0))
         {
             if (GetComponent<BoxCollider2D>().OverlapPoint(Input.mousePosition))
             {
