@@ -164,6 +164,14 @@ public class ChickenRun : MonoBehaviour
         }
     }
 
+    void FinishFade()
+    {
+        if (SceneManager.GetActiveScene().name == "QiZiNewChicken")
+        {
+            this.gameObject.GetComponent<Animator>().SetBool("Fade", false);
+        }
+    }
+
     void FinishFly()
     {
         if (SceneManager.GetActiveScene().name == "QiZiNewChicken")
