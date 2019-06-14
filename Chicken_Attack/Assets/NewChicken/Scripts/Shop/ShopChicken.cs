@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class ShopChicken : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class ShopChicken : MonoBehaviour
             this.gameObject.SetActive(false);
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !IsPointerOverUIObject())
         {
             if (GetComponent<BoxCollider2D>().OverlapPoint(Input.mousePosition))
             {
@@ -43,6 +44,15 @@ public class ShopChicken : MonoBehaviour
                 ShopSystem.Broad.GetComponentInChildren<TextMeshProUGUI>().text = "是否花费" + Cost.text + "购买" + Name.text + "?";
             }
         }
+    }
+
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 
 }
