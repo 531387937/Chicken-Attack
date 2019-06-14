@@ -99,6 +99,7 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
                         }
                         CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD*addTime;
                         GameSaveNew.Instance.PD.Gold -= Cost;
+                        CurrentChicken.GetComponent<Animator>().SetBool("Fade", true);
                         ThisFoodImage.sprite = NormalSprite;
                         if (CurrentChicken.GetComponent<MyFightChicken>().self.Hungry > 100)
                         {
