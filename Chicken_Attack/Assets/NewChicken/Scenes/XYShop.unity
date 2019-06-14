@@ -278,6 +278,11 @@ PrefabInstance:
       propertyPath: helpPanel.Array.data[2]
       value: 
       objectReference: {fileID: 375835657}
+    - target: {fileID: 5596152249980353708, guid: 6cbc1a01f3318ed40ae3ec86d3be1f49,
+        type: 3}
+      propertyPath: help
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cbc1a01f3318ed40ae3ec86d3be1f49, type: 3}
 --- !u!1 &107433577
