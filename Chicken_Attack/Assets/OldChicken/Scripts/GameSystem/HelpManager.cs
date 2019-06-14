@@ -10,6 +10,8 @@ public class HelpManager : MonoBehaviour
     private int currentHelp = 0;
 
     public GameObject[] hideObj;
+
+    public GameObject growHelp;
     //根据场景改变枚举
     public enum Help
     {
@@ -32,6 +34,12 @@ public class HelpManager : MonoBehaviour
         switch(help)
         {
             case Help.mainHelp:
+                if(GameSaveNew.Instance.PD.growHelp==1)
+                {
+                    GameSaveNew.Instance.PD.growHelp++;
+                    Time.timeScale = 0;
+                    growHelp.SetActive(true);
+                }
                 currentHelp = GameSaveNew.Instance.PD.mainHelp;
                 break;
             case Help.battleHelp:
@@ -71,6 +79,14 @@ public class HelpManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (growHelp != null)
+        {
+            if (growHelp.gameObject.activeSelf == true && Input.GetMouseButtonDown(0))
+            {
+                growHelp.SetActive(false);
+                Time.timeScale = 1;
+            }
+        }
         if (!GameSaveNew.Instance.playerChicken.FirstChicken && Input.GetMouseButtonDown(0) && currentHelp < helpPanel.Length)
         {
             helpPanel[currentHelp].SetActive(false);

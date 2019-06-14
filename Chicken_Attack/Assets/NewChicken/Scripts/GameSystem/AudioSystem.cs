@@ -32,9 +32,12 @@ public class AudioSystem : Singleton<AudioSystem>
         {
             currentScene = SceneManager.GetActiveScene().name;
         }
-         else if(currentScene != SceneManager.GetActiveScene().name&&currentScene!="Begin")
+        else if (currentScene == "BattleChoose" && currentScene != SceneManager.GetActiveScene().name && SceneManager.GetActiveScene().name != "LoadScene")
+        {
+            currentScene = SceneManager.GetActiveScene().name;
+        }
+        else if(currentScene != SceneManager.GetActiveScene().name&&currentScene!="Begin"&&currentScene!= "BattleChoose")
             {
-            print(currentScene);
                 currentScene = SceneManager.GetActiveScene().name;
                 switch (currentScene)
                 {

@@ -156,6 +156,7 @@ public class FightChicken
         Talent = 5;//天赋
         PowerLimit = 150;
         FirstChicken = true;
+        Pos = new Vector3(-2f, -2.5f, 0);
     }
 
     /// <summary>

@@ -1,0 +1,16 @@
+diff a/Chicken_Attack/Assets/OldChicken/Scripts/GameSystem/HelpManager.cs b/Chicken_Attack/Assets/OldChicken/Scripts/GameSystem/HelpManager.cs	(rejected hunks)
+@@ -24,13 +24,7 @@
+     public Help help;
+     void Awake()
+     {
+-        if(hideObj.Length>0)
+-        {
+-            foreach (GameObject hide in hideObj)
+-            {
+-                hide.SetActive(false);
+-            }
+-        }
++        
+     }
+     // Start is called before the first frame update
+     void Start()

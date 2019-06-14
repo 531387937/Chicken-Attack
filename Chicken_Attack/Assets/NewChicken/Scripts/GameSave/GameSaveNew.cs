@@ -43,7 +43,7 @@ public class GameSaveNew : Singleton<GameSaveNew>
         if (!IOHelper.IsFileExists(path))
         {
             //如没有则创建空记录文件
-            playerChicken = new FightChicken("初始鸡");
+            playerChicken = new FightChicken(" ");
             IOHelper.SetData(path, playerChicken, Mac);
             Debug.Log("创建完成");
         }
@@ -79,7 +79,7 @@ public class GameSaveNew : Singleton<GameSaveNew>
         {
             File.Delete(path);
             Debug.Log("删除存档");
-            playerChicken = new FightChicken("初始鸡");
+            playerChicken = new FightChicken(" ");
         }
         if (IOHelper.IsFileExists(PlayerPath))
         {
