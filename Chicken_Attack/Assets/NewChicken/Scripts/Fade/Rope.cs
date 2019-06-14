@@ -7,11 +7,13 @@ public class Rope : MonoBehaviour
     BoxCollider2D box;
     public ChickenBreed ChickenBreed;
     float y;
+    bool DO = true;
 
     private void Start()
     {
         box = GetComponent<BoxCollider2D>();
         y = this.transform.position.y;
+        print("y:"+(y-10));
     }
 
     // Update is called once per frame
@@ -25,9 +27,11 @@ public class Rope : MonoBehaviour
             }
         }
         print(this.transform.position.y);
-        if (this.transform.position.y < 500)
+        if (this.transform.position.y < y - 120 && DO)
         {
             ChickenBreed.Three_Eggs();
+            DO = false;
+            Destroy(this.gameObject);
         }
     }
 }

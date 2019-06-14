@@ -123,7 +123,7 @@ public class ChickenBreed : MonoBehaviour
 
     IEnumerator Dark()
     {
-        Light.GetComponentInChildren<Button>().enabled = false;
+        //Light.GetComponentInChildren<Button>().enabled = false;
         //yield return new WaitForSeconds(0.5f);
         Light.SetActive(false);
         btn = true;

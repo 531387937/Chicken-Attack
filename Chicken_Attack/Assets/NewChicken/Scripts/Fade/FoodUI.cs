@@ -23,6 +23,7 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     private bool CurrentFoodActive = false;
     public GameObject Cover;
     public Material Grey;
+    public AudioSource audioSource;
 
 
     private float addTime=1;
@@ -100,6 +101,7 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
                         CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD*addTime;
                         GameSaveNew.Instance.PD.Gold -= Cost;
                         CurrentChicken.GetComponent<Animator>().SetBool("Fade", true);
+                        audioSource.Play();
                         ThisFoodImage.sprite = NormalSprite;
                         if (CurrentChicken.GetComponent<MyFightChicken>().self.Hungry > 100)
                         {
@@ -117,6 +119,7 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
                     {
                         CurrentChicken.GetComponent<Chick>().self.Grow += HungryADD * 0.8f;
                         GameSaveNew.Instance.PD.Gold -= Cost + 2;
+                        audioSource.Play();
                         ThisFoodImage.sprite = NormalSprite;
                     }
                     else
