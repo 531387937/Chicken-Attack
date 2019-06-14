@@ -101,13 +101,13 @@ public class ChickenBreed : MonoBehaviour
         //eggs.SetActive(false);
         if (GameSaveNew.Instance.PD.ShopChicken != null)
         {
+            GameSaveNew.Instance.PD.growHelp++;
             FightChicken NewChick = new FightChicken("小鸡", GameSaveNew.Instance.playerChicken, GameSaveNew.Instance.PD.ShopChicken);
             //GameSaveNew.Instance.PD.Chick = new List<FightChicken>();
             GameSaveNew.Instance.PD.Chick.Add(NewChick);
             //鸡诞生动画
             //NewChickUI.GetComponent<ShopChickenUI>().SetShopChickenUi(NewChick);
             //NewChickUI.SetActive(true);
-            Debug.Log("生小鸡！！！！");
             //清空商店买的鸡
             GameSaveNew.Instance.PD.ShopChicken = null;
             Handheld.Vibrate();//震动
@@ -115,7 +115,7 @@ public class ChickenBreed : MonoBehaviour
             Invoke("ChangeScene2Main", 3f);
         }
     }
-
+    
     void ChangeScene2Main()
     {
         SceneManager.LoadScene("QiZiNewChicken");
