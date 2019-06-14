@@ -647,6 +647,7 @@ MonoBehaviour:
   Tex: {fileID: 834022463}
   CostChicken: 0
   ShopSystem: {fileID: 0}
+  UnActiveGrey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}
 --- !u!61 &173537011
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1818,7 +1819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5763e9f3868095c459837630108989aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AfterBuyChickenChangeTo: ChickenBreedScene
+  AfterBuyChickenChangeTo: QiZiNewChicken
 --- !u!1 &460276748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,6 +1904,7 @@ MonoBehaviour:
   Tex: {fileID: 566968472}
   CostChicken: 0
   ShopSystem: {fileID: 0}
+  UnActiveGrey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}
 --- !u!1 &480244602
 GameObject:
   m_ObjectHideFlags: 0

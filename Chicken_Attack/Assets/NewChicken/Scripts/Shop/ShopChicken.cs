@@ -15,6 +15,7 @@ public class ShopChicken : MonoBehaviour
     public int CostChicken;
     [HideInInspector]
     public ShopSystem ShopSystem;
+    public Material UnActiveGrey;
 
     private void Start()
     {
@@ -29,6 +30,11 @@ public class ShopChicken : MonoBehaviour
             this.gameObject.SetActive(true);
             Name.text = "母鸡（" + ThisChicken.Power.ToString() + ")"+"\n"+ ThisChicken.Type.ToString();
             Cost.text = CostChicken.ToString() + "G";
+            if (GameSaveNew.Instance.PD.ShopChicken != null)
+            {
+                Tex.material = UnActiveGrey;
+                GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
         else if (ThisChicken == null)
         {
