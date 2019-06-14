@@ -24,6 +24,8 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     public GameObject Cover;
     public Material Grey;
 
+
+    private float addTime=1;
     private void Start()
     {
         ThisFoodImage = GetComponent<Image>();
@@ -83,7 +85,19 @@ class FoodUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
                 {
                     if (GameSaveNew.Instance.PD.Gold - Cost > 0)//有钱才可以购买
                     {
-                        CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD;
+                        if(CurrentChicken.GetComponent<MyFightChicken>().self.Power>=250&&food==Food.绿豆)
+                        {
+                            addTime = 0.5f;
+                        }
+                        if(CurrentChicken.GetComponent<MyFightChicken>().self.Power>=500&&food==Food.绿豆)
+                        {
+                            addTime = 0.3f;
+                        }
+                        if (CurrentChicken.GetComponent<MyFightChicken>().self.Power >= 500 && food == Food.花生)
+                        {
+                            addTime = 0.6f;
+                        }
+                        CurrentChicken.GetComponent<MyFightChicken>().self.Hungry += HungryADD*addTime;
                         GameSaveNew.Instance.PD.Gold -= Cost;
                         ThisFoodImage.sprite = NormalSprite;
                         if (CurrentChicken.GetComponent<MyFightChicken>().self.Hungry > 100)

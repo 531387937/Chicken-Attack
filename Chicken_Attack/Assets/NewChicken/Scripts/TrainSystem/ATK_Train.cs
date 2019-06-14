@@ -136,7 +136,7 @@ public class ATK_Train : MonoBehaviour
         }
         else
         {
-            ShowPanel(0, "(本鸡战斗力已达上限)\n(已经没有价值，可以下锅了)");
+            ShowPanel(0, GameSaveNew.Instance.playerChicken.Name+"的战斗力已达上限\n(不如我们来支一个烤架...)");
         }
         
         //GameSaveNew.Instance.SaveAllData();

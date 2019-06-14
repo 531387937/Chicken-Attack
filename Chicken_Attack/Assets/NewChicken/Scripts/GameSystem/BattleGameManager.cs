@@ -347,10 +347,13 @@ public class BattleGameManager : MonoBehaviour
         GameSaveNew.Instance.PD.Pt += FC[level].PtGet;
         End_Text.gameObject.SetActive(true);
         End_Text.text = "你的鸡取得了胜利！";
+        GameSaveNew.Instance.playerChicken.Hungry -= 20;
+        GameSaveNew.Instance.SaveAllData();
     }
 
     IEnumerator PlayerLose()
     {
+        GameSaveNew.Instance.playerChicken.Hungry -= 20;
         player_Chicken.GetComponent<Animator>().SetTrigger("Defeat");
         yield return new WaitForSeconds(1.3f);
         sounds[0].Play();
@@ -359,6 +362,7 @@ public class BattleGameManager : MonoBehaviour
         gameend = true;
         End_Text.gameObject.SetActive(true);
         End_Text.text = "你的鸡输掉了比赛！";
+        GameSaveNew.Instance.SaveAllData();
     }
 
 }
