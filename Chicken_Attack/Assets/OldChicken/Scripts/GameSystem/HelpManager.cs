@@ -24,13 +24,7 @@ public class HelpManager : MonoBehaviour
     public Help help;
     void Awake()
     {
-        if(hideObj.Length>0)
-        {
-            foreach (GameObject hide in hideObj)
-            {
-                hide.SetActive(false);
-            }
-        }
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -65,6 +59,13 @@ public class HelpManager : MonoBehaviour
             helpPanel[currentHelp].SetActive(true);
             Time.timeScale = 0;
         }
+        if (hideObj.Length>0&& currentHelp==0)
+        {
+            foreach (GameObject hide in hideObj)
+            {
+                hide.SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -74,7 +75,8 @@ public class HelpManager : MonoBehaviour
         {
             helpPanel[currentHelp].SetActive(false);
             currentHelp++;
-            helpPanel[currentHelp].SetActive(true);
+            if (currentHelp < helpPanel.Length)
+                helpPanel[currentHelp].SetActive(true);
         }
         if(!GameSaveNew.Instance.playerChicken.FirstChicken && currentHelp == helpPanel.Length)
         {
