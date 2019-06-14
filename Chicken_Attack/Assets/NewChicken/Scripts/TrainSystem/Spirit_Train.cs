@@ -71,6 +71,7 @@ public class Spirit_Train : MonoBehaviour
             currentNum++;
             obj.GetComponent<PaoPao>().SR.sprite = obj.GetComponent<PaoPao>().Sp;
             obj.GetComponent<Animator>().speed = 0;
+            this.GetComponent<AudioSource>().Play();
         }
         else
         {

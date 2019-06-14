@@ -10,6 +10,8 @@ public class AudioSystem : Singleton<AudioSystem>
     private int currentPlay;
     //private static bool isNoDestroyHandler = true;//是否没有DontDestroyOnLoad处理
 
+
+    private bool f = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,12 @@ public class AudioSystem : Singleton<AudioSystem>
     // Update is called once per frame
     void Update()
     {
-       if(currentScene=="Begin"&&currentScene != SceneManager.GetActiveScene().name&& SceneManager.GetActiveScene().name!="LoadScene")
+        if (SceneManager.GetActiveScene().name == "BattleNew" && currentScene != "BattleNew"&&!f)
+        {
+            currentScene = "  ";
+            f = true;
+        }
+        if (currentScene=="Begin"&&currentScene != SceneManager.GetActiveScene().name&& SceneManager.GetActiveScene().name!="LoadScene")
         {
             currentScene = SceneManager.GetActiveScene().name;
         }
