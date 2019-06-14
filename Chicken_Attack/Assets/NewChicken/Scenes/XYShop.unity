@@ -2565,7 +2565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &619587852
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3568,7 +3568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1015764747
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4306,7 +4306,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 150G
+  m_Text: 350G
 --- !u!222 &1264562718
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4615,7 +4615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716056189a738fb46b7308c67db91154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cost: 150
+  Cost: 350
   food: 2
   UnActiveGrey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}
 --- !u!1 &1375905997
@@ -4854,7 +4854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1390021926
 MonoBehaviour:
   m_ObjectHideFlags: 0
