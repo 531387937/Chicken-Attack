@@ -2055,7 +2055,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314292500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.981, y: 0.5810982, z: 0}
+  m_LocalPosition: {x: -9.02, y: 0.5810982, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5974,7 +5974,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084199257}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9e5eb99451b7d84c8c1e45edf60e28d, type: 3}
   m_Name: 
@@ -6568,7 +6568,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a362dff7f1d32414eabd2c84edde432a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3cb29e7c07e195d4b86dece8c6b5ee2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6805,7 +6805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202940590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.47, y: 0.5810982, z: 0}
+  m_LocalPosition: {x: 9.47, y: 0.5810982, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8425,7 +8425,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "\u6B22\u8FCE\u8FDB\u5165\u6597\u9E21\u4E16\u754C\uFF01\n\u7ED9\u4F60\u7684\u7B2C\u4E00\u53EA\u9E21\u8D77\u4E2A\u597D\u542C\u7684\u540D\u5B57\u5427\r\n"
+  m_text: "\u606D\u559C\u60A8\uFF01\u5728\u60A8\u7684\u7CBE\u5FC3\u7167\u6599\u4E0B\u5C0F\u9E21\u957F\u5927\u4E86\n\u5FEB\u6765\u7ED9\u5B83\u8D77\u4E2A\u597D\u542C\u7684\u540D\u5B57\u5427\uFF01"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3ad22a48f06ca274dbba0b3560b42852, type: 2}
   m_sharedMaterial: {fileID: 21442741707449214, guid: 3ad22a48f06ca274dbba0b3560b42852,
@@ -8495,10 +8495,10 @@ MonoBehaviour:
   m_margin: {x: -66.977715, y: -42.96686, z: -40.727135, w: -27.802082}
   m_textInfo:
     textComponent: {fileID: 1431022929}
-    characterCount: 27
+    characterCount: 31
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 2
+    spaceCount: 1
+    wordCount: 3
     linkCount: 0
     lineCount: 2
     pageCount: 1

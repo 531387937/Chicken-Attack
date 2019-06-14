@@ -197,7 +197,8 @@ public class FightChicken
         Type = setChickenType(playerChicken, shopChicken);
         /*Skills.Add(2);*///待加入技能，从外部读取数据
         Talent = Random.Range(5, 8);
-        PowerLimit = Power * (1 + Talent / 15);
+        PowerLimit = Mathf.Ceil(Power * (1f + (Talent/10f))) + 20;
+        Debug.Log("PowerLimit" + PowerLimit);
         Chick = true;
         Grand.Add(playerChicken);
     }

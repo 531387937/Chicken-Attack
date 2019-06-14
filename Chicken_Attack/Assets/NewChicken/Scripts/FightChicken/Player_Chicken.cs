@@ -137,8 +137,7 @@ public class Player_Chicken : MonoBehaviour
                 GameSaveNew.Instance.playerChicken.Name = GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Name;
                 this.gameObject.SetActive(false);
                 GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Mask.SetActive(false);
-                GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(true);
-                GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(false);
+                GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.Text.text = "恭喜您！在您的精心照料下小鸡长大了\n快来给它起个好听的名字吧！";
                 GameObject.Find("EventSystem").GetComponent<Board>().namedSystem.gameObject.SetActive(false);
                 //Time.timeScale = 1;
                 GameSaveNew.Instance.playerChicken.FirstChicken = false;
