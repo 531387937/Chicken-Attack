@@ -75,7 +75,7 @@ public class ChickenBreed : MonoBehaviour
             timer -= Time.deltaTime;
             dark.color = new Color(0, 0, 0, timer);
         }
-        print(timer);
+        //print(timer);
         //if (Input.GetKey(KeyCode.Space))
         //{
         //    StartCoroutine(Dark());
@@ -124,7 +124,7 @@ public class ChickenBreed : MonoBehaviour
     IEnumerator Dark()
     {
         Light.GetComponentInChildren<Button>().enabled = false;
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         Light.SetActive(false);
         btn = true;
         timer = 0;
