@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class ShopChicken : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class ShopChicken : MonoBehaviour
     public int CostChicken;
     [HideInInspector]
     public ShopSystem ShopSystem;
+    public Material UnActiveGrey;
 
     private void Start()
     {
@@ -28,6 +30,11 @@ public class ShopChicken : MonoBehaviour
             this.gameObject.SetActive(true);
             Name.text = "母鸡（" + ThisChicken.Power.ToString() + ")"+"\n"+ ThisChicken.Type.ToString();
             Cost.text = CostChicken.ToString() + "G";
+            if (GameSaveNew.Instance.PD.ShopChicken != null)
+            {
+                Tex.material = UnActiveGrey;
+                GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
         else if (ThisChicken == null)
         {
@@ -43,6 +50,15 @@ public class ShopChicken : MonoBehaviour
                 ShopSystem.Broad.GetComponentInChildren<TextMeshProUGUI>().text = "是否花费" + Cost.text + "购买" + Name.text + "?";
             }
         }
+    }
+
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 
 }

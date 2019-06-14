@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class ShopChickenHome : MonoBehaviour
 {
@@ -64,6 +65,15 @@ public class ShopChickenHome : MonoBehaviour
             HomeTex.transform.localScale = HomeScale[GameSaveNew.Instance.PD.HomeLevel - 1];
             HomeTex.material = UnActiveGrey;
         }
+    }
+
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 
 }

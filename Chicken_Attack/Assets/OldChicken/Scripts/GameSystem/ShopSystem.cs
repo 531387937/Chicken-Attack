@@ -19,7 +19,7 @@ public class ShopSystem : MonoBehaviour
         //ChickenUI = GameObject.FindGameObjectWithTag("ChickenUI");
         //ChickenUI.SetActive(false);
         Broad.SetActive(false);
-        GameSaveNew.Instance.PD.ShopChicken = null;
+        //GameSaveNew.Instance.PD.ShopChicken = null;
         ShopChicken = new FightChicken[2];
         //将耗费改为和鸡的战斗力有关
         for(int i = 0;i< ShopChicken.Length; i++)
