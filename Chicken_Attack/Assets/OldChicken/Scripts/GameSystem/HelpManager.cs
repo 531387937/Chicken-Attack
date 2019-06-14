@@ -10,7 +10,7 @@ public class HelpManager : MonoBehaviour
     private int currentHelp = 0;
 
     public GameObject[] hideObj;
-
+    [HideInInspector]
     public GameObject growHelp;
     //根据场景改变枚举
     public enum Help
