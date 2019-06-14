@@ -2,7 +2,7 @@
   {
     "EnemyChicken": {
       "Type": 0,
-      "Name": "aa",
+      "Name": "1",
       "Power": 80,
       "Talent": 0,
       "Skills": null,
@@ -16,7 +16,7 @@
   {
     "EnemyChicken": {
       "Type": 0,
-      "Name": "aa",
+      "Name": "2",
       "Power": 100,
       "Talent": 0,
       "Skills": null,
@@ -30,7 +30,7 @@
   {
     "EnemyChicken": {
       "Type": 0,
-      "Name": "aa",
+      "Name": "3",
       "Power": 121,
       "Talent": 0,
       "Skills": null,
@@ -44,7 +44,7 @@
   {
     "EnemyChicken": {
       "Type": 1,
-      "Name": "aa",
+      "Name": "4",
       "Power": 150,
       "Talent": 0,
       "Skills": null,
@@ -57,8 +57,8 @@
   },
   {
     "EnemyChicken": {
-      "Type": 0,
-      "Name": "aa",
+      "Type": 1,
+      "Name": "5",
       "Power": 200,
       "Talent": 0,
       "Skills": null,
@@ -66,13 +66,13 @@
       "enemyChickens": null
     },
     "GoldGet": 40,
-    "PrestigeGet":3,
+    "PrestigeGet": 3,
     "PtGet": 1
   },
   {
     "EnemyChicken": {
-      "Type": 0,
-      "Name": "aa",
+      "Type": 2,
+      "Name": "6",
       "Power": 220,
       "Talent": 0,
       "Skills": null,
@@ -81,6 +81,204 @@
     },
     "GoldGet": 40,
     "PrestigeGet": 1,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 1,
+      "Name": "7",
+      "Power": 230,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 40,
+    "PrestigeGet": 1,
+    "PtGet": 1
+  },
+
+  {
+    "EnemyChicken": {
+      "Type": 2,
+      "Name": "8",
+      "Power": 252,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 42,
+    "PrestigeGet": 1,
+    "PtGet": 1
+  },
+
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "9",
+      "Power": 273,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 45,
+    "PrestigeGet": 1,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "10",
+      "Power": 310,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 50,
+    "PrestigeGet": 3,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "11",
+      "Power": 342,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 50,
+    "PrestigeGet": 1,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "12",
+      "Power": 380,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 55,
+    "PrestigeGet": 1,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "13",
+      "Power": 405,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 58,
+    "PrestigeGet": 1,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "14",
+      "Power": 436,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 60,
+    "PrestigeGet": 1,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "15",
+      "Power": 485,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 63,
+    "PrestigeGet": 3,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "16",
+      "Power": 518,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 65,
+    "PrestigeGet": 1,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "17",
+      "Power": 542,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 68,
+    "PrestigeGet": 1,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "18",
+      "Power": 568,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 72,
+    "PrestigeGet": 1,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "19",
+      "Power": 600,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 75,
+    "PrestigeGet": 1,
+    "PtGet": 1
+  },
+  {
+    "EnemyChicken": {
+      "Type": 0,
+      "Name": "20",
+      "Power": 700,
+      "Talent": 0,
+      "Skills": null,
+      "Grand": null,
+      "enemyChickens": null
+    },
+    "GoldGet": 90,
+    "PrestigeGet": 5,
     "PtGet": 1
   }
 ]
