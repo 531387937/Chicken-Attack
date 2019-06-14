@@ -33,11 +33,9 @@ public class Chick : MonoBehaviour
     IEnumerator RandomEvent()
     {
         yield return new WaitForSeconds(10);
-        Debug.Log("小鸡事件随机中。。。");
         if (Random.Range(0,100) == 1)
         {
             //小鸡随机事件
-            Debug.Log("小鸡随机坏事件！！！");
             int Cost = Random.Range(20, 50);
             board.DoSomething(self.Name + "身体不适，请花费"+Cost+"恢复");
             board.NO.gameObject.SetActive(false);
@@ -54,7 +52,6 @@ public class Chick : MonoBehaviour
             if (Random.Range(0, 50) == 1)
             {
                 // 小鸡随机事件
-                Debug.Log("小鸡随机好事件！！！");
                 int Cost = Random.Range(20, 50);
                 board.DoSomething("恭喜您"+self.Name + "在地上发现了闪闪发光的金子，金币+"+Cost+"G！");
                 board.NO.gameObject.SetActive(false);
@@ -69,9 +66,8 @@ public class Chick : MonoBehaviour
             else if (Random.Range(0, 80) == 1)
             {
                 // 小鸡随机事件
-                Debug.Log("小鸡随机好事件！！！");
                 int Cost = Random.Range(1, 5);
-                board.DoSomething("恭喜您" + self.Name + "学会了后空翻转体360大回环，鸡毛+"+Cost+"！");
+                board.DoSomething("恭喜您" + self.Name + "学会了后空翻转体360托马斯回旋，鸡毛+"+Cost+"！");
                 board.NO.gameObject.SetActive(false);
                 board.YES.onClick.AddListener(delegate
                 {
@@ -101,7 +97,6 @@ public class Chick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Screen.width * Widthscale" + Screen.width * Widthscale);
         Pos = new Vector3(Camera.main.WorldToScreenPoint(this.transform.position).x, Camera.main.WorldToScreenPoint(this.transform.position).y + (Screen.width * Widthscale), 0);
         Current_Name_UI.transform.position = Pos;
         if (self.Grow >= 100)
@@ -118,9 +113,9 @@ public class Chick : MonoBehaviour
             {
                 if (hit.collider == this.gameObject.GetComponent<Collider2D>())
                 {
-                    Debug.Log(this.gameObject.name +"点击小鸡！！！");
                     self.Grow += 10;//摸一次加十，展示用
                     this.gameObject.GetComponent<Animator>().SetBool("Touch", true);
+                    this.GetComponent<AudioSource>().Play();
                 }
             }
         }
