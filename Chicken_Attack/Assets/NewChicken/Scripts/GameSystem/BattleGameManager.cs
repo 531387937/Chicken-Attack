@@ -166,6 +166,7 @@ public class BattleGameManager : MonoBehaviour
     {
         player_Chicken = Instantiate(Chicken[(int)GameSaveNew.Instance.playerChicken.Type], PlayerPos.position, new Quaternion(0, 0, 0, 1), this.transform);
         enemy = Instantiate(Chicken[(int)enemy_chicken.Type], EnemyPos.position, new Quaternion(0, 180, 0, 1), this.transform);
+        enemy.GetComponent<SpriteRenderer>().sortingOrder--;
     }
     //进行回合的战斗
     public void Round()
