@@ -158,7 +158,7 @@ public class BattleGameManager : MonoBehaviour
     {
         UI_Text.text = null;
         gameBegin = true;
-        StartCoroutine(NextRound((CurrnetRound+1)));
+        StartCoroutine(NextRound((CurrnetRound)));
 
     }
     //生成对战的鸡
@@ -262,7 +262,7 @@ public class BattleGameManager : MonoBehaviour
     {
         if(current==0)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
         }
         else
         yield return new WaitForSeconds(2f);
