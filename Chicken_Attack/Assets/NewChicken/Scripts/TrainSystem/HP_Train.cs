@@ -19,6 +19,8 @@ public class HP_Train : MonoBehaviour
     private float MaxSpeed;
     private bool Falling = false;
     private bool Jumping=false;
+    [HideInInspector]
+    public bool canTouch = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +47,7 @@ public class HP_Train : MonoBehaviour
             Train_Chicken.transform.position = new Vector3(Train_Chicken.transform.position.x, 1, Train_Chicken.transform.position.z);
             Land();
         }
-        if(Input.GetMouseButtonDown(0) && !Jumping&&!Falling)
+        if(Input.GetMouseButtonDown(0) && !Jumping&&!Falling&&canTouch)
         {
             Jumping = true;
         }

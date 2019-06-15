@@ -316,6 +316,7 @@ MonoBehaviour:
   HurdleNum: 10
   Panel: {fileID: 12065132}
   JumpSpeed: 10
+  canTouch: 0
 --- !u!1 &233685094
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,6 +902,11 @@ PrefabInstance:
       propertyPath: help
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5596152249980353708, guid: 6cbc1a01f3318ed40ae3ec86d3be1f49,
+        type: 3}
+      propertyPath: hpHelp
+      value: 
+      objectReference: {fileID: 154087881}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cbc1a01f3318ed40ae3ec86d3be1f49, type: 3}
 --- !u!224 &1327221051 stripped

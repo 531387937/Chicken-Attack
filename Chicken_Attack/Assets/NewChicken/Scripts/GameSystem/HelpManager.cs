@@ -12,6 +12,8 @@ public class HelpManager : MonoBehaviour
     public GameObject[] hideObj;
     [HideInInspector]
     public GameObject growHelp;
+    [HideInInspector]
+    public GameObject hpHelp;
     //根据场景改变枚举
     public enum Help
     {
@@ -62,7 +64,7 @@ public class HelpManager : MonoBehaviour
                 break;
         }
        
-        if(!GameSaveNew.Instance.playerChicken.FirstChicken && currentHelp < helpPanel.Length)
+        if(!GameSaveNew.Instance.playerChicken.FirstChicken )
         {
             helpPanel[currentHelp].SetActive(true);
             Time.timeScale = 0;
@@ -86,6 +88,10 @@ public class HelpManager : MonoBehaviour
                 growHelp.SetActive(false);
                 Time.timeScale = 1;
             }
+        }
+        if(hpHelp!=null&& currentHelp >= helpPanel.Length)
+        {
+            hpHelp.GetComponent<HP_Train>().canTouch = true;
         }
         if (!GameSaveNew.Instance.playerChicken.FirstChicken && Input.GetMouseButtonDown(0) && currentHelp < helpPanel.Length)
         {

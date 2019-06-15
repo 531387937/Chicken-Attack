@@ -4438,8 +4438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalSprite: {fileID: 21300000, guid: 793917bb4009c4a4e8154e4a5e542afb, type: 3}
   CanUseSprite: {fileID: 21300000, guid: a34c5bac6f4ea4a4f85d9a4a50b6d934, type: 3}
-  HungryADD: 12
-  Cost: 7
+  HungryADD: 20
+  Cost: 3
   food: 2
   Cover: {fileID: 955247468}
   Grey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}
@@ -8435,7 +8435,7 @@ MonoBehaviour:
   NormalSprite: {fileID: 21300000, guid: 34199e7b852678043b45a22ef2ff6a14, type: 3}
   CanUseSprite: {fileID: 21300000, guid: 43f0dbb632d89694f99c5b50b3226747, type: 3}
   HungryADD: 5
-  Cost: 4
+  Cost: 1
   food: 0
   Cover: {fileID: 406861845}
   Grey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}
@@ -10406,8 +10406,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalSprite: {fileID: 21300000, guid: 346da7632256b3342aad2fa6fea20f3d, type: 3}
   CanUseSprite: {fileID: 21300000, guid: 3f987514c1ddf0a46b006d48450141c5, type: 3}
-  HungryADD: 8
-  Cost: 5
+  HungryADD: 12
+  Cost: 2
   food: 1
   Cover: {fileID: 969078488}
   Grey: {fileID: 2100000, guid: c9431b923a8e49449b44afd21625af43, type: 2}

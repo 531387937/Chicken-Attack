@@ -77,13 +77,15 @@ public class BattleGameManager : MonoBehaviour
     private Slider enemySlider;
     //关卡信息
     List<LevelSet> FC;
+
+    List<int> enemyActs;
     //string enemyPath = "Assets/Resources/EnemyData.json";
     void Awake()
     {
         playerSlider.value = 0.5f;
         enemySlider.value = 0.5f;
         level = SceneChange.Level;
-
+        enemyActs = new List<int>();
         string aa = Resources.Load("EnemyData").ToString();
         FC = IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
         Player = new BattleAttribute(GameSaveNew.Instance.playerChicken);
@@ -96,8 +98,12 @@ public class BattleGameManager : MonoBehaviour
         //SkillRead();
         for (int i = 0; i < 5; i++)
         {
-            BtnGroup.transform.GetChild(i).GetComponent<GameBtn>().duel = Player.duel[i];
-            BtnGroup.transform.GetChild(i).GetComponent<Image>().sprite = sprites[(int)Player.duel[i]];
+            BtnGroup.transform.GetChild(i).GetComponent<GameBtn>().duel = Player.rebuildDuel[i];
+            BtnGroup.transform.GetChild(i).GetComponent<Image>().sprite = sprites[(int)Player.rebuildDuel[i]];
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            EnemyGroup.transform.GetChild(i).GetComponent<Image>().sprite = sprites[(int)Enemy.rebuildDuel[i]];
         }
     }
 
@@ -143,14 +149,16 @@ public class BattleGameManager : MonoBehaviour
         if(TotalHurt_Player!=0&&TotalHurt_Enemy!=0)
         {
             playerSlider.value = (float)TotalHurt_Player /(float)(TotalHurt_Player + TotalHurt_Enemy);
+            playerSlider.GetComponentInChildren<TextMeshProUGUI>().text = TotalHurt_Player.ToString();
             enemySlider.value =(float)TotalHurt_Enemy / (float)(TotalHurt_Enemy + TotalHurt_Player);
+           enemySlider.GetComponentInChildren<TextMeshProUGUI>().text = TotalHurt_Enemy.ToString();
         }
     }
     void GameStart()
     {
         UI_Text.text = null;
         gameBegin = true;
-        StartCoroutine(NextRound());
+        StartCoroutine(NextRound((CurrnetRound+1)));
 
     }
     //生成对战的鸡
@@ -162,7 +170,16 @@ public class BattleGameManager : MonoBehaviour
     //进行回合的战斗
     public void Round()
     {
-        EnemyGroup.transform.GetChild(CurrnetRound).gameObject.SetActive(false);
+        while (true)
+        {
+            int enemyAct = Random.Range(0, 5);
+            if (!enemyActs.Contains(enemyAct))
+            {
+                EnemyGroup.transform.GetChild(enemyAct).gameObject.SetActive(false);
+                enemyActs.Add(enemyAct);
+                break;
+            }
+        }
         Acts.SetActive(false);
         Player_Image.gameObject.transform.localScale = new Vector3(1, 1, 1);
         Enemy_Image.gameObject.transform.localScale = new Vector3(1, 1, 1);
@@ -171,24 +188,24 @@ public class BattleGameManager : MonoBehaviour
         Player_Image.gameObject.SetActive(true);
         Enemy_Image.gameObject.SetActive(true);
         Player_Image.sprite = sprites[(int)PlayerCurrent_duel];
-        Enemy_Image.sprite = sprites[(int)Enemy.duel[CurrnetRound]];
+        Enemy_Image.sprite = sprites[(int)Enemy.rebuildDuel[enemyActs[CurrnetRound]]];
 
        
         if (PlayerCurrent_duel == BattleAttribute.Duel.scissors)
         {
-            if(Enemy.duel[CurrnetRound]== BattleAttribute.Duel.scissors)
+            if(Enemy.rebuildDuel[enemyActs[CurrnetRound]]== BattleAttribute.Duel.scissors)
             {
                 peace.Play();
                 CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power*Random.Range(0.97f,1.03f));
                 CurrHurt_Player = Mathf.CeilToInt(Player.power * Random.Range(0.97f, 1.03f));
             }
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.rock)
+            if (Enemy.rebuildDuel[enemyActs[CurrnetRound]] == BattleAttribute.Duel.rock)
             {
                 lose.Play();
                 CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power*1.1f * Random.Range(0.97f, 1.03f));
                 CurrHurt_Player = Mathf.CeilToInt(Player.power*0.9f * Random.Range(0.97f, 1.03f));
             }
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.paper)
+            if (Enemy.rebuildDuel[enemyActs[CurrnetRound]] == BattleAttribute.Duel.paper)
             {
                 win.Play();
                 CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
@@ -197,19 +214,19 @@ public class BattleGameManager : MonoBehaviour
         }
         else if (PlayerCurrent_duel == BattleAttribute.Duel.rock)
         {
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.scissors)
+            if (Enemy.rebuildDuel[enemyActs[CurrnetRound]] == BattleAttribute.Duel.scissors)
             {
                 win.Play();
                 CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
                 CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
             }
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.rock)
+            if (Enemy.rebuildDuel[enemyActs[CurrnetRound]] == BattleAttribute.Duel.rock)
             {
                 peace.Play();
                 CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * Random.Range(0.97f, 1.03f));
                 CurrHurt_Player = Mathf.CeilToInt(Player.power * Random.Range(0.97f, 1.03f));
             }
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.paper)
+            if (Enemy.rebuildDuel[enemyActs[CurrnetRound]] == BattleAttribute.Duel.paper)
             {
                 lose.Play();
                 CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 1.1f * Random.Range(0.97f, 1.03f));
@@ -218,32 +235,36 @@ public class BattleGameManager : MonoBehaviour
         }
         else if (PlayerCurrent_duel == BattleAttribute.Duel.paper)
         {
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.scissors)
+            if (Enemy.rebuildDuel[enemyActs[CurrnetRound]] == BattleAttribute.Duel.scissors)
             {
                 lose.Play();
                 CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 1.1f * Random.Range(0.97f, 1.03f));
                 CurrHurt_Player = Mathf.CeilToInt(Player.power * 0.9f * Random.Range(0.97f, 1.03f));
             }
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.rock)
+            if (Enemy.rebuildDuel[enemyActs[CurrnetRound]] == BattleAttribute.Duel.rock)
             {
                 win.Play();
                 CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
                 CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
             }
-            if (Enemy.duel[CurrnetRound] == BattleAttribute.Duel.paper)
+            if (Enemy.rebuildDuel[enemyActs[CurrnetRound]] == BattleAttribute.Duel.paper)
             {
                 peace.Play();
                 CurrHurt_Enemy = Mathf.CeilToInt(Enemy.power * 0.9f * Random.Range(0.97f, 1.03f));
                 CurrHurt_Player = Mathf.CeilToInt(Player.power * 1.1f * Random.Range(0.97f, 1.03f));
             }
         }
-        StartCoroutine(NextRound());
         Invoke("ShowHurt", 2.3f);
     }
 
-    IEnumerator NextRound()
+    IEnumerator NextRound(int current)
     {
-        yield return new WaitForSeconds(3.5f);
+        if(current==0)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        else
+        yield return new WaitForSeconds(2f);
         if (CurrnetRound == 5)
         {
             GameResult();
@@ -252,7 +273,7 @@ public class BattleGameManager : MonoBehaviour
         {
             UI_Text.gameObject.SetActive(true);
             UI_Text.fontSize = 85;
-            UI_Text.text = "Round " + (CurrnetRound + 1);
+            UI_Text.text = "Round " + (CurrnetRound+1);
             yield return new WaitForSeconds(1f);
             Acts.SetActive(true);
             UI_Text.gameObject.SetActive(false);
@@ -273,7 +294,7 @@ public class BattleGameManager : MonoBehaviour
                 player_Chicken.GetComponent<Animator>().SetTrigger("Attack");
                 break;
         }
-        switch (Enemy.duel[CurrnetRound])
+        switch (Enemy.rebuildDuel[enemyActs[CurrnetRound]])
         {
             case BattleAttribute.Duel.scissors:
                 enemy.GetComponent<Animator>().SetTrigger("Attack2");
@@ -285,7 +306,10 @@ public class BattleGameManager : MonoBehaviour
                 enemy.GetComponent<Animator>().SetTrigger("Attack");
                 break;
         }
+
         CurrnetRound++;
+        StartCoroutine(NextRound(CurrnetRound));
+
         Player_GetHurt();
         Enemy_GetHurt();
     }
