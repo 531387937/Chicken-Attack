@@ -89,8 +89,8 @@ public class BattleGameManager : MonoBehaviour
         string aa = Resources.Load("EnemyData").ToString();
         FC = IOHelper.GetData(aa, typeof(List<LevelSet>), 1) as List<LevelSet>;
         Player = new BattleAttribute(GameSaveNew.Instance.playerChicken);
-        Enemy = new BattleAttribute(FC[level].EnemyChicken);
-        enemy_chicken = FC[level].EnemyChicken;
+        Enemy = new BattleAttribute(FC[level-1].EnemyChicken);
+        enemy_chicken = FC[level-1].EnemyChicken;
         //player_chicken.enemyChickens.Add(enemy_chicken);//将此敌人加入玩家此生遇到敌人队列
         //生成对战的两只鸡
         ChickenInit();

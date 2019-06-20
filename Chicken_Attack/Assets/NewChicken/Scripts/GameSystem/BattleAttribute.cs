@@ -25,11 +25,16 @@ public class BattleAttribute
         {
             duel[i] =(Duel)action[i];
         }
+        int[] actions = new int[5];
+        for(int i=0;i<5;i++)
+        {
+            actions[i] = action[i];
+        }
         rebuildDuel = new Duel[5];
-        ReBuild(action);
+        ReBuild(actions);
         for (int i = 0; i < 5; i++)
         {
-            rebuildDuel[i] = (Duel)action[i];
+            rebuildDuel[i] = (Duel)actions[i];
         }
     }
 
